@@ -1,0 +1,7 @@
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+bin/gedcom
+lib/gedcom.rb
+test/test_gedcom.rb
