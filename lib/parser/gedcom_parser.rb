@@ -2,6 +2,48 @@ require 'parse_state.rb'
 require 'ged_line.rb'
 require 'transmission.rb'
 
+#Class GedcomParser is a GEDCOM 5.5 Parser
+#
+#The GEDCOM 5.5 grammer is defined in the TAGS hash.
+# * Each TAGS hash members key represents a name of a GEDCOM record definition in the standard.
+#   The standard doesn't name all sub-levels of a record, but for our definitions we have had to.
+#   e.g. In the standard: 
+#          HEADER:=
+#           n HEAD  {1:1}
+#             +1 SOUR <APPROVED_SYSTEM_ID> {1:1}
+#             ...
+#        becomes a :header key and a :header_source key in the TAGS hash.
+#
+# * Each value is another hash, whose key is a two member array: [<GEDCOM_TAG>, <context>]
+#   Valid Contexts:
+#   [:xref] indicates that the GEDCOM TAG with a reference value, so should have an @XREF@ value following it
+#           Nb. With level 0 GEDCOM records, the @XREF@ will proceed the  GEDCOM TAG.
+#   [nil]   indicates this is a standard GEDCOM tag, possibly with a data value following it.
+#   [:user] indicates that this is a user defined tag, not one from the standard.
+#   e.g. 
+#        ["NOTE", :xref] is a NOTE tag with a reference to a note, or at Level 0 the :xref is the key for other records to refer to.
+#        ["NOTE", nil] is an inline NOTE, with the note being the value on the GEDCOM line
+#        ["NOTE", :user] is a NOTE record where the standard didn't allow for one (i.e. user defined)
+#   Each value of this hash being an array telling the parse what it must do when it meets the GEDCOM_TAG in the context.
+#   This array array has the following fields
+#   0. CHILD_RECORD     This is the key to the child level tag description lines.
+#   1. MIN_OCCURANCES   What is the minimum number of times we should see this field. Usually 0 or 1
+#   2. MAX_OCCURANCES   How many times can this tag appear at this level. Nil means any number of times
+#   3. DATA_TYPE        What is the type of the data in the data field. Nil means we expect no data.
+#   4. DATA_SIZE        How big can this field be
+#   5. ACTION         The action(s) the parser should take to instatiate a class and/or store the value portion of the GEDCOM line.
+#                     The Action tags are processed in order. A class tag changes the target class of field, key and xref tags.
+#                     -   [:class, :class_name] inidicates this line, and any further data, will be stored in the class  :class_name
+#                     -   [:pop] indicates that data will now be stored in the previous class.
+#                     -   [:field, :fieldname] indicates that the data part of the line will be stored in the field :field_name
+#                     -   [:field, [:fieldname, value]]  fieldname stores the given value.
+#                     -   [:append, :fieldname] indicates that the data part of the line will be appended to this field
+#                     -   [:append_nl, :fieldname] indicates that the data part of the line will be appended to this field, after first appending a nl
+#                     -   [:xref, [:field, :record_type]] indicates that the xref value of the line will get stored in the named field and points to the record_type.
+#                     -   [:key, :index_name] means we need to create an index entry, in the index index_name, for this items xref value.
+#                     -   nil in this field indicates that we should ignore this TAG and its children.
+# 6. DATA_DESCRIPTION Comment to indicate purpose of the gedcom TAG at this level.
+
 class GedcomParser
   
   attr_reader :transmission
@@ -9,19 +51,9 @@ class GedcomParser
   CHILD_RECORD = 0    #This is the key to the child level tag description lines.
   MIN_OCCURANCES = 1  #What is the minimum number of times we should see this field. Usually 0 or 1
   MAX_OCCURANCES = 2  #How many times can this tag appear at this level. Nil means any number of times
-  DATA_TYPE = 3       #what is the type of the data in the data field. Nil means we expect no data.
-  DATA_SIZE = 4       #how big can this field be
-  ACTION = 5 
-  #the Action tags are processed in order. A closs tag changes the target class of field, key and xref tags.
-  # [:class, :class_name] inidicates this line, and any further data, will be stored in the class  :class_name
-  # [:pop] indicates that data will now be stored in the previous class.
-  # [:field, :fieldname] indicates that the data part of the line will be stored in the field :field_name
-  # [:field, [:fieldname, value]]  fieldname stores the given value.
-  # [:append, :fieldname] indicates that the data part of the line will be appended to this field
-  # [:append_nl, :fieldname] indicates that the data part of the line will be appended to this field, after first appending a nl
-  # [:xref, [:field, :record_type]] indicates that the xref value of the line will get stored in the named field and points to the record_type.
-  # [:key, :index_name] means we need to create an index entry, in the index index_name, for this items xref value.
-  # nil in this field indicates that we should ignore this TAG and its children.
+  DATA_TYPE = 3       #What is the type of the data in the data field. Nil means we expect no data.
+  DATA_SIZE = 4       #How big can this field be
+  ACTION = 5          #The action(s) the parser should take to instatiate a class and/or store the value portion of the GEDCOM line.
   DATA_DESCRIPTION = 6 #Comment to indicate purpose of the gedcom TAG at this level.
 
   TAGS = {
@@ -44,7 +76,7 @@ class GedcomParser
     {
       ["SOUR", nil]		=> [:header_source,   1,	1, :identifier, 20,   [ [:class, :header_source_record], [:field, :approved_system_id] ], "Source System's Registered Name"	],
       ["DEST", nil]		=> [nil,		          0,	1, :identifier, 20,   [ [:field, :destination] ],                                           "Destination System's Registered Name"	],
-      ["DATE", nil]		=> [:date_structure,  0,	1, :date_exact, 11,   [ [:class, :date_record], [:field, :date] ],                         "Transmission Date"	],
+      ["DATE", nil]		=> [:date_structure,  0,	1, :date_exact, 11,   [ [:class, :date_record], [:field, :date_value] ],                         "Transmission Date"	],
       ["SUBM", :xref]	=> [nil,		          1,	1,	nil,        0,    [ [:xref, [:submitter_ref, :submitter]] ],                        "Reference to a Submitter Record"	],
       ["SUBN", :xref]	=> [nil,		          0,	1,	nil,        0,    [ [:xref, [:submission_ref, :submission]] ],                      "Reference to a Submission Record"		],
       ["FILE", nil]		=> [nil,		          0,	1, :string,			90,   [ [:field, :file_name] ],                                             "This files name"	],
@@ -79,7 +111,7 @@ class GedcomParser
     },
 		:date_structure =>
     {  
-      ["TIME",  nil]		=>  [nil,		                 0,	1, :time_val,    12,   [  [:field, :time] ],                                 "Time of event"	],
+      ["TIME",  nil]		=>  [nil,		                 0,	1, :time_val,    12,   [  [:field, :time_value] ],                                 "Time of event"	],
       ["SOUR", :xref]	=>  [:source_citation,					0,	nil,  nil,				0,  [ [:class, :source_citation_record], [:xref, [:source_ref, :source]] ], "Reference to Source Record"	],
       ["SOUR", nil]		=>  [:source_citation_inline,	    0,	nil, :string,	248,  [ [:class, :source_citation_record], [:class, :source_record], [:field, :title] ], "Inline note describing source" 	],
       ["NOTE", :xref]	=>  [:note_structure,         0,	nil,  nil,          0,    [ [:class, :note_citation_record], [:xref, [:note_ref, :note]] ],                "Link to a Note Record"	], #Not legal gedcom 5.5
@@ -149,7 +181,7 @@ class GedcomParser
       ["RESN", nil]		=>  [nil,		                    0,	1, :restriction_value,	7, [ [:field, :restriction] ], "Record Locked or Parts removed for Privacy"	], #NOT GEDCOM 5.5
 
       ["TYPE",  nil]		=>  [nil,		                0,	1, :string,			90,   [ [:field, :event_descriptor] ],                                 "Event Description"	],
-      ["DATE",  nil]		=>  [:date_structure,		          0,	1, :date_value,	35,   [ [:class, :date_record], [:field, :date] ],       "Events Date(s)"	],
+      ["DATE",  nil]		=>  [:date_structure,		          0,	1, :date_value,	35,   [ [:class, :date_record], [:field, :date_value] ],       "Events Date(s)"	],
       ["PLAC",  nil]		=>  [:place_structure,        0,	1, :placehierachy,120, [ [:class, :place_record], [:field, :place_value] ],     "Jurisdictional Place Hierachy where the Event Occurred"	],
       ["ADDR",  nil]		=>  [:address_structure,      0,	1, :string,			60,   [ [:class, :address_record], [:field, :address] ], "Address"	],
       ["PHON",  nil]		=>  [nil,		                  0,	3, :string,			25,   [ [:field, :phonenumber] ],                          "Phone :number"	],
@@ -241,11 +273,11 @@ class GedcomParser
       ["ALIA", :xref]	=>  [nil,		                    0,	nil,  nil,				0,  [ [:xref, [:alias_ref, :individual]] ], "Reference to possible duplicate Individual Record"		],
       ["FAMC", :xref]	=>  [:child_to_family_link,		  0,	nil,  nil,				0,  [ [:class, :families_individuals], [:field, [:relationship_type, "FAMC"]], [:xref, [:parents_family_ref, :family]] ], "Reference to Parent's Family Record"	],
       ["FAMS", :xref]	=>  [:attached_note,	      	  0,	nil,  nil,				0,  [ [:class, :families_individuals], [:field, [:relationship_type, "FAMS"]], [:xref, [:family_ref, :family]] ], "Reference to Own marriage's Family Record"		],
-      ["ANCI", :xref]	=>  [nil,		                    0,	nil,  nil,				0,  [ [:class, :individuals_individuals], [:field, [:relationship_type, "ANCI"]] , [:xref, [:associate_ref, :individual]], [:pop] ], "Reference to Submitter's Record Interested persons Ancestors"		],
-      ["DESI", :xref]	=>  [nil,		                    0,	nil,  nil,				0,  [ [:class, :individuals_individuals], [:field, [:relationship_type, "DESI"]], [:xref, [:associate_ref, :individual]], [:pop] ], "Reference to Submitter's Record Interested persons Decendants"	],
-      ["ASSO", :xref]	=>  [:association_structure,		0,	nil,  nil,				0,  [ [:class, :individuals_individuals], [:field, [:relationship_type, "ASSO"]], [:xref, [:associate_ref, :individual]] ], "Reference to An Associated Individual's Record"		],
+      ["ASSO", :xref]	=>  [:association_structure,		0,	nil,  nil,				0,  [ [:class, :association_record],  [:xref, [:association_ref, :individual]] ], "Reference to An Associated Individual's Record"		],
 
       ["SUBM", :xref]	=>  [nil,		                    0,	nil,  nil,				0,  [ [:xref, [:submitter_ref, :submitter]] ], "Reference to Submitter Record"		],
+      ["ANCI", :xref]	=>  [nil,		                    0,	nil,  nil,				0,  [ [:xref, [:ancestor_interest_ref, :submitter]] ],  "Reference to Submitter's Record Interested in persons Ancestors"		],
+      ["DESI", :xref]	=>  [nil,		                    0,	nil,  nil,				0,  [ [:xref, [:descendant_interest_ref, :submitter]] ], "Reference to Submitter's Record Interested in persons Decendants"	],
       ["SOUR", :xref]	=>  [:source_citation,					0,	nil,  nil,				0,  [ [:class, :source_citation_record], [:xref, [:source_ref, :source]] ], "Reference to Source Record"	],
       ["SOUR", nil]		=>  [:source_citation_inline,	    0,	nil, :string,	248,  [ [:class, :source_citation_record], [:class, :source_record], [:field, :title] ], "Inline note describing source" 	],
       ["OBJE", :xref]	=>  [nil,		                  0,	nil,	nil,				0,  [ [:class, :multimedia_citation_record], [:xref, [:multimedia_ref, :multimedia]], [:pop] ],     "Link to a Multimedia Record"	],
@@ -283,7 +315,7 @@ class GedcomParser
       ["RESN", nil]		=>  [nil,		                    0,	1, :restriction_value,	7, [ [:field, :restriction] ], "Record Locked or Parts removed for Privacy"	], #NOT GEDCOM 5.5
  
       ["TYPE", nil]		=>  [nil,		                    0,	1, :string,			  90,   [ [:field, :event_descriptor] ], "Event Description"	],
-      ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,   [ [:class, :date_record], [:field, :date] ], "Events Date(s)"	], #illegal note attachment, Note gedcom 5.5 compliant.
+      ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,   [ [:class, :date_record], [:field, :date_value] ], "Events Date(s)"	], #illegal note attachment, Note gedcom 5.5 compliant.
       ["PLAC", nil]		=>  [:place_structure,					0,	1, :placehierachy,	120,  [ [:class, :place_record], [:field, :place_value] ], "Jurisdictional Place Hierarchy where the Event Occurred"	],
       ["ADDR", nil]		=>  [:address_structure,				0,	1, :string,			  60,   [ [:class, :address_record], [:field, :address] ], "Address"	],
       ["PHON", nil]		=>  [nil,		                    0,	3, :string,			  25,   [ [:field, :phonenumber] ], "Phone :number"	],
@@ -307,7 +339,7 @@ class GedcomParser
       ["RESN", nil]		=>  [nil,		                    0,	1, :restriction_value,	7, [ [:field, :restriction] ], "Record Locked or Parts removed for Privacy"	], #NOT GEDCOM 5.5
 
       ["TYPE", nil]		=>  [nil,		                    0,	1, :string,			  90,   [ [:field, :event_descriptor] ], "Event Description"	],
-      ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,   [ [:class, :date_record], [:field, :date] ], "Events Date(s)"	], #illegal note attachment, Note gedcom 5.5 compliant.
+      ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,   [ [:class, :date_record], [:field, :date_value] ], "Events Date(s)"	], #illegal note attachment, Note gedcom 5.5 compliant.
       ["PLAC", nil]		=>  [:place_structure,					0,	1, :placehierachy,	120,  [ [:class, :place_record], [:field, :place_value] ], "Jurisdictional Place Hierarchy where the Event Occurred"	],
       ["ADDR", nil]		=>  [:address_structure,				0,	1, :string,			  60,   [ [:class, :address_record], [:field, :address] ], "Address"	],
       ["PHON", nil]		=>  [nil,		                    0,	3, :string,			  25,   [ [:field, :phonenumber] ], "Phone :number"	],
@@ -503,7 +535,7 @@ class GedcomParser
     },
 		:change_date =>
     {
-    	 ["DATE", nil]		=>  [:date_structure,						  1,	1, :date_exact,	11,   [ [:class, :date_record], [:field, :date] ], "Date Record Last Changed"	],
+    	 ["DATE", nil]		=>  [:date_structure,						  1,	1, :date_exact,	11,   [ [:class, :date_record], [:field, :date_value] ], "Date Record Last Changed"	],
        ["NOTE", :xref]	=> [:note_structure,				  0,	nil,  nil,				    0,  [ [:class, :note_citation_record], [:xref,  [:note_ref, :note]] ], "Link to a Note Record"	],
        ["NOTE", nil]		=>  [:note_structure_inline,		0,	nil, :string,		  248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
        ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
@@ -521,7 +553,7 @@ class GedcomParser
       ["RESN", nil]		=>  [nil,		                    0,	1, :restriction_value,	7, [ [:field, :restriction] ], "Record Locked or Parts removed for Privacy"	], #NOT GEDCOM 5.5
  
        ["TYPE", nil]		=>  [nil,		                    0,	1, :string,			  90,   [ [:field, :event_descriptor] ], "Event Description"	],
-       ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,   [ [:class, :date_record], [:field, :date] ], "Events Date(s)"	], #illegal note attachment, Note gedcom 5.5 compliant.
+       ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,   [ [:class, :date_record], [:field, :date_value] ], "Events Date(s)"	], #illegal note attachment, Note gedcom 5.5 compliant.
        ["PLAC", nil]		=>  [:place_structure,					0,	1, :placehierachy,	120,  [ [:class, :place_record], [:field, :place_value ]], "Jurisdictional Place Hierarchy where the Event Occurred"	],
        ["ADDR", nil]		=>  [:address_structure,				0,	1, :string,			  60,   [ [:class, :address_record], [:field, :address] ], "Address"	],
        ["PHON", nil]		=>  [nil,		                    0,	3, :string,			  25,   [ [:field, :phonenumber] ], "Phone :number"	],
@@ -541,7 +573,7 @@ class GedcomParser
 		:lds_individual_ordinance_bapl => # /*and CONL*/
     {
     	 ["STAT", nil]		=>  [nil,		                    0,	1, :lds_bapt_enum,	10,   [ [:field, :lds_date_status] ], "LDS Baptism Date Status"	],
-    	 ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,   [ [:class, :date_record], [:field, :date] ], "Events Date(s)"	],
+    	 ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,   [ [:class, :date_record], [:field, :date_value] ], "Events Date(s)"	],
     	 ["TEMP", nil]		=>  [nil,		                    0,	1, :string,			  5,    [ [:field, :lds_temp_code] ], "Abbreviated LDS Temple Code"		],
        ["PLAC", nil]		=>  [:place_structure,					0,	1, :placehierachy,	120,  [ [:class, :place_record], [:field, :place_value] ], "Jurisdictional Place Hierarchy where the Event Occurred"	],
        ["SOUR", :xref]	=>  [:source_citation,					0,	nil,  nil,				0,  [ [:class, :source_citation_record], [:xref, [:source_ref, :source]] ], "Reference to Source Record"	],
@@ -553,7 +585,7 @@ class GedcomParser
 		:lds_individual_ordinance_endl =>
     {
       ["STAT", nil]		=>  [nil,		                    0,	1, :lds_endl_enum,	10,   [ [:field, :lds_date_status] ], "LDS Baptism Date Status"	],
-      ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,   [ [:class, :date_record], [:field, :date] ], "Events Date(s)"	],
+      ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,   [ [:class, :date_record], [:field, :date_value] ], "Events Date(s)"	],
       ["TEMP", nil]		=>  [nil,		                    0,	1, :string,			  5,    [ [:field, :lds_temp_code] ], "Abbreviated LDS Temple Code"		],
       ["PLAC", nil]		=>  [:place_structure,					0,	1, :placehierachy,	120,  [ [:class, :place_record], [:field, :place_value] ], "Jurisdictional Place Hierarchy where the Event Occurred"	],
       ["SOUR", :xref]	=>  [:source_citation,					0,	nil,  nil,				0,  [ [:class, :source_citation_record], [:xref, [:source_ref, :source]] ], "Reference to Source Record"	],
@@ -565,7 +597,7 @@ class GedcomParser
 		:lds_individual_ordinance_slgc =>
     {
       ["STAT", nil]		=>  [nil,		                    0,	1, :lds_child_seal_enum,	10, [ [:field, :lds_date_status] ], "LDS Baptism Date Status"	],
-      ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,       [ [:class, :date_record], [:field, :date] ], "Events Date(s)"	],
+      ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,       [ [:class, :date_record], [:field, :date_value] ], "Events Date(s)"	],
       ["TEMP", nil]		=>  [nil,		                    0,	1, :string,			  5,        [ [:field, :lds_temp_code] ], "Abbreviated LDS Temple Code"		],
       ["PLAC", nil]		=>  [:place_structure,					0,	1, :placehierachy,	120,      [ [:class, :place_record], [:field, :place_value] ], "Jurisdictional Place Hierarchy where the Event Occurred"	],
       ["SOUR", :xref]	=>  [:source_citation,					0,	nil,  nil,				0,  [ [:class, :source_citation_record], [:xref, [:source_ref, :source]] ], "Reference to Source Record"	],
@@ -578,7 +610,7 @@ class GedcomParser
 		:lds_individual_ordinance_slgs => 
     {
        ["STAT", nil]		=>  [nil,		                    0,	1, :lds_spouse_seal_enum,	10,   [ [:field, :lds_date_status] ], "LDS Baptism Date Status"	],
-       ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,   [ [:class, :date_record], [:field, :date] ], "Events Date(s)"	],
+       ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,   [ [:class, :date_record], [:field, :date_value] ], "Events Date(s)"	],
        ["TEMP", nil]		=>  [nil,		                    0,	1, :string,			  5,    [ [:field, :lds_temp_code] ], "Abbreviated LDS Temple Code"		],
        ["PLAC", nil]		=>  [:place_structure,					0,	1, :placehierachy,	120,  [ [:class, :place_record], [:field, :place_value] ], "Jurisdictional Place Hierarchy where the Event Occurred"	],
        ["SOUR", :xref]	=>  [:source_citation,					0,	nil,  nil,				0,  [ [:class, :source_citation_record], [:xref, [:source_ref, :source]] ], "Reference to Source Record"	],
@@ -613,7 +645,7 @@ class GedcomParser
 
       #Non-Standard Gedcom to have an event details in a personal_name_structure. We have added these, as changing one's name requires event details
       ["TYPE", nil]		=>  [nil,		                    0,	1, :string,			  90,   [ [:field, :event_descriptor] ], "Event Description"	],
-      ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,   [ [:class, :date_record], [:field, :date] ], "Events Date(s)"	], #illegal note attachment, Note gedcom 5.5 compliant.
+      ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,   [ [:class, :date_record], [:field, :date_value] ], "Events Date(s)"	], #illegal note attachment, Note gedcom 5.5 compliant.
       ["PLAC", nil]		=>  [:place_structure,					0,	1, :placehierachy,	120,  [ [:class, :place_record], [:field, :place_value ]], "Jurisdictional Place Hierarchy where the Event Occurred"	],
       ["ADDR", nil]		=>  [:address_structure,				0,	1, :string,			  60,   [ [:class, :address_record], [:field, :address] ], "Address"	],
       ["PHON", nil]		=>  [nil,		                    0,	3, :string,			  25,   [ [:field, :phonenumber] ], "Phone :number"	],
@@ -653,7 +685,7 @@ class GedcomParser
     },
 		:source_citation_data =>
     {
-    	 ["DATE", nil]		=>  [:date_structure,		    0,	1, :date_value,	90,   [ [:class, :date_record], [:field, :date] ], "Date event was entered into original source"],
+    	 ["DATE", nil]		=>  [:date_structure,		    0,	1, :date_value,	90,   [ [:class, :date_record], [:field, :date_value] ], "Date event was entered into original source"],
     	 ["TEXT", nil]		=>  [:text_cont_conc,	  0,	nil, :string,		  248,  [ [:class, :text_record], [:field, :text]], "Verbatim Copy of the Source Tect"],
     	 ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
     },
@@ -686,22 +718,31 @@ class GedcomParser
     }
   }
  
+  #Create a new GedcomParser instance
+  #Optional transmission argument provides an external Transmission object to hold the parsed file.
   def initialize(transmission = Transmission.new)
     @transmission =  transmission #We store the loaded records in here.
     @parse_state = ParseState.new :transmission ,  @transmission  #We are starting in a parse state of :transmission on the stack.
   end
   
+  #Parse a GEDCOM line, adding it to the Transmission class hierarchy.
+  #Takes a lineno for reporting errors 
+  #and the line (as a String) to be tokenised and parsed.
   def parse(lineno, line)
     tokens = GedLine.new *line.chomp.strip.split(/\s/)
     parse_line(lineno, tokens)
   end
   
+  #Dump the statistics of what we have parsed and stored in the Transission object.
   def summary
     @transmission.summary
   end
         
   private
   
+  #Uses the TAGS hash to determine how to process the line.
+  #Take a a line number for error reporting 
+  #and the tokenised GEDCOM line. 
   def process_line(lineno, tokens)
     if (tag_line = TAGS[@parse_state.state]) == nil
       raise "In unknown state (#{@parse_state.state})"
@@ -714,7 +755,7 @@ class GedcomParser
       else
         raise "Tag ([#{tokens.tag},#{tokens.xref}]) not valid in this state (#{@parse_state.state})"
       end
-    elsif tag_spec[CHILD_RECORD] #don't push nil states, as these represent terminals
+    elsif tag_spec[CHILD_RECORD] != nil #don't push nil states, as these represent terminals
       #Run the handler for this line.
       @transmission.action_handler lineno, tokens, *tag_spec
       #switch to new state
@@ -726,6 +767,9 @@ class GedcomParser
         
   end
   
+  #Manages the parsing state stack and calling process_line() to create objects to hold the data.
+  #Takes a lineno for error reporting 
+  # and a tokenised GEDCOM line (including tokenizing the data value as a word array).
   def parse_line(lineno, tokens)
     #need to look in the ::TAGS hash for tags that match the level this line is on.
     #Annoyingly, Level 0 has the data and the TAG, reversed for xrefs. 

@@ -6,6 +6,7 @@ class Adoption_record < GedComBase
 
   ClassTracker <<  :Adoption_record
 
+  #new sets up the state engine arrays @this_level and @sub_level, which drive the to_gedcom method generating GEDCOM output.
   def initialize(*a)
     super(*a)
     @this_level = [ [:xref, "FAMC", :birth_family_ref ],

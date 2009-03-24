@@ -6,6 +6,7 @@ class Citation_event_type_record < GedComBase
 
   ClassTracker <<  :Citation_event_type_record
   
+  #new sets up the state engine arrays @this_level and @sub_level, which drive the to_gedcom method generating GEDCOM output.
   def initialize(*a)
     super(*a)
     @this_level = [ [:print, "EVEN", :event_type ] ]

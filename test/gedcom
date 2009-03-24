@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby1.9
+require '../lib/gedcom.rb'
+
+puts "Using RUBY #{RUBY_VERSION}"
+
+
+#Parses the LDS GEDCOM test files and them dumps them back out as GEDCOM.
+#This allows me to test for errors in parsing and output. The two files will
+#not be an exact match, as the NOTE/CONT/CONC line breaks could be different
+#and user defined tags will get converted to NOTES.
+
+puts "parse TGC551LF.ged"
+if RUBY_VERSION == "1.9.1"
+  g = Gedcom.file("../test_data/TGC551LF.ged", "r:ASCII-8BIT") #OK with LF line endings.
+else
+  g = Gedcom.file("../test_data/TGC551LF.ged", "r") #OK with LF line endings.
+end
+g.transmissions[0].summary
+puts 
+
+#puts "parse TGC55CLF.ged"
+#g.file("../test_data/TGC55CLF.ged", "r:ASCII-8BIT") #Ok with CR LF line endings.
+#g.transmissions[1].summary
+#puts 
+
+#g.file("../test_data/TGC551.ged")  #fails to find CR line breaks, as native system uses LF, so reports parse error.
+#g.file("../test_data/TGC55C.ged") #fails to find CR line breaks,  as native system uses LF, so reports parse error.
+
+
+#print the parsed file to see if it matches the source file.
+#Note CONT and CONC breaks may end up in different places
+#Note Order of TAGS at the same level may be different
+#Note User TAGS are output as Notes.
+if RUBY_VERSION == "1.9.1"
+  File.open( "../test_data/TGC551LF.out", "w:ASCII-8BIT") do |file|
+    file.print g.transmissions[0].to_gedcom
+  end
+else
+  File.open( "../test_data/TGC551LF.out", "w") do |file|
+    file.print g.transmissions[0].to_gedcom
+  end
+end
+
+#File.open( "../test_data/TGC55CLF.out", "w:ASCII-8BIT") do |file|
+#  file.print g.transmissions[1].to_gedcom
+#end
+puts "\nComplete"

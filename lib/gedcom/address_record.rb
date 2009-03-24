@@ -6,6 +6,7 @@ class Address_record < GedComBase
 
   ClassTracker <<  :Address_record
   
+  #new sets up the state engine arrays @this_level and @sub_level, which drive the to_gedcom method generating GEDCOM output.
   def initialize(*a)
     super(*a)
     @this_level = [ [:cont, "ADDR", :address] ]

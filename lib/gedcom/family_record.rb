@@ -8,6 +8,7 @@ class Family_record < GedComBase
 
   ClassTracker <<  :Family_record
   
+  #new sets up the state engine arrays @this_level and @sub_level, which drive the to_gedcom method generating GEDCOM output.
   def initialize(*a)
     super(*a)
     @this_level = [ [:xref, "FAM", :family_ref] ]
@@ -33,7 +34,7 @@ class Family_record < GedComBase
   end
   
   def husband
-    if @husband_ref
+    if @husband_ref != nil
       find(@husband_ref[0], @husband_ref[1])
     else
       nil
@@ -41,7 +42,7 @@ class Family_record < GedComBase
   end
   
   def wife
-    if @wife_ref
+    if @wife_ref != nil
       find(@wife_ref[0], @wife_ref[1])
     else
       nil

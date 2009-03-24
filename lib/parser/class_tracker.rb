@@ -1,7 +1,8 @@
 #ClassTracker keeps track of the existence of our gedcom classes.
-#If they don't exist yet, the parser will create them. 
-#This started as an automated way to generate the gecom classes, but they now all exist
-#and none should ever end up being created dynamically. 
+#If they don't exist yet, the parser will need to dynamically create them. 
+#
+#This started as an experiment to automate the generation of the Gedcom classes, but they now all exist
+#and none should ever end up being created dynamically. I need to deprecate this class at some point.
 
 
 class ClassTracker

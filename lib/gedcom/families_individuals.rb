@@ -19,7 +19,7 @@ class Families_individuals < GedComBase
   end
   
   def parents_family
-    if @parents_family_ref
+    if @parents_family_ref != nil
       find(:family,  @parents_family_ref[0])
     else
       nil
@@ -27,7 +27,7 @@ class Families_individuals < GedComBase
   end
   
   def own_family
-    if @family_ref
+    if @family_ref != nil
       find(:family,  @family_ref[0])
     else
       nil

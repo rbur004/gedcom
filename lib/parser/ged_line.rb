@@ -1,6 +1,15 @@
+#GedLine takes a GEDCOM line tokenised into a word array returning an object 
+#with the:
+# * level number in @level
+# * the GEDCOM tag in @tag
+# * the data portion in @data
+# * the XREF value, if this line has one, in @XREF
+# * the @user set to true if this is a user defined TAG (e.g. starts with '_')
+
 class GedLine
   attr_accessor :xref, :tag, :data, :level, :user
   
+  #GedLine.new(*data) takes a GEDCOM line as word array and does all the work to categorize the tokens.
   def initialize(*data)
     case
       when data.length < 2
@@ -51,18 +60,27 @@ class GedLine
     @user = nil
   end
   
+  #Test for this being a user Tag.
+  def user_tag?
+    @user == true
+  end
+
+  #Returns the hash key for this GEDCOM LINE to lookup the action in the GedcomParser::TAG has.
   def index
-    @user ? [ "NOTE", :user ] : ( @xref ? [@tag, :xref] : [@tag, nil] )
+    user_tag? ? [ "NOTE", :user ] : ( @xref ? [@tag, :xref] : [@tag, nil] )
   end
   
+  
+  #creates as NOTE from a user defined tag.
+  #sets the @user field to true.
   def user_tag
-    if @xref
+    if @xref != nil
       if @data == nil
         @data = [ '@' + @xref + '@' ]
       else
         @data[0,0] = '@' + @xref + '@'
       end
-      @xref = nil
+      @xref = nil if @level != 0 #Retain for the NOTES xref if this is a level 0 user tag.
     end
     if @data == nil
       @data = [ @tag ]
@@ -74,6 +92,7 @@ class GedLine
     @tag = "NOTE"
   end
       
+  #Returns a String with the @level, @xref, @tag and @data values.
   def to_s
     "Level #{@level}, Xref = @#{@xref}@, Tag = #{@tag}, Data = '#{@data ? @data.inject('') do |x,y| x + ' ' + y end : nil}'"
   end

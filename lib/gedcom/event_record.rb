@@ -38,7 +38,7 @@ class Event_record < GedComBase
     tag = event_tag(@event_type[0].to_s)
     
 #    print "'#{@event_type}' '#{@event_descriptor}' => #{tag}\n"
-    if @event_status && @event_status[0] && @event_status[0][0]  != nil
+    if @event_status != nil && @event_status[0] != nil && @event_status[0][0]  != nil
       @this_level = [ [:print, tag, :event_status] ]
     else
       @this_level = [ [:nodata, tag, nil] ]
@@ -96,7 +96,7 @@ class Event_record < GedComBase
   end
   
   def date
-    if @date_record
+    if @date_record != nil
       @date_record[0].date
     else
       nil

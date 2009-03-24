@@ -1,14 +1,17 @@
 require 'gedcom_base.rb'
 require 'event_record.rb'
 
+#Internal representation of the GEDCOM SEX, CAST, DSCR, EDUC, IDNO, NATI, NCHI, NMR, OCCU, PROP, RELI, RESI, SSN and TITL record types
+#Individual_attribute_record subclasses Event_record, as they share the same class attributes as events.
+#
+#The attributes are all arrays. 
+#* Those ending in _ref are GEDCOM XREF index keys
+#* Those ending in _record are array of classes of that type.
+#* The remainder are arrays of attributes that could be present in these record types.
 class Individual_attribute_record < Event_record
 
   ClassTracker <<  :Individual_attribute_record
   
-  def initialize(*a)
-    super(*a)
-  end
-
   def attr_type=(value)
     @event_type = value
   end

@@ -18,17 +18,25 @@ unknown tags hierarchies as a Note class.
   they may be partial, or may actually be strings decribing the date. 
 * For my own use, I bend the GEDCOM 5.5 standard by allowing the reading of the following types in non-standard ways. 
   These will not affect the reading and writing of valid GEDCOM 5.5.
-* * 'NOTE' type to appear in places it is not defined to exist in GEDCOM. 
-* * 'RESN' type to appear in places it is not defined to exist in GEDCOM. 
-* * 'SUBM' type to appear in 'EVEN' records. 
-* * 'SEX' type to appear multiple times in an 'INDI' record, as it can now be changed.
-* * 'SEX' type to allow more than 'M', 'F' and 'U', to allow for the XXY, XXXY and X and other genetic anomolies associated with gender.
-* * 'NAME' type allows event details ( eg 'DATE') , as names changes are events, not just an attribute.
-* * 'ADDR' type allows a 'TYPE' entry to qualify what the address is for (e.g. home, work, ...) .
+* * 'NOTE' type to appear in places it is not defined to exist in GEDCOM.
+           This is necessary in order to be able to convert user defined tags into NOTE records.
+* * 'RESN' type to appear in places it is not defined to exist in GEDCOM.
+           I wanted to be able to mark any record as restricted.
+* * 'SUBM' type to appear in 'EVEN' records.
+           I wanted to be able to track where I got the event information from.
+* * 'SEX' type to appear multiple times in an 'INDI' record,
+          as a person's sex can now be changed.
+* * 'SEX' type to allow more than 'M', 'F' and 'U',  
+          to allow for the XXY, XXXY and X and other genetic anomolies associated with gender.
+* * 'NAME' type allows event details ( eg 'DATE') , 
+           as names changes are events, not just an attribute.
+* * 'ADDR' type allows a 'TYPE' entry 
+           to qualify what the address is for (e.g. home, work, ...) .
 * User defined tags are converted to the NOTE type, with sublevels being CONT lines.
+  These are recognised as any tag starting with '_'. 
 * Haven't yet merged in the code to pretty print a family tree.
 * Want to add a merge option, to take multiple transmission and make a single one from them.
-* save/load (to/from a database) is yet to be ported.
+* save/load (to/from a database) is yet to be ported. GedcomBase#to_db is a dummy function.
 
 == SYNOPSIS:
 
