@@ -4,10 +4,12 @@ class ParseState < Array
   
   #Create the initial state.
   #Optional arguments:
-  #[state] if it has a value is pushed onto the state stack as the current state.
-  #[target] if it has a value, then it is the object we are using when in this state.
+  #* state, if it has a value, is pushed onto the state stack as the current state.
+  #* target, if it has a value, then it is the object we are using when in this state.
+  #          It should be non-nil if state is not nil.
   #e.g. GedcomParser.new calls ParseState.new( :transmission ,  @transmission) 
-  #     to say we are in the transmission state, and using the GedcomParser.transmission object.
+  #     Pushes the transmission state onto the stack, and records the GedcomParser.transmission 
+  #     object as the current target object.
   def initialize(state  = nil, target = nil)
     super(0)
     push state if state != nil

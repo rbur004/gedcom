@@ -25,7 +25,7 @@ lib/gedcom/header_record.rb
 lib/gedcom/header_source_record.rb
 lib/gedcom/individual_attribute_record.rb
 lib/gedcom/individual_record.rb
-lib/gedcom/indivuals_individuals.rb
+lib/gedcom/association_record.rb
 lib/gedcom/multimedia_citation_record.rb
 lib/gedcom/multimedia_record.rb
 lib/gedcom/name_record.rb

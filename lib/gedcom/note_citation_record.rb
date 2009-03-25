@@ -1,14 +1,20 @@
 require 'gedcom_base.rb'
 
-#Internal representation of a reference to a GEDCOM level 0 NOTE record type
+#Internal representation of a reference to a GEDCOM NOTE_STRUCTURE, or reference to a Level 0 NOTE.
 #NOTE types can be inline, references to Level 0 NOTEs, or used to store user defined tags. 
 #All NOTES are stored in the Note_record closs and referenced through this class.
 #
-#The attributes are all arrays. 
+#=NOTE_STRUCTURE:=
+#  n NOTE @<XREF:NOTE>@       {1:1}
+#    +1 <<SOURCE_CITATION>>   {0:M}
+#
+# The inline NOTE, also described as a NOTE_STRUCTURE in the GEDCOM standard, is stored in a Note_record.
+#
+#The attributes are all arrays for the level +1 tags/records. 
 #* Those ending in _ref are GEDCOM XREF index keys
 #* Those ending in _record are array of classes of that type.
-#* The remainder are arrays of attributes that could be present in the NOTE records.
-class Note_citation_record < GedComBase
+#* The remainder are arrays of attributes that could be present in this record.
+class Note_citation_record < GEDCOMBase
   attr_accessor :note_ref, :note_record, :source_citation_record
 
   ClassTracker <<  :Note_citation_record

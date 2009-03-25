@@ -2,13 +2,33 @@ require 'gedcom_all.rb'
 
 #Transmission subclasses TransmissionBase, providing a cleaner view for public consumption.
 #
-#TransmissionBase is a subclass of GedcomBase, and contains methods used by the parsing process
+#TransmissionBase is a subclass of GEDCOMBase, and contains methods used by the parsing process
 #to build the other Gedcom classes, instantiate instances for each GEDCOM record type, and populate
 #the fields based on the parsed GEDCOM file.
 #
-##Each of the Attributes is an array of objects reprenting the level 0 GEDCOM records in the
-#transmission. There is also an :index attribute defined in GedcomBase, with an associated 
-#find method (see GedcomBase#find)
+#
+#A Transmission object is encapsulating a LINEAGE_LINKED_GEDCOM. From the GEDCOM 5.5 standard:
+#=LINEAGE_LINKED_GEDCOM:=
+#  This is a model of the lineage-linked GEDCOM structure for submitting data to other lineage-linked
+#  GEDCOM processing systems. A header and a trailer record are required, and they can enclose any
+#  number of data records. Tags from Appendix A (see page 67) must be used in the same context as
+#  shown in the following form. User defined tags (see <NEW_TAG> on page 46) are discouraged but
+#  when used must begin with an under-score.
+#    0 <<HEADER>>               {1:1}
+#    0 <<SUBMISSION_RECORD>>    {0:1}
+#    0 <<FAM_RECORD>>           {0:M}
+#    0 <<INDIVIDUAL_RECORD>>    {0:M}
+#    0 <<MULTIMEDIA_RECORD>>    {0:M}
+#    0 <<NOTE_RECORD>>          {0:M}
+#    0 <<REPOSITORY_RECORD>>    {0:M}
+#    0 <<SOURCE_RECORD>>        {0:M}
+#    0 <<SUBMITTER_RECORD>>     {0:M}
+#    0 TRLR                     {1:1} 
+#
+#Each of the classes attributes is an array of objects representing the level 0 GEDCOM records in the
+#transmission. There is also an :index attribute defined in GEDCOMBase, with an associated 
+#find method (see Transmission#find)
+
 
 class  Transmission < TransmissionBase
  
@@ -68,14 +88,16 @@ class  Transmission < TransmissionBase
       end
     end
   end
-  
+=begin
   def summary
     @@tabs = true
     if (f = find(:individual,"PERSON7") ) != nil 
        s = f.to_gedcom
+       puts s #output window copy gives an error.
        File.open('/tmp/xx.txt','w') { |fd| fd.print s } #file copy is correct
        puts s #output window copy gives an error.
     end 
     @@tabs = false
   end
+=end
 end

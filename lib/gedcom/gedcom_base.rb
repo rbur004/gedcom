@@ -2,11 +2,11 @@ require "class_tracker.rb"
 require "instruction.rb"
 
 #base routines shared by all gedcom objects.
-class GedComBase
+class GEDCOMBase
   attr_accessor  :class_stack, :indexes
   @@tabs = false #If true, indent gedcom lines on output a tab per level. Normally wouldn't have tabs in a transmission file.
 
-  #Create a new GedcomBase or most likely a subclass of GedcomBase.
+  #Create a new GEDCOMBase or most likely a subclass of GEDCOMBase.
   #* transmission is the current transmission this object came from.
   #  This is useful in searchs of the transmission, starting from a reference in a record in that transmission.
   #* changed indicates that we have altered the data in the record
@@ -63,71 +63,21 @@ class GedComBase
     s
   end
   
-  #to_s with the variable list (as symbols) passed to it in the order they are to be printed
-  def to_s_ordered(variable_list)
-    if variable_list != nil
-      s = ''
-      variable_list.each do |v|
-        s += "@#{v} = " + pv_byname(v) + "\n"
-      end
-      s
-    else
-      ''
-    end
-  end
-  
- 
-  #recursive to_s. We want to print this object and its sub-records.
-  #the definition of how we want to print and when to recurse, is in the this_level and sub_level arrays.
-  #These have the form [ [ action, tag, data_source ],...] (see to_s_r_action )
-  def to_s_r(level = 0, this_level=[], sub_levels=[])
-    s_out = ""
-    this_level.each do |l|
-      this_level_instruction = Instruction.new(l)
-      if this_level_instruction.data != nil
-        data = self.send( this_level_instruction.data ) #gets the contents using the symbol, and sending "self" a message
-      else
-        data =  [['']]
-      end
-      if data != nil #could be if the self.send targets a variable that doesn't exist.
-        data.each do |data_instance| 
-          s_out += to_s_r_action(level, this_level_instruction.action, this_level_instruction.tag, data_instance)
-        
-          sub_levels.each do |sl|
-            sub_level_instruction = Instruction.new(sl)
-            if sub_level_instruction.data != nil
-              sub_level_data = self.send( sub_level_instruction.data ) #gets the contents using the symbol, and sending "self" a message
-            else
-               sub_level_data = [['']]
-            end
-            if sub_level_data != nil  #could be if the self.send targets a variable that doesn't exist.
-              sub_level_data.each do |sub_data_instance| 
-                s_out += to_s_r_action(level+1, sub_level_instruction.action, sub_level_instruction.tag, sub_data_instance )
-              end
-            end
-          end
-
-        end
-      end
-    end
-    return s_out
-  end
-  
   #Need to flesh this out. Right now it pretends to work and marks records as saved.
   def to_db(level = 0, this_level=[], sub_levels=[])
     @changed = false
     @created = false
   end
   
-  #This is the default method, used by all classes inheriting from GedcomBase, to recursively generate GEDCOM lines from that Object downward.
-  #All subclasses of GedcomBase are expected to define @this_level and @sub_level arrays, which are instructions to to_s_r on how to generate
+  #This is the default method, used by all classes inheriting from GEDCOMBase, to recursively generate GEDCOM lines from that Object downward.
+  #All subclasses of GEDCOMBase are expected to define @this_level and @sub_level arrays, which are instructions to to_s_r on how to generate
   #GEDCOM lines from the attributes of the object. 
   def to_gedcom(level = 0)
     to_s_r( level, @this_level, @sub_level )
   end
   
-  #This is the default method, used by all classes inheriting from GedcomBase, to recursively save the object and its sub-records to a DB.
-  #All subclasses of GedcomBase are expected to define @this_level and @sub_level arrays, which are instructions to to_db on how to generate
+  #This is the default method, used by all classes inheriting from GEDCOMBase, to recursively save the object and its sub-records to a DB.
+  #All subclasses of GEDCOMBase are expected to define @this_level and @sub_level arrays, which are instructions to to_db on how to generate
   #GEDCOM lines from the attributes of the object. 
   def save
     to_db( level, @this_level, @sub_level)
@@ -259,15 +209,6 @@ class GedComBase
     end
   end
   
-  #validate that the record referenced by the XREF actually exists in this transmission.
-  #Genearte a warning if it does not. It does not stop the processing of this line.
-  def xref_check(level, tag, index, xref)
-    if @transmission != nil && @transmission.find(index, xref) == nil
-      #Warning message that reference points to an unknown target.
-      print "#{level+1} NOTE ****************Key not found: #{index} #{xref}\n"
-    end
-  end
-  
   #Process an instruction, defined by action, for this level, tag and data value
   #The actions:
   #* :xref indicates that we need to generate a GEDCOM line with an @XREF@ tag
@@ -300,6 +241,69 @@ class GedComBase
     when :nodata then single_line(level, tag, nil ) 
     end
   end
+  
+  protected
+  
+  #validate that the record referenced by the XREF actually exists in this transmission.
+  #Genearte a warning if it does not. It does not stop the processing of this line.
+  def xref_check(level, tag, index, xref)
+    if @transmission != nil && @transmission.find(index, xref) == nil
+      #Warning message that reference points to an unknown target.
+      print "#{level+1} NOTE ****************Key not found: #{index} #{xref}\n"
+    end
+  end
+  
+  #to_s with the variable list (as symbols) passed to it in the order they are to be printed
+  def to_s_ordered(variable_list)
+    if variable_list != nil
+      s = ''
+      variable_list.each do |v|
+        s += "@#{v} = " + pv_byname(v) + "\n"
+      end
+      s
+    else
+      ''
+    end
+  end
+  
+ 
+  #recursive to_s. We want to print this object and its sub-records.
+  #the definition of how we want to print and when to recurse, is in the this_level and sub_level arrays.
+  #These have the form [ [ action, tag, data_source ],...] (see to_s_r_action )
+  def to_s_r(level = 0, this_level=[], sub_levels=[])
+    s_out = ""
+    this_level.each do |l|
+      this_level_instruction = Instruction.new(l)
+      if this_level_instruction.data != nil
+        data = self.send( this_level_instruction.data ) #gets the contents using the symbol, and sending "self" a message
+      else
+        data =  [['']]
+      end
+      if data != nil #could be if the self.send targets a variable that doesn't exist.
+        data.each do |data_instance| 
+          s_out += to_s_r_action(level, this_level_instruction.action, this_level_instruction.tag, data_instance)
+        
+          sub_levels.each do |sl|
+            sub_level_instruction = Instruction.new(sl)
+            if sub_level_instruction.data != nil
+              sub_level_data = self.send( sub_level_instruction.data ) #gets the contents using the symbol, and sending "self" a message
+            else
+               sub_level_data = [['']]
+            end
+            if sub_level_data != nil  #could be if the self.send targets a variable that doesn't exist.
+              sub_level_data.each do |sub_data_instance| 
+                s_out += to_s_r_action(level+1, sub_level_instruction.action, sub_level_instruction.tag, sub_data_instance )
+              end
+            end
+          end
+
+        end
+      end
+    end
+    return s_out
+  end
+  
+  
   
 end
 

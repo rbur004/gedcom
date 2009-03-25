@@ -1,10 +1,10 @@
 require 'pp'
 require 'gedcom_base.rb'
 
-#TransmissionBase is a subclass of GedcomBase, and contains methods used by the parsing process
+#TransmissionBase is a subclass of GEDCOMBase, and contains methods used by the parsing process
 #to build the other Gedcom classes, instantiate instances for each GEDCOM record type, and populate
 #the fields based on the parsed GEDCOM file.
-class TransmissionBase < GedComBase
+class TransmissionBase < GEDCOMBase
   
   ClassTracker <<  :TransmissionBase
  
@@ -28,7 +28,7 @@ class TransmissionBase < GedComBase
     #The put ourselves on the top of the stack. The number represents the number of class to pop to go back one level of gedcom.
     @class_stack = [[self, 0]]
     #Create a hash to hold the indexes used in this transmission
-    @indexes = {} #find is defined in GedcomBase, as it gets used by a private method of that class.
+    @indexes = {} #find is defined in GEDCOMBase, as it gets used by a private method of that class.
   end
 
   #summary() prints out the number of each level 0 record type the we have just parsed.
@@ -256,7 +256,7 @@ class TransmissionBase < GedComBase
   end
   
   def defined(class_name)
-    ClassTracker::exists class_name
+    ClassTracker::exists? class_name
   end
   
   def define(class_name)
