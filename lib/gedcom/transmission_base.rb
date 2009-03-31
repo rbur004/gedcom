@@ -6,6 +6,14 @@ require 'gedcom_base.rb'
 #the fields based on the parsed GEDCOM file.
 class TransmissionBase < GEDCOMBase
   
+  #Class_stack is for the parsing process to hold the classes we create as we walk down the levels of a gedcom record.
+  #The class we are currently working with is on the top of the stack.
+  #The put ourselves on the top of the stack. The number represents the number of class to pop to go back one level of gedcom.
+  attr_accessor  :class_stack
+
+  #A hash to hold the indexes used in this transmission, each of which is also a hash (though that may change)
+  attr_accessor :indexes
+  
   ClassTracker <<  :TransmissionBase
  
   #new creates initializes the arrays for each of the GEDCOM level 0 record types.
@@ -27,8 +35,19 @@ class TransmissionBase < GEDCOMBase
     #The class we are currently working with is on the top of the stack.
     #The put ourselves on the top of the stack. The number represents the number of class to pop to go back one level of gedcom.
     @class_stack = [[self, 0]]
+    
     #Create a hash to hold the indexes used in this transmission
-    @indexes = {} #find is defined in GEDCOMBase, as it gets used by a private method of that class.
+    #Set up default indexes for the known level 0 types, so we can reference them even if they have no members.
+    @indexes = {
+      :individual => {},
+      :family => {},
+      :note => {},
+      :source => {},
+      :repository => {},
+      :multimedia => {},
+      :submitter => {},
+      :submission => {}
+    }
   end
 
   #summary() prints out the number of each level 0 record type the we have just parsed.
@@ -85,26 +104,30 @@ class TransmissionBase < GEDCOMBase
   end
 
   #add_to_class_field() is part of the parsing process, and checks to see if the field exists in the current states, target object.
-  #If the field exists, then the data is added to the field array. Each field is an array, so we can have multiple instances of a TAG in a GEDCOM record.
-  #If the field doesn't exist, the field is added to the target object, along with attr_accessors. The data is then added as above.
+  #If the record exists, then the data is added to the record array. Each record is an array, so we can have multiple instances of a TAG in a GEDCOM record.
+  #If the record doesn't exist, the record is added to the target object, along with attr_accessors. The data is then added as above.
   #* lineno is the current GEDCOM files line number, so we can report errors.
-  #* field is a symbol naming the attribute we want to store the data in in the class.
+  #* record is a symbol naming the attribute we want to store the data in in the class.
   #* data is a word array, holding the GEDCOM lines data value
-  def add_to_class_field(lineno, field, data)
-    #puts "#{lineno}: Add class instance '#{data.class}' to field #{field} of #{@class_stack.last[0]}"
-    if @class_stack.last[0].class.method_defined?(field) == false
-      p "#{lineno}: create a field called #{field} in class #{@class_stack.last[0].class.to_s}" 
-      @class_stack.last[0].class.class_eval("attr_accessor :#{field}")
-      #p "#{lineno}: Add the class #{data.class.to_s} as an array, to the field #{field} in class #{@class_stack.last[0].class.to_s}" 
-      @class_stack.last[0].send( field.to_s + "=", data ? [ data ] : []) #Much faster than eval("@class_stack.last[0].#{field} = [#{data}]")
+  def add_to_class_field(lineno, record, data)
+    #puts "#{lineno}: Add class instance '#{data.class}' to record #{record} of #{@class_stack.last[0]}"
+    if @class_stack.last[0].class.method_defined?(record) == false
+      #record is missing from the class, so add it using attr_accessor, thus getting the get and set methods.
+      #Unlikely to ever see this case, as we precreated all fields for all class needed for GEDCOM 5.5
+      p "#{lineno}: create a record called #{record} in class #{@class_stack.last[0].class.to_s}" 
+      @class_stack.last[0].class.class_eval("attr_accessor :#{record}")
+      #p "#{lineno}: Add the class #{data.class.to_s} as an array, to the record #{record} in class #{@class_stack.last[0].class.to_s}" 
+      @class_stack.last[0].send( record.to_s + "=", data ? [ data ] : []) #Much faster than eval("@class_stack.last[0].#{record} = [#{data}]")
     else
-      if a = @class_stack.last[0].send( field )
-        #Much faster than eval("@class_stack.last[0].#{field} << #{data}")
-        #p "#{lineno}: Add the class #{data.class.to_s} to the field #{field}[] in class #{@class_stack.last[0].class.to_s}" 
+      #record exists, get a reference to it, so we can just add the data to the record's data array.
+      if (a = @class_stack.last[0].send( record ) ) != nil
+        #This way is much faster than eval("@class_stack.last[0].#{record} << #{data}")
+        #p "#{lineno}: Add the class #{data.class.to_s} to the record #{record}[] in class #{@class_stack.last[0].class.to_s}" 
         a << data if data != nil
       else
-        #p "#{lineno}: Add the class #{data.class.to_s} as an array, to the field #{field} in class #{@class_stack.last[0].class.to_s}" 
-        @class_stack.last[0].send( field.to_s + "=", data ? [ data ] : [] )
+        #Got a reference to the attribute in the class, but no value stored as yet.
+        #p "#{lineno}: Add the class #{data.class.to_s} as an array, to the record #{record} in class #{@class_stack.last[0].class.to_s}" 
+        @class_stack.last[0].send( record.to_s + "=", data ? [ data ] : [] )
       end
     end
   end
@@ -118,54 +141,70 @@ class TransmissionBase < GEDCOMBase
     i.times { @class_stack.pop }
   end
 
-  #update_field() is part of the parsing process, and discards the data_type and calls add_to_class_field.
+  #update_field() is part of the parsing process, calls add_to_class_field.
   #I'm sure there is a reason I did this. I just can't think what it was.
   #* lineno is the current GEDCOM files line number, so we can report errors.
   #* field is a symbol naming the attribute we want to store the data in in the class.
   #* data is a word array, holding the GEDCOM lines data value
+  #* data_type gives hints to help validate the data (which we don't yet do).
   def update_field(lineno, field, data_type, data)
     #p "#{lineno}: Add data '#{data}' to field #{field} of #{@class_stack.last[0]}"
-    add_to_class_field(lineno, field, data)
+    add_to_class_field(lineno, field, data == nil ? nil : GedString.new(data))
   end
 
-  #append_nl_field() is part of the parsing process, and inserts a '\n' character in front of the data, then calls append_field().
+  #append_sp_field is part of the parsing process, and inserts a ' ' character in front of the data, then calls append_to_field.
   #* lineno is the current GEDCOM files line number, so we can report errors.
   #* field is a symbol naming the attribute we want to store the data in in the class.
   #* data is a word array, holding the GEDCOM lines data value
+  #* data_type gives hints to help validate the data (which we don't yet do).
+  def append_sp_field(lineno, field, data_type, data)
+    #p "#{lineno}: Append data ' #{data}' to field #{field} of #{@class_stack.last[0]}"
+    the_data = [" "] #want to add a space to the existing data, before adding it to the string.
+    the_data += data if data != nil #add the new data only if it is not null.
+    append_to_field(lineno, field, data_type, the_data)
+  end
+
+  #append_nl_field is part of the parsing process, and inserts a '\n' character in front of the data, then calls append_to_field.
+  #* lineno is the current GEDCOM files line number, so we can report errors.
+  #* field is a symbol naming the attribute we want to store the data in in the class.
+  #* data is a word array, holding the GEDCOM lines data value
+  #* data_type gives hints to help validate the data (which we don't yet do).
   def append_nl_field(lineno, field, data_type, data)
-    #p "#{lineno}: Append data 'nl + #{data}' to field #{field} of #{@class_stack.last[0]}"
+    #p "#{lineno}: Append data '\n#{data}' to field #{field} of #{@class_stack.last[0]}"
     the_data = ["\n"] #want to add a new line to the existing data
     the_data += data if data != nil #add the new data only if it is not null.
-    append_field(lineno, field,data_type, the_data)
+    append_to_field(lineno, field, data_type, the_data)
   end
 
-  #append_field() is part of the parsing process, and adds the data to the end of the field's array.
+  #append_to_field is part of the parsing process, and adds the data to the end of the field's array.
+  #Shared code between append_sp_field and append_nl_field.
   #* lineno is the current GEDCOM files line number, so we can report errors.
   #* field is a symbol naming the attribute we want to store the data in in the class.
   #* data is a word array, holding the GEDCOM lines data value
-  def append_field(lineno, field, data_type, data)
+  #* data_type gives hints to help validate the data (which we don't yet do).
+  def append_to_field(lineno, field, data_type, data)
     #p "#{lineno}: Append data '#{data}' to field #{field} of #{@class_stack.last[0]}"
     begin
-      if data != nil#Only bother if we have some data
-        if a = @class_stack.last[0].send( field ) #The field is not nil
+      if data != nil  #Only bother if we have some data to append
+        if ( a = @class_stack.last[0].send( field ) ) != nil  #The field is not nil, then we need to add to the last value in the array
           if a != [] #The field is not an empty array
-            if a[-1] != nil #The last element is not null
+            if a[-1] != nil #The last element is not null, so we append to it.
               #p "Add the class #{data.class.to_s} to the field #{field}[] in class #{@class_stack.last[0].class.to_s}"
-              a[-1] += data 
-            else #The last element is null
+              a[-1] << GedString.new(data) 
+            else #The last element is null, so we replace is, rather than append to it.
               #p "Add the class #{data.class.to_s} as an array, to the field #{field} in class #{@class_stack.last[0].class.to_s}"
-              a[-1] = data
+              a[-1] = GedString.new(data)
             end
-          else #Was an empty array, so add the element.
-            a[0] = data
+          else #Was an empty array, the data will be the first member in the array.
+            a[0] = GedString.new(data)
           end
-        else #The field was null
+        else #The field was null. We need to set the first value to our data value, in an array.
           #p "Add the class #{data.class.to_s} as an array, to the field #{field} in class #{@class_stack.last[0].class.to_s}"
-          @class_stack.last[0].send( field.to_s + '=',  [data])
+          @class_stack.last[0].send( field.to_s + '=',  [ GedString.new(data) ] )
         end
       end
     rescue => exception
-      p "#{exception} : Append data '#{data}' to field '#{field}' of class '#{@class_stack.last[0]}'"
+      p "#{exception} : Append data '#{data}' to field '#{field}' of class '#{@class_stack.last[0].class}'"
       raise exception
     end
   end
@@ -194,7 +233,9 @@ class TransmissionBase < GEDCOMBase
   #add_to_index is part of the parsing process, and adds references into the current target object to the index (i.e fills in the XREFs with index references]
   def add_to_index(lineno, field_name, index_name, key)
     #p "#{lineno}: Add key #{key} to index #{index_name} to field #{field_name} of #{@class_stack.last[0]}"
-     add_to_class_field(lineno, field_name, [index_name, *key] )
+    #There are many cases where there can be multiple records of the same GEDCOM type, in the parent record, so we store these in an array.
+    #e.g. CHIL xrefs can occur multiple times in FAM record.
+     add_to_class_field(lineno, field_name, Xref.new(index_name, *key) )
   end
 
   #action_handler process the actions in the GedcomParser::TAGS hash, creating classes and populating attributes.
@@ -222,7 +263,7 @@ class TransmissionBase < GEDCOMBase
           when :class 
             #create a new class, making an instance of it, and making the instance the default one.
             new_class = create_class(lineno, do_this[DATA])
-            #Add this instance to an Array field of the current class, of the same name as the new class.
+            #Add this instance to an Array of records as an attribute named new_class of the current class.
             add_to_class_field(lineno, do_this[DATA], new_class)
             #Make this class the current one
             @class_stack << [new_class, nclasses]
@@ -236,15 +277,18 @@ class TransmissionBase < GEDCOMBase
             end
           when :append_nl 
             #We want to add a line terminator, then append the new data field from tokens
+            #e.g. We do this with CONT lines being appended to a NOTE.
             append_nl_field(lineno, do_this[DATA], data_type, tokens.data)
           when :append 
             #we want to append the data field in tokens, to the named field.
-            append_field(lineno, do_this[DATA], data_type, tokens.data)
+            #e.g. We do this with CONC lines being added to a NOTE.
+            append_sp_field(lineno, do_this[DATA], data_type, tokens.data)
           when :xref 
             #we want to record the reference (xref) from the token object.
             add_to_index(lineno, do_this[DATA][0], do_this[DATA][1], tokens.xref)
           when :key
             #will only occur after a class that is the thing we want the xref index to point to. ie xref => new_class
+            #All the level 0 indexes should exist already, as it helps to have them, even if they are empty.
             create_index(lineno, do_this[DATA], tokens.xref, new_class )
           when :pop
             @class_stack.pop #In this instance, we want to remove only the last item, even if there were several added.

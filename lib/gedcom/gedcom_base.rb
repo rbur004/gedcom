@@ -3,7 +3,9 @@ require "instruction.rb"
 
 #base routines shared by all gedcom objects.
 class GEDCOMBase
-  attr_accessor  :class_stack, :indexes
+  #Restriction records only exist in some GEDCOM record types, and we do honor that.
+  #Internally though, my DB allows any record to be restricted, hence this global use of :restriction.
+  attr_accessor :restriction
   @@tabs = false #If true, indent gedcom lines on output a tab per level. Normally wouldn't have tabs in a transmission file.
 
   #Create a new GEDCOMBase or most likely a subclass of GEDCOMBase.
@@ -54,10 +56,12 @@ class GEDCOMBase
   #create a string from the objects instance variables, one per line, in the form "variable = value\n" ... .
   #For an ordered list, see to_s_ordered
   def to_s
+    #This might seem a little obscure, but this will find and print the attributes with get methods defined,
+    #not having prior knowledge of what those attributes are.
     s = ''
     self.instance_variables.each do |v| #look at each of the instance variables
       if self.class.method_defined?(v_sym = v[1..-1].to_sym) #see if there is a method defined for this symbol (strip the :)
-        s += "#{v} = " + pv_byname(v_sym) + "\n" #print it
+        s += "#{v} = " + pv_byname(v_sym).to_s + "\n" #print it
       end
     end
     s
@@ -81,6 +85,30 @@ class GEDCOMBase
   #GEDCOM lines from the attributes of the object. 
   def save
     to_db( level, @this_level, @sub_level)
+  end
+  
+  #Find a XREF within this transmission. All classes inheriting from GEDCOMBase record the parent transmission object.
+  def find(*a)
+    @transmission.find(*a) if @transmission != nil
+  end
+  
+  #Test for a Restriction notice for privacy
+  #People may request that a records contents not be available for public consumption.
+  def private?
+    (@restriction != nil && @restriction == "privacy") ? true : false
+  end
+  
+  #Test for a Restriction notice for a locked record.
+  #Locked records mean that the data is known to be correct, so shouldn't be 
+  #altered without checking with the original source of the data.
+  def locked?
+    (@restriction != nil && @restriction == "locked") ? true : false
+  end
+    
+  #All our values are stored as arrays of words. This is quite useful in word wrapping of NOTES, TEXT, etc, and further parsing records like dates.
+  #It isn't really that helpful when we want to use a value as a string. This is a utility function to join the words into a space separated string.
+  def token_to_s(token)
+    token
   end
   
   private
@@ -125,7 +153,7 @@ class GEDCOMBase
     #printing aid for tags that can have CONT or CONC sub-tags
     s_out = "#{tabstop(level)}#{level} #{tag}"
     if data != nil
-      data.each do |word|
+      data.each_word do |word|
         if word != "\n"
           s_out +=  " #{word}"
         end
@@ -156,10 +184,10 @@ class GEDCOMBase
     #printing aid for tags that can have CONT or CONC sub-tags
     s_out = "#{tabstop(level)}#{level} #{tag}"
     nlevel = level + (conc ? 0 : 1)
-    
+
     if data != nil
       length = s_out.length
-      data.each_with_index do |word,i|
+      data.each_word_with_index do |word,i|
         if length > 253 && word != "\n" && data.length != i #253 allows for CR LF or LF CR pairs as the line terminator.
           s_tmp =  "#{tabstop(nlevel)}#{nlevel} CONC"
           length = s_tmp.length #new line, so reset length
@@ -188,7 +216,7 @@ class GEDCOMBase
     s_out = "#{tabstop(level)}#{level} CONT"
     
     if data != nil
-      data.each_with_index do |word,i|
+      data.each_word_with_index do |word,i|
         s_out +=  " #{word}"
         if word == "\n"
           s_out +=  "#{tabstop(level)}#{level} CONT"
@@ -203,9 +231,9 @@ class GEDCOMBase
   #Level n GEDCOM records have the @XREF@ after the tag.
   def xref(level, tag, xref)
     if level == 0 
-       "#{tabstop(level)}#{level} @#{xref}@ #{tag}\n"
+       "#{tabstop(level)}#{level} @#{xref.xref_value}@ #{tag}\n"
     else
-       "#{tabstop(level)}#{level} #{tag} @#{xref}@\n"
+       "#{tabstop(level)}#{level} #{tag} @#{xref.xref_value}@\n"
     end
   end
   
@@ -229,8 +257,8 @@ class GEDCOMBase
   def to_s_r_action(level, action, tag, data=nil)
     case action
     when :xref   then 
-      xref_check(level, tag, data[0], data[1])
-      xref(level, tag, data[1])
+      xref_check(level, tag, data)
+      xref(level, tag, data)
     when :print then single_line(level, tag, data )
     when :conc then  cont_conc(level, tag, true, data )
     when :cont then  cont_conc(level, tag, false, data )
@@ -246,8 +274,8 @@ class GEDCOMBase
   
   #validate that the record referenced by the XREF actually exists in this transmission.
   #Genearte a warning if it does not. It does not stop the processing of this line.
-  def xref_check(level, tag, index, xref)
-    if @transmission != nil && @transmission.find(index, xref) == nil
+  def xref_check( level, tag, xref )
+    if @transmission != nil && @transmission.find(xref.index, xref.xref_value) == nil
       #Warning message that reference points to an unknown target.
       print "#{level+1} NOTE ****************Key not found: #{index} #{xref}\n"
     end
@@ -277,8 +305,9 @@ class GEDCOMBase
       if this_level_instruction.data != nil
         data = self.send( this_level_instruction.data ) #gets the contents using the symbol, and sending "self" a message
       else
-        data =  [['']]
+        data =  [GedString.new('')]
       end
+
       if data != nil #could be if the self.send targets a variable that doesn't exist.
         data.each do |data_instance| 
           s_out += to_s_r_action(level, this_level_instruction.action, this_level_instruction.tag, data_instance)
@@ -288,8 +317,9 @@ class GEDCOMBase
             if sub_level_instruction.data != nil
               sub_level_data = self.send( sub_level_instruction.data ) #gets the contents using the symbol, and sending "self" a message
             else
-               sub_level_data = [['']]
+               sub_level_data = [GedString.new('')]
             end
+            
             if sub_level_data != nil  #could be if the self.send targets a variable that doesn't exist.
               sub_level_data.each do |sub_data_instance| 
                 s_out += to_s_r_action(level+1, sub_level_instruction.action, sub_level_instruction.tag, sub_data_instance )

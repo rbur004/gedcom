@@ -244,13 +244,23 @@ class Event_record < GEDCOMBase
     end
   end
   
-  def is_event(tag)
-    @event_type.to_s == tag
+  def is_event?(tag)
+    @event_type.first.to_s == tag #all attributes are arrays, even the single value ones.
   end
   
   def date
     if @date_record != nil
-      @date_record[0].date
+      @date_record.first.date
+    else
+      nil
+    end
+  end
+  
+  #where the event took place. We are reporting only the first place as a string. If you want all the places recorded,
+  #then you should access Event_record#place_record, which will return an array of PLAC records in the event. 
+  def place
+    if @place_record != nil
+      @place_record.first.place
     else
       nil
     end

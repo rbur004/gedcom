@@ -203,4 +203,22 @@ class Date_record < GEDCOMBase
                     [ :walk,  nil, :note_citation_record]
                   ]
   end
+  
+  #If you want just one date, then this returns the first DATE record (probably the only one).
+  #GEDCOM says that this should be the most vaild record. If you need all the dates, use date_value,
+  #which will give you an array of DATE values.
+  def date
+    if @date_value
+      @date_value.first
+    else
+      ''
+    end
+  end
+
+  #If you want just one date, then this returns the first TIME record (probably the only one).
+  #GEDCOM says that this should be the most vaild record. If you need all the dates, use date_value,
+  #which will give you an array of TIME values.
+  def time
+    @time_value.first
+  end
 end

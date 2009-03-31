@@ -18,6 +18,11 @@ end
 g.transmissions[0].summary
 puts 
 
+#puts g.transmissions[0].header_record[0].to_s
+puts
+f = g.transmissions[0].find(:individual,"PERSON1")
+#puts f.to_s
+
 #puts "parse TGC55CLF.ged"
 #g.file("../test_data/TGC55CLF.ged", "r:ASCII-8BIT") #Ok with CR LF line endings.
 #g.transmissions[1].summary
@@ -45,3 +50,6 @@ end
 #  file.print g.transmissions[1].to_gedcom
 #end
 puts "\nComplete"
+c = Chart.new
+puts c.output_pedigree_name( f, 10, nil, nil, Bit.new, '', '', nil, '', 0 )
+

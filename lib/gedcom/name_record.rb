@@ -27,6 +27,44 @@ require 'individual_attribute_record.rb'
 #  (6.0 and later) will likely apply a very different strategy to resolve this problem, possibly using a
 #  sophisticated parser and a name-knowledge database.
 #
+#==NAME_PERSONAL:=                                                        {Size=1:120}
+#  <TEXT> | /<TEXT>/ | <TEXT> /<TEXT>/ | /<TEXT>/ <TEXT> | <TEXT> /<TEXT>/ <TEXT>
+#
+#  The surname of an individual, if known, is enclosed between two slash (/) characters. The order of the
+#  name parts should be the order that the person would, by custom of their culture, have used when
+#  giving it to a recorder. Early versions of Personal Ancestral File and other products did not use the ®
+#  trailing slash when the surname was the last element of the name. If part of name is illegible, that part
+#  is indicated by an ellipsis (...). Capitalize the name of a person or place in the conventional
+#  manner—capitalize the first letter of each part and lowercase the other letters, unless conventional
+#  usage is otherwise. For example: McMurray.
+#  Examples:
+#    1 NAME William Lee                 (given name only or surname not known)
+#    1 NAME /Parry/                     (surname only)
+#    1 NAME William Lee /Parry/
+#    1 NAME William Lee /Mac Parry/     (both parts (Mac and Parry) are surname parts
+#    1 NAME William /Lee/ Parry         (surname imbedded in the name string)
+#    1 NAME William Lee /Pa.../
+#    1 NAME /HU/ Pan                    (Surname before firstname)
+#
+#==NAME_PIECE:=                                                           {Size=1:90}
+#  The piece of the name pertaining to the name part of interest. The surname part, the given name part,
+#  the name prefix part, or the name suffix part.
+#
+#==NAME_PIECE_GIVEN:=                                                     {Size=1:120}
+#  <NAME_PIECE> | <NAME_PIECE_GIVEN>, <NAME_PIECE>
+#
+#  Given name or earned name. Different given names are separated by a comma.
+#
+#==NAME_PIECE_NICKNAME:=                                                  {Size=1:30}
+#  <NAME_PIECE> | <NAME_PIECE_NICKNAME>, <NAME_PIECE>
+#  A descriptive or familiar name used in connection with one's proper name.
+#
+#==NAME_PIECE_PREFIX:=                                                    {Size=1:30}
+#  <NAME_PIECE> | <NAME_PIECE_PREFIX>, <NAME_PIECE>
+#
+#  Non indexing name piece that appears preceding the given name and surname parts. Different name
+#  prefix parts are separated by a comma.
+#
 #The attributes are all arrays for the level +1 tags/records. 
 #* Those ending in _ref are GEDCOM XREF index keys
 #* Those ending in _record are array of classes of that type.
@@ -54,5 +92,37 @@ class Name_record < Individual_attribute_record
     end
   end
   
+  #return the name as a string. It might be returned be the Individual_attribute_record#value method.
+  # or it might need to be contructed from the Name_record attributes. 99.9999% of all GEDCOM I have
+  # seen does not use the Name_record attributes, and if the do, they are required to fill in the name on the
+  # NAME line (NAME_PERSONAL value), so the value should be set. This helps, as the ordering of the surname and
+  # first names is not standard across all cultures.
+  def name
+    if (name = value) == nil
+      name = "" #could be what we return if none of the Name_record attributes are set
+      if @prefix
+        name += @prefix.first
+        name += ' ' if @given || @nickname || @surname_prefix || @surname || @suffix
+      end
+      if @given
+        name += @given.first  
+        name += ' ' if  @nickname || @surname_prefix || @surname || @suffix
+      end
+      if @nickname
+        name += '(' + @nickname.first + ')'  
+        name += ' ' if @surname_prefix || @surname || @suffix
+      end
+      if @surname_prefix
+        name += @surname_prefix.first
+        name += ' ' if  @surname || @suffix
+      end
+      if @surname
+        name += ( '/' + @surname.first + '/' ) 
+        name += ' ' if  @suffix
+      end
+      name += @suffix.first  if @suffix
+    end
+    return name.first
+  end
 end
 

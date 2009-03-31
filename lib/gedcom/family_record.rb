@@ -70,20 +70,135 @@ class Family_record < GEDCOMBase
     @family_ref
   end
   
+  #There should only ever be one husband record in a Family_record. If a women has
+  #multiple husbands, as some cultures do, then each should be in their own FAM record.
+  #The reasoning is that we are recording parentage, not marriages, so we want to be 
+  #able to uniquely identify which husband is the actual parent (not that we could be
+  #that certain in the case of polygamy). The term husband is also used loosely. It
+  #refers to the father of children, not necessarily a spouse. 
   def husband
     if @husband_ref != nil
-      find(@husband_ref[0], @husband_ref[1])
+      find(@husband_ref.first.index, @husband_ref.first.xref_value)
     else
       nil
     end
   end
   
+  #There should only ever be one wife record in a Family_record. If a man has
+  #multiple wives, as some cultures do, then each should be in their own FAM record.
+  #The reasoning is that we are recording parentage, not marriages, so we want to be 
+  #able to uniquely identify which wife is the actual parent. The term wife is used
+  #fairly loosely. It refers to the mother of the children, not necessarily a spouse.
   def wife
     if @wife_ref != nil
-      find(@wife_ref[0], @wife_ref[1])
+      find(@wife_ref.first.index, @wife_ref.first.xref_value)
     else
       nil
     end
+  end
+  
+  #Returns an array of children, or if a block is present, yields them one by one.
+  def children
+    if @child_ref != nil
+      children = []
+      @child_ref.each do |c| 
+        if (child = find(c.index, c.xref_value)) != nil
+          yield child if block_given?
+          children << c
+        end
+      end
+      return children if children.length > 0
+    end
+    return nil
+  end
+  
+  #Event looks in the Family_record for events, as specified by the type argument, 
+  #returning an array of the events found. Returns nil if there were
+  #no events of this type in this Family_record. 
+  #
+  #If a block is given, then yields each event to the block.
+  def event(type)
+    if @event_record != nil
+      events = []
+      @event_record.each do |e| 
+        if e.is_event?(type)
+          yield e if block_given?
+          events << e
+        end
+      end
+      return events if events.length > 0
+    end
+    return nil
+  end
+  
+  #Short hand for event('ENGA')
+  #passes on any block to the event method.
+  #(The block is the &p argument, so you don't pass any arguments to this method).
+  def engagement(&p)
+    if block_given? then event('ENGA',&p) else event('ENGA') end
+  end
+  
+  #Short hand for event('MARB')
+  #passes on any block to the event method.
+  #(The block is the &p argument, so you don't pass any arguments to this method).
+  def marriage_bann(&p)
+    if block_given? then event('MARB',&p) else event('MARB') end
+  end
+  
+  #Short hand for event('MARL')
+  #passes on any block to the event method.
+  #(The block is the &p argument, so you don't pass any arguments to this method).
+  def marriage_license(&p)
+    if block_given? then event('MARL',&p) else event('MARL') end
+  end
+  
+  #Short hand for event('MARC')
+  #passes on any block to the event method.
+  #(The block is the &p argument, so you don't pass any arguments to this method).
+  def marriage_contract(&p)
+    if block_given? then event('MARC',&p) else event('MARC') end
+  end
+  
+  #Short hand for event('MARS')
+  #passes on any block to the event method.
+  #(The block is the &p argument, so you don't pass any arguments to this method).
+  def marriage_settlement(&p)
+    if block_given? then event('MARS',&p) else event('MARS') end
+  end
+  
+  #Short hand for event('MARR')
+  #passes on any block to the event method.
+  #(The block is the &p argument, so you don't pass any arguments to this method).
+  def marriage(&p)
+    if block_given? then event('MARR',&p) else event('MARR') end
+  end
+  
+  #Short hand for event('ANUL')
+  #passes on any block to the event method.
+  #(The block is the &p argument, so you don't pass any arguments to this method).
+  def annulment(&p)
+    if block_given? then event('ANUL',&p) else event('ANUL') end
+  end
+  
+  #Short hand for event('DIVF')
+  #passes on any block to the event method.
+  #(The block is the &p argument, so you don't pass any arguments to this method).
+  def divorce_filed(&p)
+    if block_given? then event('DIVF',&p) else event('DIVF') end
+  end
+  
+  #Short hand for event('DIV')
+  #passes on any block to the event method.
+  #(The block is the &p argument, so you don't pass any arguments to this method).
+  def divorce(&p)
+    if block_given? then event('DIV',&p) else event('DIV') end
+  end
+  
+  #Short hand for event('CENS')
+  #passes on any block to the event method.
+  #(The block is the &p argument, so you don't pass any arguments to this method).
+  def census(&p)
+    if block_given? then event('CENS',&p) else event('CENS') end
   end
   
 end

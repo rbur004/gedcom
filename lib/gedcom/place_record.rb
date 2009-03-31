@@ -43,4 +43,10 @@ class Place_record < GEDCOMBase
     end
     super(level)
   end
+  
+  #When wanting just one place, the GEDCOM standard says to use the first PLAC record.
+  #If you want all the PLAC records, then use @place_value, which is an array PLAC's.
+  def place
+    @place_value ?  @place_value.first : ''
+  end
 end

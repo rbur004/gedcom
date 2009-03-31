@@ -51,19 +51,42 @@ class Individual_attribute_record < Event_record
 
   ClassTracker <<  :Individual_attribute_record
   
+  #attr_type= stores the attribute type in the event_type field.
+  #this minor hack lets us share methods with the event class.
   def attr_type=(value)
     @event_type = value
   end
+
+  #attr_type retrieves the attribute type from the Event_record#event_type field.
+  #this minor hack lets us share methods with the event class.
   def attr_type
     @event_type
   end
-  def value=(value)
-    @event_status = value
+  
+  #is_attribute? tests that this Individual_attribute_record is of this attribute type.
+  #The attribute type is stored in the the Event_record#event_type field.
+  #this minor hack lets us share methods with the event class.
+  #This make sense, as the GEDCOM INDIVIDUAL_ATTRIBUTE_STRUCTURE has GEDCOM <<EVENT_DETAIL>> tags at level +1.
+  def is_attribute?(attribute)
+    is_event?(attribute)
   end
+
+  #value= stores the value in the Event_record#event_status.
+  #this minor hack lets us share methods with the event class.
+  def value=(value)
+      @event_status = value 
+  end
+
+  #value retrieves the value from the Event_record#event_status.
+  #this minor hack lets us share methods with the event class.
   def value
     @event_status
   end
-
+  
+  private
+  
+  #actually attribute_tag, but we share code with the Event_record class,
+  #as the GEDCOM INDIVIDUAL_ATTRIBUTE_STRUCTURE has GEDCOM <<EVENT_DETAIL>> tags at level +1.
   def event_tag(tag)
     case tag
     when "SEX" then tag

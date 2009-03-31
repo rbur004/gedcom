@@ -59,9 +59,9 @@ class Association_record < GEDCOMBase
   #validate that the record referenced by the XREF actually exists in this transmission.
   #Genearte a warning if it does not. It does not stop the processing of this line.
   #Association_records default to :individual, but the TYPE field can override this.
-  def xref_check(level, tag, index, xref)
+  def xref_check(level, tag, xref)
     asso_index = case @associated_record_tag
-    when nil then index
+    when nil then xref.index #this should be the default :individual
     when 'FAM'  then :family
     when 'INDI' then :individual
     when 'NOTE' then :note
@@ -73,7 +73,7 @@ class Association_record < GEDCOMBase
     else :individual #which will be the default individual index.
     end
     
-    super(level, tag, asso_index, xref)
+    super(level, tag, Xref.new(asso_index, xref.xref_value) )
   end
 end
 
