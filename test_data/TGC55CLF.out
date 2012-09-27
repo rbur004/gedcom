@@ -34,68 +34,50 @@
 1 PLAC
 2 FORM City, County, State, Country
 1 NOTE 1 _HME @PERSON1@
-1 NOTE This file demonstrates all tags that are allowed in GEDCOM 5.5. Here are some comments about the HEADER
-2 CONC record and comments about where to look for information on the other 9 types of GEDCOM records. Most
-2 CONC other records will have their own notes that describe what to look for in that record and what to hope
-2 CONC the importing software will find. 
+1 NOTE This file demonstrates all tags that are allowed in GEDCOM 5.5. Here are some comments about the HEADER record and comments about where to look for information on the other 9 types of GEDCOM records. Most other records will have their own notes that describe what to look for in that record and what to
+2 CONC hope the importing software will find. 
 2 CONT 
-2 CONT Many applications will fail to import these notes. The notes are therefore also provided with the
-2 CONC files as a plain-text "Read-Me" file. 
+2 CONT Many applications will fail to import these notes. The notes are therefore also provided with the files as a plain-text "Read-Me" file. 
 2 CONT 
 2 CONT -------------------------- 
 2 CONT The HEADER Record: 
-2 CONT      This record has all possible tags for a HEADER record. In uses one custom tag ("_HME") to see what the
-2 CONC software will say about custom tags. 
+2 CONT      This record has all possible tags for a HEADER record. In uses one custom tag ("_HME") to see what the software will say about custom tags. 
 2 CONT 
 2 CONT -------------------------- 
 2 CONT INDIVIDUAL Records: 
-2 CONT      This file has a small number of INDIVIDUAL records. The record named "Joseph Tag Torture" has all
-2 CONC possible tags for an INDIVIDUAL record. All remaining  individuals have less tags. Some test specific
-2 CONC features; for example: 
+2 CONT      This file has a small number of INDIVIDUAL records. The record named "Joseph Tag Torture" has all possible tags for an INDIVIDUAL record. All remaining  individuals have less tags. Some test specific features; for example: 
 2 CONT 
 2 CONT      Name: Standard GEDCOM Filelinks 
 2 CONT      Name: Nonstandard Multimedia Filelinks 
 2 CONT      Name: General Custom Filelinks 
 2 CONT      Name: Extra URL Filelinks 
-2 CONT           These records link to multimedia files mentioned by the GEDCOM standard and to a variety of other
-2 CONC types of multimedia files, general files, or URL names. 
+2 CONT           These records link to multimedia files mentioned by the GEDCOM standard and to a variety of other types of multimedia files, general files, or URL names. 
 2 CONT 
 2 CONT      Name: Chris Locked Torture 
-2 CONT           Has a "locked" restriction (RESN) tag - should not be able to edit this record it. This record has one
-2 CONC set of notes that is used to test line breaking in notes and a few other text-parsing features of the
-2 CONC GEDCOM software. Read those notes to see what they are testing. 
+2 CONT           Has a "locked" restriction (RESN) tag - should not be able to edit this record it. This record has one set of notes that is used to test line breaking in notes and a few other text-parsing features of the GEDCOM software. Read those notes to see what they are testing. 
 2 CONT 
 2 CONT      Name: Sandy Privacy Torture 
-2 CONT           Has a "privacy" restriction (RESN) tag. Is the tag recognized and how is the record displayed and/or
-2 CONC printed? 
+2 CONT           Has a "privacy" restriction (RESN) tag. Is the tag recognized and how is the record displayed and/or printed? 
 2 CONT 
 2 CONT      Name: Chris Locked Torture 
 2 CONT      Name: Sandy Privacy Torture 
 2 CONT      Name: Pat Smith Torture 
-2 CONT           The three children in this file have unknown sex (no SEX tag). An ancestor tree from each should give
-2 CONC five generations of ancestors. 
+2 CONT           The three children in this file have unknown sex (no SEX tag). An ancestor tree from each should give five generations of ancestors. 
 2 CONT 
 2 CONT      Name: Charlie Accented ANSEL 
 2 CONT      Name: Lucy Special ANSEL 
-2 CONT           The notes in these records use all possible special characters in the ANSEL character set. The header
-2 CONC of this file denotes this file as using the ANSEL character set. The importing software should handle
-2 CONC these special characters in a reasonable way. 
+2 CONT           The notes in these records use all possible special characters in the ANSEL character set. The header of this file denotes this file as using the ANSEL character set. The importing software should handle these special characters in a reasonable way. 
 2 CONT 
 2 CONT      Name: Torture GEDCOM Matriarch 
-2 CONT            All individuals in this file are related and all are descendants (or spouses of descendants) of Torture
-2 CONC GEDCOM Matriarch. A descendant tree or report from this individual should show five generations
-2 CONC of descendants. 
+2 CONT            All individuals in this file are related and all are descendants (or spouses of descendants) of Torture GEDCOM Matriarch. A descendant tree or report from this individual should show five generations of descendants. 
 2 CONT 
 2 CONT -------------------------- 
 2 CONT FAMILY Records: 
-2 CONT      The FAMILY record for "Joseph Tag Torture" (husband) and "Mary First Jones" (wife) has all tags allowed
-2 CONC in family records. All other family records use only a few tags and are used to provide records for
-2 CONC extra family links in other records. 
+2 CONT      The FAMILY record for "Joseph Tag Torture" (husband) and "Mary First Jones" (wife) has all tags allowed in family records. All other family records use only a few tags and are used to provide records for extra family links in other records. 
 2 CONT 
 2 CONT -------------------------- 
 2 CONT SOURCE Records: 
-2 CONT      There are two SOURCE records in this file. The "Everything You Every Wanted to Know about GEDCOM Tags"
-2 CONC source has all possible GEDCOM tags for a SOURCE record. The other source only has only a few tags. 
+2 CONT      There are two SOURCE records in this file. The "Everything You Every Wanted to Know about GEDCOM Tags" source has all possible GEDCOM tags for a SOURCE record. The other source only has only a few tags. 
 2 CONT 
 2 CONT -------------------------- 
 2 CONT REPOSITORY Record: 
@@ -103,20 +85,13 @@
 2 CONT 
 2 CONT -------------------------- 
 2 CONT SUBMITTER Records: 
-2 CONT      This file has three SUBMITTER records. The "John A. Nairn" record has all tags allowed in such records.
-2 CONC The second and third submitter are to test how programs input files with multiple submitters. The
-2 CONC GEDCOM standard does not allow for notes in SUBMITTER records. Look in the "Main Submitter" to verify
-2 CONC all address data comes through, that all three phone numbers appear, and that the multimedia file
-2 CONC link is preserved. 
+2 CONT      This file has three SUBMITTER records. The "John A. Nairn" record has all tags allowed in such records. The second and third submitter are to test how programs input files with multiple submitters. The GEDCOM standard does not allow for notes in SUBMITTER records. Look in the "Main Submitter" to verify
+2 CONC all address data comes through, that all three phone numbers appear, and that the multimedia file link is preserved. 
 2 CONT 
 2 CONT -------------------------- 
 2 CONT MULTIMEDIA OBJECT Record: 
-2 CONT      The one MULTIMEDIA record has all possible tags and even has encoded data for a small image of a flower.
-2 CONC There are no known GEDCOM programs that can read or write such records. The record is included here
-2 CONC to test how programs might respond to finding multimedia records present. There are possible plans
-2 CONC to eliminate encoded multimedia objects in the next version of GEDCOM. In the future all multimedia
-2 CONC will be included by links to other files. To test current file links and extended file links, see the
-2 CONC "Filelinks" family records described above. 
+2 CONT      The one MULTIMEDIA record has all possible tags and even has encoded data for a small image of a flower. There are no known GEDCOM programs that can read or write such records. The record is included here to test how programs might respond to finding multimedia records present. There are possible plans
+2 CONC to eliminate encoded multimedia objects in the next version of GEDCOM. In the future all multimedia will be included by links to other files. To test current file links and extended file links, see the "Filelinks" family records described above. 
 2 CONT 
 2 CONT -------------------------- 
 2 CONT SUBMISSION Record: 
@@ -132,25 +107,18 @@
 2 CONT 
 2 CONT -------------------------- 
 2 CONT ADDITIONAL NOTES 
-2 CONT      This file was originally created by H. Eichmann at <h.eichmann@@mbox.iqo.uni-hannover.de> and
-2 CONC posted on the Internet. 
+2 CONT      This file was originally created by H. Eichmann at <h.eichmann@@mbox.iqo.uni-hannover.de> and posted on the Internet. 
 2 CONT 
-2 CONT (NOTE: email addresses are listed here with double "at" signs. A rule of GEDCOM parsing is that these
-2 CONC should be converted to single "at" at signs, but not many programs follow that rule. In addition,
-2 CONC that rule is not needed and may be abandoned in a future version of GEDCOM). 
+2 CONT (NOTE: email addresses are listed here with double "at" signs. A rule of GEDCOM parsing is that these should be converted to single "at" at signs, but not many programs follow that rule. In addition, that rule is not needed and may be abandoned in a future version of GEDCOM). 
 2 CONT 
-2 CONT This original file was extensively modified by J. A. Nairn using GEDitCOM 2.9.4 (1999-2001) at <support@@geditcom.com>
-2 CONC and posted on the Internet at <http://www.geditcom.com>. Some changes included many more notes,
-2 CONC the use or more tags, extensive testing of multimedia file links, and some notes to test all special
-2 CONC ANSEL characters. 
+2 CONT This original file was extensively modified by J. A. Nairn using GEDitCOM 2.9.4 (1999-2001) at <support@@geditcom.com> and posted on the Internet at <http://www.geditcom.com>. Some changes included many more notes, the use or more tags, extensive testing of multimedia file links, and some
+2 CONC notes to test all special ANSEL characters. 
 2 CONT 
 2 CONT Feel free to copy and use this GEDCOM file for any  non-commercial purpose. 
 2 CONT 
-2 CONT For selecting the allowed tags, the GEDCOM standard Release 5.5 (2 JAN 1996) was used. Copyright:
-2 CONC The Church of Jesus Christ of Latter-Day Saints, <gedcom@@gedcom.org>. 
+2 CONT For selecting the allowed tags, the GEDCOM standard Release 5.5 (2 JAN 1996) was used. Copyright: The Church of Jesus Christ of Latter-Day Saints, <gedcom@@gedcom.org>. 
 2 CONT 
-2 CONT You can download the GEDCOM 5.5 specs from: <ftp.gedcom.com/pub/genealogy/gedcom>. You can read
-2 CONC the GEDCOM 5.5 specs on the Internet at <http://homepages.rootsweb.com/~pmcbride/gedcom/55gctoc.htm>.
+2 CONT You can download the GEDCOM 5.5 specs from: <ftp.gedcom.com/pub/genealogy/gedcom>. You can read the GEDCOM 5.5 specs on the Internet at <http://homepages.rootsweb.com/~pmcbride/gedcom/55gctoc.htm>.
 0 @SUBMISSION@ SUBN
 1 SUBM @SUBMITTER@
 1 FAMF NameOfFamilyFile
@@ -213,11 +181,8 @@
 1 REPO @R1@
 2 CALN 920.23
 3 MEDI Book (or other description of this source)
-2 NOTE A short note about the repository link. This note is about the repository (if more information is
-3 CONC needed other than call number and simple description). Notes about the Source itself are usually
-3 CONC entered elsewhere.
-1 TEXT This section is used to generic text from the course. It will usually be a quote from the text that is
-2 CONC relevant to the use of this source in the current GEDCOM file. 
+2 NOTE A short note about the repository link. This note is about the repository (if more information is needed other than call number and simple description). Notes about the Source itself are usually entered elsewhere.
+1 TEXT This section is used to generic text from the course. It will usually be a quote from the text that is relevant to the use of this source in the current GEDCOM file. 
 2 CONT 
 2 CONT It may use as many lines as needed.
 1 OBJE
@@ -235,8 +200,7 @@
 2 AGNC Responsible agency for data in this source
 2 NOTE A note about data in source. 
 3 CONT 
-3 CONT This note includes a blank line before this text. These notes are used to describe the data in this
-3 CONC source. Notes about the source itself are usually entered in a different set of notes.
+3 CONT This note includes a blank line before this text. These notes are used to describe the data in this source. Notes about the source itself are usually entered in a different set of notes.
 1 NOTE @N15@
 1 NOTE These are notes embedded in the SOURCE Record instead of in a separate NOTE RECORD.
 1 REFN User Reference Number
@@ -304,8 +268,7 @@
 4 TEXT Text from marriage source.
 3 QUAY 3
 3 NOTE A note about the marriage source.
-2 NOTE Marriage event note (a legal, common-law, or customary event of creating a family unit of a man and
-3 CONC a woman as husband and wife).
+2 NOTE Marriage event note (a legal, common-law, or customary event of creating a family unit of a man and a woman as husband and wife).
 1 ENGA Y
 2 TYPE ENGA
 2 CAUS Desire
@@ -330,8 +293,7 @@
 4 TEXT Sample text from engagement source.
 3 QUAY 3
 3 NOTE A note about this engagement source.
-2 NOTE Engagement event note (an event of recording or announcing an agreement between two people to become
-3 CONC married).
+2 NOTE Engagement event note (an event of recording or announcing an agreement between two people to become married).
 1 MARB
 2 TYPE MARB
 2 DATE 31 DEC 1997
@@ -363,9 +325,7 @@
 4 TEXT Sample text from marriage contract source.
 3 QUAY 3
 3 NOTE A note about this marriage contract source.
-2 NOTE Marriage contract event note (an event of recording a formal agreement of marriage, including the
-3 CONC prenuptial agreement in which marriage partners reach agreement about the property rights of one
-3 CONC or both, securing property to their children).
+2 NOTE Marriage contract event note (an event of recording a formal agreement of marriage, including the prenuptial agreement in which marriage partners reach agreement about the property rights of one or both, securing property to their children).
 1 MARL
 2 TYPE MARL
 2 DATE 31 DEC 1997
@@ -397,9 +357,7 @@
 4 TEXT Sample text from marriage settlement source.
 3 QUAY 3
 3 NOTE A note about this marriage settlement source.
-2 NOTE Marriage settlement event note (an event of creating an agreement between two people contemplating
-3 CONC marriage, at which time they agree to release or modify property rights that would otherwise arise
-3 CONC from the marriage).
+2 NOTE Marriage settlement event note (an event of creating an agreement between two people contemplating marriage, at which time they agree to release or modify property rights that would otherwise arise from the marriage).
 1 DIV
 2 TYPE DIV
 2 DATE 31 DEC 1997
@@ -448,8 +406,7 @@
 4 TEXT Sample text from census source.
 3 QUAY 3
 3 NOTE A note about this census source.
-2 NOTE Census event note (the event of the periodic count of the population for a designated locality, such
-3 CONC as a national or state Census).
+2 NOTE Census event note (the event of the periodic count of the population for a designated locality, such as a national or state Census).
 1 EVEN
 2 TYPE EVEN
 2 DATE 31 DEC 1997
@@ -490,34 +447,25 @@
 2 NOTE A note this source on the FAMILY record.
 1 NOTE Comments on "Joseph Tag Torture-Mary First Jones" FAMILY Record. 
 2 CONT 
-2 CONT This record contains all possible types of data that can be stored in a FAMILY (FAM) GEDCOM record.
-2 CONC Here are some comments on the data tested here and things to look for when this file is imported into
-2 CONC any GEDCOM application: 
+2 CONT This record contains all possible types of data that can be stored in a FAMILY (FAM) GEDCOM record. Here are some comments on the data tested here and things to look for when this file is imported into any GEDCOM application: 
 2 CONT 
-2 CONT 1. The marriage event (MARR) uses all possible tags for such a structure including notes, sources,
-2 CONC and a link to a multimedia file. 
+2 CONT 1. The marriage event (MARR) uses all possible tags for such a structure including notes, sources, and a link to a multimedia file. 
 2 CONT 
 2 CONT 2. This family has two children. 
 2 CONT 
-2 CONT 3. This family has all possible family events (including a generic event or EVEN structure). Some
-2 CONC notes are: 
+2 CONT 3. This family has all possible family events (including a generic event or EVEN structure). Some notes are: 
 2 CONT      a. The engaged structure has all possible tags for event detail. 
-2 CONT      b. The annulment event (ANUL) has no data except a "Y" in the first line to indicate that the event has
-2 CONC occurred. The importing software should keep this event in this record even though it contains no
-2 CONC data. 
+2 CONT      b. The annulment event (ANUL) has no data except a "Y" in the first line to indicate that the event has occurred. The importing software should keep this event in this record even though it contains no data. 
 2 CONT      c. The LDS Spouse Sealing event tests all possible detail tags for an LDS. 
-2 CONT      d. The TYPE tag of each event has the name of the GEDCOM tag for that event. There is no TYPE tag in the
-2 CONC annulment event because that structure is empty. 
+2 CONT      d. The TYPE tag of each event has the name of the GEDCOM tag for that event. There is no TYPE tag in the annulment event because that structure is empty. 
 2 CONT 
-2 CONT 4. This record has this one note structure which is to a set of embedded notes (and which you are reading
-2 CONC now). 
+2 CONT 4. This record has this one note structure which is to a set of embedded notes (and which you are reading now). 
 2 CONT 
 2 CONT 5. This record has one source citation. 
 2 CONT 
 2 CONT 6. This record is linked a submitter. 
 2 CONT 
-2 CONT 7. This record has all remaining tags allowed in FAMILY records for user reference number, record
-2 CONC ID, and the changed date.
+2 CONT 7. This record has all remaining tags allowed in FAMILY records for user reference number, record ID, and the changed date.
 1 REFN User Reference Number
 2 TYPE Type of user number
 1 RIN 1
@@ -587,10 +535,10 @@
 1 FAMS @F6@
 1 FAMC @F7@
 1 NOTE @N24@
-1 RIN 1
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 16:00:06
+1 RIN 1
 0 @I13@ INDI
 1 NAME Lucy Special /ANSEL/
 1 SEX F
@@ -600,10 +548,10 @@
 2 DATE 31 DEC 1990
 1 FAMS @F6@
 1 NOTE @N25@
-1 RIN 2
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 16:00:23
+1 RIN 2
 0 @PERSON6@ INDI
 1 NAME Teresa Mary /Caregiver/
 1 SEX F
@@ -611,10 +559,10 @@
 2 DATE 6 JUN 1944
 1 FAMS @ADOPTIVE_PARENTS@
 1 NOTE @N27@
-1 RIN 3
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 16:03:05
+1 RIN 3
 0 @I12@ INDI
 1 NAME Extra URL /Filelinks/
 1 SEX F
@@ -638,10 +586,10 @@
 2 FORM URL
 2 FILE mailto:support@geditcom.com
 1 NOTE @N23@
-1 RIN 4
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 16:01:19
+1 RIN 4
 0 @I11@ INDI
 1 NAME General Custom /Filelinks/
 1 SEX M
@@ -667,10 +615,10 @@
 2 FORM PDF
 2 FILE Document.pdf
 1 NOTE @N22@
-1 RIN 5
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 16:01:03
+1 RIN 5
 0 @I10@ INDI
 1 NAME Nonstandard Multimedia /Filelinks/
 1 SEX F
@@ -708,10 +656,10 @@
 2 FORM mpeg
 2 FILE top.mpg
 1 NOTE @N21@
-1 RIN 6
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 16:00:39
+1 RIN 6
 0 @I9@ INDI
 1 NAME Standard GEDCOM /Filelinks/
 1 SEX M
@@ -744,10 +692,10 @@
 2 FILE force.wav
 1 OBJE @M1@
 1 NOTE @N18@
-1 RIN 7
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 16:02:06
+1 RIN 7
 0 @PERSON2@ INDI
 1 NAME Mary First /Jones/
 1 SEX F
@@ -757,10 +705,10 @@
 2 DATE AFT 2000
 1 FAMS @FAMILY1@
 1 NOTE @N31@
-1 RIN 8
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 15:58:16
+1 RIN 8
 0 @I15@ INDI
 1 NAME Torture GEDCOM /Matriarch/
 1 SEX F
@@ -769,10 +717,10 @@
 1 DEAT
 2 DATE 15 JUN 1915
 1 FAMS @F5@
-1 RIN 9
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 16:01:59
+1 RIN 9
 0 @PERSON8@ INDI
 1 NAME Elizabeth Second /Smith/
 1 SEX F
@@ -782,10 +730,10 @@
 2 DATE FROM APR 2000 TO 5 MAR 2001
 1 FAMS @FAMILY2@
 1 NOTE @N32@
-1 RIN 10
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 15:58:58
+1 RIN 10
 0 @PERSON3@ INDI
 1 RESN locked
 1 NAME Chris Locked /Torture/
@@ -794,11 +742,11 @@
 2 PLAC Las Vegas, Nevada USA
 1 FAMC @FAMILY1@
 1 NOTE @N20@
-1 RIN 11
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 15:55:43
 2 NOTE This date is the last time this record was changed
+1 RIN 11
 0 @PERSON1@ INDI
 1 NAME Joseph Tag /Torture/
 2 NPFX Prof.
@@ -809,8 +757,7 @@
 2 NSFX Jr.
 2 SOUR @SOURCE1@
 3 PAGE 42
-2 NOTE These are notes about the first NAME structure in this record. These notes are embedded in the INDIVIDUAL
-3 CONC record itself. 
+2 NOTE These are notes about the first NAME structure in this record. These notes are embedded in the INDIVIDUAL record itself. 
 3 CONT 
 3 CONT The second name structure in this record uses all possible tags for a personal name structure. 
 3 CONT 
@@ -831,8 +778,7 @@
 4 FILE ImgFile.JPG
 4 NOTE @N26@
 3 NOTE @N7@
-2 NOTE This is a second personal NAME structure in a single INDIVIDUAL record which is allowed in GEDCOM.
-3 CONC This second NAME structure has all possible fields for a NAME structure. 
+2 NOTE This is a second personal NAME structure in a single INDIVIDUAL record which is allowed in GEDCOM. This second NAME structure has all possible fields for a NAME structure. 
 3 CONT 
 3 CONT These notes are embedded in the INDIVIDUAL record.
 1 SEX M
@@ -930,8 +876,7 @@
 4 TEXT Some religion source text.
 3 QUAY 3
 3 NOTE A religion source note.
-2 NOTE Religion attribute note (a religious denomination to which a person is affiliated or for which a
-3 CONC record applies).
+2 NOTE Religion attribute note (a religious denomination to which a person is affiliated or for which a record applies).
 1 SSN 6942
 2 TYPE SSN
 2 DATE 31 DEC 1997
@@ -943,8 +888,7 @@
 4 TEXT Some Social security number source text.
 3 QUAY 3
 3 NOTE An Social security number source note.
-2 NOTE Social security number attribute note (a number assigned by the United States Social Security Administration.
-3 CONC Used for tax identification purposes).
+2 NOTE Social security number attribute note (a number assigned by the United States Social Security Administration. Used for tax identification purposes).
 1 IDNO 6942
 2 TYPE IDNO
 2 DATE 31 DEC 1997
@@ -956,8 +900,7 @@
 4 TEXT Some national identification number source text.
 3 QUAY 3
 3 NOTE An national identification number source note.
-2 NOTE National identification number attribute note (a number assigned to identify a person within some
-3 CONC significant external system).
+2 NOTE National identification number attribute note (a number assigned to identify a person within some significant external system).
 1 PROP Possessions
 2 TYPE PROP
 2 DATE 31 DEC 1997
@@ -969,8 +912,7 @@
 4 TEXT Some possessions source text.
 3 QUAY 3
 3 NOTE @N11@
-2 NOTE Possessions or property attribute note (pertaining to possessions such as real estate or other
-3 CONC property of interest).
+2 NOTE Possessions or property attribute note (pertaining to possessions such as real estate or other property of interest).
 1 CAST Cast name
 2 TYPE CAST
 2 DATE 31 DEC 1997
@@ -982,9 +924,7 @@
 4 TEXT Some caste name source text.
 3 QUAY 3
 3 NOTE A caste name source note.
-2 NOTE Caste name attribute note (the name of an individual's rank or status in society, based on racial
-3 CONC or religious differences, or differences in wealth, inherited rank, profession, occupation,
-3 CONC etc).
+2 NOTE Caste name attribute note (the name of an individual's rank or status in society, based on racial or religious differences, or differences in wealth, inherited rank, profession, occupation, etc).
 1 NCHI 42
 2 TYPE NCHI
 2 DATE 31 DEC 1997
@@ -1020,9 +960,7 @@
 4 TEXT Some title source text.
 3 QUAY 3
 3 NOTE A title source note.
-2 NOTE Title attribute note (a description of a specific writing or other work, such as the title of a book
-3 CONC when used in a source context, or a formal designation used by an individual in connection with positions
-3 CONC of royalty or other social status, 
+2 NOTE Title attribute note (a description of a specific writing or other work, such as the title of a book when used in a source context, or a formal designation used by an individual in connection with positions of royalty or other social status, 
 3 CONT such as Grand Duke).
 1 NATI National or tribe origin
 2 TYPE NATI
@@ -1059,6 +997,9 @@
 2 CAUS Cancer
 2 DATE ABT 15 JAN 2001
 2 PLAC New York, New York, USA
+3 FORM city, state, country
+3 SOUR @SOURCE1@
+3 NOTE The place structure has more detail than usually used for places
 2 ADDR at Home
 2 AGE 76
 2 AGNC none
@@ -1096,8 +1037,7 @@
 4 TEXT Sample baptism Source text.
 3 QUAY 3
 3 NOTE A baptism source note.
-2 NOTE A baptism event note (the event of baptism (not LDS), performed in infancy or later. See also BAPL
-3 CONC and CHR).
+2 NOTE A baptism event note (the event of baptism (not LDS), performed in infancy or later. See also BAPL and CHR).
 1 CHR
 2 TYPE CHR
 2 DATE CAL 31 DEC 1997
@@ -1135,8 +1075,7 @@
 4 TEXT Some blessing source text.
 3 QUAY 3
 3 NOTE A blessing source note.
-2 NOTE Blessing event note (a religious event of bestowing divine care or intercession. Sometimes given
-3 CONC in connection with a naming ceremony)
+2 NOTE Blessing event note (a religious event of bestowing divine care or intercession. Sometimes given in connection with a naming ceremony)
 1 BARM
 2 TYPE BARM
 2 DATE AFT 31 DEC 1997
@@ -1160,8 +1099,7 @@
 4 TEXT Some Bas Mitzvah source text.
 3 QUAY 3
 3 NOTE A Bas Mitzvah source note.
-2 NOTE Bas Mitzvah event note (the ceremonial event held when a Jewish girl reaches age 13, also known as
-3 CONC "Bat Mitzvah").
+2 NOTE Bas Mitzvah event note (the ceremonial event held when a Jewish girl reaches age 13, also known as "Bat Mitzvah").
 1 ADOP Y
 2 TYPE ADOP
 2 DATE TO 31 DEC 1997
@@ -1173,8 +1111,7 @@
 4 TEXT Some adoption source text.
 3 QUAY 3
 3 NOTE An adoption source note.
-2 NOTE Adoption event note (pertaining to creation of a child-parent relationship that does not exist
-3 CONC biologically).
+2 NOTE Adoption event note (pertaining to creation of a child-parent relationship that does not exist biologically).
 2 FAMC @ADOPTIVE_PARENTS@
 3 ADOP BOTH
 1 CHRA
@@ -1188,8 +1125,7 @@
 4 TEXT Some christening source text.
 3 QUAY 3
 3 NOTE A christening source note.
-2 NOTE Adult christening event note (the religious event (not LDS) of baptizing and/or naming an adult
-3 CONC person).
+2 NOTE Adult christening event note (the religious event (not LDS) of baptizing and/or naming an adult person).
 1 CONF
 2 TYPE CONF
 2 DATE FROM 31 DEC 1997 TO 2 JAN 1998
@@ -1201,8 +1137,7 @@
 4 TEXT Some CONF Source text.
 3 QUAY 3
 3 NOTE A CONF Source note.
-2 NOTE CONFIRMATION event note (the religious event (not LDS) of conferring the gift of the Holy Ghost and,
-3 CONC among protestants, full church membership).
+2 NOTE CONFIRMATION event note (the religious event (not LDS) of conferring the gift of the Holy Ghost and, among protestants, full church membership).
 1 FCOM
 2 TYPE FCOM
 2 DATE INT 31 DEC 1997 (a test)
@@ -1214,8 +1149,7 @@
 4 TEXT Some first communion source text.
 3 QUAY 3
 3 NOTE An first communion source note.
-2 NOTE First communion event note (a religious rite, the first act of sharing in the Lord's supper as part
-3 CONC of church worship).
+2 NOTE First communion event note (a religious rite, the first act of sharing in the Lord's supper as part of church worship).
 1 ORDN
 2 TYPE ORDN
 2 DATE (No idea of the date)
@@ -1287,8 +1221,7 @@
 4 TEXT Some census source text.
 3 QUAY 3
 3 NOTE A census source note.
-2 NOTE Census event note (the event of the periodic count of the population for a designated locality, such
-3 CONC as a national or state Census).
+2 NOTE Census event note (the event of the periodic count of the population for a designated locality, such as a national or state Census).
 1 RETI
 2 TYPE RETI
 2 DATE 11 NIVO 0006
@@ -1300,8 +1233,7 @@
 4 TEXT Some retirement source text.
 3 QUAY 3
 3 NOTE A retirement source note.
-2 NOTE Retirement event note (an event of exiting an occupational relationship with an employer after
-3 CONC a qualifying time period).
+2 NOTE Retirement event note (an event of exiting an occupational relationship with an employer after a qualifying time period).
 1 PROB
 2 TYPE PROB
 2 DATE FROM 25 SVN 5757 TO 26 IYR 5757
@@ -1313,8 +1245,7 @@
 4 TEXT Some probate source text.
 3 QUAY 3
 3 NOTE A probate source note.
-2 NOTE Probate event note (an event of judicial determination of the validity of a will. May indicate several
-3 CONC related court activities over several dates).
+2 NOTE Probate event note (an event of judicial determination of the validity of a will. May indicate several related court activities over several dates).
 1 BURI
 2 TYPE BURI
 2 DATE 5 VEND 0010
@@ -1338,9 +1269,7 @@
 4 TEXT Some will source text.
 3 QUAY 3
 3 NOTE A will source note.
-2 NOTE Will event note (a legal document treated as an event, by which a person disposes of his or her estate,
-3 CONC to take effect after death. The event date is the date the will was signed while the person was alive.
-3 CONC See also Probate).
+2 NOTE Will event note (a legal document treated as an event, by which a person disposes of his or her estate, to take effect after death. The event date is the date the will was signed while the person was alive. See also Probate).
 1 CREM Y
 1 EVEN
 2 TYPE EVEN
@@ -1353,8 +1282,7 @@
 4 TEXT Some generic event source text.
 3 QUAY 3
 3 NOTE A generic event source note.
-2 NOTE Generic event note (a noteworthy happening related to an individual, a group, or an organization).
-3 CONC The TYPE tag specifies the type of event.
+2 NOTE Generic event note (a noteworthy happening related to an individual, a group, or an organization). The TYPE tag specifies the type of event.
 1 BAPL
 2 STAT Cleared
 2 DATE 5 MAY 0005 B.C.
@@ -1388,9 +1316,9 @@
 2 NOTE Note on association link.
 1 ASSO @PERSON5@
 2 RELA Father
+1 ALIA @I9@
 1 ANCI @SUBMITTER@
 1 DESI @SUBMITTER@
-1 ALIA @I9@
 1 SUBM @SUBMITTER@
 1 OBJE
 2 TITL GIF Image File
@@ -1412,20 +1340,18 @@
 2 NOTE @N17@
 1 NOTE @N4@
 2 SOUR @SOURCE1@
-1 NOTE This is a second set of notes for this single individual record. It is embedded in the INDIVIDUAL record
-2 CONC instead of being in a separate NOTE record. 
+1 NOTE This is a second set of notes for this single individual record. It is embedded in the INDIVIDUAL record instead of being in a separate NOTE record. 
 2 CONT 
-2 CONT These notes also have a source citation to a SOURCE record. In GEDCOM this source can only be a single
-2 CONC line and links to a SOURCE record.
+2 CONT These notes also have a source citation to a SOURCE record. In GEDCOM this source can only be a single line and links to a SOURCE record.
 2 SOUR @SOURCE1@
 1 RFN Record File Number
 1 AFN Ancestral File Number
 1 REFN User reference number
 2 TYPE Type of user number
-1 RIN 12
 1 CHAN
 2 DATE 12 Feb 2001
 3 TIME 19:16:42
+1 RIN 12
 0 @PERSON7@ INDI
 1 NAME Pat Smith /Torture/
 1 BIRT
@@ -1433,10 +1359,10 @@
 2 PLAC London, UK
 1 FAMC @FAMILY2@
 1 NOTE @N30@
-1 RIN 13
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 15:56:49
+1 RIN 13
 0 @PERSON4@ INDI
 1 RESN privacy
 1 NAME Sandy Privacy /Torture/
@@ -1445,10 +1371,10 @@
 2 PLAC Chicago, IL, USA
 1 FAMC @FAMILY1@
 1 NOTE @N29@
-1 RIN 14
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 15:56:15
+1 RIN 14
 0 @PERSON5@ INDI
 1 NAME William Joseph /Torture/
 1 SEX M
@@ -1461,10 +1387,10 @@
 1 FAMS @PARENTS@
 1 FAMC @F6@
 1 NOTE @N28@
-1 RIN 15
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 15:59:40
+1 RIN 15
 0 @M1@ OBJE
 1 TITL Dummy Multimedia Object
 1 FORM PICT
@@ -1485,7 +1411,7 @@
 1 CHAN
 2 DATE 14 Jan 2001
 3 TIME 14:10:31
-0 @@ NOTE
+0 @_unknown1_@ NOTE
 1 CONC 0 _UNKNOWN @_unknown1_@ 
 1 CONT 1 _USUB1 Unknown tag at level 1 
 1 CONT 2 _USUB2 Unknown tag at level 2 
@@ -1501,9 +1427,7 @@
 1 CONT 
 1 CONT This record uses all possible GEDCOM tags for a REPOSITORY record. Some things to look for are: 
 1 CONT 
-1 CONT 1. The address is specified twice. Once in a multi-line address record and once in separate lines.
-1 CONC The first method is usually enough. The second method is to be more specific about parts of the address.
-1 CONC Is everything imported? 
+1 CONT 1. The address is specified twice. Once in a multi-line address record and once in separate lines. The first method is usually enough. The second method is to be more specific about parts of the address. Is everything imported? 
 1 CONT 
 1 CONT 2. There are multiple phone numbers. Are they all imported?
 1 SOUR @SOURCE1@
@@ -1518,71 +1442,46 @@
 0 @N4@ NOTE
 1 CONC Comments on "Joseph Tag Torture" INDIVIDUAL Record. 
 1 CONT 
-1 CONT This record contains all possible types of data that can be stored in an INDIVIDUAL (INDI) GEDCOM
-1 CONC record. Here are some comments on the data tested here and things to look for when this file is imported
-1 CONC into any GEDCOM application: 
+1 CONT This record contains all possible types of data that can be stored in an INDIVIDUAL (INDI) GEDCOM record. Here are some comments on the data tested here and things to look for when this file is imported into any GEDCOM application: 
 1 CONT 
-1 CONT 1. This record has two NAME structures. How will a program handle this type of data which is allowed
-1 CONC in GEDCOM? (Because some GEDCOM files get very bothered by a second name, the files TGC551.ged and
-1 CONC TGC551LF files are identical to the TGC55.ged and TGC55LF.ged files except only one name structure
+1 CONT 1. This record has two NAME structures. How will a program handle this type of data which is allowed in GEDCOM? (Because some GEDCOM files get very bothered by a second name, the files TGC551.ged and TGC551LF files are identical to the TGC55.ged and TGC55LF.ged files except only one name structure
 1 CONC is used for this individual - hence the "1" in their names). 
 1 CONT 
-1 CONT 2. The first NAME structure has all possible subordinate tags for a NAME structure including source
-1 CONC and notes a source citation and some notes. The second NAME structure (when used) has a source citation
-1 CONC and some notes. Are these all imported? 
+1 CONT 2. The first NAME structure has all possible subordinate tags for a NAME structure including source and notes a source citation and some notes. The second NAME structure (when used) has a source citation and some notes. Are these all imported? 
 1 CONT 
-1 CONT 3. The Birth and Death events use all possible fields including subordinate tags, sources, multimedia
-1 CONC links (in Birth), and notes. The birth data has an attached family link which is sometimes needed
-1 CONC in case of ambiguous parentage. 
+1 CONT 3. The Birth and Death events use all possible fields including subordinate tags, sources, multimedia links (in Birth), and notes. The birth data has an attached family link which is sometimes needed in case of ambiguous parentage. 
 1 CONT 
 1 CONT 4. This individual has two spouses. The links to the spouses have attached notes. 
 1 CONT 
-1 CONT 5. This individual has two sets of parents - natural parents and adoptive parents. Each parent link
-1 CONC has attached notes. The adoptive parents has a subordinate pedigree (PEDI) tag. 
+1 CONT 5. This individual has two sets of parents - natural parents and adoptive parents. Each parent link has attached notes. The adoptive parents has a subordinate pedigree (PEDI) tag. 
 1 CONT 
-1 CONT 6. This individual has all possible events (including a generic event or EVEN structure). The GEDCOM
-1 CONC tags for the events are given in the TYPE tag of each event. Some comments are: 
+1 CONT 6. This individual has all possible events (including a generic event or EVEN structure). The GEDCOM tags for the events are given in the TYPE tag of each event. Some comments are: 
 1 CONT      a. The baptism record has all possible tags for event detail. 
 1 CONT      b. There are 2 christening records to see how programs react to duplicate events (which are allowed). 
 1 CONT      c. The adoption event has a family link to give more information about adoptive parentage. 
-1 CONT      d. The cremation event (CREM) has no data except a "Y" in the first line to indicate that the event has
-1 CONC occurred. The importing software should keep this event in this record even though it contains no
-1 CONC data (The GEDCOM tag is not in this TYPE tag). 
+1 CONT      d. The cremation event (CREM) has no data except a "Y" in the first line to indicate that the event has occurred. The importing software should keep this event in this record even though it contains no data (The GEDCOM tag is not in this TYPE tag). 
 1 CONT      e. The LDS Baptism event tests all possible detail tags for an LDS ordinance. 
-1 CONT      f. The LDS confirmation has no data except a "Y" in the first line to indicate that the event has occurred.
-1 CONC The importing software should keep this event in this record even though it contains no data. 
-1 CONT      g. The date fields in the various events test the possible GEDCOM methods for expressing dates, approximate
-1 CONC dates, date ranges, and interpreted dates. There are also a few Hebrew dates, French Republic dates.
-1 CONC and "B.C" dates. 
+1 CONT      f. The LDS confirmation has no data except a "Y" in the first line to indicate that the event has occurred. The importing software should keep this event in this record even though it contains no data. 
+1 CONT      g. The date fields in the various events test the possible GEDCOM methods for expressing dates, approximate dates, date ranges, and interpreted dates. There are also a few Hebrew dates, French Republic dates. and "B.C" dates. 
 1 CONT 
 1 CONT 7. The residence structure use all possible subordinate tags in the address part of the residence. 
 1 CONT 
-1 CONT 8. This individual has all possible attributes. The GEDCOM tags for the attributes are given in the
-1 CONC TYPE tag of each attribute. Some notes are: 
-1 CONT      a. There are 2 occupation attributes to test how programs handle multiple tags of the same type (which
-1 CONC is allowed). 
+1 CONT 8. This individual has all possible attributes. The GEDCOM tags for the attributes are given in the TYPE tag of each attribute. Some notes are: 
+1 CONT      a. There are 2 occupation attributes to test how programs handle multiple tags of the same type (which is allowed). 
 1 CONT      b. The first OCCU attribute uses all possible subordinate tags for an attribute. 
 1 CONT 
-1 CONT 9. This record has three note structures. The first is this set of notes which is in a separate NOTE
-1 CONC record. The other two are NOTE structures embedded in the record. Are all imported and kept separate?
-1 CONC Furthermore, the two embedded note structures have subordinate source citations. The second set
+1 CONT 9. This record has three note structures. The first is this set of notes which is in a separate NOTE record. The other two are NOTE structures embedded in the record. Are all imported and kept separate? Furthermore, the two embedded note structures have subordinate source citations. The second set
 1 CONC of notes has a source citation to a SOURCE record and the third set of notes has an embedded source citation. 
 1 CONT 
-1 CONT 10. This record has three source citations. Two are citations to a SOURCE record; one is an embedded
-1 CONC source citation (used in older GEDCOM files). 
+1 CONT 10. This record has three source citations. Two are citations to a SOURCE record; one is an embedded source citation (used in older GEDCOM files). 
 1 CONT 
-1 CONT 11. This record has one link to a multimedia file. For more testing of multimedia links, see the "Standard
-1 CONC GEDCOM Filelinks," "Nonstandard Multimedia Filelinks," "General Custom Filelinks," and "Extra
-1 CONC URL Filelinks" INDIVIDUAL records. 
+1 CONT 11. This record has one link to a multimedia file. For more testing of multimedia links, see the "Standard GEDCOM Filelinks," "Nonstandard Multimedia Filelinks," "General Custom Filelinks," and "Extra URL Filelinks" INDIVIDUAL records. 
 1 CONT 
-1 CONT 12. This individual has one alias and two associations. All possible tags in the first association
-1 CONC link are used. 
+1 CONT 12. This individual has one alias and two associations. All possible tags in the first association link are used. 
 1 CONT 
-1 CONT 13. This record is linked to a submitter and to two submitters with interest in the ancestors and descendants
-1 CONC of this individual. 
+1 CONT 13. This record is linked to a submitter and to two submitters with interest in the ancestors and descendants of this individual. 
 1 CONT 
-1 CONT 14. This record has all remaining tags allowed in individual records for user reference number,
-1 CONC record ID, record file number, ancestral file number, and the changed date.
+1 CONT 14. This record has all remaining tags allowed in individual records for user reference number, record ID, record file number, ancestral file number, and the changed date.
 1 CHAN
 2 DATE 12 Jan 2001
 3 TIME 0:36:39
@@ -1598,8 +1497,7 @@
 2 DATE 26 May 1999
 3 TIME 22:38:25
 0 @N7@ NOTE
-1 CONC This source citation has all fields possible in a source citation to a separate SOURCE record. Besides
-1 CONC the link to the SOURCE record there are possible fields about this citation (e.g., PAGE, TEXT, etc.) 
+1 CONC This source citation has all fields possible in a source citation to a separate SOURCE record. Besides the link to the SOURCE record there are possible fields about this citation (e.g., PAGE, TEXT, etc.) 
 1 CONT 
 1 CONT These notes on the source citation are in a separate NOTE record.
 1 CHAN
@@ -1622,9 +1520,7 @@
 2 DATE 18 Jun 2000
 3 TIME 1:09:46
 0 @N9@ NOTE
-1 CONC These are notes in a NOTE record. It is a bit redundant, but you can add source citations directly to
-1 CONC NOTE records in addition to adding source citations to the initial GEDCOM structure that the notes
-1 CONC are about. 
+1 CONC These are notes in a NOTE record. It is a bit redundant, but you can add source citations directly to NOTE records in addition to adding source citations to the initial GEDCOM structure that the notes are about. 
 1 CONT 
 1 CONT This example source citation in a NOTE record has all possible source citation fields filled in.
 1 CHAN
@@ -1648,12 +1544,9 @@
 0 @N15@ NOTE
 1 CONC Comments on "Everything You Every Wanted to Know about GEDCOM Tags" SOURCE Record. 
 1 CONT 
-1 CONT This is a set of notes about this SOURCE record. These notes are for anything else needed. There are
-1 CONC other places to enter notes about the storage of the source (in the Repository link) and about the
-1 CONC data in the source (in the DATA structure). 
+1 CONT This is a set of notes about this SOURCE record. These notes are for anything else needed. There are other places to enter notes about the storage of the source (in the Repository link) and about the data in the source (in the DATA structure). 
 1 CONT 
-1 CONT This particular SOURCE record uses all possible GEDCOM tags for a SOURCE record. Some things to check
-1 CONC are: 
+1 CONT This particular SOURCE record uses all possible GEDCOM tags for a SOURCE record. Some things to check are: 
 1 CONT 
 1 CONT 1. Are the separate notes structures in the Repository link and the DATA structure preserved on importing? 
 1 CONT 
@@ -1661,31 +1554,26 @@
 1 CONT 
 1 CONT 3. Are the multimedia links preserved? 
 1 CONT 
-1 CONT 4. This record as two sets of notes - this one in a separate record and a second one embedded in the SOURCE
-1 CONC record. Are they both imported and kept separate?
+1 CONT 4. This record as two sets of notes - this one in a separate record and a second one embedded in the SOURCE record. Are they both imported and kept separate?
 1 CHAN
 2 DATE 13 Jun 2000
 3 TIME 17:04:24
 0 @N16@ NOTE
 1 CONC Comments on "All I Know About GEDCOM, I Learned on the Internet" SOURCE record. 
 1 CONT 
-1 CONT This is another SOURCE record. How does the importing software handle multiple sources in the GEDCOM
-1 CONC file? This source only fills a few GEDCOM structures.
+1 CONT This is another SOURCE record. How does the importing software handle multiple sources in the GEDCOM file? This source only fills a few GEDCOM structures.
 1 CHAN
 2 DATE 12 Mar 2000
 3 TIME 12:46:21
 0 @N17@ NOTE
-1 CONC How does software handle embedded SOURCE records on import? Such source citations are common in
-1 CONC old GEDCOM files. More modern GEDCOM files should use source citations to SOURCE records.
+1 CONC How does software handle embedded SOURCE records on import? Such source citations are common in old GEDCOM files. More modern GEDCOM files should use source citations to SOURCE records.
 1 CHAN
 2 DATE 12 Mar 2000
 3 TIME 10:56:56
 0 @N18@ NOTE
 1 CONC Comments on "Standard GEDCOM Filelinks" INDIVIDUAL Record. 
 1 CONT 
-1 CONT The GEDCOM standard lets you link records to multimedia objects kept in separate files. When GEDCOM
-1 CONC 5.5 was released, it only mentioned allowing links to a small number of multimedia files types and
-1 CONC some of them are Windows-only file types. The recommended list is 
+1 CONT The GEDCOM standard lets you link records to multimedia objects kept in separate files. When GEDCOM 5.5 was released, it only mentioned allowing links to a small number of multimedia files types and some of them are Windows-only file types. The recommended list is 
 1 CONT 
 1 CONT      bmp - Windows but map file 
 1 CONT      gif - Bit map, 256 color GIF files (common on the Internet) 
@@ -1695,27 +1583,16 @@
 1 CONT      tiff - Tagged image format file 
 1 CONT      wav - Windows sound file 
 1 CONT 
-1 CONT This INDIVIDUAL record has links to this limited set of multimedia files (except for ole). These
-1 CONC links are created by having an OBJE structure with the path name to the file in a subordinate FILE tag
-1 CONC and the format of the file in a subordinate FORM tag. 
+1 CONT This INDIVIDUAL record has links to this limited set of multimedia files (except for ole). These links are created by having an OBJE structure with the path name to the file in a subordinate FILE tag and the format of the file in a subordinate FORM tag. 
 1 CONT 
-1 CONT It does not make sense to limit files links to this small set of file types. It does not allow for future
-1 CONC file types and, for example, it ignores movie files types. You can visit the "Nonstandard Multimedia
-1 CONC Filelinks" record to see links to other types of multimedia files. You can visit the "General Custom
-1 CONC Filelinks" and the "Extra URL Filelinks" records to see links to any file type and to universal resource
-1 CONC locators. 
+1 CONT It does not make sense to limit files links to this small set of file types. It does not allow for future file types and, for example, it ignores movie files types. You can visit the "Nonstandard Multimedia Filelinks" record to see links to other types of multimedia files. You can visit the "General Custom
+1 CONC Filelinks" and the "Extra URL Filelinks" records to see links to any file type and to universal resource locators. 
 1 CONT 
-1 CONT NOTE: The path names for the linked files here are just the file names. A good GEDCOM program should
-1 CONC search for the files and might look first in the same folder as this test GEDCOM file. A weaker program
-1 CONC might be unable to locate these files and you will have to enter the full path names. 
+1 CONT NOTE: The path names for the linked files here are just the file names. A good GEDCOM program should search for the files and might look first in the same folder as this test GEDCOM file. A weaker program might be unable to locate these files and you will have to enter the full path names. 
 1 CONT 
 1 CONT EMBEDDED Multimedia Object: 
-1 CONT      GEDCOM 5.5 has a method for encoding multimedia objects and storing them in MULTIMEDIA Records.
-1 CONC This INDIVIDUAL has a link to such an embedded object. The object has encoded data, written using
-1 CONC the GEDCOM 5.5 encoding algorithm, for the image of a small flower. To my knowledge, there are no genealogy
-1 CONC programs that can actually read and decode such objects. The main reason for inclusion of the object
-1 CONC here is to see how programs will treat this record. Good programs will leave them in the file (it is
-1 CONC bad manners to delete someone's data). Bad programs will simple delete the object from the file.
+1 CONT      GEDCOM 5.5 has a method for encoding multimedia objects and storing them in MULTIMEDIA Records. This INDIVIDUAL has a link to such an embedded object. The object has encoded data, written using the GEDCOM 5.5 encoding algorithm, for the image of a small flower. To my knowledge, there are no genealogy
+1 CONC programs that can actually read and decode such objects. The main reason for inclusion of the object here is to see how programs will treat this record. Good programs will leave them in the file (it is bad manners to delete someone's data). Bad programs will simple delete the object from the file.
 1 REFN User Reference Number
 2 TYPE User Reference Type
 1 RIN 1
@@ -1730,28 +1607,21 @@
 0 @N20@ NOTE
 1 CONC Comments on "Chris Locked Torture" record. 
 1 CONT 
-1 CONT These notes test line breaking in note records with multiple lines. These notes are for a locked individual
-1 CONC and thus you should not be able to edit them. 
+1 CONT These notes test line breaking in note records with multiple lines. These notes are for a locked individual and thus you should not be able to edit them. 
 1 CONT 
 1 CONT TEST #1: Line breaks in the middle of a word 
-1 CONT      These lines appear together. The word TE ST should appear as a single word and not be broken onto two
-1 CONC lines. 
+1 CONT      These lines appear together. The word TE ST should appear as a single word and not be broken onto two lines. 
 1 CONT 
 1 CONT TEST #2: Translation of "at" signs 
-1 CONT      The GEDCOM standard says the "@@" sign should appear in any text in the file as double "@@@@" signs.
-1 CONC This recommendation is superfluous, because there is never a case when an "@@" sign in data can be
-1 CONC confused with other GEDCOM uses of the "@@" sign. The question here is how does the software import: 
+1 CONT      The GEDCOM standard says the "@@" sign should appear in any text in the file as double "@@@@" signs. This recommendation is superfluous, because there is never a case when an "@@" sign in data can be confused with other GEDCOM uses of the "@@" sign. The question here is how does the software import: 
 1 CONT 
 1 CONT      A single @@ sign in some notes entered by using two characters. 
 1 CONT 
-1 CONT If all "at" signs above appear above as 2 or 4 at signs, that GEDCOM software is not converting double
-1 CONC at signs to single at signs. 
+1 CONT If all "at" signs above appear above as 2 or 4 at signs, that GEDCOM software is not converting double at signs to single at signs. 
 1 CONT 
 1 CONT TEST #3: Bad line breaks between word but a forgotten space 
-1 CONT      A little below, the words "End" and "Start" are on two lines in the note record. The line with "End,"
-1 CONC however, forgot the required trailing blank. Thus, a proper importing of these bad notes should
-1 CONC combine the two words with no space between "End" and "Start". Here is End Start as described above.
-1 CONC They should appear as one word. 
+1 CONT      A little below, the words "End" and "Start" are on two lines in the note record. The line with "End," however, forgot the required trailing blank. Thus, a proper importing of these bad notes should combine the two words with no space between "End" and "Start". Here is End Start as described above. They
+1 CONC should appear as one word. 
 1 CONT 
 1 CONT TEST #4: Blank lines 
 1 CONT      The above paragraphs should have blank lines between them.
@@ -1761,15 +1631,10 @@
 0 @N21@ NOTE
 1 CONC Comments on "Nonstandard Multimedia Filelinks" INDIVIDUAL Record. 
 1 CONT 
-1 CONT File links in GEDCOM are created by having an OBJE structure with the path name to the file in a subordinate
-1 CONC FILE tag and the format of the file in a subordinate FORM tag. It does not make sense to limit file links
-1 CONC to the small set of file types mentioned in the GEDCOM standard (see INDIVIDUAL record "Standard
-1 CONC GEDCOM Filelinks" for those file types). This INDIVIDUAL record has links to other types of multimedia
-1 CONC files including movie files, other image file types, and some Macintosh file types. 
+1 CONT File links in GEDCOM are created by having an OBJE structure with the path name to the file in a subordinate FILE tag and the format of the file in a subordinate FORM tag. It does not make sense to limit file links to the small set of file types mentioned in the GEDCOM standard (see INDIVIDUAL record "Standard
+1 CONC GEDCOM Filelinks" for those file types). This INDIVIDUAL record has links to other types of multimedia files including movie files, other image file types, and some Macintosh file types. 
 1 CONT 
-1 CONT What will a genealogy program do when in encounters to logical extensions to GEDCOM file links? Good
-1 CONC programs will follow the links. Weaker programs will simply delete them from your file (it is bad
-1 CONC manners to delete someone's data). 
+1 CONT What will a genealogy program do when in encounters to logical extensions to GEDCOM file links? Good programs will follow the links. Weaker programs will simply delete them from your file (it is bad manners to delete someone's data). 
 1 CONT 
 1 CONT Some other possible multimedia file type not yet linked to this record are: 
 1 CONT    avi - Microsoft movie file 
@@ -1781,47 +1646,32 @@
 0 @N22@ NOTE
 1 CONC Comments on "General Custom Filelinks" INDIVIDUAL Record. 
 1 CONT 
-1 CONT File links in GEDCOM are created by having an OBJE structure with the path name to the file in a subordinate
-1 CONC FILE tag and the format of the file in a subordinate FORM tag. It does not make sense to limit file links
-1 CONC to the small set of multimedia file types mentioned in the GEDCOM standard (see INDIVIDUAL record
-1 CONC "Standard GEDCOM Filelinks" for those file types). The INDIVIDUAL record "Nonstandard Multimedia
-1 CONC Filelinks" has sample links to other types of multimedia files not included in the standard GEDCOM
-1 CONC list. This INDIVIDUAL record has links to some non-multimedia files types. 
+1 CONT File links in GEDCOM are created by having an OBJE structure with the path name to the file in a subordinate FILE tag and the format of the file in a subordinate FORM tag. It does not make sense to limit file links to the small set of multimedia file types mentioned in the GEDCOM standard (see INDIVIDUAL
+1 CONC record "Standard GEDCOM Filelinks" for those file types). The INDIVIDUAL record "Nonstandard Multimedia Filelinks" has sample links to other types of multimedia files not included in the standard GEDCOM list. This INDIVIDUAL record has links to some non-multimedia files types. 
 1 CONT 
-1 CONT What will a genealogy program do when it encounters such logical extensions to GEDCOM file links?
-1 CONC Good programs will follow the links. Weaker programs will simply delete them from your file (it is
-1 CONC bad manners to delete someone's data).
+1 CONT What will a genealogy program do when it encounters such logical extensions to GEDCOM file links? Good programs will follow the links. Weaker programs will simply delete them from your file (it is bad manners to delete someone's data).
 1 CHAN
 2 DATE 20 Jun 2000
 3 TIME 1:06:34
 0 @N23@ NOTE
 1 CONC Comments on "Extra URL Filelinks" INDIVIDUAL Record. 
 1 CONT 
-1 CONT File links in GEDCOM are created by having an OBJE structure with the path name to the file in a subordinate
-1 CONC FILE tag and the format of the file in a subordinate FORM tag. It does not make sense to limit file links
-1 CONC to the small set of multimedia file types mentioned in the GEDCOM standard (see INDIVIDUAL record
-1 CONC "Standard GEDCOM Filelinks" for those file types) or even to limit them to local files. This INDIVIDUAL
-1 CONC record has a series of links with universal resource locators (URL) in the FILE tag and the file "URL"
-1 CONC in the FORM tag. 
+1 CONT File links in GEDCOM are created by having an OBJE structure with the path name to the file in a subordinate FILE tag and the format of the file in a subordinate FORM tag. It does not make sense to limit file links to the small set of multimedia file types mentioned in the GEDCOM standard (see INDIVIDUAL
+1 CONC record "Standard GEDCOM Filelinks" for those file types) or even to limit them to local files. This INDIVIDUAL record has a series of links with universal resource locators (URL) in the FILE tag and the file "URL" in the FORM tag. 
 1 CONT 
 1 CONT The sample URL links include links to a web sites, a link to an FTP site, and a link to send email. 
 1 CONT 
-1 CONT This extension of file links to URL links is non-standard GEDCOM. What will a genealogy program do
-1 CONC when in encounters URL file links? Cleaver programs will find the file on the Internet using your
-1 CONC default browser, FTP program, or email program. Weaker programs will simply delete them from your
-1 CONC file (it is bad manners to delete someone's data).
+1 CONT This extension of file links to URL links is non-standard GEDCOM. What will a genealogy program do when in encounters URL file links? Cleaver programs will find the file on the Internet using your default browser, FTP program, or email program. Weaker programs will simply delete them from your file
+1 CONC (it is bad manners to delete someone's data).
 1 CHAN
 2 DATE 20 Jun 2000
 3 TIME 1:09:48
 0 @N24@ NOTE
 1 CONC Comments on "Charlie Accented ANSEL" INDIVIDUAL Record. 
 1 CONT 
-1 CONT To represent accented characters, the ANSEL character set uses two-byte codes. The first byte is
-1 CONC E0 to FB or FE (hexadecimal); the second byte is the letter to be accented. 
+1 CONT To represent accented characters, the ANSEL character set uses two-byte codes. The first byte is E0 to FB or FE (hexadecimal); the second byte is the letter to be accented. 
 1 CONT 
-1 CONT These notes have all possible accented characters. How many of the characters are represented correctly?
-1 CONC Even programs that fully support ANSEL will not draw all these accented characters correctly. Many
-1 CONC of them correspond to accents that can not be found in any langauge and therefore do not correspond
+1 CONT These notes have all possible accented characters. How many of the characters are represented correctly? Even programs that fully support ANSEL will not draw all these accented characters correctly. Many of them correspond to accents that can not be found in any langauge and therefore do not correspond
 1 CONC to any computer fonts. 
 1 CONT 
 1 CONT code: E0 (Unicode: hook above, 0309) low rising tone mark 
@@ -2003,9 +1853,7 @@
 0 @N25@ NOTE
 1 CONC Comments on "Lucy Special ANSEL" INDIVIDUAL Record. 
 1 CONT 
-1 CONT The following are the special characters supported by the ANSEL character set. The first two letters
-1 CONC are the Hex code. The following text describes the character. Finally, that character, or a character
-1 CONC as close as possible to that character, should appear in the parentheses. 
+1 CONT The following are the special characters supported by the ANSEL character set. The first two letters are the Hex code. The following text describes the character. Finally, that character, or a character as close as possible to that character, should appear in the parentheses. 
 1 CONT 
 1 CONT A1 slash l - uppercase (¡) 
 1 CONT A2 slash o - uppercase (¢) 
@@ -2057,34 +1905,29 @@
 0 @N27@ NOTE
 1 CONC Comments on "Teresa Mary Caregiver" INDIVIDUAL Record. 
 1 CONT 
-1 CONT This record is the adoptive mother of "Joseph Tag Torture". She is linked to a family record, but there
-1 CONC is no husband in that record.
+1 CONT This record is the adoptive mother of "Joseph Tag Torture". She is linked to a family record, but there is no husband in that record.
 1 CHAN
 2 DATE 13 Jun 2000
 3 TIME 17:14:28
 0 @N28@ NOTE
 1 CONC Comments on "William Joseph Torture" INDIVIDUAL Record. 
 1 CONT 
-1 CONT This record is the natural father of "Joseph Tag Torture". He is linked to a family record, but there
-1 CONC is no wife in that record.
+1 CONT This record is the natural father of "Joseph Tag Torture". He is linked to a family record, but there is no wife in that record.
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 15:31:12
 0 @N29@ NOTE
 1 CONC Comments on "Sandy Privacy Torture" INDIVIDUAL Record. 
 1 CONT 
-1 CONT This record has a restriction setting of "privacy." In public applications of GEDCOM files, "privacy"
-1 CONC records should be hidden from all viewing and printing. It is less clear how GEDCOM software on your
-1 CONC own PC reading your own copies of GEDCOM files should treat "privacy" records. At a minimum, it should
-1 CONC import and preserve the "privacy" setting.
+1 CONT This record has a restriction setting of "privacy." In public applications of GEDCOM files, "privacy" records should be hidden from all viewing and printing. It is less clear how GEDCOM software on your own PC reading your own copies of GEDCOM files should treat "privacy" records. At a minimum, it
+1 CONC should import and preserve the "privacy" setting.
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 15:36:50
 0 @N30@ NOTE
 1 CONC Comments on "Pat Smith Torture" INDIVIDUAL Record. 
 1 CONT 
-1 CONT The record simply provides a child to "Joseph Tag Torture" in his family with "Mary First Jones" as
-1 CONC his spouse.
+1 CONT The record simply provides a child to "Joseph Tag Torture" in his family with "Mary First Jones" as his spouse.
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 15:40:04
@@ -2126,8 +1969,7 @@
 0 @N36@ NOTE
 1 CONC Comments on "Standard GEDCOM Filelinks-Torture GEDCOM Matriarch" FAMILY record. 
 1 CONT 
-1 CONT The children in this family test logical extensions to the GEDCOM method for linking to a multimedia
-1 CONC file.
+1 CONT The children in this family test logical extensions to the GEDCOM method for linking to a multimedia file.
 1 CHAN
 2 DATE 11 Jan 2001
 3 TIME 16:51:33
