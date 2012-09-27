@@ -32,7 +32,7 @@ class Decendant < Chart
     return s
   end
 
-  def decendants_of_name( individual, max_depth)
+  def decendants_of_name( individual, max_depth )
     glob_map = Bit.new
 
     if @html
@@ -106,38 +106,31 @@ class Decendant < Chart
 
         child = family.children
 
-        if(fams[fams_i] != nil)
-          glob_map.set(curdepth)
-        elsif(direction == 0)
+        if(fams[fams_i + 1] != nil) #the next fams record is not null
+          glob_map.set(curdepth)    #we need to carry the line at this level on to the next spouse record.
+        elsif(direction == 0)       #we are going up, so we don't need a line anymore.
           glob_map.clear(curdepth)
         end
         
-        if( ( max_depth == 0 || max_depth >= curdepth ) && child != nil)
-        {
-        int ccount = 0;
-        ged_type *child_tmp = child;
-          do
-          {
-            child_rec = find_hash(child_tmp->data);
-            child_tmp = find_next_this_type(family, child_tmp);
-            if(child_rec 
-            && (rel_chart == 0 
-              || in_rel_list(individual->rel_child_1, child_rec)
+        if( ( max_depth == 0 || max_depth >= curdepth ) && child != nil) #have children, and still within chart depth criteria.
+          ccount = 0;
+          child.each do |c|
+            child_rec = find(c.index, c.xref_value) #get the Individual record for this child.
+            if(child_rec != nil #we found the Indivual_record
+            && (rel_chart == false #we aren't trying to create a relationship chart.
+              || in_rel_list(individual->rel_child_1, child_rec) #***********find out what I was doing here!
               || in_rel_list(individual->rel_child_2, child_rec)))
-            {
               ccount++;
-            }
-          }while(child_tmp);
+            end
+          end
           
           if(ccount)
-          {
-            setbit(glob_map, curdepth + 1);
-            print_bars(ofile, glob_map, curdepth + 1);
-            print_lastbar(ofile, curdepth+1);
-            fputc('\n', ofile);
-            next_child_rec = find_hash(child->data);
-            do
-            {
+            glob_map.set(curdepth + 1)
+            s += bars(glob_map, curdepth + 1)
+            s += lastbar(curdepth+1)
+            s += "\n"
+            
+            child.each_with_index do |c,i|
               child_rec = next_child_rec;
               if(child = find_next_this_type(family, child))
                 next_child_rec = find_hash(child->data);
@@ -147,7 +140,8 @@ class Decendant < Chart
                 || in_rel_list(individual->rel_child_2, child_rec)))
                 output_decendants_info(ofile, child_rec, curdepth + 1, 
                 ((next_child_rec && --ccount) ) ? 1:0, glob_map, rel_chart, max_depth );
-            }while(child);
+            }while(child)
+            
             if(direction)
             {
               print_bars(ofile, glob_map, curdepth + 1);
