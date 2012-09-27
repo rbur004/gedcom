@@ -58,11 +58,13 @@ end
 
 $: << "#{path(__FILE__)}gedcom"
 $: << "#{path(__FILE__)}parser"
+$: << "#{path(__FILE__)}chart"
 
 require 'gedcom_parser.rb'
+require 'chart.rb'
 
 class Gedcom
-  VERSION = '0.9.0'
+  VERSION = '0.9.1'
   attr_accessor :transmissions
   
   def initialize(transmission = nil)

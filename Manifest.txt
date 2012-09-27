@@ -51,6 +51,8 @@ lib/parser/ged_line.rb
 lib/parser/gedcom_parser.rb
 lib/parser/instruction.rb
 lib/parser/parse_state.rb
+test/ruby_version.rb
+test/lds_gedcom_test.rb
 test/test_gedcom.rb
 test_data/Document.RTF
 test_data/Document.tex
