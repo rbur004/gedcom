@@ -277,7 +277,7 @@ class GEDCOMBase
   def xref_check( level, tag, xref )
     if @transmission != nil && @transmission.find(xref.index, xref.xref_value) == nil
       #Warning message that reference points to an unknown target.
-      print "#{level+1} NOTE ****************Key not found: #{index} #{xref}\n"
+      print "#{level+1} NOTE ****************#{level}, #{tag} Key not found: #{xref.index} #{xref.xref_value}\n"
     end
   end
   
