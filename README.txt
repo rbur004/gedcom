@@ -15,7 +15,7 @@ unknown tags hierarchies as a Note class.
 * CR line termination causes issues for systems with native LF line termination (CRLF is fine).
 * Dates are currently just strings, but I want to parse these and test their validatity. 
   This is not as easy as it may seem at first, as dates may be in many formats, 
-  they may be partial, or may actually be strings decribing the date. 
+  they may be partial, or may actually be strings describing the date. 
 * For my own use, I bend the GEDCOM 5.5 standard by allowing the reading of the following types in non-standard ways. 
   These will not affect the reading and writing of valid GEDCOM 5.5.
 * * 'NOTE' type to appear in places it is not defined to exist in GEDCOM.
