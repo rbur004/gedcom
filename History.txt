@@ -1,4 +1,10 @@
-=== 0.9.0 / 2009-03-14
+=== 0.9.1 / 2012-19-27
 
-* transcription of code from original Rails source base.
+* transcription of code from original C source base.
+* Bug fix to GEDCOMBase.xref_check, which didn't qualify index lookup when printing an error message.
+* Added Transmission.self_check, which calls new FamilyRecord.self_check and IndividualRecord.self_check
+  Checks the gedcom file FAMC, FAMS, HUSB, WIFE, CHIL and SUBM xrefs resolve to valid records.
+  Required adding IndividualRecord.child? and IndividualRecord.spouse? for tests.
+  Fixed bug in IndividualRecord.spouses and IndividualRecord.parents_family as neither worked and were used by tests.
+
 
