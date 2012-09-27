@@ -88,6 +88,15 @@ class  Transmission < TransmissionBase
       end
     end
   end
+  
+  def self_check
+    @family_record.each do |f|
+      f.self_check
+    end
+    @individual_record.each do |i|
+      i.self_check
+    end
+  end
 =begin
   def summary
     @@tabs = true

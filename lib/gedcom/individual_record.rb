@@ -100,7 +100,7 @@ class Individual_record < GEDCOMBase
   
   #Finds the parent's family record(s) and returns the Family_record object in an array.
   #This allows for multiple parentage. There is usually only be one FAMC record, but their 
-  #might be another recording an adoption or an alternate family, if parentage no clear.
+  #might be another recording an adoption or an alternate family, if parentage is not clear.
   #Parents_family returns nil if there are no FAMC records (or the FAMC XREFs
   #don't resolve to a FAM record in the transmission).
   #
@@ -109,8 +109,8 @@ class Individual_record < GEDCOMBase
     if @families_individuals
       parent_families = []
       @families_individuals.each do |p| 
-        if p.relationship_type == "FAMC"
-          if (parent_family = find(:family, p.parents_family_ref)) != nil
+        if p.relationship_type[0] == "FAMC"
+          if (parent_family = find(:family, p.parents_family_ref.first.xref_value)) != nil
             parent_families << parent_family
             yield parent_family if block_given?
           end
@@ -119,6 +119,16 @@ class Individual_record < GEDCOMBase
       return parent_families if parent_families.length > 0 #might be a 0 length array.
     end
     return nil
+  end
+  
+  #child? is a consistency check, testing that this INDI record has a FAMC record to the given FAM record.
+  def child?(fam)
+    if (pf = parents_family) != nil
+      pf.each do |famc|
+        return true if famc == fam
+      end
+    end
+    return false
   end
   
   #Finds the family record for each spouse (or fellow parent) and returns the Family_record objects in an array.
@@ -130,11 +140,11 @@ class Individual_record < GEDCOMBase
     if @families_individuals
       spouses = []
       @families_individuals.each do |s|
-        if s.relationship_type == "FAMS"
+        if s.relationship_type[0] == "FAMS"
           #Make sure we can find the spouse's Family_record.
-          if (spouse_family = find(:family, p.parents_family_ref)) != nil
-            parent_families << spouse_family
-            yield parent_family if block_given?
+          if (spouse_family = find(:family, s.family_ref.first.xref_value)) != nil
+            spouses << spouse_family
+            yield spouse_family if block_given?
           end
         end
       end
@@ -143,6 +153,16 @@ class Individual_record < GEDCOMBase
     return nil
   end
   
+  #spouse? is a consistency check, testing that this INDI record has a FAMS record to the given FAM record.
+  def spouse?(fam)
+    if (pf = spouses) != nil
+      pf.each do |fams|
+        return true if fams == fam
+      end
+    end
+    return false
+  end
+
   #Event looks in the Individual_record for events, as specified by the type argument, 
   #returning an array of the events found. Returns nil if there were
   #no events of this type in this Individual_record. 
@@ -505,6 +525,26 @@ class Individual_record < GEDCOMBase
       end 
     else 
       "" 
+    end
+  end
+  
+  def self_check
+    if @families_individuals
+      @families_individuals.each do |p| 
+        if p.relationship_type[0] == "FAMC"
+          if find(:family, p.parents_family_ref.first.xref_value) == nil
+            puts "INDI #{@individual_ref.first.xref_value} FAMC #{p.parents_family_ref.first.xref_value} record has no FAM record"
+          end
+        elsif p.relationship_type[0] == "FAMS"
+          if find(:family, p.family_ref.first.xref_value) == nil
+            puts "INDI #{@individual_ref.first.xref_value} FAMS #{p.family_ref.first.xref_value} record has no FAM record"
+          end
+        else
+          puts "Unrecognised relationship #{p.relationship_type[0]}"
+        end
+      end
+    else
+      puts "INDI #{@individual_ref.first.xref_value} has no FAMC or FAMS record"
     end
   end
   

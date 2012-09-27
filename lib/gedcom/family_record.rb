@@ -44,7 +44,7 @@ class Family_record < GEDCOMBase
   attr_accessor :note_citation_record, :refn_record, :automated_record_id, :change_date_record
 
   ClassTracker <<  :Family_record
-  
+    
   #new sets up the state engine arrays @this_level and @sub_level, which drive the to_gedcom method generating GEDCOM output.
   def initialize(*a)
     super(*a)
@@ -199,6 +199,53 @@ class Family_record < GEDCOMBase
   #(The block is the &p argument, so you don't pass any arguments to this method).
   def census(&p)
     if block_given? then event('CENS',&p) else event('CENS') end
+  end
+  
+  #Check the xrefs are valid.
+  def self_check
+    if @husband_ref != nil
+      puts "More than one HUSB? in FAM #{@family_ref.first.xref_value}" if @husband_ref.length > 1  #should be just one
+      @husband_ref.each do |h| 
+        if (husb = find(h.index, h.xref_value))  == nil
+          puts "Missing INDI record #{h.xref_value} for HUSB in FAM #{@family_ref.first.xref_value}"
+        else
+          puts "Husband's INDI #{h.xref_value} record doesn't have FAMS #{@family_ref.first.xref_value}" if husb.spouse?(self) == false
+          if (sex = husb.sex) != nil
+            sex.each do |s| 
+              puts "Husband Female? INDI #{h.xref_value}, FAMS #{@family_ref.first.xref_value}" if s.value.first == 'F' 
+            end
+          end
+        end
+      end
+    end
+    if @wife_ref != nil
+      puts "More than one WIFE? in FAM #{@family_ref.first.xref_value}" if @wife_ref.length > 1  #should be just one
+      @wife_ref.each do |w| 
+        if (wife = find(w.index, w.xref_value))  == nil
+          puts "Missing INDI record #{w.xref_value} for WIFE in FAM #{@family_ref.first.xref_value}" 
+        else
+          puts "Wife's INDI #{w.xref_value} record doesn't have FAMS #{@family_ref.first.xref_value}" if wife.spouse?(self) == false
+          if (sex = wife.sex) != nil
+            sex.each { |s| puts "Wife Male? INDI #{w.xref_value}, FAMS #{@family_ref.first.xref_value}" if s.value.first == 'M' }
+          end
+        end
+      end 
+    end
+    if @child_ref != nil
+      #1..many Children
+      @child_ref.each  do |c| 
+        if (child = find(c.index, c.xref_value))  == nil
+          puts "Missing INDI record for #{c.xref_value} for CHIL in FAM #{@family_ref.first.xref_value}" 
+        else
+          puts "Child's INDI #{c.xref_value} record doesn't have FAMC #{@family_ref.first.xref_value}" if child.child?(self) == false
+        end
+      end
+    end
+    if @submitter_ref != nil
+      @submitter_ref.each  do |s| 
+        puts "Missing SUBM record for #{s.xref_value} in FAM #{@family_ref.first.xref_value}" if find(s.index, s.xref_value)  == nil
+      end
+    end
   end
   
 end
