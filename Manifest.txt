@@ -17,6 +17,7 @@ lib/gedcom/event_record.rb
 lib/gedcom/events_list_record.rb
 lib/gedcom/families_individuals.rb
 lib/gedcom/family_record.rb
+lib/gedcom/ged_string.rb
 lib/gedcom/gedcom_all.rb
 lib/gedcom/gedcom_base.rb
 lib/gedcom/gedcom_record.rb
@@ -45,6 +46,7 @@ lib/gedcom/text_record.rb
 lib/gedcom/trailer_record.rb
 lib/gedcom/transmission.rb
 lib/gedcom/transmission_base.rb
+lib/gedcom/xref.rb
 lib/gedcom.rb
 lib/parser/class_tracker.rb
 lib/parser/ged_line.rb
