@@ -47,6 +47,14 @@ lib/gedcom/trailer_record.rb
 lib/gedcom/transmission.rb
 lib/gedcom/transmission_base.rb
 lib/gedcom/xref.rb
+lib/gedcom/multimedia_file_record.rb
+lib/gedcom/multimedia_format_record.rb
+lib/gedcom/placename_map_record.rb
+lib/gedcom/placename_phonetic_record.rb
+lib/gedcom/placename_romanized_record.rb
+lib/gedcom/name_phonetic_record.rb
+lib/gedcom/name_romanized_record.rb
+lib/gedcom/copyright_record.rb
 lib/gedcom.rb
 lib/parser/class_tracker.rb
 lib/parser/ged_line.rb
@@ -55,7 +63,6 @@ lib/parser/instruction.rb
 lib/parser/parse_state.rb
 test/ruby_version.rb
 test/lds_gedcom_test.rb
-test/test_gedcom.rb
 test_data/Document.RTF
 test_data/Document.tex
 test_data/ImgFile.BMP

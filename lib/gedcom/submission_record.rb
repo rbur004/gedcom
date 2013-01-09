@@ -25,6 +25,7 @@ require 'gedcom_base.rb'
 #* Those ending in _ref are GEDCOM XREF index keys
 #* Those ending in _record are array of classes of that type.
 #* The remainder are arrays of attributes that could be present in the SUBN records.
+#
 
 
 class Submission_record < GEDCOMBase

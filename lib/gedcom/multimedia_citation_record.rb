@@ -6,6 +6,11 @@ require 'gedcom_base.rb'
 #
 #=MULTIMEDIA_LINK:=
 #  n OBJE @<XREF:OBJE>@           {1:1}
+#| n OBJE
+#	+1 FILE <MULTIMEDIA_FILE_REFN> 
+#		+2 FORM <MULTIMEDIA_FORMAT>
+#			+3 MEDI	<SOURCE_MEDIA_TYPE> 
+#	+1 TITL <DESCRIPTIVE_TITLE>
 #
 #  This structure provides two options in handling the GEDCOM multimedia interface. The first
 #  alternative (embedded) includes all of the data, including the multimedia object, within the
@@ -41,12 +46,12 @@ class Multimedia_citation_record < GEDCOMBase
   def to_gedcom(level=0)
     if @multimedia_ref != nil
       @this_level = [ [:xref, "OBJE", :multimedia_ref] ]
-      @sub_level =  [#level 1
+      @sub_level =  [#level +1
                       [:walk, nil,    :note_citation_record ],
                     ]
     else
       @this_level = [ [:walk, nil, :multimedia_record] ]
-      @sub_level =  [#level 1
+      @sub_level =  [#level +1
                     ]
     end
     super(level)

@@ -32,10 +32,10 @@ require 'individual_attribute_record.rb'
 #
 #  The surname of an individual, if known, is enclosed between two slash (/) characters. The order of the
 #  name parts should be the order that the person would, by custom of their culture, have used when
-#  giving it to a recorder. Early versions of Personal Ancestral File and other products did not use the ®
+#  giving it to a recorder. Early versions of Personal Ancestral File and other products did not use the (R)
 #  trailing slash when the surname was the last element of the name. If part of name is illegible, that part
 #  is indicated by an ellipsis (...). Capitalize the name of a person or place in the conventional
-#  manner—capitalize the first letter of each part and lowercase the other letters, unless conventional
+#  manner-capitalize the first letter of each part and lowercase the other letters, unless conventional
 #  usage is otherwise. For example: McMurray.
 #  Examples:
 #    1 NAME William Lee                 (given name only or surname not known)
@@ -69,8 +69,40 @@ require 'individual_attribute_record.rb'
 #* Those ending in _ref are GEDCOM XREF index keys
 #* Those ending in _record are array of classes of that type.
 #* The remainder are arrays of attributes that could be present in this record.
+#
+#GEDCOM 5.5.1 Draft adds
+#
+#    +1 TYPE <NAME_TYPE> 
+#    +1 FONE <NAME_PHONETIC_VARIATION>
+#      +2 TYPE <PHONETIC_TYPE>
+#      +2 <<PERSONAL_NAME_PIECES>> 
+#    +1 ROMN <NAME_ROMANIZED_VARIATION>
+#      +2 TYPE <ROMANIZED_TYPE> 
+#      +2 <<PERSONAL_NAME_PIECES>>
+#
+#==NAME_TYPE:=	                                                         {Size=5:30} 
+# [ aka | birth | immigrant | maiden | married | <user defined> ]
+#Indicates the name type, for example the name issued or assumed as an immigrant.
+#e.g. birth indicates name given on birth certificate.
+#
+#==NAME_PHONETIC_VARIATION:=                                               {Size=1:120}
+#  PHONETIC_TYPE [<user defined> | hangul | kana]                        {Size=5:30}
+#The phonetic variation of the name is written in the same form as the was the name used in the superior <NAME_PERSONAL> primitive,
+# but phonetically written using the method indicated by the subordinate <PHONETIC_TYPE> value, for example if hiragana was used 
+#to provide a reading of a name written in kanji, then the <PHONETIC_TYPE> value would indicate 'kana'. 
+#
+#==NAME_ROMANIZED_VARIATION:=	                                              {Size=1:120} 
+#  ROMANIZED_TYPE [<user defined> | pinyin | romaji | wadegiles]            {Size=5:30}
+#The romanized variation of the name is written in the same form prescribed for the name used in the superior <NAME_PERSONAL> context. 
+#The method used to romanize the name is indicated by the line_value of the subordinate <ROMANIZED_TYPE>, for example 
+#if romaji was used to provide a reading of a name written in kanji, then the ROMANIZED_TYPE subordinate to the ROMN tag 
+#would indicate romaji.
+#==TYPE:=
 class Name_record < Individual_attribute_record
+  #Name stored in field "value", as this is an individual_attribute_record subtype.
+  #Value of attribute "type" is set to NAME
   attr_accessor :prefix, :given, :nickname, :surname_prefix, :surname, :suffix
+  attr_accessor :name_type, :name_phonetic_record, :name_romanized_record #GEDCOM 5.5.1
   ClassTracker <<  :Name_record
   
   def initialize(*a)
@@ -82,9 +114,13 @@ class Name_record < Individual_attribute_record
                        [:print, "SPFX",    :surname_prefix ],
                        [:print, "SURN",    :surname ],
                        [:print, "NSFX",    :suffix ],
+                       [:print, "TYPE",    :name_type ], #5.5.1
+                       [:walk,  "FONE",    :name_phonetic_record],
+                       [:walk,  "ROMN",    :name_romanized_record],
                    ] + @sub_level
   end
 
+  #Attributes and Events have a common class, as they are essentially identical.
   def event_tag(tag)
     case tag
     when "NAME" then tag

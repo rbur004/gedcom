@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
+#RubyVersion provides checking for the running Ruby interpreter version
+#Superceded by the VersionCheck gem
+
 class RubyVersion
   #self.have_version tests that the versien of RUBY is the one we want.
   def self.have_version?(major, minor, update = nil, build = nil)

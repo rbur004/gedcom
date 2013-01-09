@@ -147,7 +147,7 @@ require 'gedcom_base.rb'
 #
 #  The following are equivalent and interchangeable:
 #  Short form       Long Form
-#  ---------—       ---------—-
+#  ----------       -----------
 #  1852             BET 1 JAN 1852 AND 31 DEC 1852
 #  1852             BET 1 JAN 1852 AND DEC 1852
 #  1852             BET JAN 1852 AND 31 DEC 1852
@@ -208,17 +208,13 @@ class Date_record < GEDCOMBase
   #GEDCOM says that this should be the most vaild record. If you need all the dates, use date_value,
   #which will give you an array of DATE values.
   def date
-    if @date_value
-      @date_value.first
-    else
-      ''
-    end
+    @date_value ? @date_value.first : ''
   end
 
   #If you want just one date, then this returns the first TIME record (probably the only one).
   #GEDCOM says that this should be the most vaild record. If you need all the dates, use date_value,
   #which will give you an array of TIME values.
   def time
-    @time_value.first
+    @time_value != nil ? @time_value.first : ''
   end
 end

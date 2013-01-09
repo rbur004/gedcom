@@ -44,6 +44,7 @@ class Families_individuals < GEDCOMBase
   attr_accessor :relationship_type, :parents_family_ref, :family_ref, :pedigree
   attr_accessor :note_citation_record
   attr_accessor :source_citation_record #Only for FAMS (where did I get this idea from ?)
+  attr_accessor :child_linkage_status #GEDCOM 5.5.1
 
   ClassTracker <<  :Families_individuals
   
@@ -53,6 +54,7 @@ class Families_individuals < GEDCOMBase
                   ]
     @sub_level =  [ #level 1
                     [:print, "PEDI",    :pedigree ], #Only for FAMC
+                    [:print, "STAT",    :pedigree ], #Only for FAMC
                     [:walk, nil,    :source_citation_record ], #Only for FAMS (where did I get this idea from ?)
                     [:walk, nil,    :note_citation_record ]
                   ]

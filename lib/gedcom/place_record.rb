@@ -21,7 +21,9 @@ require 'gedcom_base.rb'
 #* Those ending in _record are array of classes of that type.
 #* The remainder are arrays of attributes that could be present in the PLAC records.
 class Place_record < GEDCOMBase
-  attr_accessor :place_value, :place_hierachy, :source_citation_record, :note_citation_record
+  attr_accessor :place_value, :place_hierachy
+  attr_accessor :source_citation_record, :note_citation_record
+  attr_accessor :placename_phonetic_record, :placename_romanized_record, :placename_map_record
 
   ClassTracker <<  :Place_record
   
@@ -30,6 +32,9 @@ class Place_record < GEDCOMBase
       @this_level = [  [:print, "PLAC", :place_value] ]
       @sub_level =  [ #level + 1
                       [:print, "FORM", :place_hierachy],
+                      [:print, "FONE", :placename_phonetic_record],
+                      [:print, "ROMN", :placename_romanized_record],
+                      [:print, "MAP", :placename_map_record],
                       [:walk, nil,    :source_citation_record],
                       [:walk, nil,    :note_citation_record],
                     ]
@@ -37,6 +42,9 @@ class Place_record < GEDCOMBase
       @this_level = [  [:nodata, "PLAC", nil] ]
       @sub_level =  [ #level + 1
                       [:print, "FORM", :place_hierachy],
+                      [:print, "FONE", :placename_phonetic_record],
+                      [:print, "ROMN", :placename_romanized_record],
+                      [:print, "MAP", :placename_map_record],
                       [:walk, nil,    :source_citation_record],
                       [:walk, nil,    :note_citation_record],
                     ]

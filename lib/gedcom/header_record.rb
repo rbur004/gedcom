@@ -71,5 +71,6 @@ class Header_record < GEDCOMBase
                     [:walk, nil, :place_record], 
                     [:walk, nil, :note_citation_record],
                   ]
-  end  
+  end 
+  
 end

@@ -1,12 +1,11 @@
-#!/usr/bin/env ruby
+#!/usr/local/bin/ruby
+##!/usr/bin/ruby1.8
 #Or 1.9 version at
 #!/usr/local/bin/ruby
-require '../lib/gedcom.rb'
-require 'ruby_version.rb'
+require 'rubygems'
+require '../pkg/gedcom-0.9.3/lib/gedcom.rb'
+require 'versioncheck'
 
-
-
-puts RubyVersion.to_s
 
 #Parses the LDS GEDCOM test files and them dumps them back out as GEDCOM.
 #This allows me to test for errors in parsing and output. The two files will
@@ -14,7 +13,7 @@ puts RubyVersion.to_s
 #and user defined tags will get converted to NOTES.
 
 puts "parse TGC551LF.ged"
-if RubyVersion.have_at_least_version?(1,9)
+if VersionCheck.rubyversion.have_at_least_version?(1,9)
   g = Gedcom.file("../test_data/TGC551LF.ged", "r:ASCII-8BIT") #OK with LF line endings.
 else
   g = Gedcom.file("../test_data/TGC551LF.ged", "r") #OK with LF line endings.
@@ -41,7 +40,7 @@ puts
 #Note CONT and CONC breaks may end up in different places
 #Note Order of TAGS at the same level may be different
 #Note User TAGS are output as Notes.
-if RubyVersion.have_at_least_version?(1,9)
+if VersionCheck.rubyversion.have_at_least_version?(1,9)
   File.open( "../test_data/TGC551LF.out", "w:ASCII-8BIT") do |file|
     file.print g.transmissions[0].to_gedcom
   end
@@ -55,7 +54,7 @@ end
 #  file.print g.transmissions[1].to_gedcom
 #end
 puts "\nComplete"
-c = Chart.new
+#c = Chart.new
 #puts c.output_pedigree_name( f, 10, nil, nil, Bit.new, '', '', nil, '', 0 )
 
 

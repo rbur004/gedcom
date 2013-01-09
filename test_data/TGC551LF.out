@@ -17,7 +17,8 @@
 4 CTRY USA
 2 DATA Name of source data
 3 DATE 1 JAN 1998
-3 COPR Copyright of source data
+3 COPR Copyright of source data 
+4 CONT Test of Gedcom 5.5.1 CONT in COPR  and Test of Gedcom 5.5.1 CONC in COPR
 1 DEST ANSTFILE
 1 DATE 1 JAN 1998
 2 TIME 13:57:24.80
@@ -145,9 +146,9 @@
 1 PHON Submitter phone number 3 (last one!)
 1 LANG English
 1 OBJE
+2 FILE ImgFile.JPG
 2 TITL Submitter Multimedia File
 2 FORM jpeg
-2 FILE ImgFile.JPG
 2 NOTE @N1@
 1 RFN Submitter Registered RFN
 1 RIN 1
@@ -187,10 +188,16 @@
 2 CONT  
 2 CONT It may use as many lines as needed.
 1 OBJE
+2 FILE ImgFile.JPG
 2 TITL JPEG image file link
 2 FORM jpeg
-2 FILE ImgFile.JPG
 2 NOTE @N14@
+1 OBJE
+2 FILE ImgFile2.JPG
+3 FORM jpeg
+4 MEDI Film
+2 TITL JPEG image file link 2
+2 NOTE TEST of MEDI in OBJE in GED 5.5.1
 1 DATA
 2 EVEN BIRT, CHR
 3 DATE FROM 1 JAN 1980 TO 1 FEB 1982
@@ -259,9 +266,9 @@
 3 AGE 42y 6m
 2 AGNC Catholic Church
 2 OBJE
+3 FILE ImgFile.JPG
 3 TITL Multimedia link about the marriage event
 3 FORM jpeg
-3 FILE ImgFile.JPG
 2 SOUR @SOURCE1@
 3 PAGE 42
 3 DATA
@@ -284,9 +291,9 @@
 3 AGE STILLBORN
 2 AGNC None
 2 OBJE
+3 FILE ImgFile.BMP
 3 TITL BMP Image File
 3 FORM bmp
-3 FILE ImgFile.BMP
 2 SOUR @SOURCE1@
 3 PAGE 42
 3 DATA
@@ -436,9 +443,9 @@
 2 NOTE @N6@
 1 SUBM @SUBMITTER@
 1 OBJE
+2 FILE ImgFile.BMP
 2 TITL BMP Image File
 2 FORM bmp
-2 FILE ImgFile.BMP
 1 SOUR @SOURCE1@
 2 PAGE 42
 2 DATA
@@ -571,21 +578,21 @@
 2 DATE 1875
 1 FAMC @F5@
 1 OBJE
+2 FILE http://homepages.rootsweb.com/~pmcbride/gedcom/55gctoc.htm
 2 TITL GEDCOM 5.5 documentation web site
 2 FORM URL
-2 FILE http://homepages.rootsweb.com/~pmcbride/gedcom/55gctoc.htm
 1 OBJE
+2 FILE ftp://ftp.genealogy.org/genealogy/GEDCOM/
 2 TITL FTP site with many GEDCOM files
 2 FORM URL
-2 FILE ftp://ftp.genealogy.org/genealogy/GEDCOM/
 1 OBJE
+2 FILE http://www.geditcom.com
 2 TITL GEDitCOM Macintosh genealogy software home page
 2 FORM URL
-2 FILE http://www.geditcom.com
 1 OBJE
+2 FILE mailto:support@geditcom.com
 2 TITL Email comments on this GEDCOM file to here
 2 FORM URL
-2 FILE mailto:support@geditcom.com
 1 NOTE @N23@
 1 CHAN
 2 DATE 11 Jan 2001
@@ -600,21 +607,21 @@
 2 DATE 7 DEC 1941
 1 FAMC @F5@
 1 OBJE
+2 FILE Document.tex
 2 TITL Plain TEXT document
 2 FORM TEXT
-2 FILE Document.tex
 1 OBJE
+2 FILE Document.DOC
 2 TITL Microsoft Word document
 2 FORM W8BN
-2 FILE Document.DOC
 1 OBJE
+2 FILE Document.RTF
 2 TITL Rich text format document
 2 FORM RTF
-2 FILE Document.RTF
 1 OBJE
+2 FILE Document.pdf
 2 TITL Portable document format file
 2 FORM PDF
-2 FILE Document.pdf
 1 NOTE @N22@
 1 CHAN
 2 DATE 11 Jan 2001
@@ -629,33 +636,33 @@
 1 FAMS @F7@
 1 FAMC @F5@
 1 OBJE
+2 FILE ImgFile.PIC
 2 TITL Macintosh PICT file
 2 FORM PICT
-2 FILE ImgFile.PIC
 1 OBJE
+2 FILE ImgFile.MAC
 2 TITL Macintosh MacPaint file
 2 FORM PNTG
-2 FILE ImgFile.MAC
 1 OBJE
+2 FILE ImgFile.TGA
 2 TITL TGA image file
 2 FORM TPIC
-2 FILE ImgFile.TGA
 1 OBJE
+2 FILE enthist.aif
 2 TITL Macintosh sound file
 2 FORM aiff
-2 FILE enthist.aif
 1 OBJE
+2 FILE suntun.mov
 2 TITL QuickTime movie file
 2 FORM mov
-2 FILE suntun.mov
 1 OBJE
+2 FILE ImgFile.PSD
 2 TITL Adobe Photoshop file
 2 FORM 8BPS
-2 FILE ImgFile.PSD
 1 OBJE
+2 FILE top.mpg
 2 TITL Mpeg Movie File
 2 FORM mpeg
-2 FILE top.mpg
 1 NOTE @N21@
 1 CHAN
 2 DATE 11 Jan 2001
@@ -668,29 +675,29 @@
 2 DATE 1835
 1 FAMS @F5@
 1 OBJE
+2 FILE ImgFile.BMP
 2 TITL Windows bit mapped image file
 2 FORM bmp
-2 FILE ImgFile.BMP
 1 OBJE
+2 FILE ImgFile.GIF
 2 TITL GIF image file
 2 FORM gif
-2 FILE ImgFile.GIF
 1 OBJE
+2 FILE ImgFile.JPG
 2 TITL JPEG image file
 2 FORM jpeg
-2 FILE ImgFile.JPG
 1 OBJE
+2 FILE ImgFile.TIF
 2 TITL Tagged image format file
 2 FORM tiff
-2 FILE ImgFile.TIF
 1 OBJE
+2 FILE ImgFile.PCX
 2 TITL Windows paint brush file
 2 FORM pcx
-2 FILE ImgFile.PCX
 1 OBJE
+2 FILE force.wav
 2 TITL Windows sound File
 2 FORM wav
-2 FILE force.wav
 1 OBJE @M1@
 1 NOTE @N18@
 1 CHAN
@@ -800,9 +807,9 @@
 2 AGE 40
 2 AGNC Employer
 2 OBJE
+3 FILE ImgFile.GIF
 3 TITL GIF Image File
 3 FORM gif
-3 FILE ImgFile.GIF
 2 SOUR @SOURCE1@
 3 PAGE 42
 3 DATA
@@ -965,9 +972,9 @@
 3 CONT USA
 2 AGNC none
 2 OBJE
+3 FILE ImgFile.TIF
 3 TITL Link to multimedia file
 3 FORM tiff
-3 FILE ImgFile.TIF
 2 SOUR @SOURCE1@
 3 PAGE 42
 3 QUAY 2
@@ -986,9 +993,9 @@
 2 AGE 76
 2 AGNC none
 2 OBJE
+3 FILE ImgFile.JPG
 3 TITL Multimedia link about the death event
 3 FORM jpeg
-3 FILE ImgFile.JPG
 2 SOUR @SOURCE1@
 3 PAGE 42
 3 DATA
@@ -1009,9 +1016,9 @@
 2 AGE 3 months
 2 AGNC The Church
 2 OBJE
+3 FILE ImgFile.JPG
 3 TITL JPEG File Link
 3 FORM jpeg
-3 FILE ImgFile.JPG
 2 SOUR @SOURCE1@
 3 PAGE 42
 3 DATA
@@ -1287,6 +1294,7 @@
 2 NOTE Another note about this link to his parents family record
 1 FAMC @ADOPTIVE_PARENTS@
 2 PEDI adopted
+2 STAT adopted
 2 NOTE Note about the link to his adoptive parents family record.
 1 ASSO @I9@
 2 RELA Has multimedia links
@@ -1303,9 +1311,9 @@
 1 DESI @SUBMITTER@
 1 SUBM @SUBMITTER@
 1 OBJE
+2 FILE ImgFile.GIF
 2 TITL GIF Image File
 2 FORM gif
-2 FILE ImgFile.GIF
 1 SOUR @SOURCE1@
 2 PAGE 42
 2 DATA
@@ -1393,6 +1401,13 @@
 1 CHAN
 2 DATE 14 Jan 2001
 3 TIME 14:10:31
+0 @M2@ OBJE
+1 FILE http://www.somewhere.com/file.jpg
+2 TITL The picture
+2 FORM jpg
+3 TYPE WWW
+1 SOUR This great web page.
+1 NOTE New Gedcom 5.5.1 file reference Multimedia record format
 0 @N1@ NOTE
 1 CONC   Test link to a graphics file about the main Submitter of this file.
 1 CHAN

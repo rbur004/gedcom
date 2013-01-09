@@ -1,6 +1,8 @@
 require "test/unit"
 require "../lib/tree/bit.rb"
 
+#TestGedcom is work in progress for automated testing.
+
 class TestGedcom < Test::Unit::TestCase
   def test_bit
     x = Bit.new

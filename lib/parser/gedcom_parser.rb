@@ -30,7 +30,7 @@ require 'transmission.rb'
 #   1. MIN_OCCURANCES   What is the minimum number of times we should see this field. Usually 0 or 1
 #   2. MAX_OCCURANCES   How many times can this tag appear at this level. Nil means any number of times
 #   3. DATA_TYPE        What is the type of the data in the data field. Nil means we expect no data.
-#   4. DATA_SIZE        How big can this field be
+#   4. DATA_SIZE        How big can this field be. I haven't recorded how small, assuming 1, but some records have higher minimum sizes
 #   5. ACTION         The action(s) the parser should take to instatiate a class and/or store the value portion of the GEDCOM line.
 #                     The Action tags are processed in order. A class tag changes the target class of field, key and xref tags.
 #                     -   [:class, :class_name] inidicates this line, and any further data, will be stored in the class  :class_name
@@ -80,7 +80,7 @@ class GedcomParser
       ["SUBM", :xref]	=> [nil,		          1,	1,	nil,        0,    [ [:xref, [:submitter_ref, :submitter]] ],                        "Reference to a Submitter Record"	],
       ["SUBN", :xref]	=> [nil,		          0,	1,	nil,        0,    [ [:xref, [:submission_ref, :submission]] ],                      "Reference to a Submission Record"		],
       ["FILE", nil]		=> [nil,		          0,	1, :string,			90,   [ [:field, :file_name] ],                                             "This files name"	],
-      ["COPR", nil]		=> [nil,		          0,	1, :string,			90,   [ [:field, :copyright] ],                                            "Copyright Notice for this file"	],
+      ["COPR", nil]		=> [nil,	0,	1, :string,			90,   [  [:field, :copyright] ],                                            "Copyright Notice for this file"	],
       ["GEDC", nil]		=> [:header_gedc,     1,	1,	nil,        0,    [ [:class, :gedcom_record] ],                                         "GEDCOM Info"	],
       ["CHAR", nil]		=> [:header_char,     1,	1, :char_set_id,8,    [ [:class, :character_set_record], [:field, :char_set_id] ],        "Character Set"	],
       ["LANG", nil]		=> [nil,              0,	1, :language_id,15,   [ [:field, :language_id] ],                                           "Language of Text"	],
@@ -101,12 +101,20 @@ class GedcomParser
     {
       ["ADDR", nil]		=>  [:address_structure, 0,	1, :string,			60, [ [:class, :address_record], [:field, :address] ],  "Address"	],
       ["PHON", nil]		=>  [nil,		            0,	3, :string,			25, [ [:field, :phonenumber] ],                            "Phone :number"	],
+      #Added EMAIL,FAX,WWW Gedcom 5.5.1
+      ["EMAIL",  nil]		=>  [nil,		                  0,	3, :string,			120,   [ [:field, :address_email] ],                          "email address"	],
+      ["FAX",  nil]		=>  [nil,		                  0,	3, :string,			60,   [ [:field, :address_fax] ],                          "FAX :number"	],
+      ["WWW",  nil]		=>  [nil,		                  0,	3, :string,			120,   [ [:field, :address_web_page] ],                          "Web URL"	],
+      #
       ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
     },
 		:header_source_data => 
     { 
       ["DATE", nil]		=>  [nil,		0,	1, :date_value,	11, [ [:field, :date] ],     "Publication Date"	],
-      ["COPR", nil]		=>  [nil,		0,	1, :string,			90, [ [:field, :copyright] ],  "Copyright Statement from Data Source"	],
+      #copyright has no CONT/CONC option in Gedcom 5.5
+      #["COPR", nil]		=> [nil,	          0,	1, :string,			90,   [ [:field, :copyright] ],                                            "Copyright Notice for this file"	],
+      #copyright has CONT/CONC option in Gedcom 5.5.1
+      ["COPR", nil]		=>  [:copyright_cont_conc,		0,	1, :string,			90, [ [:class, :copyright_record], [:field, :copyright] ],  "Copyright Statement from Data Source"	],
       ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
     },
 		:date_structure =>
@@ -139,10 +147,16 @@ class GedcomParser
       ["CONT", nil]		=>  [nil,		0,	nil, :string,			248, [ [:append_nl, :note] ], "Continuation on New Line"],
       ["CONC", nil]		=>  [nil,		0,	nil, :string,			248, [ [:append, :note] ], "Continuation on Same Line"	],
     },
+    #copyright has CONT/CONC option in Gedcom 5.5.1
+		:copyright_cont_conc => 
+    {
+      ["CONT", nil]		=>  [nil,		0,	nil, :string,			248, [ [:append_nl, :copyright] ], "Continuation on New Line"],
+      ["CONC", nil]		=>  [nil,		0,	nil, :string,			248, [ [:append, :copyright] ], "Continuation on Same Line"	],
+    },
 		:family_record =>  
     {
       #RESN is not standard gedcom.
-      ["RESN", nil]		=>  [nil,		                    0,	1, :restriction_value,	7, [ [:field, :restriction] ], "Record Locked or Parts removed for Privacy"	], #NOT GEDCOM 5.5
+      ["RESN", nil]		=>  [nil,		                    0,	1, :restriction_value,	7, [ [:field, :restriction] ], "Record Locked or Parts removed for Privacy"	], #NOT GEDCOM 5.5, but in 5.5.1
  
       ["ANUL", nil]		=>  [:family_event_detail,   0,  nil, :y_or_null,	1,  [ [:class, :event_record], [:field, :event_status], [:field, [:event_type, "ANUL"]] ], "Annulment"	],
       ["CENS", nil]		=>  [:family_event_detail,   0,	nil, :y_or_null,	1,  [ [:class, :event_record], [:field, :event_status], [:field, [:event_type, "CENS"]] ], "Census"	],
@@ -178,14 +192,21 @@ class GedcomParser
 		:family_event_detail =>
     {  
       #RESN is not standard gedcom.
-      ["RESN", nil]		=>  [nil,		                    0,	1, :restriction_value,	7, [ [:field, :restriction] ], "Record Locked or Parts removed for Privacy"	], #NOT GEDCOM 5.5
+      ["RESN", nil]		=>  [nil,		                    0,	1, :restriction_value,	7, [ [:field, :restriction] ], "Record Locked or Parts removed for Privacy"	], #NOT GEDCOM 5.5, but in 5.5.1
 
       ["TYPE",  nil]		=>  [nil,		                0,	1, :string,			90,   [ [:field, :event_descriptor] ],                                 "Event Description"	],
       ["DATE",  nil]		=>  [:date_structure,		          0,	1, :date_value,	35,   [ [:class, :date_record], [:field, :date_value] ],       "Events Date(s)"	],
       ["PLAC",  nil]		=>  [:place_structure,        0,	1, :placehierachy,120, [ [:class, :place_record], [:field, :place_value] ],     "Jurisdictional Place Hierachy where the Event Occurred"	],
       ["ADDR",  nil]		=>  [:address_structure,      0,	1, :string,			60,   [ [:class, :address_record], [:field, :address] ], "Address"	],
       ["PHON",  nil]		=>  [nil,		                  0,	3, :string,			25,   [ [:field, :phonenumber] ],                          "Phone :number"	],
+      #Added EMAIL,FAX,WWW Gedcom 5.5.1
+      ["EMAIL",  nil]		=>  [nil,		                  0,	3, :string,			120,   [ [:field, :address_email] ],                          "email address"	],
+      ["FAX",  nil]		=>  [nil,		                  0,	3, :string,			60,   [ [:field, :address_fax] ],                          "FAX :number"	],
+      ["WWW",  nil]		=>  [nil,		                  0,	3, :string,			120,   [ [:field, :address_web_page] ],                          "Web URL"	],
+      #
       ["AGE",   nil]		=>  [nil,		                  0,	1, :age,				  12,   [ [:field, :age] ],                                  "Age at the time of the Event"	],
+      #GEDCOM 5.5.1
+      ["RELI",   nil]		=>  [nil,		                  0,	1, :string,				  90,   [ [:field, :religion] ],  "A name of the religion with which this event was affiliated"	],
       ["AGNC",  nil]		=>  [nil,		                  0,	1, :string,			120,  [ [:field, :agency] ],                               "Controlling/Resonsible Entity/Authority"	],
       ["CAUS",  nil]		=>  [:cause_note_structure_inline,0,	1, :string,			90,   [ [:class, :cause_record], [:field, :cause] ],                                "Cause of the Event"	],
       ["SOUR", :xref]	=>  [:source_citation,					0,	nil,  nil,				0,  [ [:class, :source_citation_record], [:xref, [:source_ref, :source]] ], "Reference to Source Record"	],
@@ -267,6 +288,7 @@ class GedcomParser
       ["RELI", nil]		=>  [:event_detail,						  	0,	nil, :string,			90,   [ [:class, :individual_attribute_record], [:field, :value], [:field, [:attr_type, "RELI"]] ], "Religious Affliliation"	],
       ["RESI", nil]		=>  [:event_detail,						  	0,	nil,	nil,					0,  [ [:class, :individual_attribute_record], [:field, [:value,""]], [:field, [:attr_type, "RESI"]] ], "Residence"	],
       ["SSN", nil]		=>  [:event_detail,							  0,	nil, :string,			11,   [ [:class, :individual_attribute_record], [:field, :value], [:field, [:attr_type, "SSN"]] ], "USA Social Security :number"	],
+      ["FACT", nil]		=>  [:event_detail,							  0,	nil, :string,			90,   [ [:class, :individual_attribute_record], [:field, :value], [:field, [:attr_type, "FACT"]] ], "a noteworthy attribute or fact concerning an individual, a group, or an organization"	],
       #ATTR is not standard gedcom 5.5, which has no misc attribute tag.
       #["_ATTR", nil]		=>  [:attribute_detail,					  0,	nil,	:string,			   90,    [ [:class, :individual_attribute_record], [:field, :attr_type] ], "Misc Attribute"	],
       
@@ -319,7 +341,14 @@ class GedcomParser
       ["PLAC", nil]		=>  [:place_structure,					0,	1, :placehierachy,	120,  [ [:class, :place_record], [:field, :place_value] ], "Jurisdictional Place Hierarchy where the Event Occurred"	],
       ["ADDR", nil]		=>  [:address_structure,				0,	1, :string,			  60,   [ [:class, :address_record], [:field, :address] ], "Address"	],
       ["PHON", nil]		=>  [nil,		                    0,	3, :string,			  25,   [ [:field, :phonenumber] ], "Phone :number"	],
+      #Added EMAIL,FAX,WWW Gedcom 5.5.1
+      ["EMAIL",  nil]		=>  [nil,		                  0,	3, :string,			120,   [ [:field, :address_email] ],                          "email address"	],
+      ["FAX",  nil]		=>  [nil,		                  0,	3, :string,			60,   [ [:field, :address_fax] ],                          "FAX :number"	],
+      ["WWW",  nil]		=>  [nil,		                  0,	3, :string,			120,   [ [:field, :address_web_page] ],                          "Web URL"	],
+      #
       ["AGE", nil]		=>  [nil,		                    0,	1, :age,				    12,   [ [:field, :age] ], "Age at the time of the Event"	],
+      #GEDCOM 5.5.1
+      ["RELI",   nil]		=>  [nil,		                  0,	1, :string,				  90,   [ [:field, :religion] ],                                  "A name of the religion with which this event was affiliated"	],
       ["AGNC", nil]		=>  [nil,		                    0,	1, :string,			  120,  [ [:field, :agency] ], "Controlling/Resonsible Entity/Authority"	],
       ["CAUS", nil]		=>  [:cause_note_structure_inline,0,	1, :string,			  90,   [ [:class, :cause_record], [:field, :cause] ], "Cause of the Event"	],
       ["SOUR", :xref]	=>  [:source_citation,					0,	nil,  nil,				0,  [ [:class, :source_citation_record], [:xref, [:source_ref, :source]] ], "Reference to Source Record"	],
@@ -343,7 +372,14 @@ class GedcomParser
       ["PLAC", nil]		=>  [:place_structure,					0,	1, :placehierachy,	120,  [ [:class, :place_record], [:field, :place_value] ], "Jurisdictional Place Hierarchy where the Event Occurred"	],
       ["ADDR", nil]		=>  [:address_structure,				0,	1, :string,			  60,   [ [:class, :address_record], [:field, :address] ], "Address"	],
       ["PHON", nil]		=>  [nil,		                    0,	3, :string,			  25,   [ [:field, :phonenumber] ], "Phone :number"	],
+      #Added EMAIL,FAX,WWW Gedcom 5.5.1
+      ["EMAIL",  nil]		=>  [nil,		                  0,	3, :string,			120,   [ [:field, :address_email] ],                          "email address"	],
+      ["FAX",  nil]		=>  [nil,		                  0,	3, :string,			60,   [ [:field, :address_fax] ],                          "FAX :number"	],
+      ["WWW",  nil]		=>  [nil,		                  0,	3, :string,			120,   [ [:field, :address_web_page] ],                          "Web URL"	],
+      #
       ["AGE", nil]		=>  [nil,		                    0,	1, :age,				    12,   [ [:field, :age] ], "Age at the time of the Event"	],
+      #GEDCOM 5.5.1
+      ["RELI",   nil]		=>  [nil,		                  0,	1, :string,				  90,   [ [:field, :religion] ],                                  "A name of the religion with which this event was affiliated"	],
       ["AGNC", nil]		=>  [nil,		                    0,	1, :string,			  120,  [ [:field, :agency] ], "Controlling/Resonsible Entity/Authority"	],
       ["CAUS", nil]		=>  [:cause_note_structure_inline,0,	1, :string,			  90,   [ [:class, :cause_record], [:field, :cause] ], "Cause of the Event"	],
       ["SOUR", :xref]	=>  [:source_citation,					0,	nil,  nil,				0,  [ [:class, :source_citation_record], [:xref, [:source_ref, :source]] ], "Reference to Source Record"	],
@@ -364,25 +400,81 @@ class GedcomParser
     },
 		:multimedia_record =>
     { #Record form
-      ["FORM", nil]		=>    [nil,		                    1,	1, :string,	    4,    [ [:field, :format] ], "bmp | gif | jpeg | ole | pcx | tiff | wav |..."	],
+      #GEDCOM 5.5.1 form has FILE and SOUR records
+      ["FILE", nil]		=>  [:multimedia_obje_file_record,	0,	nil, :string,		120,   [ [:class, :multimedia_obje_file_record], [:field, :filename] ], " local or remote file reference to the auxiliary data"	],
+      ["SOUR", :xref]	=>  [:source_citation,					0,	nil,  nil,				0,  [ [:class, :source_citation_record], [:xref, [:source_ref, :source]] ], "Reference to Source Record"	],
+      ["SOUR", nil]		=>  [:source_citation_inline,	    0,	nil, :string,	248,  [ [:class, :source_citation_record], [:class, :source_record], [:field, :title] ], "Inline note describing source" 	],      
+      #GEDCOM 5.5 Only, some non-standard variants have a +1 MEDI tag after the FORM tag
+      ["FORM", nil]		=>  [:multimedia_format_record,		                  1,	1, :string,	    4,    [ [:class, :multimedia_format_record], [:field, :format] ], "bmp | gif | jpeg | ole | pcx | tiff | wav |..."	],
       ["TITL", nil]		=>    [nil,		                    0,	1, :string,			248,  [ [:field, :title] ], "Title of the work"	],
-      ["NOTE", :xref]	=>  [:note_structure,				    0,	nil,  nil,    	  0,    [ [:class, :note_citation_record], [:xref,  [:note_ref, :note]] ], "Link to a Note Record"	],
-      ["NOTE", nil]		=>    [:note_structure_inline,		0,	nil, :string,		248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
       ["BLOB", nil]		=>    [:encoded_multimedia_line,	1,	1,	  nil,			0,    [ [:class, :encoded_line_record] ], "Binary Object"	],
       ["OBJE", :xref]	=>  [nil,		                    0,	nil,  nil,				0,    [ [:xref, [:next_multimedia_ref, :multimedia]] ], "Link to a continued Multimedia Record"	],
+      #Common to 5.5 and 5.5.1
+      ["NOTE", :xref]	=>  [:note_structure,				    0,	nil,  nil,    	  0,    [ [:class, :note_citation_record], [:xref,  [:note_ref, :note]] ], "Link to a Note Record"	],
+      ["NOTE", nil]		=>    [:note_structure_inline,		0,	nil, :string,		248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
+      #Blob's go away in 5.5.1
       ["REFN", nil]		=>    [:family_record_refn,			  0,	nil, :string,		20,   [ [:class, :refn_record], [:field, :user_reference_number] ], "User Defined Reference :number"	],
       ["RIN",  nil]		=>  [nil,		                    0,	1, :number,		    12,   [ [:field, :automated_record_id] ], "System Generated Record ID"	],
       ["CHAN", nil]		=>  [:change_date,						  0,	1,	  nil,				0,    [ [:class, :change_date_record] ], "Date this Record was Last Modified"	],
       ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
     },
+    :multimedia_obje_file_record =>
+    { #GEDCOM 5.5.1 multimedia file references, rather than inline blobs.
+      #TITL is at the previous level in the link form.
+      ["TITL", nil]		=>    [nil,		                        0,	1, :string,			248,  [ [:field, :title] ], "Title of the work"	],
+      ["FORM", nil]		=>  [:multimedia_obje_format_record,	0,	1, :string,		4,   [ [:class, :multimedia_obje_format_record], [:field, :format] ], "bmp | gif | jpeg | ole | pcx | tiff | ..."	],
+      #Non-standard note field to allow for user defined tags.
+      ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
+      ["NOTE", :xref]	=> [:note_structure,				  0,	nil,  nil,		  0,    [ [:class, :note_citation_record], [:xref,  [:note_ref, :note]] ], "Link to a Note Record"	],
+      ["NOTE", nil]		=>  [:note_structure_inline,	0,	nil, :string,		248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
+    },
+    :multimedia_file_record =>
+    { #GEDCOM 5.5.1 multimedia file references, rather than inline blobs.
+      #TITL is at the previous level in the link form.
+      #["TITL", nil]		=>    [nil,		                        0,	1, :string,			248,  [ [:field, :title] ], "Title of the work"	],
+      ["FORM", nil]		=>  [:multimedia_format_record,	0,	1, :string,		4,   [ [:class, :multimedia_format_record], [:field, :format] ], "bmp | gif | jpeg | ole | pcx | tiff | ..."	],
+      #Non-standard note field to allow for user defined tags.
+      ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
+      ["NOTE", :xref]	=> [:note_structure,				  0,	nil,  nil,		  0,    [ [:class, :note_citation_record], [:xref,  [:note_ref, :note]] ], "Link to a Note Record"	],
+      ["NOTE", nil]		=>  [:note_structure_inline,	0,	nil, :string,		248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
+    },
+    :multimedia_obje_format_record =>
+    { #GEDCOM 5.5.1 multimedia file references, rather than inline blobs.
+      #multimedia records use TYPE, where multimedia references use MEDI (Why?)
+      ["TYPE", nil]		=>  [nil,	0,	1, :string,		15,   [ [:field, :media_type] ], " audio | book | card | electronic | fiche | film | magazine | manuscript | map | newspaper | photo | tombstone | video"	],
+      #Not standard, but I've seen this form and we might as well recognise it.
+      ["MEDI", nil]		=>  [nil,	0,	1, :string,		15,   [ [:field, :media_type] ], " audio | book | card | electronic | fiche | film | magazine | manuscript | map | newspaper | photo | tombstone | video"	],
+      #Non-standard note field to allow for user defined tags.
+      ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
+      ["NOTE", :xref]	=> [:note_structure,				  0,	nil,  nil,		  0,    [ [:class, :note_citation_record], [:xref,  [:note_ref, :note]] ], "Link to a Note Record"	],
+      ["NOTE", nil]		=>  [:note_structure_inline,	0,	nil, :string,		248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
+    },
+    :multimedia_format_record =>
+    { #GEDCOM 5.5.1 multimedia file references, rather than inline blobs.
+      #multimedia records use TYPE, where multimedia references use MEDI (Why?)
+      ["MEDI", nil]		=>  [nil,	0,	1, :string,		15,   [ [:field, :media_type] ], " audio | book | card | electronic | fiche | film | magazine | manuscript | map | newspaper | photo | tombstone | video"	],
+      #Unlikely to see as TYPE tag, but to be consistent with multimedia_obje_format_record, I've included it. 
+      ["TYPE", nil]		=>  [nil,	0,	1, :string,		15,   [ [:field, :media_type] ], " audio | book | card | electronic | fiche | film | magazine | manuscript | map | newspaper | photo | tombstone | video"	],
+      #Non-standard note field to allow for user defined tags.
+      ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
+      ["NOTE", :xref]	=> [:note_structure,				  0,	nil,  nil,		  0,    [ [:class, :note_citation_record], [:xref,  [:note_ref, :note]] ], "Link to a Note Record"	],
+      ["NOTE", nil]		=>  [:note_structure_inline,	0,	nil, :string,		248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
+    },
 		:multimedia_link =>
     { #/* in line link form*/
-      ["FORM", nil]		=>  [nil,		                  1,	1, :string,	    4,    [ [:field, :format] ], "bmp | gif | jpeg | ole | pcx | tiff | wav |..."	],
+      #GEDCOM 5.5.1
+      #Reploces 5.5 FILE's filename with GEDCOM 5.5.1 class, but has a method in this class to return the first FILE filename, hence give the 5.5 behaviour
+      #I have reused the Multimedia record's multimedia_file_record, which treats TYPE an MEDI as equivalent, but outputs only MEDI. 
+      #It also has TITL as a subordinate tag of FILE, which makes more sense if there are multiple FILE tags allowed, though not if the 
+      #purpose of multiple FILE tags is to collect parts of one object, rather than a collection of related objects.
+      ["FILE", nil]		=>  [:multimedia_file_record,	0,	nil, :string,		120,   [ [:class, :multimedia_file_record], [:field, :filename] ], " local or remote file reference to the auxiliary data"	],
+      ["FORM", nil]		=>  [:multimedia_format_record,		                  1,	1, :string,	    4,    [ [:class, :multimedia_format_record], [:field, :format] ], "bmp | gif | jpeg | ole | pcx | tiff | wav |..."	],
+      #GEDCOM 5.5
       ["TITL", nil]		=>  [nil,		                  0,	1, :string,			248,  [ [:field, :title] ], "Title of the work"	],
       ["NOTE", :xref]	=> [:note_structure,				  0,	nil,  nil,		  0,    [ [:class, :note_citation_record], [:xref,  [:note_ref, :note]] ], "Link to a Note Record"	],
       ["NOTE", nil]		=>  [:note_structure_inline,	0,	nil, :string,		248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
-      #Filename max length is a touch on the short side, so have altered it to 248 (was 30)
-      ["FILE", nil]		=>  [nil,		                  1,	1, :string,			248,  [ [:field, :filename] ], "Multimedia Data's Filename"	],
+      #Filename max length is a touch on the short side, so have altered it to 248 (was 30) to avoid lots of annoying warning messages
+      #GEDCOM 5.5 ["FILE", nil]		=>  [nil,		                  1,	1, :string,			248,  [ [:field, :filename] ], "Multimedia Data's Filename"	],
       ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
     },
 		:encoded_multimedia_line =>
@@ -422,6 +514,11 @@ class GedcomParser
     	 ["NAME", nil]		=>  [nil,			                0,	1, :string,		90,   [ [:field, :repository_name] ], "Official Name of the Archive" 	],
     	 ["ADDR", nil]		=>  [:address_structure,			0,	1, :string,		60,   [ [:class, :address_record], [:field, :address] ], "Address"	],
     	 ["PHON", nil]		=>  [nil,		                  0,	3, :string,		25,   [ [:field, :phonenumber] ], "Phone :number"	],
+       #Added EMAIL,FAX,WWW Gedcom 5.5.1
+       ["EMAIL",  nil]		=>  [nil,		                  0,	3, :string,			120,   [ [:field, :address_email] ],                          "email address"	],
+       ["FAX",  nil]		=>  [nil,		                  0,	3, :string,			60,   [ [:field, :address_fax] ],                          "FAX :number"	],
+       ["WWW",  nil]		=>  [nil,		                  0,	3, :string,			120,   [ [:field, :address_web_page] ],                          "Web URL"	],
+       #
        ["NOTE", :xref]	=>  [:note_structure,				  0,	nil,  nil,				  0,  [ [:class, :note_citation_record], [:xref, [:note_ref, :note]] ], "Link to a Note Record"	],
        ["NOTE", nil]		=>  [:note_structure_inline,	0,	nil, :string,		248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
        ["REFN", nil]		=>  [:family_record_refn,		  0,	nil, :string,	  20,   [ [:class, :refn_record], [:field, :user_reference_number] ], "User Defined Reference :number"	],
@@ -497,6 +594,11 @@ class GedcomParser
     	 ["NAME", nil]		=>  [nil,		                  1,	1, :string,	  60,    [ [:class, :name_record], [:field, :value], [:field, [:attr_type,"NAME"]] , [:pop] ], "Name of the Submitter"	],
     	 ["ADDR", nil]		=>  [:address_structure,			0,	1, :string,		60,   [ [:class, :address_record], [:field, :address] ], "Address"	],
     	 ["PHON", nil]		=>  [nil,		                  0,	3, :string,		25,   [ [:field, :phone] ], "Phone :number"	],
+       #Added EMAIL,FAX,WWW Gedcom 5.5.1
+       ["EMAIL",  nil]		=>  [nil,		                  0,	3, :string,			120,   [ [:field, :address_email] ],                          "email address"	],
+       ["FAX",  nil]		=>  [nil,		                  0,	3, :string,			60,   [ [:field, :address_fax] ],                          "FAX :number"	],
+       ["WWW",  nil]		=>  [nil,		                  0,	3, :string,			120,   [ [:field, :address_web_page] ],                          "Web URL"	],
+       #
        ["OBJE", :xref]	=>  [nil,		                  0,	nil,	nil,				0,  [ [:class, :multimedia_citation_record], [:xref, [:multimedia_ref, :multimedia]], [:pop] ],     "Link to a Multimedia Record"	],
        ["OBJE", nil]		=>  [:multimedia_link,				0,	nil,	nil,				0,  [ [:class, :multimedia_citation_record], [:class, :multimedia_record] ],                 "Inline Multimedia Record"	],
     	 ["LANG", nil]		=>  [nil,		                  0,	3, :languagepreference,	90, [ [:field, :language_list] ], "Ordered List of Prefered Language IDs"	],
@@ -542,7 +644,9 @@ class GedcomParser
     },
 		:child_to_family_link =>
     {
-    	 ["PEDI", nil]		=>  [nil,		                  0,	nil, :pedigree,		  7, [ [:field, :pedigree] ], "Pedigree adopted,birth,foster or sealing"	],
+   	 ["PEDI", nil]		=>  [nil,		                  0,	nil, :pedigree,		  7, [ [:field, :pedigree] ], "Pedigree adopted,birth,foster or sealing"	],
+     #Added STAT Gedcom version 5.5.1
+  	 ["STAT", nil]		=>  [nil,		                  0,	nil, :child_linkage_status,	15, [ [:field, :child_linkage_status] ], "Opinion challenged,disproven,proven"	],
        ["NOTE", :xref]	=> [:note_structure,				  0,	nil,  nil,				    0,  [ [:class, :note_citation_record], [:xref,  [:note_ref, :note]] ], "Link to a Note Record"	],
        ["NOTE", nil]		=>  [:note_structure_inline,		0,	nil, :string,		  248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
        ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
@@ -550,14 +654,21 @@ class GedcomParser
 		:event_detail =>
     {
       #RESN is not standard gedcom.
-      ["RESN", nil]		=>  [nil,		                    0,	1, :restriction_value,	7, [ [:field, :restriction] ], "Record Locked or Parts removed for Privacy"	], #NOT GEDCOM 5.5
+      ["RESN", nil]		=>  [nil,		                    0,	1, :restriction_value,	7, [ [:field, :restriction] ], "Record Locked or Parts removed for Privacy"	], #NOT GEDCOM 5.5, but in 5.5.1
  
        ["TYPE", nil]		=>  [nil,		                    0,	1, :string,			  90,   [ [:field, :event_descriptor] ], "Event Description"	],
        ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,   [ [:class, :date_record], [:field, :date_value] ], "Events Date(s)"	], #illegal note attachment, Note gedcom 5.5 compliant.
        ["PLAC", nil]		=>  [:place_structure,					0,	1, :placehierachy,	120,  [ [:class, :place_record], [:field, :place_value ]], "Jurisdictional Place Hierarchy where the Event Occurred"	],
        ["ADDR", nil]		=>  [:address_structure,				0,	1, :string,			  60,   [ [:class, :address_record], [:field, :address] ], "Address"	],
        ["PHON", nil]		=>  [nil,		                    0,	3, :string,			  25,   [ [:field, :phonenumber] ], "Phone :number"	],
+       #Added EMAIL,FAX,WWW Gedcom 5.5.1
+       ["EMAIL",  nil]		=>  [nil,		                  0,	3, :string,			120,   [ [:field, :address_email] ],                          "email address"	],
+       ["FAX",  nil]		=>  [nil,		                  0,	3, :string,			60,   [ [:field, :address_fax] ],                          "FAX :number"	],
+       ["WWW",  nil]		=>  [nil,		                  0,	3, :string,			120,   [ [:field, :address_web_page] ],                          "Web URL"	],
+       #
        ["AGE", nil]		=>  [nil,		                    0,	1, :age,				    12,   [ [:field, :age] ], "Age at the time of the Event"	],
+       #GEDCOM 5.5.1
+       ["RELI",   nil]		=>  [nil,		                  0,	1, :string,				  90,   [ [:field, :religion] ],                                  "A name of the religion with which this event was affiliated"	],
        ["AGNC", nil]		=>  [nil,		                    0,	1, :string,			  120,  [ [:field, :agency] ], "Controlling/Resonsible Entity/Authority"	],
        ["CAUS", nil]		=>  [:cause_note_structure_inline,0,	1, :string,			  90,   [ [:class, :cause_record], [:field, :cause] ], "Cause of the Event"	],
        ["SOUR", :xref]	=>  [:source_citation,					0,	nil,  nil,				0,  [ [:class, :source_citation_record], [:xref, [:source_ref, :source]] ], "Reference to Source Record"	],
@@ -637,34 +748,94 @@ class GedcomParser
       ["SPFX", nil]		=>  [nil,		                  0,	1, :name_piece_list,		30,   [ [:field, :surname_prefix] ], "Surname Prefix (comma separarted)"	],
       ["SURN", nil]		=>  [nil,		                  0,	1, :name_piece_list,		120,  [ [:field, :surname] ], "Surname(s) (comma separarted)"	],
       ["NSFX", nil]		=>  [nil,		                  0,	1, :name_piece_list,		30,   [ [:field, :suffix] ], "Non-indexed Name Suffix (comma separarted)"	],
+      #GEDCOM 5.5.1 has TYPE, FONE, ROMN tags subordinate to the NAME Tag.
+      ["TYPE", nil]		=>  [nil,		                  0,	1, :name_event_type,		30,   [ [:field, :name_type] ], "aka (i.e. alias)| birth | immigrant | maiden | married | <user defined>"	],
+      ["FONE", nil]		=>  [:name_phonetic_variation,	0,	1, :name_string,		120,   [ [:class, :name_phonetic_record], [:field, :phonetic_name] ], " phonetically written using the method indicated by the subordinate PHONETIC_TYPE"	],
+      ["ROMN", nil]		=>  [:name_romanized_variation,	0,	1, :name_string,		120,   [ [:class, :name_romanized_record], [:field, :romanized_name] ], " Romanized written using the method indicated by the subordinate ROMANIZED_TYPE"	],
+      #
       ["SOUR", :xref]	=>  [:source_citation,					0,	nil,  nil,				0,  [ [:class, :source_citation_record], [:xref, [:source_ref, :source]] ], "Reference to Source Record"	],
       ["SOUR", nil]		=>  [:source_citation_inline,	    0,	nil, :string,	248,  [ [:class, :source_citation_record], [:class, :source_record], [:field, :title] ], "Inline note describing source" 	],
       ["NOTE", :xref]	=>  [:note_structure,				0,	nil,  nil,				        0,    [ [:class, :note_citation_record], [:xref,  [:note_ref, :note]] ], "Link to a Note Record"	],
       ["NOTE", nil]		=>  [:note_structure_inline,	0,	nil, :string,		        248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
       ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
-
-      #Non-Standard Gedcom to have an event details in a personal_name_structure. We have added these, as changing one's name requires event details
-      ["TYPE", nil]		=>  [nil,		                    0,	1, :string,			  90,   [ [:field, :event_descriptor] ], "Event Description"	],
-      ["DATE", nil]		=>  [:date_structure,		            0,	1, :date_value,	  35,   [ [:class, :date_record], [:field, :date_value] ], "Events Date(s)"	], #illegal note attachment, Note gedcom 5.5 compliant.
-      ["PLAC", nil]		=>  [:place_structure,					0,	1, :placehierachy,	120,  [ [:class, :place_record], [:field, :place_value ]], "Jurisdictional Place Hierarchy where the Event Occurred"	],
-      ["ADDR", nil]		=>  [:address_structure,				0,	1, :string,			  60,   [ [:class, :address_record], [:field, :address] ], "Address"	],
-      ["PHON", nil]		=>  [nil,		                    0,	3, :string,			  25,   [ [:field, :phonenumber] ], "Phone :number"	],
-      ["AGE", nil]		=>  [nil,		                    0,	1, :age,				    12,   [ [:field, :age] ], "Age at the time of the Event"	],
-      ["AGNC", nil]		=>  [nil,		                    0,	1, :string,			  120,  [ [:field, :agency] ], "Controlling/Resonsible Entity/Authority"	],
-      ["CAUS", nil]		=>  [:cause_note_structure_inline,0,	1, :string,			  90,   [ [:class, :cause_record], [:field, :cause] ], "Cause of the Event"	],
-      #Subm records in events is not standard gedcom 5.5
-      ["SUBM", :xref]	=>  [nil,		                  0,  nil,	nil,				0,  [ [:xref, [:submitter_ref, :submitter]] ],"Submitter of Record's Information"	],
-      ["OBJE", :xref]	=>  [nil,		                  0,	nil,	nil,				0,  [ [:class, :multimedia_citation_record], [:xref, [:multimedia_ref, :multimedia]], [:pop] ],     "Link to a Multimedia Record"	],
-      ["OBJE", nil]		=>  [:multimedia_link,				0,	nil,	nil,				0,  [ [:class, :multimedia_citation_record], [:class, :multimedia_record] ],                 "Inline Multimedia Record"	],
+    },
+    #GEDCOM 5.5.1
+		:name_phonetic_variation =>
+    {  
+      ["TYPE",  nil]		=>  [nil,		                 0,	1, :phonetic_type,    30,   [  [:field, :phonetic_type] ],  "<user defined> | hangul | kana"	],
+      #Personal name structure tags
+      ["NPFX", nil]		=>  [nil,	                  	0,	1, :name_piece_list,		30,   [ [:field, :prefix] ], "Non-indexed Name Prefix (comma separarted)"	],
+      ["GIVN", nil]		=>  [nil,	                  	0,	1, :name_piece_list,		120,  [ [:field, :given] ], "Given Names (comma separarted)"	],
+      ["NICK", nil]		=>  [nil,	                  	0,	1, :name_piece_list,		120,  [ [:field, :nickname] ], "Nickname(s) (comma separarted)"	],
+      ["SPFX", nil]		=>  [nil,		                  0,	1, :name_piece_list,		30,   [ [:field, :surname_prefix] ], "Surname Prefix (comma separarted)"	],
+      ["SURN", nil]		=>  [nil,		                  0,	1, :name_piece_list,		120,  [ [:field, :surname] ], "Surname(s) (comma separarted)"	],
+      ["NSFX", nil]		=>  [nil,		                  0,	1, :name_piece_list,		30,   [ [:field, :suffix] ], "Non-indexed Name Suffix (comma separarted)"	],
+      #source
+      ["SOUR", :xref]	=>  [:source_citation,					0,	nil,  nil,				0,  [ [:class, :source_citation_record], [:xref, [:source_ref, :source]] ], "Reference to Source Record"	],
+      ["SOUR", nil]		=>  [:source_citation_inline,	    0,	nil, :string,	248,  [ [:class, :source_citation_record], [:class, :source_record], [:field, :title] ], "Inline note describing source" 	],
+      #Notes
+      ["NOTE", :xref]	=>  [:note_structure,				0,	nil,  nil,				        0,    [ [:class, :note_citation_record], [:xref,  [:note_ref, :note]] ], "Link to a Note Record"	],
+      ["NOTE", nil]		=>  [:note_structure_inline,	0,	nil, :string,		        248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
+      ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
+      ["RESN", nil]		=>  [nil,		                    0,	1, :restriction_value,	7, [ [:field, :restriction] ], "Record Locked or Parts removed for Privacy"	], #NOT GEDCOM 5.5.
+    },
+		:name_romanized_variation =>
+    {  
+      ["TYPE",  nil]		=>  [nil,		                 0,	1, :romanized_type,    30,   [  [:field, :romanized_type] ],  "<user defined> | pinyin | romaji | wadegiles"	],
+      #Personal name structure tags
+      ["NPFX", nil]		=>  [nil,	                  	0,	1, :name_piece_list,		30,   [ [:field, :prefix] ], "Non-indexed Name Prefix (comma separarted)"	],
+      ["GIVN", nil]		=>  [nil,	                  	0,	1, :name_piece_list,		120,  [ [:field, :given] ], "Given Names (comma separarted)"	],
+      ["NICK", nil]		=>  [nil,	                  	0,	1, :name_piece_list,		120,  [ [:field, :nickname] ], "Nickname(s) (comma separarted)"	],
+      ["SPFX", nil]		=>  [nil,		                  0,	1, :name_piece_list,		30,   [ [:field, :surname_prefix] ], "Surname Prefix (comma separarted)"	],
+      ["SURN", nil]		=>  [nil,		                  0,	1, :name_piece_list,		120,  [ [:field, :surname] ], "Surname(s) (comma separarted)"	],
+      ["NSFX", nil]		=>  [nil,		                  0,	1, :name_piece_list,		30,   [ [:field, :suffix] ], "Non-indexed Name Suffix (comma separarted)"	],
+      #source
+      ["SOUR", :xref]	=>  [:source_citation,					0,	nil,  nil,				0,  [ [:class, :source_citation_record], [:xref, [:source_ref, :source]] ], "Reference to Source Record"	],
+      ["SOUR", nil]		=>  [:source_citation_inline,	    0,	nil, :string,	248,  [ [:class, :source_citation_record], [:class, :source_record], [:field, :title] ], "Inline note describing source" 	],
+      #Notes
+      ["NOTE", :xref]	=>  [:note_structure,				0,	nil,  nil,				        0,    [ [:class, :note_citation_record], [:xref,  [:note_ref, :note]] ], "Link to a Note Record"	],
+      ["NOTE", nil]		=>  [:note_structure_inline,	0,	nil, :string,		        248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
+      ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
+      ["RESN", nil]		=>  [nil,		                    0,	1, :restriction_value,	7, [ [:field, :restriction] ], "Record Locked or Parts removed for Privacy"	], #NOT GEDCOM 5.5.
     },
 		:place_structure =>
     {
-    	 ["FORM", nil]		=>  [nil,		                  0,	1, :placehierachy, 30,   [ [:field, :place_hierachy] ], "Place Hierachy (comma separarted jurisdictions)"	],
+    	 ["FORM", nil]		=>  [nil,		                  0,	1, :placehierachy, 120,   [ [:field, :place_hierachy] ], "Place Hierachy (comma separarted jurisdictions)"	],
+       #GEDCOM 5.5.1 adds FONE, ROMN, MAP
+       ["FONE", nil]		=>  [:placename_phonetic_variation,	0,	1, :placehierachy,		120,   [ [:class, :placename_phonetic_record], [:field, :phonetic_name] ], " phonetically written using the method indicated by the subordinate PHONETIC_TYPE"	],
+       ["ROMN", nil]		=>  [:placename_romanized_variation,	0,	1, :placehierachy,		120,   [ [:class, :placename_romanized_record], [:field, :romanized_name] ], " Romanized written using the method indicated by the subordinate ROMANIZED_TYPE"	],
+       ["MAP", nil]		=>  [:placename_map_structure,	0,	1, nil,		0,   [ [:class, :placename_map_record] ], "Latitude and Longitude"	],
        ["SOUR", :xref]	=>  [:source_citation,					0,	nil,  nil,				0,  [ [:class, :source_citation_record], [:xref, [:source_ref, :source]] ], "Reference to Source Record"	],
        ["SOUR", nil]		=>  [:source_citation_inline,	    0,	nil, :string,	248,  [ [:class, :source_citation_record], [:class, :source_record], [:field, :title] ], "Inline note describing source" 	],
        ["NOTE", :xref]	=>  [:note_structure,				0,	nil,  nil,				    0,    [ [:class, :note_citation_record], [:xref,  [:note_ref, :note]] ], "Link to a Note Record"	],
        ["NOTE", nil]		=>  [:note_structure_inline,		0,	nil, :string,		    248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
        ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
+    },
+    #GEDCOM 5.5.1
+		:placename_map_structure =>
+    {  
+      ["LATI",  nil]		=>  [nil,		                 0,	1, :latitude,    8,   [  [:field, :latitude] ],  "Decimal format e.g. N18.150944"	],
+      ["LONG",  nil]		=>  [nil,		                 0,	1, :longitude,    8,   [  [:field, :longitude] ],  "Decimal format e.g. E168.150944"	],
+      #Notes
+      ["NOTE", :xref]	=>  [:note_structure,				0,	nil,  nil,				        0,    [ [:class, :note_citation_record], [:xref,  [:note_ref, :note]] ], "Link to a Note Record"	],
+      ["NOTE", nil]		=>  [:note_structure_inline,	0,	nil, :string,		        248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
+      ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
+    },
+		:placename_phonetic_variation =>
+    {  
+      ["TYPE",  nil]		=>  [nil,		                 0,	1, :phonetic_type,    30,   [  [:field, :phonetic_type] ],  "<user defined> | hangul | kana"	],
+      #Notes
+      ["NOTE", :xref]	=>  [:note_structure,				0,	nil,  nil,				        0,    [ [:class, :note_citation_record], [:xref,  [:note_ref, :note]] ], "Link to a Note Record"	],
+      ["NOTE", nil]		=>  [:note_structure_inline,	0,	nil, :string,		        248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
+      ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
+    },
+		:placename_romanized_variation =>
+    {  
+      ["TYPE",  nil]		=>  [nil,		                 0,	1, :romanized_type,    30,   [  [:field, :romanized_type] ],  "<user defined> | pinyin | romaji | wadegiles"	],
+      #Notes
+      ["NOTE", :xref]	=>  [:note_structure,				0,	nil,  nil,				        0,    [ [:class, :note_citation_record], [:xref,  [:note_ref, :note]] ], "Link to a Note Record"	],
+      ["NOTE", nil]		=>  [:note_structure_inline,	0,	nil, :string,		        248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Inline Note Record"	],
+      ["NOTE", :user]		=>  [:user_subtag,	          0,	nil, :string,	248,  [ [:class, :note_citation_record], [:class, :note_record], [:field, :note] ], "Treat Unknown Tags as Single line notes"	],
     },
 		:source_citation =>
     {

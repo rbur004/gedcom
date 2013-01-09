@@ -275,6 +275,10 @@ class GEDCOMBase
   #validate that the record referenced by the XREF actually exists in this transmission.
   #Genearte a warning if it does not. It does not stop the processing of this line.
   def xref_check( level, tag, xref )
+    if xref.class != Xref
+      print "#{level+1} XREF_CHECK ****************#{level}, #{tag}. #{xref.class} != Xref?\n"
+      return
+    end
     if @transmission != nil && @transmission.find(xref.index, xref.xref_value) == nil
       #Warning message that reference points to an unknown target.
       print "#{level+1} NOTE ****************#{level}, #{tag} Key not found: #{xref.index} #{xref.xref_value}\n"

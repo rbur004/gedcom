@@ -25,10 +25,30 @@ require 'gedcom_base.rb'
 #* Those ending in _ref are GEDCOM XREF index keys
 #* Those ending in _record are array of classes of that type.
 #* The remainder are arrays of attributes that could be present in the SUBM records.
+#
+# GEDCOM 5.5.1 Draft adds (at same level as ADDR)
+#  I have not included these in the Address_record, but include them in the parent
+#  records that include ADDRESS_STRUCTURE. This is functionally equivalent, as they are not
+#  sub-records of ADDR, but at the same level.
+#
+#  n EMAIL <ADDRESS_EMAIL>               {0:3}
+#  n FAX <ADDRESS_FAX>                   {0:3}
+#  n WWW <ADDRESS_WEB_PAGE>              {0:3}
+#
+#==ADDRESS_EMAIL:= {SIZE=5:120}
+#  An electronic address that can be used for contact such as an email address.
+#
+#== ADDRESS_FAX:= {SIZE=5:60}
+#  A FAX telephone number appropriate for sending data facsimiles.
+#
+#==ADDRESS_WEB_PAGE:= {SIZE=5:120}
+#  The world wide web page address.
+#
 
 class Submitter_record < GEDCOMBase
   attr_accessor :submitter_ref, :name_record, :address_record, :phone, :multimedia_citation_record
   attr_accessor :language_list, :lds_submitter_id, :automated_record_id, :change_date_record, :note_citation_record
+  attr_accessor :address_email, :address_fax, :address_web_page #GEDCOM 5.5.1 Draft
 
   ClassTracker <<  :Submitter_record
    
@@ -40,6 +60,9 @@ class Submitter_record < GEDCOMBase
                     [:walk, nil,    :name_record ],
                     [:walk, nil,    :address_record ],
                     [:print, "PHON",    :phone ],
+                    [:print, "EMAIL",    :address_email ],
+                    [:print, "FAX",    :address_fax ],
+                    [:print, "WWW",    :address_web_page ],
                     [:print, "LANG",    :language_list ],
                     [:walk, nil,    :multimedia_citation_record ],
                     [:walk, nil,    :note_citation_record ],

@@ -31,7 +31,7 @@ require 'gedcom_base.rb'
 #* Those ending in _record are array of classes of that type.
 #* The remainder are arrays of attributes that could be present in this record.
 class Header_data_record < GEDCOMBase
-  attr_accessor :data_source, :date, :copyright
+  attr_accessor :data_source, :date, :copyright_record
   attr_accessor :note_citation_record
 
   ClassTracker <<  :Header_data_record
@@ -42,8 +42,14 @@ class Header_data_record < GEDCOMBase
     @this_level = [ [:print, "DATA", :data_source] ]
     @sub_level =  [ #level + 1
                     [:print, "DATE", :date],
-                    [:print, "COPR", :copyright],
+                    #[:print, "COPR", :copyright], #GEDCOM5.5
+                    [:walk, nil, :copyright_record], #GEDCOM5.5.1 "COPR"
                     [:walk, nil,    :note_citation_record],
                   ]
   end  
+  
+  def copyright
+    copyright_record != nil ? copyright_record.first.copyright : nil
+  end
+      
 end

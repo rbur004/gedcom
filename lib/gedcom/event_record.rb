@@ -134,7 +134,7 @@ require 'gedcom_base.rb'
 #  change its basic process. The form of using the TYPE tag with defined event tags has not been used
 #  by very many products. The MARR tag could be subordinated with a TYPE tag and
 #  EVENT_DESCRIPTOR value of Common Law. Other possible descriptor values might include
-#  "Childbirth—unmarried," "Common Law," or "Tribal Custom," for example. The event descriptor
+#  "Childbirth-unmarried," "Common Law," or "Tribal Custom," for example. The event descriptor
 #  should use the same word or phrase and in the same language, when possible, as was used by the
 #  recorder of the event. Systems that display data from the GEDCOM form should be able to display the
 #  descriptor value in their screen or printed output.
@@ -153,6 +153,25 @@ require 'gedcom_base.rb'
 #* Those ending in _ref are GEDCOM XREF index keys
 #* Those ending in _record are array of classes of that type.
 #* The remainder are arrays of attributes that could be present in this record.
+#
+# GEDCOM 5.5.1 Draft adds (at same level as ADDR)
+#  I have not included these in the Address_record, but include them in the parent
+#  records that include ADDRESS_STRUCTURE. This is functionally equivalent, as they are not
+#  sub-records of ADDR, but at the same level.
+#
+#  n EMAIL <ADDRESS_EMAIL>               {0:3}
+#  n FAX <ADDRESS_FAX>                   {0:3}
+#  n WWW <ADDRESS_WEB_PAGE>              {0:3}
+#
+#==ADDRESS_EMAIL:= {SIZE=5:120}
+#  An electronic address that can be used for contact such as an email address.
+#
+#== ADDRESS_FAX:= {SIZE=5:60}
+#  A FAX telephone number appropriate for sending data facsimiles.
+#
+#==ADDRESS_WEB_PAGE:= {SIZE=5:120}
+#  The world wide web page address.
+#
 class Event_record < GEDCOMBase
   attr_accessor :restriction #not standard at the event level, but we might want this in DB.
   attr_accessor :event_type, :event_descriptor
@@ -160,6 +179,7 @@ class Event_record < GEDCOMBase
   attr_accessor :agency, :cause_record, :source_citation_record, :submitter_ref
   attr_accessor :multimedia_citation_record, :note_citation_record, :event_age_record, :adoption_record
   attr_accessor :lds_temp_code, :lds_date_status, :lds_slgc_family_ref
+  attr_accessor :address_email, :address_fax, :address_web_page, :religion #GEDCOM 5.5.1 Draft
 
   ClassTracker <<  :Event_record
   
@@ -175,6 +195,9 @@ class Event_record < GEDCOMBase
                     [:walk, nil, :place_record],
                     [:walk, nil, :address_record],
                     [:print, "PHON", :phonenumber],
+                    [:print, "EMAIL", :address_email],
+                    [:print, "WWW", :address_web_page],
+                    [:print, "FAX", :address_fax],
                     [:print, "AGE", :age],
                     [:walk, nil,  :event_age_record],
                     [:print, "AGNC", :agency],
@@ -184,6 +207,7 @@ class Event_record < GEDCOMBase
                     [:xref, "SUBM", :submitter_ref],
                     [:walk, nil, :adoption_record],
                     [:xref, "FAMC",  :lds_slgc_family_ref],
+                    [:print, "RELI", :religion], #GEDCOM 5.5.1
                   ]
   end
       

@@ -6,5 +6,8 @@
   Checks the gedcom file FAMC, FAMS, HUSB, WIFE, CHIL and SUBM xrefs resolve to valid records.
   Required adding IndividualRecord.child? and IndividualRecord.spouse? for tests.
   Fixed bug in IndividualRecord.spouses and IndividualRecord.parents_family as neither worked and were used by tests.
+* Removed 'require chart.rb' which was left in production code by mistake
+* Added in the GEDCOM 5.5.1 Draft changes. Most changes are alternatives to the 5.5 standard, but the Multimedia record
+  File and Format structure is different, so these are now classes, rather than attributes.
 
 

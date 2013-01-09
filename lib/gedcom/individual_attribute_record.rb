@@ -103,6 +103,7 @@ class Individual_attribute_record < Event_record
     when "RESI" then tag
     when "SSN"  then tag
     when "TITL" then tag
+    when "FACT" then tag #GEDCOM 5.5.1
     else super(tag)
     end
   end

@@ -18,6 +18,8 @@
 2 DATA Name of source data
 3 DATE 1 JAN 1998
 3 COPR Copyright of source data
+4 CONT Test of Gedcom 5.5.1 CONT in COPR
+4 CONC and Test of Gedcom 5.5.1 CONC in COPR
 1 SUBM @SUBMITTER@
 1 SUBN @SUBMISSION@
 1 _HME @PERSON1@
@@ -1426,6 +1428,12 @@
 2 FORM jpeg
 2 NOTE @N14@
 2 FILE ImgFile.JPG
+1 OBJE
+2 TITL JPEG image file link 2
+2 FILE ImgFile2.JPG
+3 FORM jpeg
+4 MEDI Film
+2 NOTE TEST of MEDI in OBJE in GED 5.5.1
 1 REFN User Reference Number
 2 TYPE User Reference Type
 1 RIN 1
@@ -2159,4 +2167,11 @@
 1 CHAN
 2 DATE 14 Jan 2001
 3 TIME 14:10:31
+0 @M2@ OBJE
+1 FILE http://www.somewhere.com/file.jpg
+2 FORM jpg
+3 TYPE WWW
+2 TITL The picture
+1 NOTE New Gedcom 5.5.1 file reference Multimedia record format
+1 SOUR This great web page.
 0 TRLR
