@@ -6,9 +6,9 @@
 #/usr/local/bin/rake gem
 
 #create doc/
-#/usr/local/bin/rake --trace docs  
+/usr/local/bin/rake --trace docs  
 #In directory docs/
-#(cd doc; scp -r . rbur004@rubyforge.org:/var/www/gforge-projects/gedcom/)
+(cd doc; scp -r . rbur004@rubyforge.org:/var/www/gforge-projects/gedcom/)
 
 #Copy up to rubygem.org
 #/usr/local/bin/rake release VERSION=0.9.3
