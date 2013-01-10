@@ -1,4 +1,4 @@
-=== 0.9.1 / 2012-19-27
+=== 0.9.3 / 2013-01-10
 
 * transcription of code from original C source base.
 * Bug fix to GEDCOMBase.xref_check, which didn't qualify index lookup when printing an error message.

@@ -1,6 +1,8 @@
 = gedcom
 
-* http://rubyforge.org/projects/gedcom/
+* http://rbur004.github.com/gedcom/
+* Source https://github.com/rbur004/gedcom
+* Gem https://rubygems.org/gems/gedcom
 
 == DESCRIPTION:
 
@@ -117,7 +119,7 @@ Copyright (c) 2009
 
 4. You may modify and include the part of the software into any other
    software (possibly commercial).  But some files in the distribution
-   may not written by the author, so that they are not under this terms.
+   may not have been written by the author, so that they are not under this terms.
 
 5. The scripts and library files supplied as input to or produced as 
    output from the software do not automatically fall under the
