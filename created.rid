@@ -1,4 +1,4 @@
-Thu, 10 Jan 2013 21:02:13 +1300
+Thu, 10 Jan 2013 21:55:14 +1300
 lib/chart/bit.rb	Wed, 09 Jan 2013 20:49:47 +1300
 lib/chart/btree.rb	Wed, 01 Apr 2009 23:53:10 +1300
 lib/chart/chart.rb	Tue, 31 Mar 2009 21:00:28 +1300
@@ -67,5 +67,5 @@ lib/parser/instruction.rb	Sun, 22 Mar 2009 17:53:28 +1300
 lib/parser/parse_state.rb	Tue, 24 Mar 2009 21:59:16 +1300
 History.txt	Thu, 10 Jan 2013 13:12:03 +1300
 Manifest.txt	Wed, 09 Jan 2013 19:26:01 +1300
-README.txt	Thu, 10 Jan 2013 13:14:39 +1300
+README.txt	Thu, 10 Jan 2013 21:54:03 +1300
 test_data/README.txt	Sat, 21 Apr 2007 23:28:20 +1200
