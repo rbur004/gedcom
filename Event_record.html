@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=US-ASCII" http-equiv="Content-Type">
+
+<title>class Event_record - gedcom-0.9.3 Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/gedcom/event_record.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="GEDCOMBase.html">GEDCOMBase</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-i-date">#date</a>
+    
+    <li><a href="#method-i-event_tag">#event_tag</a>
+    
+    <li><a href="#method-i-is_event-3F">#is_event?</a>
+    
+    <li><a href="#method-i-place">#place</a>
+    
+    <li><a href="#method-i-to_gedcom">#to_gedcom</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./History_txt.html">History</a>
+  
+    <li class="file"><a href="./Manifest_txt.html">Manifest</a>
+  
+    <li class="file"><a href="./README_txt.html">README</a>
+  
+    <li class="file"><a href="./test_data/README_txt.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Address_record.html">Address_record</a>
+  
+    <li><a href="./Adoption_record.html">Adoption_record</a>
+  
+    <li><a href="./Association_record.html">Association_record</a>
+  
+    <li><a href="./Bit.html">Bit</a>
+  
+    <li><a href="./Btree.html">Btree</a>
+  
+    <li><a href="./Btree_data.html">Btree_data</a>
+  
+    <li><a href="./Btree_node.html">Btree_node</a>
+  
+    <li><a href="./Cause_record.html">Cause_record</a>
+  
+    <li><a href="./Change_date_record.html">Change_date_record</a>
+  
+    <li><a href="./Character_set_record.html">Character_set_record</a>
+  
+    <li><a href="./Chart.html">Chart</a>
+  
+    <li><a href="./Citation_data_record.html">Citation_data_record</a>
+  
+    <li><a href="./Citation_event_type_record.html">Citation_event_type_record</a>
+  
+    <li><a href="./ClassTracker.html">ClassTracker</a>
+  
+    <li><a href="./Copyright_record.html">Copyright_record</a>
+  
+    <li><a href="./Corporate_record.html">Corporate_record</a>
+  
+    <li><a href="./Date_record.html">Date_record</a>
+  
+    <li><a href="./Decendant.html">Decendant</a>
+  
+    <li><a href="./Encoded_line_record.html">Encoded_line_record</a>
+  
+    <li><a href="./Event_age_record.html">Event_age_record</a>
+  
+    <li><a href="./Event_record.html">Event_record</a>
+  
+    <li><a href="./Events_list_record.html">Events_list_record</a>
+  
+    <li><a href="./Families_individuals.html">Families_individuals</a>
+  
+    <li><a href="./Family_record.html">Family_record</a>
+  
+    <li><a href="./GEDCOMBase.html">GEDCOMBase</a>
+  
+    <li><a href="./GedLine.html">GedLine</a>
+  
+    <li><a href="./GedString.html">GedString</a>
+  
+    <li><a href="./Gedcom.html">Gedcom</a>
+  
+    <li><a href="./GedcomParser.html">GedcomParser</a>
+  
+    <li><a href="./Gedcom_record.html">Gedcom_record</a>
+  
+    <li><a href="./Header_data_record.html">Header_data_record</a>
+  
+    <li><a href="./Header_record.html">Header_record</a>
+  
+    <li><a href="./Header_source_record.html">Header_source_record</a>
+  
+    <li><a href="./Individual_attribute_record.html">Individual_attribute_record</a>
+  
+    <li><a href="./Individual_record.html">Individual_record</a>
+  
+    <li><a href="./Instruction.html">Instruction</a>
+  
+    <li><a href="./Multimedia_citation_record.html">Multimedia_citation_record</a>
+  
+    <li><a href="./Multimedia_file_record.html">Multimedia_file_record</a>
+  
+    <li><a href="./Multimedia_format_record.html">Multimedia_format_record</a>
+  
+    <li><a href="./Multimedia_obje_file_record.html">Multimedia_obje_file_record</a>
+  
+    <li><a href="./Multimedia_obje_format_record.html">Multimedia_obje_format_record</a>
+  
+    <li><a href="./Multimedia_record.html">Multimedia_record</a>
+  
+    <li><a href="./Name_phonetic_record.html">Name_phonetic_record</a>
+  
+    <li><a href="./Name_record.html">Name_record</a>
+  
+    <li><a href="./Name_romanized_record.html">Name_romanized_record</a>
+  
+    <li><a href="./Note_citation_record.html">Note_citation_record</a>
+  
+    <li><a href="./Note_record.html">Note_record</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./PEDIGREE_WIDTH.html">PEDIGREE_WIDTH</a>
+  
+    <li><a href="./ParseState.html">ParseState</a>
+  
+    <li><a href="./Place_record.html">Place_record</a>
+  
+    <li><a href="./Placename_map_record.html">Placename_map_record</a>
+  
+    <li><a href="./Placename_phonetic_record.html">Placename_phonetic_record</a>
+  
+    <li><a href="./Placename_romanized_record.html">Placename_romanized_record</a>
+  
+    <li><a href="./Refn_record.html">Refn_record</a>
+  
+    <li><a href="./Repository_caln.html">Repository_caln</a>
+  
+    <li><a href="./Repository_citation_record.html">Repository_citation_record</a>
+  
+    <li><a href="./Repository_record.html">Repository_record</a>
+  
+    <li><a href="./Source_citation_record.html">Source_citation_record</a>
+  
+    <li><a href="./Source_record.html">Source_record</a>
+  
+    <li><a href="./Source_scope_record.html">Source_scope_record</a>
+  
+    <li><a href="./Submission_record.html">Submission_record</a>
+  
+    <li><a href="./Submitter_record.html">Submitter_record</a>
+  
+    <li><a href="./Text_record.html">Text_record</a>
+  
+    <li><a href="./Trailer_record.html">Trailer_record</a>
+  
+    <li><a href="./Transmission.html">Transmission</a>
+  
+    <li><a href="./TransmissionBase.html">TransmissionBase</a>
+  
+    <li><a href="./Xref.html">Xref</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Event_record</h1>
+
+  <div id="description" class="description">
+    
+<p><a href="Event_record.html">Event_record</a> holds multiple GEDCOM event
+record types. The type being held in @event_type.</p>
+
+<p>The following are all events and are stored in an <a
+href="Event_record.html">Event_record</a> object with their Tag as the @<a
+href="Event_record.html#attribute-i-event_type">#event_type</a>:</p>
+
+<h1 id="label-FAMILY_EVENT_STRUCTURE%3A%3D++++++++++++++++++++++%7B0%3AM%7D">FAMILY_EVENT_STRUCTURE:=                      {0:M}</h1>
+
+<pre>n [ ANUL | CENS | DIV | DIVF ] [Y|&lt;NULL&gt;]    {1:1}
+  +1 &lt;&lt;EVENT_DETAIL&gt;&gt;                        {0:1}
+n [ ENGA | MARR | MARB | MARC ] [Y|&lt;NULL&gt;]   {1:1}
+  +1 &lt;&lt;EVENT_DETAIL&gt;&gt;                        {0:1}
+n [ MARL | MARS ] [Y|&lt;NULL&gt;]                 {1:1}
+  +1 &lt;&lt;EVENT_DETAIL&gt;&gt;                        {0:1}
+n EVEN                                       {1:1}
+  +1 &lt;&lt;EVENT_DETAIL&gt;&gt;                        {0:1}</pre>
+
+<h1 id="label-INDIVIDUAL_EVENT_STRUCTURE%3A%3D">INDIVIDUAL_EVENT_STRUCTURE:=</h1>
+
+<pre>n [ BIRT | CHR ] [Y|&lt;NULL&gt;]                  {1:1}
+  +1 &lt;&lt;EVENT_DETAIL&gt;&gt;                        {0:1}
+  +1 FAMC @&lt;XREF:FAM&gt;@                       {0:1}
+n [ DEAT | BURI | CREM ] [Y|&lt;NULL&gt;]          {1:1}
+  +1 &lt;&lt;EVENT_DETAIL&gt;&gt;                        {0:1}
+n ADOP [Y|&lt;NULL&gt;]                            {1:1}
+  +1 &lt;&lt;EVENT_DETAIL&gt;&gt;                        {0:1}
+  +1 FAMC @&lt;XREF:FAM&gt;@                       {0:1}
+    +2 ADOP &lt;ADOPTED_BY_WHICH_PARENT&gt;        {0:1}
+n [ BAPM | BARM | BASM | BLES ] [Y|&lt;NULL&gt;]   {1:1}
+  +1 &lt;&lt;EVENT_DETAIL&gt;&gt;                        {0:1}
+n [ CHRA | CONF | FCOM | ORDN ] [Y|&lt;NULL&gt;]   {1:1}
+  +1 &lt;&lt;EVENT_DETAIL&gt;&gt;                        {0:1}
+n [ NATU | EMIG | IMMI ] [Y|&lt;NULL&gt;]          {1:1}
+  +1 &lt;&lt;EVENT_DETAIL&gt;&gt;                        {0:1}
+n [ CENS | PROB | WILL] [Y|&lt;NULL&gt;]           {1:1}
+  +1 &lt;&lt;EVENT_DETAIL&gt;&gt;                        {0:1}
+n [ GRAD | RETI ] [Y|&lt;NULL&gt;]                 {1:1}
+  +1 &lt;&lt;EVENT_DETAIL&gt;&gt;                        {0:1}
+n EVEN                                       {1:1}
+  +1 &lt;&lt;EVENT_DETAIL&gt;&gt;                        {0:1}</pre>
+
+<h1 id="label-LDS_INDIVIDUAL_ORDINANCE%3A%3D++++++++++++++++++++%7B0%3AM%7D">LDS_INDIVIDUAL_ORDINANCE:=                    {0:M}</h1>
+
+<pre>n [ BAPL | CONL ]                            {1:1}
+  +1 STAT &lt;LDS_BAPTISM_DATE_STATUS&gt;          {0:1}
+  +1 DATE &lt;DATE_LDS_ORD&gt;                     {0:1}
+  +1 TEMP &lt;TEMPLE_CODE&gt;                      {0:1}
+  +1 PLAC &lt;PLACE_LIVING_ORDINANCE&gt;           {0:1}
+  +1 &lt;&lt;SOURCE_CITATION&gt;&gt;                     {0:M}
+  +1 &lt;&lt;NOTE_STRUCTURE&gt;&gt;                      {0:M}
+n ENDL {1:1}
+  +1 STAT &lt;LDS_ENDOWMENT_DATE_STATUS&gt;        {0:1}
+  +1 DATE &lt;DATE_LDS_ORD&gt;                     {0:1}
+  +1 TEMP &lt;TEMPLE_CODE&gt;                      {0:1}
+  +1 PLAC &lt;PLACE_LIVING_ORDINANCE&gt;           {0:1}
+  +1 &lt;&lt;SOURCE_CITATION&gt;&gt;                     {0:M}
+  +1 &lt;&lt;NOTE_STRUCTURE&gt;&gt;                      {0:M}
+n SLGC {1:1}
+  +1 STAT &lt;LDS_CHILD_SEALING_DATE_STATUS&gt;    {0:1}
+  +1 DATE &lt;DATE_LDS_ORD&gt;                     {0:1}
+  +1 TEMP &lt;TEMPLE_CODE&gt;                      {0:1}
+  +1 PLAC &lt;PLACE_LIVING_ORDINANCE&gt;           {0:1}
+  +1 FAMC @&lt;XREF:FAM&gt;@                       {1:1}
+  +1 &lt;&lt;SOURCE_CITATION&gt;&gt;                     {0:M}
+  +1 &lt;&lt;NOTE_STRUCTURE&gt;&gt;                      {0:M}</pre>
+
+<h1 id="label-LDS_SPOUSE_SEALING%3A%3D">LDS_SPOUSE_SEALING:=</h1>
+
+<pre class="ruby"><span class="ruby-identifier">n</span> <span class="ruby-constant">SLGS</span> {<span class="ruby-value">1</span><span class="ruby-operator">:</span><span class="ruby-value">1</span>}
+  <span class="ruby-value">+1</span> <span class="ruby-constant">STAT</span> <span class="ruby-operator">&lt;</span><span class="ruby-constant">LDS_SPOUSE_SEALING_DATE_STATUS</span><span class="ruby-operator">&gt;</span>   {<span class="ruby-value">0</span><span class="ruby-operator">:</span><span class="ruby-value">1</span>}
+  <span class="ruby-value">+1</span> <span class="ruby-constant">DATE</span> <span class="ruby-operator">&lt;</span><span class="ruby-constant">DATE_LDS_ORD</span><span class="ruby-operator">&gt;</span>                     {<span class="ruby-value">0</span><span class="ruby-operator">:</span><span class="ruby-value">1</span>}
+  <span class="ruby-value">+1</span> <span class="ruby-constant">TEMP</span> <span class="ruby-operator">&lt;</span><span class="ruby-constant">TEMPLE_CODE</span><span class="ruby-operator">&gt;</span>                      {<span class="ruby-value">0</span><span class="ruby-operator">:</span><span class="ruby-value">1</span>}
+  <span class="ruby-value">+1</span> <span class="ruby-constant">PLAC</span> <span class="ruby-operator">&lt;</span><span class="ruby-constant">PLACE_LIVING_ORDINANCE</span><span class="ruby-operator">&gt;</span>           {<span class="ruby-value">0</span><span class="ruby-operator">:</span><span class="ruby-value">1</span>}
+  <span class="ruby-value">+1</span> <span class="ruby-operator">&lt;&lt;</span><span class="ruby-constant">SOURCE_CITATION</span><span class="ruby-operator">&gt;&gt;</span>                     {<span class="ruby-value">0</span><span class="ruby-operator">:</span><span class="ruby-constant">M</span>}
+  <span class="ruby-value">+1</span> <span class="ruby-operator">&lt;&lt;</span><span class="ruby-constant">NOTE_STRUCTURE</span><span class="ruby-operator">&gt;&gt;</span>                      {<span class="ruby-value">0</span><span class="ruby-operator">:</span><span class="ruby-constant">M</span>}
+
+<span class="ruby-constant">The</span> <span class="ruby-constant">EVEN</span> <span class="ruby-identifier">tag</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">this</span> <span class="ruby-identifier">structure</span> <span class="ruby-identifier">is</span> <span class="ruby-keyword">for</span> <span class="ruby-identifier">recording</span> <span class="ruby-identifier">general</span> <span class="ruby-identifier">events</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">attributes</span> <span class="ruby-identifier">that</span> <span class="ruby-identifier">are</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">shown</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">the</span>
+<span class="ruby-identifier">above</span> <span class="ruby-string">&quot;by using a subordinate TYPE tag to show what event or attribute is recorded. For example, a
+candidate for state senate in the 1952 election could be recorded:
+  1 EVEN
+    2 TYPE Election
+    2 DATE 07 NOV 1952
+    2 NOTE Candidate for State Senate.
+
+The TYPE tag is also optionally used to modify the basic understanding of its superior event and is
+usually provided by the user. For example:
+  1 ORDN
+    2 TYPE Deacon
+
+The presence of a DATE tag and/or PLACe tag makes the assertion of when and/or where the event
+took place, and therefore that the event did happen. The absence of both of these tags require a
+Y(es) value on the parent TAG line to assert that the event happened. Using this convention protects
+GEDCOM processors which may remove (prune) lines that have no value and no subordinate lines.
+It also allows a note or source to be attached to the event context without implying that the event
+occurred.
+
+It is not proper to use a N(o) value with an event tag to infer that it did not happen. Inferring that an
+event did not occur would require a different tag. A symbol such as using an exclamation mark (!)
+preceding an event tag to indicate an event is known not to have happened may be defined in the future.
+&quot;</span><span class="ruby-operator">&gt;&gt;</span>. <span class="ruby-constant">The</span> <span class="ruby-identifier">general</span> <span class="ruby-identifier">event</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">attribute</span> <span class="ruby-identifier">type</span> <span class="ruby-identifier">is</span> <span class="ruby-identifier">declared</span>
+</pre>
+
+<h1 id="label-EVENT_DETAIL%3A%3D+%28These+all+get+included+in+the+Event_record+as+attributes%29">EVENT_DETAIL:= (These all get included in the <a href="Event_record.html">Event_record</a> as attributes)</h1>
+
+<pre>n TYPE &lt;EVENT_DESCRIPTOR&gt;                {0:1}
+n DATE &lt;DATE_VALUE&gt;                      {0:1}
+n &lt;&lt;PLACE_STRUCTURE&gt;&gt;                    {0:1}
+n &lt;&lt;ADDRESS_STRUCTURE&gt;&gt;                  {0:1}
+n AGE &lt;AGE_AT_EVENT&gt;                     {0:1}
+n AGNC &lt;RESPONSIBLE_AGENCY&gt;              {0:1}
+n CAUS &lt;CAUSE_OF_EVENT&gt;                  {0:1}
+n &lt;&lt;SOURCE_CITATION&gt;&gt;                    {0:M}
+n &lt;&lt;MULTIMEDIA_LINK&gt;&gt;                    {0:M}
+n &lt;&lt;NOTE_STRUCTURE&gt;&gt;                     {0:M}</pre>
+
+<h2 id="label-AGE_AT_EVENT%3A%3D+++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A12%7D">AGE_AT_EVENT:=                                               {Size=1:12}</h2>
+
+<pre>[ &lt; | &gt; | &lt;NULL&gt;] YYy MMm DDDd | YYy | MMm | DDDd | YYy MMm | YYy DDDd | MMm DDDd | CHILD | INFANT | STILLBORN
+
+Where:
+  &gt;::         greater than indicated age
+  &lt;::         less than indicated age
+  y::         a label indicating years
+  m::         a label indicating months
+  d::         a label indicating days
+  YY::        number of full years
+  MM::        number of months
+  DDD::       number of days
+  CHILD::     age &lt; 8 years
+  INFANT::    age &lt; 1 year
+  STILLBORN:: died just prior, at, or near birth, 0 years
+
+A number that indicates the age in years, months, and days that the principal was at the time of the
+associated event. Any labels must come after their corresponding number, for example; 4y 8m 10d.</pre>
+
+<h2 id="label-EVENT_DESCRIPTOR%3A%3D+++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A90%7D">EVENT_DESCRIPTOR:=                                           {Size=1:90}</h2>
+
+<pre>A descriptor that should be used whenever the EVEN tag is used to define the event being cited. For
+example, if the event was a purchase of a residence, the EVEN tag would be followed by a
+subordinate TYPE tag with the value &quot;Purchased Residence.&quot; Using this descriptor with any of the
+other defined event tags basically classifies the basic definition of the associated tag but does not
+change its basic process. The form of using the TYPE tag with defined event tags has not been used
+by very many products. The MARR tag could be subordinated with a TYPE tag and
+EVENT_DESCRIPTOR value of Common Law. Other possible descriptor values might include
+&quot;Childbirth-unmarried,&quot; &quot;Common Law,&quot; or &quot;Tribal Custom,&quot; for example. The event descriptor
+should use the same word or phrase and in the same language, when possible, as was used by the
+recorder of the event. Systems that display data from the GEDCOM form should be able to display the
+descriptor value in their screen or printed output.</pre>
+
+<h2 id="label-RESPONSIBLE_AGENCY%3A%3D+++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A120%7D">RESPONSIBLE_AGENCY:=                                         {Size=1:120}</h2>
+
+<pre>The organization, institution, corporation, person, or other entity that has authority or control
+interests in the associated context. For example, an employer of a person of an associated occupation,
+or a church that administered rites or events, or an organization responsible for creating and/or
+archiving records.</pre>
+
+<h2 id="label-CAUSE_OF_EVENT%3A%3D+++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A90%7D">CAUSE_OF_EVENT:=                                             {Size=1:90}</h2>
+
+<pre>Used in special cases to record the reasons which precipitated an event. Normally this will be used
+subordinate to a death event to show cause of death, such as might be listed on a death certificate.</pre>
+
+<p>The attributes are all arrays for the level +1 tags/records.</p>
+<ul><li>
+<p>Those ending in _ref are GEDCOM XREF index keys</p>
+</li><li>
+<p>Those ending in _record are array of classes of that type.</p>
+</li><li>
+<p>The remainder are arrays of attributes that could be present in this
+record.</p>
+</li></ul>
+
+<pre>GEDCOM 5.5.1 Draft adds (at same level as ADDR)
+ I have not included these in the Address_record, but include them in the parent
+ records that include ADDRESS_STRUCTURE. This is functionally equivalent, as they are not
+ sub-records of ADDR, but at the same level.
+
+ n EMAIL &lt;ADDRESS_EMAIL&gt;               {0:3}
+ n FAX &lt;ADDRESS_FAX&gt;                   {0:3}
+ n WWW &lt;ADDRESS_WEB_PAGE&gt;              {0:3}</pre>
+
+<h2 id="label-ADDRESS_EMAIL%3A%3D+%7BSIZE%3D5%3A120%7D">ADDRESS_EMAIL:= {SIZE=5:120}</h2>
+
+<pre>An electronic address that can be used for contact such as an email address.</pre>
+
+<h2 id="label-ADDRESS_FAX%3A%3D+%7BSIZE%3D5%3A60%7D">ADDRESS_FAX:= {SIZE=5:60}</h2>
+
+<pre>A FAX telephone number appropriate for sending data facsimiles.</pre>
+
+<h2 id="label-ADDRESS_WEB_PAGE%3A%3D+%7BSIZE%3D5%3A120%7D">ADDRESS_WEB_PAGE:= {SIZE=5:120}</h2>
+
+<pre>The world wide web page address.</pre>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-address_email" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">address_email</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-address_fax" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">address_fax</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-address_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">address_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-address_web_page" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">address_web_page</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-adoption_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">adoption_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-age" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">age</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-agency" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">agency</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-cause_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">cause_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-date_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">date_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-event_age_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">event_age_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-event_descriptor" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">event_descriptor</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-event_status" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">event_status</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-event_type" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">event_type</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-lds_date_status" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">lds_date_status</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-lds_slgc_family_ref" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">lds_slgc_family_ref</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-lds_temp_code" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">lds_temp_code</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-multimedia_citation_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">multimedia_citation_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-note_citation_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">note_citation_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-phonenumber" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">phonenumber</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-place_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">place_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-religion" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">religion</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-restriction" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">restriction</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-source_citation_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">source_citation_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-submitter_ref" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">submitter_ref</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(*a)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/event_record.rb, line 186</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*<span class="ruby-identifier">a</span>)
+  <span class="ruby-keyword">super</span>(*<span class="ruby-identifier">a</span>)
+  <span class="ruby-ivar">@sub_level</span> = [ <span class="ruby-comment">#level + 1</span>
+                  [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;RESN&quot;</span>, <span class="ruby-value">:restriction</span>],
+                  [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;TYPE&quot;</span>, <span class="ruby-value">:event_descriptor</span>],
+                  [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;STAT&quot;</span>, <span class="ruby-value">:lds_date_status</span>],
+                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>,  <span class="ruby-value">:cause_record</span>],
+                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:date_record</span>],
+                  [<span class="ruby-value">:print</span>,  <span class="ruby-string">&quot;TEMP&quot;</span>, <span class="ruby-value">:lds_temp_code</span>],
+                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:place_record</span>],
+                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:address_record</span>],
+                  [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;PHON&quot;</span>, <span class="ruby-value">:phonenumber</span>],
+                  [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;EMAIL&quot;</span>, <span class="ruby-value">:address_email</span>],
+                  [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;WWW&quot;</span>, <span class="ruby-value">:address_web_page</span>],
+                  [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;FAX&quot;</span>, <span class="ruby-value">:address_fax</span>],
+                  [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;AGE&quot;</span>, <span class="ruby-value">:age</span>],
+                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>,  <span class="ruby-value">:event_age_record</span>],
+                  [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;AGNC&quot;</span>, <span class="ruby-value">:agency</span>],
+                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>,   <span class="ruby-value">:multimedia_citation_record</span>],
+                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>,   <span class="ruby-value">:source_citation_record</span>],
+                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:note_citation_record</span>],
+                  [<span class="ruby-value">:xref</span>, <span class="ruby-string">&quot;SUBM&quot;</span>, <span class="ruby-value">:submitter_ref</span>],
+                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:adoption_record</span>],
+                  [<span class="ruby-value">:xref</span>, <span class="ruby-string">&quot;FAMC&quot;</span>,  <span class="ruby-value">:lds_slgc_family_ref</span>],
+                  [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;RELI&quot;</span>, <span class="ruby-value">:religion</span>], <span class="ruby-comment">#GEDCOM 5.5.1</span>
+                ]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-date" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">date</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="date-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/event_record.rb, line 275</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">date</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@date_record</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-ivar">@date_record</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">date</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- date-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- date-method -->
+
+    
+      <div id="method-i-event_tag" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">event_tag</span><span
+            class="method-args">(tag)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="event_tag-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/event_record.rb, line 226</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">event_tag</span>(<span class="ruby-identifier">tag</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;ANUL&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;CENS&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;DIV&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;DIVF&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;ENGA&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;MARR&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;MARB&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;MARC&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;MARL&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;MARS&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;EVEN&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;RESI&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;SLGS&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;BIRT&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;CHR&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;ADOP&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;DEAT&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;BURI&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;CREM&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;BAPM&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;BARM&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;BASM&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;BLES&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;CHRA&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;CONF&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;FCOM&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;ORDN&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;NATU&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;EMIG&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;IMMI&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;CENS&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;PROB&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;WILL&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;GRAD&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;RETI&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;BAPL&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;CONL&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;ENDL&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;SLGC&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">else</span>          <span class="ruby-string">&quot;EVEN&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- event_tag-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- event_tag-method -->
+
+    
+      <div id="method-i-is_event-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">is_event?</span><span
+            class="method-args">(tag)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="is_event-3F-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/event_record.rb, line 271</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">is_event?</span>(<span class="ruby-identifier">tag</span>)
+  <span class="ruby-ivar">@event_type</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">tag</span> <span class="ruby-comment">#all attributes are arrays, even the single value ones.</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- is_event-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- is_event-3F-method -->
+
+    
+      <div id="method-i-place" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">place</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>where the event took place. We are reporting only the first place as a
+string. If you want all the places recorded, then you should access <a
+href="Event_record.html#attribute-i-place_record">#place_record</a>, which
+will return an array of PLAC records in the event.</p>
+          
+
+          
+          <div class="method-source-code" id="place-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/event_record.rb, line 285</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">place</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@place_record</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-ivar">@place_record</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">place</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- place-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- place-method -->
+
+    
+      <div id="method-i-to_gedcom" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_gedcom</span><span
+            class="method-args">(level=0)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_gedcom-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/event_record.rb, line 214</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_gedcom</span>(<span class="ruby-identifier">level</span>=<span class="ruby-value">0</span>)
+    <span class="ruby-identifier">tag</span> = <span class="ruby-identifier">event_tag</span>(<span class="ruby-ivar">@event_type</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_s</span>)
+    
+<span class="ruby-comment">#    print &quot;'#{@event_type}' '#{@event_descriptor}' =&gt; #{tag}\n&quot;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@event_status</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@event_status</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@event_status</span>[<span class="ruby-value">0</span>][<span class="ruby-value">0</span>]  <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-ivar">@this_level</span> = [ [<span class="ruby-value">:print</span>, <span class="ruby-identifier">tag</span>, <span class="ruby-value">:event_status</span>] ]
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-ivar">@this_level</span> = [ [<span class="ruby-value">:nodata</span>, <span class="ruby-identifier">tag</span>, <span class="ruby-keyword">nil</span>] ]
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">super</span>(<span class="ruby-identifier">level</span>)
+  <span class="ruby-keyword">end</span></pre>
+          </div><!-- to_gedcom-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_gedcom-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

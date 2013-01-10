@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=US-ASCII" http-equiv="Content-Type">
+
+<title>class Family_record - gedcom-0.9.3 Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/gedcom/family_record.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="GEDCOMBase.html">GEDCOMBase</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-i-annulment">#annulment</a>
+    
+    <li><a href="#method-i-census">#census</a>
+    
+    <li><a href="#method-i-children">#children</a>
+    
+    <li><a href="#method-i-divorce">#divorce</a>
+    
+    <li><a href="#method-i-divorce_filed">#divorce_filed</a>
+    
+    <li><a href="#method-i-engagement">#engagement</a>
+    
+    <li><a href="#method-i-event">#event</a>
+    
+    <li><a href="#method-i-husband">#husband</a>
+    
+    <li><a href="#method-i-id">#id</a>
+    
+    <li><a href="#method-i-marriage">#marriage</a>
+    
+    <li><a href="#method-i-marriage_bann">#marriage_bann</a>
+    
+    <li><a href="#method-i-marriage_contract">#marriage_contract</a>
+    
+    <li><a href="#method-i-marriage_license">#marriage_license</a>
+    
+    <li><a href="#method-i-marriage_settlement">#marriage_settlement</a>
+    
+    <li><a href="#method-i-self_check">#self_check</a>
+    
+    <li><a href="#method-i-wife">#wife</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./History_txt.html">History</a>
+  
+    <li class="file"><a href="./Manifest_txt.html">Manifest</a>
+  
+    <li class="file"><a href="./README_txt.html">README</a>
+  
+    <li class="file"><a href="./test_data/README_txt.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Address_record.html">Address_record</a>
+  
+    <li><a href="./Adoption_record.html">Adoption_record</a>
+  
+    <li><a href="./Association_record.html">Association_record</a>
+  
+    <li><a href="./Bit.html">Bit</a>
+  
+    <li><a href="./Btree.html">Btree</a>
+  
+    <li><a href="./Btree_data.html">Btree_data</a>
+  
+    <li><a href="./Btree_node.html">Btree_node</a>
+  
+    <li><a href="./Cause_record.html">Cause_record</a>
+  
+    <li><a href="./Change_date_record.html">Change_date_record</a>
+  
+    <li><a href="./Character_set_record.html">Character_set_record</a>
+  
+    <li><a href="./Chart.html">Chart</a>
+  
+    <li><a href="./Citation_data_record.html">Citation_data_record</a>
+  
+    <li><a href="./Citation_event_type_record.html">Citation_event_type_record</a>
+  
+    <li><a href="./ClassTracker.html">ClassTracker</a>
+  
+    <li><a href="./Copyright_record.html">Copyright_record</a>
+  
+    <li><a href="./Corporate_record.html">Corporate_record</a>
+  
+    <li><a href="./Date_record.html">Date_record</a>
+  
+    <li><a href="./Decendant.html">Decendant</a>
+  
+    <li><a href="./Encoded_line_record.html">Encoded_line_record</a>
+  
+    <li><a href="./Event_age_record.html">Event_age_record</a>
+  
+    <li><a href="./Event_record.html">Event_record</a>
+  
+    <li><a href="./Events_list_record.html">Events_list_record</a>
+  
+    <li><a href="./Families_individuals.html">Families_individuals</a>
+  
+    <li><a href="./Family_record.html">Family_record</a>
+  
+    <li><a href="./GEDCOMBase.html">GEDCOMBase</a>
+  
+    <li><a href="./GedLine.html">GedLine</a>
+  
+    <li><a href="./GedString.html">GedString</a>
+  
+    <li><a href="./Gedcom.html">Gedcom</a>
+  
+    <li><a href="./GedcomParser.html">GedcomParser</a>
+  
+    <li><a href="./Gedcom_record.html">Gedcom_record</a>
+  
+    <li><a href="./Header_data_record.html">Header_data_record</a>
+  
+    <li><a href="./Header_record.html">Header_record</a>
+  
+    <li><a href="./Header_source_record.html">Header_source_record</a>
+  
+    <li><a href="./Individual_attribute_record.html">Individual_attribute_record</a>
+  
+    <li><a href="./Individual_record.html">Individual_record</a>
+  
+    <li><a href="./Instruction.html">Instruction</a>
+  
+    <li><a href="./Multimedia_citation_record.html">Multimedia_citation_record</a>
+  
+    <li><a href="./Multimedia_file_record.html">Multimedia_file_record</a>
+  
+    <li><a href="./Multimedia_format_record.html">Multimedia_format_record</a>
+  
+    <li><a href="./Multimedia_obje_file_record.html">Multimedia_obje_file_record</a>
+  
+    <li><a href="./Multimedia_obje_format_record.html">Multimedia_obje_format_record</a>
+  
+    <li><a href="./Multimedia_record.html">Multimedia_record</a>
+  
+    <li><a href="./Name_phonetic_record.html">Name_phonetic_record</a>
+  
+    <li><a href="./Name_record.html">Name_record</a>
+  
+    <li><a href="./Name_romanized_record.html">Name_romanized_record</a>
+  
+    <li><a href="./Note_citation_record.html">Note_citation_record</a>
+  
+    <li><a href="./Note_record.html">Note_record</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./PEDIGREE_WIDTH.html">PEDIGREE_WIDTH</a>
+  
+    <li><a href="./ParseState.html">ParseState</a>
+  
+    <li><a href="./Place_record.html">Place_record</a>
+  
+    <li><a href="./Placename_map_record.html">Placename_map_record</a>
+  
+    <li><a href="./Placename_phonetic_record.html">Placename_phonetic_record</a>
+  
+    <li><a href="./Placename_romanized_record.html">Placename_romanized_record</a>
+  
+    <li><a href="./Refn_record.html">Refn_record</a>
+  
+    <li><a href="./Repository_caln.html">Repository_caln</a>
+  
+    <li><a href="./Repository_citation_record.html">Repository_citation_record</a>
+  
+    <li><a href="./Repository_record.html">Repository_record</a>
+  
+    <li><a href="./Source_citation_record.html">Source_citation_record</a>
+  
+    <li><a href="./Source_record.html">Source_record</a>
+  
+    <li><a href="./Source_scope_record.html">Source_scope_record</a>
+  
+    <li><a href="./Submission_record.html">Submission_record</a>
+  
+    <li><a href="./Submitter_record.html">Submitter_record</a>
+  
+    <li><a href="./Text_record.html">Text_record</a>
+  
+    <li><a href="./Trailer_record.html">Trailer_record</a>
+  
+    <li><a href="./Transmission.html">Transmission</a>
+  
+    <li><a href="./TransmissionBase.html">TransmissionBase</a>
+  
+    <li><a href="./Xref.html">Xref</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Family_record</h1>
+
+  <div id="description" class="description">
+    
+<p><a href="Family_record.html">Family_record</a> is the internal
+representation of a level 0 GEDCOM FAM record.</p>
+
+<h1 id="label-FAM_RECORD%3A%3D">FAM_RECORD:=</h1>
+
+<pre>0 @&lt;XREF:FAM&gt;@ FAM                     {0:M}
+  +1 &lt;&lt;FAMILY_EVENT_STRUCTURE&gt;&gt;        {0:M} p.28
+    +2 HUSB                            {0:1}
+      +3 AGE &lt;AGE_AT_EVENT&gt;            {1:1} p.35
+    +2 WIFE                            {0:1}
+      +3 AGE &lt;AGE_AT_EVENT&gt;            {1:1}
+  +1 HUSB @&lt;XREF:INDI&gt;@                {0:1} p.52
+  +1 WIFE @&lt;XREF:INDI&gt;@                {0:1} p.52
+  +1 CHIL @&lt;XREF:INDI&gt;@                {0:M} p.52
+  +1 NCHI &lt;COUNT_OF_CHILDREN&gt;          {0:1} p.37
+  +1 SUBM @&lt;XREF:SUBM&gt;@                {0:M} p.52
+  +1 &lt;&lt;LDS_SPOUSE_SEALING&gt;&gt;            {0:M} p.30
+  +1 &lt;&lt;SOURCE_CITATION&gt;&gt;               {0:M} p.32
+  +1 &lt;&lt;MULTIMEDIA_LINK&gt;&gt;               {0:M} p.30,23
+  +1 &lt;&lt;NOTE_STRUCTURE&gt;&gt;                {0:M} p.31
+  +1 REFN &lt;USER_REFERENCE_NUMBER&gt;      {0:M} p.51
+    +2 TYPE &lt;USER_REFERENCE_TYPE&gt;      {0:1} p.51
+  +1 RIN &lt;AUTOMATED_RECORD_ID&gt;         {0:1} p.36
+ +1 &lt;&lt;CHANGE_DATE&gt;&gt;                    {0:1} p.27
+
+The FAMily record is used to record marriages, common law marriages, and family unions caused by
+two people becoming the parents of a child (i.e they may not be married). There can be no more 
+than one HUSB/father and one WIFE/mother listed in each FAM_RECORD. We are recording parentage,
+rather than marriages per se. If, for example, a man participated in more than one
+family union (or with more than 1 wife) then he would appear in more than one FAM_RECORD. The 
+family record structure assumes that the HUSB/father is male and WIFE/mother is female. Again,
+as we are recording parentage, and we can't yet clone or reproduce from two males. or from two females.
+
+The preferred order of the CHILdren pointers within a FAMily structure is chronological by birth.</pre>
+
+<p>The attributes are all arrays for the level +1 tags/records.</p>
+<ul><li>
+<p>Those ending in _ref are GEDCOM XREF index keys</p>
+</li><li>
+<p>Those ending in _record are array of classes of that type.</p>
+</li><li>
+<p>The remainder are arrays of attributes that could be present in this
+record.</p>
+</li></ul>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-automated_record_id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">automated_record_id</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-change_date_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">change_date_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-child_ref" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">child_ref</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-event_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">event_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-family_ref" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">family_ref</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-husband_ref" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">husband_ref</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-multimedia_citation_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">multimedia_citation_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-note_citation_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">note_citation_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-number_children" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">number_children</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-refn_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">refn_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-restriction" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">restriction</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-source_citation_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">source_citation_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-submitter_ref" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">submitter_ref</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-wife_ref" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">wife_ref</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(*a)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>new sets up the state engine arrays @this_level and @sub_level, which drive
+the to_gedcom method generating GEDCOM output.</p>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*<span class="ruby-identifier">a</span>)
+  <span class="ruby-keyword">super</span>(*<span class="ruby-identifier">a</span>)
+  <span class="ruby-ivar">@this_level</span> = [ [<span class="ruby-value">:xref</span>, <span class="ruby-string">&quot;FAM&quot;</span>, <span class="ruby-value">:family_ref</span>] ]
+  <span class="ruby-ivar">@sub_level</span> =  [ <span class="ruby-comment">#level + 1</span>
+                  [<span class="ruby-value">:xref</span>, <span class="ruby-string">&quot;HUSB&quot;</span>, <span class="ruby-value">:husband_ref</span>],
+                  [<span class="ruby-value">:xref</span>, <span class="ruby-string">&quot;WIFE&quot;</span>, <span class="ruby-value">:wife_ref</span>],
+                  [<span class="ruby-value">:xref</span>, <span class="ruby-string">&quot;CHIL&quot;</span>, <span class="ruby-value">:child_ref</span>],
+                  [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;NCHI&quot;</span>, <span class="ruby-value">:number_children</span>],
+                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:event_record</span>],
+                  [<span class="ruby-value">:xref</span>, <span class="ruby-string">&quot;SUBM&quot;</span>, <span class="ruby-value">:submitter_ref</span>],
+                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>,   <span class="ruby-value">:multimedia_citation_record</span>],
+                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>,  <span class="ruby-value">:source_citation_record</span>],
+                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:note_citation_record</span>],
+                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:refn_record</span>],
+                  [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;RIN&quot;</span>, <span class="ruby-value">:automated_record_id</span>],
+                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>,  <span class="ruby-value">:change_date_record</span>],
+                ]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-annulment" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">annulment</span><span
+            class="method-args">(&p)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Short hand for event('ANUL') passes on any block to the event method. (The
+block is the &amp;p argument, so you don't pass any arguments to this
+method).</p>
+          
+
+          
+          <div class="method-source-code" id="annulment-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 179</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">annulment</span>(&amp;<span class="ruby-identifier">p</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'ANUL'</span>,&amp;<span class="ruby-identifier">p</span>) <span class="ruby-keyword">else</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'ANUL'</span>) <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- annulment-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- annulment-method -->
+
+    
+      <div id="method-i-census" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">census</span><span
+            class="method-args">(&p)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Short hand for event('CENS') passes on any block to the event method. (The
+block is the &amp;p argument, so you don't pass any arguments to this
+method).</p>
+          
+
+          
+          <div class="method-source-code" id="census-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 200</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">census</span>(&amp;<span class="ruby-identifier">p</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'CENS'</span>,&amp;<span class="ruby-identifier">p</span>) <span class="ruby-keyword">else</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'CENS'</span>) <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- census-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- census-method -->
+
+    
+      <div id="method-i-children" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">children</span><span
+            class="method-args">() { |child| ... }</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns an array of children, or if a block is present, yields them one by
+one.</p>
+          
+
+          
+          <div class="method-source-code" id="children-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 101</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">children</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@child_ref</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">children</span> = []
+    <span class="ruby-ivar">@child_ref</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> 
+      <span class="ruby-keyword">if</span> (<span class="ruby-identifier">child</span> = <span class="ruby-identifier">find</span>(<span class="ruby-identifier">c</span>.<span class="ruby-identifier">index</span>, <span class="ruby-identifier">c</span>.<span class="ruby-identifier">xref_value</span>)) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">yield</span> <span class="ruby-identifier">child</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+        <span class="ruby-identifier">children</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">c</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">children</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">children</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- children-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- children-method -->
+
+    
+      <div id="method-i-divorce" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">divorce</span><span
+            class="method-args">(&p)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Short hand for event('DIV') passes on any block to the event method. (The
+block is the &amp;p argument, so you don't pass any arguments to this
+method).</p>
+          
+
+          
+          <div class="method-source-code" id="divorce-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 193</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">divorce</span>(&amp;<span class="ruby-identifier">p</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'DIV'</span>,&amp;<span class="ruby-identifier">p</span>) <span class="ruby-keyword">else</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'DIV'</span>) <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- divorce-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- divorce-method -->
+
+    
+      <div id="method-i-divorce_filed" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">divorce_filed</span><span
+            class="method-args">(&p)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Short hand for event('DIVF') passes on any block to the event method. (The
+block is the &amp;p argument, so you don't pass any arguments to this
+method).</p>
+          
+
+          
+          <div class="method-source-code" id="divorce_filed-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 186</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">divorce_filed</span>(&amp;<span class="ruby-identifier">p</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'DIVF'</span>,&amp;<span class="ruby-identifier">p</span>) <span class="ruby-keyword">else</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'DIVF'</span>) <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- divorce_filed-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- divorce_filed-method -->
+
+    
+      <div id="method-i-engagement" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">engagement</span><span
+            class="method-args">(&p)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Short hand for event('ENGA') passes on any block to the event method. (The
+block is the &amp;p argument, so you don't pass any arguments to this
+method).</p>
+          
+
+          
+          <div class="method-source-code" id="engagement-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 137</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">engagement</span>(&amp;<span class="ruby-identifier">p</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'ENGA'</span>,&amp;<span class="ruby-identifier">p</span>) <span class="ruby-keyword">else</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'ENGA'</span>) <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- engagement-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- engagement-method -->
+
+    
+      <div id="method-i-event" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">event</span><span
+            class="method-args">(type) { |e| ... }</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Event looks in the <a href="Family_record.html">Family_record</a> for
+events, as specified by the type argument,  returning an array of the
+events found. Returns nil if there were no events of this type in this <a
+href="Family_record.html">Family_record</a>.</p>
+
+<p>If a block is given, then yields each event to the block.</p>
+          
+
+          
+          <div class="method-source-code" id="event-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 120</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">event</span>(<span class="ruby-identifier">type</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@event_record</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">events</span> = []
+    <span class="ruby-ivar">@event_record</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> 
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">is_event?</span>(<span class="ruby-identifier">type</span>)
+        <span class="ruby-keyword">yield</span> <span class="ruby-identifier">e</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+        <span class="ruby-identifier">events</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">events</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">events</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- event-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- event-method -->
+
+    
+      <div id="method-i-husband" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">husband</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>There should only ever be one husband record in a <a
+href="Family_record.html">Family_record</a>. If a women has multiple
+husbands, as some cultures do, then each should be in their own FAM record.
+The reasoning is that we are recording parentage, not marriages, so we want
+to be  able to uniquely identify which husband is the actual parent (not
+that we could be that certain in the case of polygamy). The term husband is
+also used loosely. It refers to the father of children, not necessarily a
+spouse.</p>
+          
+
+          
+          <div class="method-source-code" id="husband-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">husband</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@husband_ref</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">find</span>(<span class="ruby-ivar">@husband_ref</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">index</span>, <span class="ruby-ivar">@husband_ref</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">xref_value</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- husband-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- husband-method -->
+
+    
+      <div id="method-i-id" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">id</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="id-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">id</span>
+  <span class="ruby-comment">#temporary </span>
+  <span class="ruby-ivar">@family_ref</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- id-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- id-method -->
+
+    
+      <div id="method-i-marriage" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">marriage</span><span
+            class="method-args">(&p)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Short hand for event('MARR') passes on any block to the event method. (The
+block is the &amp;p argument, so you don't pass any arguments to this
+method).</p>
+          
+
+          
+          <div class="method-source-code" id="marriage-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 172</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">marriage</span>(&amp;<span class="ruby-identifier">p</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'MARR'</span>,&amp;<span class="ruby-identifier">p</span>) <span class="ruby-keyword">else</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'MARR'</span>) <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- marriage-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- marriage-method -->
+
+    
+      <div id="method-i-marriage_bann" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">marriage_bann</span><span
+            class="method-args">(&p)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Short hand for event('MARB') passes on any block to the event method. (The
+block is the &amp;p argument, so you don't pass any arguments to this
+method).</p>
+          
+
+          
+          <div class="method-source-code" id="marriage_bann-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 144</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">marriage_bann</span>(&amp;<span class="ruby-identifier">p</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'MARB'</span>,&amp;<span class="ruby-identifier">p</span>) <span class="ruby-keyword">else</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'MARB'</span>) <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- marriage_bann-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- marriage_bann-method -->
+
+    
+      <div id="method-i-marriage_contract" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">marriage_contract</span><span
+            class="method-args">(&p)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Short hand for event('MARC') passes on any block to the event method. (The
+block is the &amp;p argument, so you don't pass any arguments to this
+method).</p>
+          
+
+          
+          <div class="method-source-code" id="marriage_contract-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 158</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">marriage_contract</span>(&amp;<span class="ruby-identifier">p</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'MARC'</span>,&amp;<span class="ruby-identifier">p</span>) <span class="ruby-keyword">else</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'MARC'</span>) <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- marriage_contract-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- marriage_contract-method -->
+
+    
+      <div id="method-i-marriage_license" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">marriage_license</span><span
+            class="method-args">(&p)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Short hand for event('MARL') passes on any block to the event method. (The
+block is the &amp;p argument, so you don't pass any arguments to this
+method).</p>
+          
+
+          
+          <div class="method-source-code" id="marriage_license-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 151</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">marriage_license</span>(&amp;<span class="ruby-identifier">p</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'MARL'</span>,&amp;<span class="ruby-identifier">p</span>) <span class="ruby-keyword">else</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'MARL'</span>) <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- marriage_license-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- marriage_license-method -->
+
+    
+      <div id="method-i-marriage_settlement" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">marriage_settlement</span><span
+            class="method-args">(&p)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Short hand for event('MARS') passes on any block to the event method. (The
+block is the &amp;p argument, so you don't pass any arguments to this
+method).</p>
+          
+
+          
+          <div class="method-source-code" id="marriage_settlement-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 165</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">marriage_settlement</span>(&amp;<span class="ruby-identifier">p</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'MARS'</span>,&amp;<span class="ruby-identifier">p</span>) <span class="ruby-keyword">else</span> <span class="ruby-identifier">event</span>(<span class="ruby-string">'MARS'</span>) <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- marriage_settlement-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- marriage_settlement-method -->
+
+    
+      <div id="method-i-self_check" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">self_check</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check the xrefs are valid.</p>
+          
+
+          
+          <div class="method-source-code" id="self_check-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 205</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">self_check</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@husband_ref</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;More than one HUSB? in FAM #{@family_ref.first.xref_value}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@husband_ref</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>  <span class="ruby-comment">#should be just one</span>
+    <span class="ruby-ivar">@husband_ref</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">h</span><span class="ruby-operator">|</span> 
+      <span class="ruby-keyword">if</span> (<span class="ruby-identifier">husb</span> = <span class="ruby-identifier">find</span>(<span class="ruby-identifier">h</span>.<span class="ruby-identifier">index</span>, <span class="ruby-identifier">h</span>.<span class="ruby-identifier">xref_value</span>))  <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Missing INDI record #{h.xref_value} for HUSB in FAM #{@family_ref.first.xref_value}&quot;</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Husband's INDI #{h.xref_value} record doesn't have FAMS #{@family_ref.first.xref_value}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">husb</span>.<span class="ruby-identifier">spouse?</span>(<span class="ruby-keyword">self</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">sex</span> = <span class="ruby-identifier">husb</span>.<span class="ruby-identifier">sex</span>) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+          <span class="ruby-identifier">sex</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> 
+            <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Husband Female? INDI #{h.xref_value}, FAMS #{@family_ref.first.xref_value}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">==</span> <span class="ruby-string">'F'</span> 
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@wife_ref</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;More than one WIFE? in FAM #{@family_ref.first.xref_value}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@wife_ref</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>  <span class="ruby-comment">#should be just one</span>
+    <span class="ruby-ivar">@wife_ref</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">w</span><span class="ruby-operator">|</span> 
+      <span class="ruby-keyword">if</span> (<span class="ruby-identifier">wife</span> = <span class="ruby-identifier">find</span>(<span class="ruby-identifier">w</span>.<span class="ruby-identifier">index</span>, <span class="ruby-identifier">w</span>.<span class="ruby-identifier">xref_value</span>))  <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Missing INDI record #{w.xref_value} for WIFE in FAM #{@family_ref.first.xref_value}&quot;</span> 
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Wife's INDI #{w.xref_value} record doesn't have FAMS #{@family_ref.first.xref_value}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">wife</span>.<span class="ruby-identifier">spouse?</span>(<span class="ruby-keyword">self</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">sex</span> = <span class="ruby-identifier">wife</span>.<span class="ruby-identifier">sex</span>) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+          <span class="ruby-identifier">sex</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Wife Male? INDI #{w.xref_value}, FAMS #{@family_ref.first.xref_value}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">==</span> <span class="ruby-string">'M'</span> }
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span> 
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@child_ref</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-comment">#1..many Children</span>
+    <span class="ruby-ivar">@child_ref</span>.<span class="ruby-identifier">each</span>  <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> 
+      <span class="ruby-keyword">if</span> (<span class="ruby-identifier">child</span> = <span class="ruby-identifier">find</span>(<span class="ruby-identifier">c</span>.<span class="ruby-identifier">index</span>, <span class="ruby-identifier">c</span>.<span class="ruby-identifier">xref_value</span>))  <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Missing INDI record for #{c.xref_value} for CHIL in FAM #{@family_ref.first.xref_value}&quot;</span> 
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Child's INDI #{c.xref_value} record doesn't have FAMC #{@family_ref.first.xref_value}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">child?</span>(<span class="ruby-keyword">self</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@submitter_ref</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-ivar">@submitter_ref</span>.<span class="ruby-identifier">each</span>  <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> 
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Missing SUBM record for #{s.xref_value} in FAM #{@family_ref.first.xref_value}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">s</span>.<span class="ruby-identifier">index</span>, <span class="ruby-identifier">s</span>.<span class="ruby-identifier">xref_value</span>)  <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- self_check-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- self_check-method -->
+
+    
+      <div id="method-i-wife" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">wife</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>There should only ever be one wife record in a <a
+href="Family_record.html">Family_record</a>. If a man has multiple wives,
+as some cultures do, then each should be in their own FAM record. The
+reasoning is that we are recording parentage, not marriages, so we want to
+be  able to uniquely identify which wife is the actual parent. The term
+wife is used fairly loosely. It refers to the mother of the children, not
+necessarily a spouse.</p>
+          
+
+          
+          <div class="method-source-code" id="wife-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/family_record.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">wife</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@wife_ref</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">find</span>(<span class="ruby-ivar">@wife_ref</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">index</span>, <span class="ruby-ivar">@wife_ref</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">xref_value</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- wife-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- wife-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

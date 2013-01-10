@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=US-ASCII" http-equiv="Content-Type">
+
+<title>class TransmissionBase - gedcom-0.9.3 Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/gedcom/transmission_base.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="GEDCOMBase.html">GEDCOMBase</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-i-action_handler">#action_handler</a>
+    
+    <li><a href="#method-i-add_to_class_field">#add_to_class_field</a>
+    
+    <li><a href="#method-i-add_to_index">#add_to_index</a>
+    
+    <li><a href="#method-i-append_nl_field">#append_nl_field</a>
+    
+    <li><a href="#method-i-append_sp_field">#append_sp_field</a>
+    
+    <li><a href="#method-i-append_to_field">#append_to_field</a>
+    
+    <li><a href="#method-i-create_class">#create_class</a>
+    
+    <li><a href="#method-i-create_index">#create_index</a>
+    
+    <li><a href="#method-i-define">#define</a>
+    
+    <li><a href="#method-i-defined">#defined</a>
+    
+    <li><a href="#method-i-pop">#pop</a>
+    
+    <li><a href="#method-i-summary">#summary</a>
+    
+    <li><a href="#method-i-update_field">#update_field</a>
+    
+    <li><a href="#method-i-validate">#validate</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./History_txt.html">History</a>
+  
+    <li class="file"><a href="./Manifest_txt.html">Manifest</a>
+  
+    <li class="file"><a href="./README_txt.html">README</a>
+  
+    <li class="file"><a href="./test_data/README_txt.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Address_record.html">Address_record</a>
+  
+    <li><a href="./Adoption_record.html">Adoption_record</a>
+  
+    <li><a href="./Association_record.html">Association_record</a>
+  
+    <li><a href="./Bit.html">Bit</a>
+  
+    <li><a href="./Btree.html">Btree</a>
+  
+    <li><a href="./Btree_data.html">Btree_data</a>
+  
+    <li><a href="./Btree_node.html">Btree_node</a>
+  
+    <li><a href="./Cause_record.html">Cause_record</a>
+  
+    <li><a href="./Change_date_record.html">Change_date_record</a>
+  
+    <li><a href="./Character_set_record.html">Character_set_record</a>
+  
+    <li><a href="./Chart.html">Chart</a>
+  
+    <li><a href="./Citation_data_record.html">Citation_data_record</a>
+  
+    <li><a href="./Citation_event_type_record.html">Citation_event_type_record</a>
+  
+    <li><a href="./ClassTracker.html">ClassTracker</a>
+  
+    <li><a href="./Copyright_record.html">Copyright_record</a>
+  
+    <li><a href="./Corporate_record.html">Corporate_record</a>
+  
+    <li><a href="./Date_record.html">Date_record</a>
+  
+    <li><a href="./Decendant.html">Decendant</a>
+  
+    <li><a href="./Encoded_line_record.html">Encoded_line_record</a>
+  
+    <li><a href="./Event_age_record.html">Event_age_record</a>
+  
+    <li><a href="./Event_record.html">Event_record</a>
+  
+    <li><a href="./Events_list_record.html">Events_list_record</a>
+  
+    <li><a href="./Families_individuals.html">Families_individuals</a>
+  
+    <li><a href="./Family_record.html">Family_record</a>
+  
+    <li><a href="./GEDCOMBase.html">GEDCOMBase</a>
+  
+    <li><a href="./GedLine.html">GedLine</a>
+  
+    <li><a href="./GedString.html">GedString</a>
+  
+    <li><a href="./Gedcom.html">Gedcom</a>
+  
+    <li><a href="./GedcomParser.html">GedcomParser</a>
+  
+    <li><a href="./Gedcom_record.html">Gedcom_record</a>
+  
+    <li><a href="./Header_data_record.html">Header_data_record</a>
+  
+    <li><a href="./Header_record.html">Header_record</a>
+  
+    <li><a href="./Header_source_record.html">Header_source_record</a>
+  
+    <li><a href="./Individual_attribute_record.html">Individual_attribute_record</a>
+  
+    <li><a href="./Individual_record.html">Individual_record</a>
+  
+    <li><a href="./Instruction.html">Instruction</a>
+  
+    <li><a href="./Multimedia_citation_record.html">Multimedia_citation_record</a>
+  
+    <li><a href="./Multimedia_file_record.html">Multimedia_file_record</a>
+  
+    <li><a href="./Multimedia_format_record.html">Multimedia_format_record</a>
+  
+    <li><a href="./Multimedia_obje_file_record.html">Multimedia_obje_file_record</a>
+  
+    <li><a href="./Multimedia_obje_format_record.html">Multimedia_obje_format_record</a>
+  
+    <li><a href="./Multimedia_record.html">Multimedia_record</a>
+  
+    <li><a href="./Name_phonetic_record.html">Name_phonetic_record</a>
+  
+    <li><a href="./Name_record.html">Name_record</a>
+  
+    <li><a href="./Name_romanized_record.html">Name_romanized_record</a>
+  
+    <li><a href="./Note_citation_record.html">Note_citation_record</a>
+  
+    <li><a href="./Note_record.html">Note_record</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./PEDIGREE_WIDTH.html">PEDIGREE_WIDTH</a>
+  
+    <li><a href="./ParseState.html">ParseState</a>
+  
+    <li><a href="./Place_record.html">Place_record</a>
+  
+    <li><a href="./Placename_map_record.html">Placename_map_record</a>
+  
+    <li><a href="./Placename_phonetic_record.html">Placename_phonetic_record</a>
+  
+    <li><a href="./Placename_romanized_record.html">Placename_romanized_record</a>
+  
+    <li><a href="./Refn_record.html">Refn_record</a>
+  
+    <li><a href="./Repository_caln.html">Repository_caln</a>
+  
+    <li><a href="./Repository_citation_record.html">Repository_citation_record</a>
+  
+    <li><a href="./Repository_record.html">Repository_record</a>
+  
+    <li><a href="./Source_citation_record.html">Source_citation_record</a>
+  
+    <li><a href="./Source_record.html">Source_record</a>
+  
+    <li><a href="./Source_scope_record.html">Source_scope_record</a>
+  
+    <li><a href="./Submission_record.html">Submission_record</a>
+  
+    <li><a href="./Submitter_record.html">Submitter_record</a>
+  
+    <li><a href="./Text_record.html">Text_record</a>
+  
+    <li><a href="./Trailer_record.html">Trailer_record</a>
+  
+    <li><a href="./Transmission.html">Transmission</a>
+  
+    <li><a href="./TransmissionBase.html">TransmissionBase</a>
+  
+    <li><a href="./Xref.html">Xref</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class TransmissionBase</h1>
+
+  <div id="description" class="description">
+    
+<p><a href="TransmissionBase.html">TransmissionBase</a> is a subclass of <a
+href="GEDCOMBase.html">GEDCOMBase</a>, and contains methods used by the
+parsing process to build the other <a href="Gedcom.html">Gedcom</a>
+classes, instantiate instances for each GEDCOM record type, and populate
+the fields based on the parsed GEDCOM file.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="ACTION">ACTION
+        
+        <dd class="description"><p><a href="TransmissionBase.html#method-i-action_handler">#action_handler</a>
+process the actions in the GedcomParser::TAGS hash, creating classes and
+populating attributes.</p>
+
+<pre class="ruby"><span class="ruby-constant">Actions</span><span class="ruby-operator">:</span>
+[:<span class="ruby-keyword">class</span>, :<span class="ruby-identifier">class_name</span>] <span class="ruby-identifier">inidicates</span> <span class="ruby-identifier">this</span> <span class="ruby-identifier">line</span>, <span class="ruby-keyword">and</span> <span class="ruby-identifier">any</span> <span class="ruby-identifier">further</span> <span class="ruby-identifier">data</span>, <span class="ruby-identifier">will</span> <span class="ruby-identifier">be</span> <span class="ruby-identifier">stored</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">the</span> <span class="ruby-keyword">class</span>  :<span class="ruby-identifier">class_name</span>
+[:<span class="ruby-identifier">pop</span>] <span class="ruby-identifier">indicates</span> <span class="ruby-identifier">that</span> <span class="ruby-identifier">data</span> <span class="ruby-identifier">will</span> <span class="ruby-identifier">now</span> <span class="ruby-identifier">be</span> <span class="ruby-identifier">stored</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">previous</span> <span class="ruby-keyword">class</span>.
+[:<span class="ruby-identifier">field</span>, :<span class="ruby-identifier">fieldname</span>] <span class="ruby-identifier">indicates</span> <span class="ruby-identifier">that</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">data</span> <span class="ruby-identifier">part</span> <span class="ruby-identifier">of</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">line</span> <span class="ruby-identifier">will</span> <span class="ruby-identifier">be</span> <span class="ruby-identifier">stored</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">field</span> :<span class="ruby-identifier">field_name</span>
+[:<span class="ruby-identifier">field</span>, [:<span class="ruby-identifier">fieldname</span>, <span class="ruby-identifier">value</span>]]  <span class="ruby-identifier">fieldname</span> <span class="ruby-identifier">stores</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">given</span> <span class="ruby-identifier">value</span>.
+[:<span class="ruby-identifier">append</span>, :<span class="ruby-identifier">fieldname</span>] <span class="ruby-identifier">indicates</span> <span class="ruby-identifier">that</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">data</span> <span class="ruby-identifier">part</span> <span class="ruby-identifier">of</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">line</span> <span class="ruby-identifier">will</span> <span class="ruby-identifier">be</span> <span class="ruby-identifier">appended</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">this</span> <span class="ruby-identifier">field</span>
+[:<span class="ruby-identifier">append_nl</span>, :<span class="ruby-identifier">fieldname</span>] <span class="ruby-identifier">indicates</span> <span class="ruby-identifier">that</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">data</span> <span class="ruby-identifier">part</span> <span class="ruby-identifier">of</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">line</span> <span class="ruby-identifier">will</span> <span class="ruby-identifier">be</span> <span class="ruby-identifier">appended</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">this</span> <span class="ruby-identifier">field</span>, <span class="ruby-identifier">after</span> <span class="ruby-identifier">first</span> <span class="ruby-identifier">appending</span> <span class="ruby-identifier">a</span> <span class="ruby-identifier">nl</span>
+[:<span class="ruby-identifier">xref</span>, [:<span class="ruby-identifier">field</span>, :<span class="ruby-identifier">record_type</span>]] <span class="ruby-identifier">indicates</span> <span class="ruby-identifier">that</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">xref</span> <span class="ruby-identifier">value</span> <span class="ruby-identifier">of</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">line</span> <span class="ruby-identifier">will</span> <span class="ruby-identifier">get</span> <span class="ruby-identifier">stored</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">named</span> <span class="ruby-identifier">field</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">points</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">record_type</span>.
+[:<span class="ruby-identifier">key</span>, :<span class="ruby-identifier">index_name</span>] <span class="ruby-identifier">means</span> <span class="ruby-identifier">we</span> <span class="ruby-identifier">need</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">create</span> <span class="ruby-identifier">an</span> <span class="ruby-identifier">index</span> <span class="ruby-identifier">entry</span>, <span class="ruby-keyword">in</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">index</span> <span class="ruby-identifier">index_name</span>, <span class="ruby-keyword">for</span> <span class="ruby-identifier">this</span> <span class="ruby-identifier">items</span> <span class="ruby-identifier">xref</span> <span class="ruby-identifier">value</span>.
+<span class="ruby-identifier">nil</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">this</span> <span class="ruby-identifier">field</span> <span class="ruby-identifier">indicates</span> <span class="ruby-identifier">that</span> <span class="ruby-identifier">we</span> <span class="ruby-identifier">should</span> <span class="ruby-identifier">ignore</span> <span class="ruby-identifier">this</span> <span class="ruby-constant">TAG</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">its</span> <span class="ruby-identifier">children</span>.
+</pre>
+        
+      
+        <dt id="DATA">DATA
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-class_stack" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">class_stack</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Class_stack is for the parsing process to hold the classes we create as we
+walk down the levels of a gedcom record. The class we are currently working
+with is on the top of the stack. The put ourselves on the top of the stack.
+The number represents the number of class to pop to go back one level of
+gedcom.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-indexes" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">indexes</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>A hash to hold the indexes used in this transmission, each of which is also
+a hash (though that may change)</p>
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(*a)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>new creates initializes the arrays for each of the GEDCOM level 0 record
+types.</p>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/transmission_base.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*<span class="ruby-identifier">a</span>)
+  <span class="ruby-keyword">super</span>(*<span class="ruby-identifier">a</span>)
+   <span class="ruby-comment">#Create the initial top level arrays of records that can exist in a transmission.</span>
+  <span class="ruby-ivar">@header_record</span> = []
+  <span class="ruby-ivar">@submission_record</span> = []
+  <span class="ruby-ivar">@submitter_record</span> = []
+  <span class="ruby-ivar">@individual_record</span> = []
+  <span class="ruby-ivar">@family_record</span> = []
+  <span class="ruby-ivar">@source_record</span> = []
+  <span class="ruby-ivar">@repository_record</span> = []
+  <span class="ruby-ivar">@multimedia_record</span> = []
+  <span class="ruby-ivar">@note_record</span> = []
+  <span class="ruby-ivar">@trailer_record</span> = []
+
+  <span class="ruby-comment">#Class_stack is for the parsing process to hold the classes we create as we walk down the levels of a gedcom record.</span>
+  <span class="ruby-comment">#The class we are currently working with is on the top of the stack.</span>
+  <span class="ruby-comment">#The put ourselves on the top of the stack. The number represents the number of class to pop to go back one level of gedcom.</span>
+  <span class="ruby-ivar">@class_stack</span> = [[<span class="ruby-keyword">self</span>, <span class="ruby-value">0</span>]]
+  
+  <span class="ruby-comment">#Create a hash to hold the indexes used in this transmission</span>
+  <span class="ruby-comment">#Set up default indexes for the known level 0 types, so we can reference them even if they have no members.</span>
+  <span class="ruby-ivar">@indexes</span> = {
+    <span class="ruby-value">:individual</span> =<span class="ruby-operator">&gt;</span> {},
+    <span class="ruby-value">:family</span> =<span class="ruby-operator">&gt;</span> {},
+    <span class="ruby-value">:note</span> =<span class="ruby-operator">&gt;</span> {},
+    <span class="ruby-value">:source</span> =<span class="ruby-operator">&gt;</span> {},
+    <span class="ruby-value">:repository</span> =<span class="ruby-operator">&gt;</span> {},
+    <span class="ruby-value">:multimedia</span> =<span class="ruby-operator">&gt;</span> {},
+    <span class="ruby-value">:submitter</span> =<span class="ruby-operator">&gt;</span> {},
+    <span class="ruby-value">:submission</span> =<span class="ruby-operator">&gt;</span> {}
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-action_handler" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">action_handler</span><span
+            class="method-args">( lineno, tokens, child_record = nil, min_occurances = 0, max_occurances = nil, data_type = nil, max_data_size = nil, action = nil, data_description = '' )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="action_handler-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/transmission_base.rb, line 254</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">action_handler</span>( <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">child_record</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">min_occurances</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">max_occurances</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">data_type</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">max_data_size</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">action</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">data_description</span> = <span class="ruby-string">''</span> )
+
+  <span class="ruby-identifier">validate</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">max_data_size</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">action</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">nclasses</span> = <span class="ruby-value">1</span>
+    <span class="ruby-identifier">new_class</span> = <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">action</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">do_this</span><span class="ruby-operator">|</span> <span class="ruby-comment">#We have instructions for handling this line.</span>
+      <span class="ruby-keyword">case</span> <span class="ruby-identifier">do_this</span>[<span class="ruby-constant">ACTION</span>]
+        <span class="ruby-keyword">when</span> <span class="ruby-value">:class</span> 
+          <span class="ruby-comment">#create a new class, making an instance of it, and making the instance the default one.</span>
+          <span class="ruby-identifier">new_class</span> = <span class="ruby-identifier">create_class</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">do_this</span>[<span class="ruby-constant">DATA</span>])
+          <span class="ruby-comment">#Add this instance to an Array of records as an attribute named new_class of the current class.</span>
+          <span class="ruby-identifier">add_to_class_field</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">do_this</span>[<span class="ruby-constant">DATA</span>], <span class="ruby-identifier">new_class</span>)
+          <span class="ruby-comment">#Make this class the current one</span>
+          <span class="ruby-ivar">@class_stack</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">new_class</span>, <span class="ruby-identifier">nclasses</span>]
+          <span class="ruby-identifier">nclasses</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-comment">#We want to be able to unwind the stack in sync with the gedcom.</span>
+                        <span class="ruby-comment">#Hence we need to know how many classes we created at each point.</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">:field</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">do_this</span>[<span class="ruby-constant">DATA</span>].<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Array</span> <span class="ruby-comment">#Then the value we are storing is given, rather than derived from the source file.</span>
+            <span class="ruby-identifier">update_field</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">do_this</span>[<span class="ruby-constant">DATA</span>][<span class="ruby-value">0</span>], <span class="ruby-identifier">data_type</span>, <span class="ruby-identifier">do_this</span>[<span class="ruby-constant">DATA</span>][<span class="ruby-value">1</span>])
+          <span class="ruby-keyword">else</span>
+            <span class="ruby-identifier">update_field</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">do_this</span>[<span class="ruby-constant">DATA</span>], <span class="ruby-identifier">data_type</span>, <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">data</span>)
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">:append_nl</span> 
+          <span class="ruby-comment">#We want to add a line terminator, then append the new data field from tokens</span>
+          <span class="ruby-comment">#e.g. We do this with CONT lines being appended to a NOTE.</span>
+          <span class="ruby-identifier">append_nl_field</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">do_this</span>[<span class="ruby-constant">DATA</span>], <span class="ruby-identifier">data_type</span>, <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">data</span>)
+        <span class="ruby-keyword">when</span> <span class="ruby-value">:append</span> 
+          <span class="ruby-comment">#we want to append the data field in tokens, to the named field.</span>
+          <span class="ruby-comment">#e.g. We do this with CONC lines being added to a NOTE.</span>
+          <span class="ruby-identifier">append_sp_field</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">do_this</span>[<span class="ruby-constant">DATA</span>], <span class="ruby-identifier">data_type</span>, <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">data</span>)
+        <span class="ruby-keyword">when</span> <span class="ruby-value">:xref</span> 
+          <span class="ruby-comment">#we want to record the reference (xref) from the token object.</span>
+          <span class="ruby-identifier">add_to_index</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">do_this</span>[<span class="ruby-constant">DATA</span>][<span class="ruby-value">0</span>], <span class="ruby-identifier">do_this</span>[<span class="ruby-constant">DATA</span>][<span class="ruby-value">1</span>], <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">xref</span>)
+        <span class="ruby-keyword">when</span> <span class="ruby-value">:key</span>
+          <span class="ruby-comment">#will only occur after a class that is the thing we want the xref index to point to. ie xref =&gt; new_class</span>
+          <span class="ruby-comment">#All the level 0 indexes should exist already, as it helps to have them, even if they are empty.</span>
+          <span class="ruby-identifier">create_index</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">do_this</span>[<span class="ruby-constant">DATA</span>], <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">xref</span>, <span class="ruby-identifier">new_class</span> )
+        <span class="ruby-keyword">when</span> <span class="ruby-value">:pop</span>
+          <span class="ruby-ivar">@class_stack</span>.<span class="ruby-identifier">pop</span> <span class="ruby-comment">#In this instance, we want to remove only the last item, even if there were several added.</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">:push</span>
+          <span class="ruby-ivar">@class_stack</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@class_stack</span>.<span class="ruby-identifier">last</span> <span class="ruby-comment">#We need to have dummy entries when the gedcom has another level, but we build no class for it.</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>    
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- action_handler-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- action_handler-method -->
+
+    
+      <div id="method-i-add_to_class_field" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add_to_class_field</span><span
+            class="method-args">(lineno, record, data)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a
+href="TransmissionBase.html#method-i-add_to_class_field">#add_to_class_field</a>()
+is part of the parsing process, and checks to see if the field exists in
+the current states, target object. If the record exists, then the data is
+added to the record array. Each record is an array, so we can have multiple
+instances of a TAG in a GEDCOM record. If the record doesn't exist, the
+record is added to the target object, along with attr_accessors. The data
+is then added as above.</p>
+<ul><li>
+<p>lineno is the current GEDCOM files line number, so we can report errors.</p>
+</li><li>
+<p>record is a symbol naming the attribute we want to store the data in in the
+class.</p>
+</li><li>
+<p>data is a word array, holding the GEDCOM lines data value</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="add_to_class_field-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/transmission_base.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_to_class_field</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">record</span>, <span class="ruby-identifier">data</span>)
+  <span class="ruby-comment">#puts &quot;#{lineno}: Add class instance '#{data.class}' to record #{record} of #{@class_stack.last[0]}&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@class_stack</span>.<span class="ruby-identifier">last</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">class</span>.<span class="ruby-identifier">method_defined?</span>(<span class="ruby-identifier">record</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-comment">#record is missing from the class, so add it using attr_accessor, thus getting the get and set methods.</span>
+    <span class="ruby-comment">#Unlikely to ever see this case, as we precreated all fields for all class needed for GEDCOM 5.5</span>
+    <span class="ruby-identifier">p</span> <span class="ruby-node">&quot;#{lineno}: create a record called #{record} in class #{@class_stack.last[0].class.to_s}&quot;</span> 
+    <span class="ruby-ivar">@class_stack</span>.<span class="ruby-identifier">last</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">class</span>.<span class="ruby-identifier">class_eval</span>(<span class="ruby-node">&quot;attr_accessor :#{record}&quot;</span>)
+    <span class="ruby-comment">#p &quot;#{lineno}: Add the class #{data.class.to_s} as an array, to the record #{record} in class #{@class_stack.last[0].class.to_s}&quot; </span>
+    <span class="ruby-ivar">@class_stack</span>.<span class="ruby-identifier">last</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">send</span>( <span class="ruby-identifier">record</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;=&quot;</span>, <span class="ruby-identifier">data</span> <span class="ruby-operator">?</span> [ <span class="ruby-identifier">data</span> ] <span class="ruby-operator">:</span> []) <span class="ruby-comment">#Much faster than eval(&quot;@class_stack.last[0].#{record} = [#{data}]&quot;)</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-comment">#record exists, get a reference to it, so we can just add the data to the record's data array.</span>
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">a</span> = <span class="ruby-ivar">@class_stack</span>.<span class="ruby-identifier">last</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">send</span>( <span class="ruby-identifier">record</span> ) ) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-comment">#This way is much faster than eval(&quot;@class_stack.last[0].#{record} &lt;&lt; #{data}&quot;)</span>
+      <span class="ruby-comment">#p &quot;#{lineno}: Add the class #{data.class.to_s} to the record #{record}[] in class #{@class_stack.last[0].class.to_s}&quot; </span>
+      <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">data</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">data</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-comment">#Got a reference to the attribute in the class, but no value stored as yet.</span>
+      <span class="ruby-comment">#p &quot;#{lineno}: Add the class #{data.class.to_s} as an array, to the record #{record} in class #{@class_stack.last[0].class.to_s}&quot; </span>
+      <span class="ruby-ivar">@class_stack</span>.<span class="ruby-identifier">last</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">send</span>( <span class="ruby-identifier">record</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;=&quot;</span>, <span class="ruby-identifier">data</span> <span class="ruby-operator">?</span> [ <span class="ruby-identifier">data</span> ] <span class="ruby-operator">:</span> [] )
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- add_to_class_field-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- add_to_class_field-method -->
+
+    
+      <div id="method-i-add_to_index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add_to_index</span><span
+            class="method-args">(lineno, field_name, index_name, key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="TransmissionBase.html#method-i-add_to_index">#add_to_index</a> is
+part of the parsing process, and adds references into the current target
+object to the index (i.e fills in the XREFs with index references]</p>
+          
+
+          
+          <div class="method-source-code" id="add_to_index-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/transmission_base.rb, line 234</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_to_index</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">field_name</span>, <span class="ruby-identifier">index_name</span>, <span class="ruby-identifier">key</span>)
+  <span class="ruby-comment">#p &quot;#{lineno}: Add key #{key} to index #{index_name} to field #{field_name} of #{@class_stack.last[0]}&quot;</span>
+  <span class="ruby-comment">#There are many cases where there can be multiple records of the same GEDCOM type, in the parent record, so we store these in an array.</span>
+  <span class="ruby-comment">#e.g. CHIL xrefs can occur multiple times in FAM record.</span>
+   <span class="ruby-identifier">add_to_class_field</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">field_name</span>, <span class="ruby-constant">Xref</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">index_name</span>, *<span class="ruby-identifier">key</span>) )
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- add_to_index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- add_to_index-method -->
+
+    
+      <div id="method-i-append_nl_field" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">append_nl_field</span><span
+            class="method-args">(lineno, field, data_type, data)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a
+href="TransmissionBase.html#method-i-append_nl_field">#append_nl_field</a>
+is part of the parsing process, and inserts a 'n' character in front of the
+data, then calls append_to_field.</p>
+<ul><li>
+<p>lineno is the current GEDCOM files line number, so we can report errors.</p>
+</li><li>
+<p>field is a symbol naming the attribute we want to store the data in in the
+class.</p>
+</li><li>
+<p>data is a word array, holding the GEDCOM lines data value</p>
+</li><li>
+<p>data_type gives hints to help validate the data (which we don't yet do).</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="append_nl_field-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/transmission_base.rb, line 172</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">append_nl_field</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">field</span>, <span class="ruby-identifier">data_type</span>, <span class="ruby-identifier">data</span>)
+  <span class="ruby-comment">#p &quot;#{lineno}: Append data '\n#{data}' to field #{field} of #{@class_stack.last[0]}&quot;</span>
+  <span class="ruby-identifier">the_data</span> = [<span class="ruby-string">&quot;\n&quot;</span>] <span class="ruby-comment">#want to add a new line to the existing data</span>
+  <span class="ruby-identifier">the_data</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">data</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">data</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-comment">#add the new data only if it is not null.</span>
+  <span class="ruby-identifier">append_to_field</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">field</span>, <span class="ruby-identifier">data_type</span>, <span class="ruby-identifier">the_data</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- append_nl_field-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- append_nl_field-method -->
+
+    
+      <div id="method-i-append_sp_field" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">append_sp_field</span><span
+            class="method-args">(lineno, field, data_type, data)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a
+href="TransmissionBase.html#method-i-append_sp_field">#append_sp_field</a>
+is part of the parsing process, and inserts a ' ' character in front of the
+data, then calls append_to_field.</p>
+<ul><li>
+<p>lineno is the current GEDCOM files line number, so we can report errors.</p>
+</li><li>
+<p>field is a symbol naming the attribute we want to store the data in in the
+class.</p>
+</li><li>
+<p>data is a word array, holding the GEDCOM lines data value</p>
+</li><li>
+<p>data_type gives hints to help validate the data (which we don't yet do).</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="append_sp_field-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/transmission_base.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">append_sp_field</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">field</span>, <span class="ruby-identifier">data_type</span>, <span class="ruby-identifier">data</span>)
+  <span class="ruby-comment">#p &quot;#{lineno}: Append data ' #{data}' to field #{field} of #{@class_stack.last[0]}&quot;</span>
+  <span class="ruby-identifier">the_data</span> = [<span class="ruby-string">&quot; &quot;</span>] <span class="ruby-comment">#want to add a space to the existing data, before adding it to the string.</span>
+  <span class="ruby-identifier">the_data</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">data</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">data</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-comment">#add the new data only if it is not null.</span>
+  <span class="ruby-identifier">append_to_field</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">field</span>, <span class="ruby-identifier">data_type</span>, <span class="ruby-identifier">the_data</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- append_sp_field-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- append_sp_field-method -->
+
+    
+      <div id="method-i-append_to_field" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">append_to_field</span><span
+            class="method-args">(lineno, field, data_type, data)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a
+href="TransmissionBase.html#method-i-append_to_field">#append_to_field</a>
+is part of the parsing process, and adds the data to the end of the field's
+array. Shared code between <a
+href="TransmissionBase.html#method-i-append_sp_field">#append_sp_field</a>
+and append_nl_field.</p>
+<ul><li>
+<p>lineno is the current GEDCOM files line number, so we can report errors.</p>
+</li><li>
+<p>field is a symbol naming the attribute we want to store the data in in the
+class.</p>
+</li><li>
+<p>data is a word array, holding the GEDCOM lines data value</p>
+</li><li>
+<p>data_type gives hints to help validate the data (which we don't yet do).</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="append_to_field-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/transmission_base.rb, line 185</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">append_to_field</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">field</span>, <span class="ruby-identifier">data_type</span>, <span class="ruby-identifier">data</span>)
+  <span class="ruby-comment">#p &quot;#{lineno}: Append data '#{data}' to field #{field} of #{@class_stack.last[0]}&quot;</span>
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">data</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>  <span class="ruby-comment">#Only bother if we have some data to append</span>
+      <span class="ruby-keyword">if</span> ( <span class="ruby-identifier">a</span> = <span class="ruby-ivar">@class_stack</span>.<span class="ruby-identifier">last</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">send</span>( <span class="ruby-identifier">field</span> ) ) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>  <span class="ruby-comment">#The field is not nil, then we need to add to the last value in the array</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">!=</span> [] <span class="ruby-comment">#The field is not an empty array</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">a</span>[<span class="ruby-value">-1</span>] <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-comment">#The last element is not null, so we append to it.</span>
+            <span class="ruby-comment">#p &quot;Add the class #{data.class.to_s} to the field #{field}[] in class #{@class_stack.last[0].class.to_s}&quot;</span>
+            <span class="ruby-identifier">a</span>[<span class="ruby-value">-1</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">GedString</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">data</span>) 
+          <span class="ruby-keyword">else</span> <span class="ruby-comment">#The last element is null, so we replace is, rather than append to it.</span>
+            <span class="ruby-comment">#p &quot;Add the class #{data.class.to_s} as an array, to the field #{field} in class #{@class_stack.last[0].class.to_s}&quot;</span>
+            <span class="ruby-identifier">a</span>[<span class="ruby-value">-1</span>] = <span class="ruby-constant">GedString</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">data</span>)
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">else</span> <span class="ruby-comment">#Was an empty array, the data will be the first member in the array.</span>
+          <span class="ruby-identifier">a</span>[<span class="ruby-value">0</span>] = <span class="ruby-constant">GedString</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">data</span>)
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">else</span> <span class="ruby-comment">#The field was null. We need to set the first value to our data value, in an array.</span>
+        <span class="ruby-comment">#p &quot;Add the class #{data.class.to_s} as an array, to the field #{field} in class #{@class_stack.last[0].class.to_s}&quot;</span>
+        <span class="ruby-ivar">@class_stack</span>.<span class="ruby-identifier">last</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">send</span>( <span class="ruby-identifier">field</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">'='</span>,  [ <span class="ruby-constant">GedString</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">data</span>) ] )
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+    <span class="ruby-identifier">p</span> <span class="ruby-node">&quot;#{exception} : Append data '#{data}' to field '#{field}' of class '#{@class_stack.last[0].class}'&quot;</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-identifier">exception</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- append_to_field-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- append_to_field-method -->
+
+    
+      <div id="method-i-create_class" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_class</span><span
+            class="method-args">(lineno, class_name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="TransmissionBase.html#method-i-create_class">#create_class</a>()
+is part of the parsing process, and looks in the <a
+href="ClassTracker.html">ClassTracker</a> class to see if this class
+exists. if it doesn't already exist, the class is created and an instance
+is returned. if it already exists, then a new instance of the class is
+returned.</p>
+          
+
+          
+          <div class="method-source-code" id="create_class-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/transmission_base.rb, line 89</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_class</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">class_name</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">class_name</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">new_class</span> = <span class="ruby-identifier">class_name</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">capitalize</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">defined</span>(<span class="ruby-identifier">new_class</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">p</span> <span class="ruby-node">&quot;#{lineno}: Create class #{new_class}&quot;</span>
+      <span class="ruby-identifier">define</span>(<span class="ruby-identifier">new_class</span>)
+      <span class="ruby-identifier">new_class</span> = <span class="ruby-constant">Object</span>.<span class="ruby-identifier">const_set</span>(<span class="ruby-node">&quot;#{new_class}&quot;</span>, <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span>) <span class="ruby-comment">#creates a Class and assigns it the constant given</span>
+    <span class="ruby-keyword">end</span> 
+    <span class="ruby-comment">#p &quot;#{lineno}: instance class #{class_name}&quot;</span>
+    <span class="ruby-identifier">class_instance</span> = <span class="ruby-identifier">eval</span> <span class="ruby-node">&quot;#{new_class}.new(self)&quot;</span> <span class="ruby-comment">#create an instance of the new class.</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">class_instance</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;class #{class_name} instance nil&quot;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">class_instance</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_class-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_class-method -->
+
+    
+      <div id="method-i-create_index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_index</span><span
+            class="method-args">(lineno, index_name, key, value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="TransmissionBase.html#method-i-create_index">#create_index</a> is
+part of the parsing process, and adds the key, value pair to the index
+index_name, creating the index if it didn't already exist.</p>
+<ul><li>
+<p>lineno is the current GEDCOM files line number, so we can report errors.</p>
+</li><li>
+<p>index_name is the category of the index. e.g. it could be an index of
+individual records , or family records, etc.</p>
+</li><li>
+<p>key is  a GEDCOM XREF we want to be able to track.</p>
+</li><li>
+<p>value is the target object that was created to hold the referenced GEDCOM
+record.</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="create_index-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/transmission_base.rb, line 217</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_index</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">index_name</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">index_name</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@indexes</span>[<span class="ruby-identifier">index_name</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-comment">#puts &quot;#{lineno}: create index #{index_name}&quot;</span>
+      <span class="ruby-ivar">@indexes</span>[<span class="ruby-identifier">index_name</span>] = {} <span class="ruby-comment">#empty hash</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-comment">#p &quot;#{lineno}: Add (key,value) #{key} =&gt; #{@class_stack.last[0]} to index #{index_name}&quot;</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@indexes</span>[<span class="ruby-identifier">index_name</span>][<span class="ruby-identifier">key</span>] <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;duplicate key #{key} in index #{index_name}&quot;</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-ivar">@indexes</span>[<span class="ruby-identifier">index_name</span>][<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_index-method -->
+
+    
+      <div id="method-i-define" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">define</span><span
+            class="method-args">(class_name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="define-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/transmission_base.rb, line 306</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">define</span>(<span class="ruby-identifier">class_name</span>)
+  <span class="ruby-constant">ClassTracker</span> <span class="ruby-operator">&lt;&lt;</span>  <span class="ruby-identifier">class_name</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- define-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- define-method -->
+
+    
+      <div id="method-i-defined" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">defined</span><span
+            class="method-args">(class_name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="defined-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/transmission_base.rb, line 302</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">defined</span>(<span class="ruby-identifier">class_name</span>)
+  <span class="ruby-constant">ClassTracker</span><span class="ruby-operator">::</span><span class="ruby-identifier">exists?</span> <span class="ruby-identifier">class_name</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- defined-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- defined-method -->
+
+    
+      <div id="method-i-pop" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pop</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>pop() is part of the parsing process, and removes target objects from their
+stack, which must remain aligned with the <a
+href="ParseState.html">ParseState</a> stack. Multiple object may be
+removed, as we may step back multiple levels in the <a
+href="ParseState.html">ParseState</a> stack. The object removed will have
+been placed into their parent GEDCOM records object before being removed
+from the stack.</p>
+          
+
+          
+          <div class="method-source-code" id="pop-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/transmission_base.rb, line 138</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pop</span>
+  <span class="ruby-comment">#this is to catch multiple classes added to the stack, for one gedcom line.</span>
+  <span class="ruby-identifier">i</span> = <span class="ruby-ivar">@class_stack</span>.<span class="ruby-identifier">last</span>[<span class="ruby-value">1</span>]
+  <span class="ruby-identifier">i</span>.<span class="ruby-identifier">times</span> { <span class="ruby-ivar">@class_stack</span>.<span class="ruby-identifier">pop</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- pop-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- pop-method -->
+
+    
+      <div id="method-i-summary" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">summary</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>summary() prints out the number of each level 0 record type the we have
+just parsed.</p>
+          
+
+          
+          <div class="method-source-code" id="summary-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/transmission_base.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">summary</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;HEAD count = #{@header_record.length}&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;SUBM count = #{@submission_record.length}&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;SUBN count = #{@submitter_record.length}&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;INDI count = #{@individual_record.length}&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;FAM count = #{@family_record.length}&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;SOUR count = #{@source_record.length}&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;REPO count = #{@repository_record.length}&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;OBJE count = #{@multimedia_record.length}&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;NOTE count = #{@note_record.length}&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;TRLR count = #{@trailer_record.length}&quot;</span>
+  
+  <span class="ruby-comment">#p ClassTracker #Debugging line.</span>
+  <span class="ruby-comment">#pp @indexes[:individual][&quot;IPB4&quot;] #debugging test to find and print an indivual's record with xref @IPB4@</span>
+  <span class="ruby-comment">#pp @indexes[:family][&quot;F1&quot;] #debugging test to find and print a family record with the xref @F1@</span>
+  <span class="ruby-comment">#pp @indexes[:note] #debugging test to print all NOTE records</span>
+  <span class="ruby-comment">#p find(:individual,&quot;IB1024&quot;).to_gedcom #debugging test to find an individual record with xref @IB1024@ and print the record and its sub-records.</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- summary-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- summary-method -->
+
+    
+      <div id="method-i-update_field" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_field</span><span
+            class="method-args">(lineno, field, data_type, data)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="TransmissionBase.html#method-i-update_field">#update_field</a>()
+is part of the parsing process, calls add_to_class_field. I'm sure there is
+a reason I did this. I just can't think what it was.</p>
+<ul><li>
+<p>lineno is the current GEDCOM files line number, so we can report errors.</p>
+</li><li>
+<p>field is a symbol naming the attribute we want to store the data in in the
+class.</p>
+</li><li>
+<p>data is a word array, holding the GEDCOM lines data value</p>
+</li><li>
+<p>data_type gives hints to help validate the data (which we don't yet do).</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="update_field-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/transmission_base.rb, line 150</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_field</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">field</span>, <span class="ruby-identifier">data_type</span>, <span class="ruby-identifier">data</span>)
+  <span class="ruby-comment">#p &quot;#{lineno}: Add data '#{data}' to field #{field} of #{@class_stack.last[0]}&quot;</span>
+  <span class="ruby-identifier">add_to_class_field</span>(<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">field</span>, <span class="ruby-identifier">data</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-constant">GedString</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">data</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update_field-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update_field-method -->
+
+    
+      <div id="method-i-validate" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validate</span><span
+            class="method-args">(lineno, tokens, max_data_size)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>validate() is part of the parsing process, and checks that the GEDCOM line
+falls within the data length specified by the standard A warning is printed
+if the data is longer than allowed by the standard. As most programs seem
+to ignore the maximum data lengths, including the test file from LDS, the
+line is accepted regardless.</p>
+          
+
+          
+          <div class="method-source-code" id="validate-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/transmission_base.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">validate</span> <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">tokens</span>, <span class="ruby-identifier">max_data_size</span>
+  <span class="ruby-comment">#Validate the length of the data field is in bounds.</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">data</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">length</span> = <span class="ruby-identifier">tokens</span>.<span class="ruby-identifier">data</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">l</span>,<span class="ruby-identifier">element</span><span class="ruby-operator">|</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> }
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">max_data_size</span>
+      <span class="ruby-identifier">p</span> <span class="ruby-node">&quot;Warning Line #{lineno}: Data portion may be too long for some databases. (Length = #{length - 1}, MAX = #{max_data_size})&quot;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- validate-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- validate-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

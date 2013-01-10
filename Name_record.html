@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=US-ASCII" http-equiv="Content-Type">
+
+<title>class Name_record - gedcom-0.9.3 Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/gedcom/name_record.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="Individual_attribute_record.html">Individual_attribute_record</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-i-event_tag">#event_tag</a>
+    
+    <li><a href="#method-i-name">#name</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./History_txt.html">History</a>
+  
+    <li class="file"><a href="./Manifest_txt.html">Manifest</a>
+  
+    <li class="file"><a href="./README_txt.html">README</a>
+  
+    <li class="file"><a href="./test_data/README_txt.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Address_record.html">Address_record</a>
+  
+    <li><a href="./Adoption_record.html">Adoption_record</a>
+  
+    <li><a href="./Association_record.html">Association_record</a>
+  
+    <li><a href="./Bit.html">Bit</a>
+  
+    <li><a href="./Btree.html">Btree</a>
+  
+    <li><a href="./Btree_data.html">Btree_data</a>
+  
+    <li><a href="./Btree_node.html">Btree_node</a>
+  
+    <li><a href="./Cause_record.html">Cause_record</a>
+  
+    <li><a href="./Change_date_record.html">Change_date_record</a>
+  
+    <li><a href="./Character_set_record.html">Character_set_record</a>
+  
+    <li><a href="./Chart.html">Chart</a>
+  
+    <li><a href="./Citation_data_record.html">Citation_data_record</a>
+  
+    <li><a href="./Citation_event_type_record.html">Citation_event_type_record</a>
+  
+    <li><a href="./ClassTracker.html">ClassTracker</a>
+  
+    <li><a href="./Copyright_record.html">Copyright_record</a>
+  
+    <li><a href="./Corporate_record.html">Corporate_record</a>
+  
+    <li><a href="./Date_record.html">Date_record</a>
+  
+    <li><a href="./Decendant.html">Decendant</a>
+  
+    <li><a href="./Encoded_line_record.html">Encoded_line_record</a>
+  
+    <li><a href="./Event_age_record.html">Event_age_record</a>
+  
+    <li><a href="./Event_record.html">Event_record</a>
+  
+    <li><a href="./Events_list_record.html">Events_list_record</a>
+  
+    <li><a href="./Families_individuals.html">Families_individuals</a>
+  
+    <li><a href="./Family_record.html">Family_record</a>
+  
+    <li><a href="./GEDCOMBase.html">GEDCOMBase</a>
+  
+    <li><a href="./GedLine.html">GedLine</a>
+  
+    <li><a href="./GedString.html">GedString</a>
+  
+    <li><a href="./Gedcom.html">Gedcom</a>
+  
+    <li><a href="./GedcomParser.html">GedcomParser</a>
+  
+    <li><a href="./Gedcom_record.html">Gedcom_record</a>
+  
+    <li><a href="./Header_data_record.html">Header_data_record</a>
+  
+    <li><a href="./Header_record.html">Header_record</a>
+  
+    <li><a href="./Header_source_record.html">Header_source_record</a>
+  
+    <li><a href="./Individual_attribute_record.html">Individual_attribute_record</a>
+  
+    <li><a href="./Individual_record.html">Individual_record</a>
+  
+    <li><a href="./Instruction.html">Instruction</a>
+  
+    <li><a href="./Multimedia_citation_record.html">Multimedia_citation_record</a>
+  
+    <li><a href="./Multimedia_file_record.html">Multimedia_file_record</a>
+  
+    <li><a href="./Multimedia_format_record.html">Multimedia_format_record</a>
+  
+    <li><a href="./Multimedia_obje_file_record.html">Multimedia_obje_file_record</a>
+  
+    <li><a href="./Multimedia_obje_format_record.html">Multimedia_obje_format_record</a>
+  
+    <li><a href="./Multimedia_record.html">Multimedia_record</a>
+  
+    <li><a href="./Name_phonetic_record.html">Name_phonetic_record</a>
+  
+    <li><a href="./Name_record.html">Name_record</a>
+  
+    <li><a href="./Name_romanized_record.html">Name_romanized_record</a>
+  
+    <li><a href="./Note_citation_record.html">Note_citation_record</a>
+  
+    <li><a href="./Note_record.html">Note_record</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./PEDIGREE_WIDTH.html">PEDIGREE_WIDTH</a>
+  
+    <li><a href="./ParseState.html">ParseState</a>
+  
+    <li><a href="./Place_record.html">Place_record</a>
+  
+    <li><a href="./Placename_map_record.html">Placename_map_record</a>
+  
+    <li><a href="./Placename_phonetic_record.html">Placename_phonetic_record</a>
+  
+    <li><a href="./Placename_romanized_record.html">Placename_romanized_record</a>
+  
+    <li><a href="./Refn_record.html">Refn_record</a>
+  
+    <li><a href="./Repository_caln.html">Repository_caln</a>
+  
+    <li><a href="./Repository_citation_record.html">Repository_citation_record</a>
+  
+    <li><a href="./Repository_record.html">Repository_record</a>
+  
+    <li><a href="./Source_citation_record.html">Source_citation_record</a>
+  
+    <li><a href="./Source_record.html">Source_record</a>
+  
+    <li><a href="./Source_scope_record.html">Source_scope_record</a>
+  
+    <li><a href="./Submission_record.html">Submission_record</a>
+  
+    <li><a href="./Submitter_record.html">Submitter_record</a>
+  
+    <li><a href="./Text_record.html">Text_record</a>
+  
+    <li><a href="./Trailer_record.html">Trailer_record</a>
+  
+    <li><a href="./Transmission.html">Transmission</a>
+  
+    <li><a href="./TransmissionBase.html">TransmissionBase</a>
+  
+    <li><a href="./Xref.html">Xref</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Name_record</h1>
+
+  <div id="description" class="description">
+    
+<p>Internal representation of the GEDCOM NAME record as described under
+PERSONAL_NAME_STRUCTURE This sub-classes <a
+href="Individual_attribute_record.html">Individual_attribute_record</a>,
+which in turn sub-classes <a href="Event_record.html">Event_record</a>.
+This may seem odd, but they share most class attributes and event records
+can be attached to most attributes.</p>
+
+<h1 id="label-PERSONAL_NAME_STRUCTURE%3A%3D">PERSONAL_NAME_STRUCTURE:=</h1>
+
+<pre>n NAME &lt;NAME_PERSONAL&gt;                 {1:1}
+  +1 NPFX &lt;NAME_PIECE_PREFIX&gt;          {0:1}
+  +1 GIVN &lt;NAME_PIECE_GIVEN&gt;           {0:1}
+  +1 NICK &lt;NAME_PIECE_NICKNAME&gt;        {0:1}
+  +1 SPFX &lt;NAME_PIECE_SURNAME_PREFIX   {0:1}
+  +1 SURN &lt;NAME_PIECE_SURNAME&gt;         {0:1}
+  +1 NSFX &lt;NAME_PIECE_SUFFIX&gt;          {0:1}
+  +1 &lt;&lt;SOURCE_CITATION&gt;&gt;               {0:M}
+  +1 &lt;&lt;NOTE_STRUCTURE&gt;&gt;                {0:M}
+
+The name value is formed in the manner the name is normally spoken, with the given name and family
+ name (surname) separated by slashes (/). (See &lt;NAME_PERSONAL&gt;, page 45.) Based on the
+dynamic nature or unknown compositions of naming conventions, it is difficult to provide more
+detailed name piece structure to handle every case. The NPFX, GIVN, NICK, SPFX, SURN, and
+NSFX tags are provided optionally for systems that cannot operate effectively with less structured
+information. For current future compatibility, all systems must construct their names based on the
+&lt;NAME_PERSONAL&gt; structure. Those using the optional name pieces should assume that few
+systems will process them, and most will not provide the name pieces. Future GEDCOM releases
+(6.0 and later) will likely apply a very different strategy to resolve this problem, possibly using a
+sophisticated parser and a name-knowledge database.</pre>
+
+<h2 id="label-NAME_PERSONAL%3A%3D++++++++++++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A120%7D">NAME_PERSONAL:=                                                        {Size=1:120}</h2>
+
+<pre>&lt;TEXT&gt; | /&lt;TEXT&gt;/ | &lt;TEXT&gt; /&lt;TEXT&gt;/ | /&lt;TEXT&gt;/ &lt;TEXT&gt; | &lt;TEXT&gt; /&lt;TEXT&gt;/ &lt;TEXT&gt;
+
+The surname of an individual, if known, is enclosed between two slash (/) characters. The order of the
+name parts should be the order that the person would, by custom of their culture, have used when
+giving it to a recorder. Early versions of Personal Ancestral File and other products did not use the (R)
+trailing slash when the surname was the last element of the name. If part of name is illegible, that part
+is indicated by an ellipsis (...). Capitalize the name of a person or place in the conventional
+manner-capitalize the first letter of each part and lowercase the other letters, unless conventional
+usage is otherwise. For example: McMurray.
+Examples:
+  1 NAME William Lee                 (given name only or surname not known)
+  1 NAME /Parry/                     (surname only)
+  1 NAME William Lee /Parry/
+  1 NAME William Lee /Mac Parry/     (both parts (Mac and Parry) are surname parts
+  1 NAME William /Lee/ Parry         (surname imbedded in the name string)
+  1 NAME William Lee /Pa.../
+  1 NAME /HU/ Pan                    (Surname before firstname)</pre>
+
+<h2 id="label-NAME_PIECE%3A%3D+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A90%7D">NAME_PIECE:=                                                           {Size=1:90}</h2>
+
+<pre>The piece of the name pertaining to the name part of interest. The surname part, the given name part,
+the name prefix part, or the name suffix part.</pre>
+
+<h2 id="label-NAME_PIECE_GIVEN%3A%3D+++++++++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A120%7D">NAME_PIECE_GIVEN:=                                                     {Size=1:120}</h2>
+
+<pre>&lt;NAME_PIECE&gt; | &lt;NAME_PIECE_GIVEN&gt;, &lt;NAME_PIECE&gt;
+
+Given name or earned name. Different given names are separated by a comma.</pre>
+
+<h2 id="label-NAME_PIECE_NICKNAME%3A%3D++++++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A30%7D">NAME_PIECE_NICKNAME:=                                                  {Size=1:30}</h2>
+
+<pre>&lt;NAME_PIECE&gt; | &lt;NAME_PIECE_NICKNAME&gt;, &lt;NAME_PIECE&gt;
+A descriptive or familiar name used in connection with one's proper name.</pre>
+
+<h2 id="label-NAME_PIECE_PREFIX%3A%3D++++++++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A30%7D">NAME_PIECE_PREFIX:=                                                    {Size=1:30}</h2>
+
+<pre>&lt;NAME_PIECE&gt; | &lt;NAME_PIECE_PREFIX&gt;, &lt;NAME_PIECE&gt;
+
+Non indexing name piece that appears preceding the given name and surname parts. Different name
+prefix parts are separated by a comma.</pre>
+
+<p>The attributes are all arrays for the level +1 tags/records.</p>
+<ul><li>
+<p>Those ending in _ref are GEDCOM XREF index keys</p>
+</li><li>
+<p>Those ending in _record are array of classes of that type.</p>
+</li><li>
+<p>The remainder are arrays of attributes that could be present in this
+record.</p>
+</li></ul>
+
+<p>GEDCOM 5.5.1 Draft adds</p>
+
+<pre>+1 TYPE &lt;NAME_TYPE&gt; 
++1 FONE &lt;NAME_PHONETIC_VARIATION&gt;
+  +2 TYPE &lt;PHONETIC_TYPE&gt;
+  +2 &lt;&lt;PERSONAL_NAME_PIECES&gt;&gt; 
++1 ROMN &lt;NAME_ROMANIZED_VARIATION&gt;
+  +2 TYPE &lt;ROMANIZED_TYPE&gt; 
+  +2 &lt;&lt;PERSONAL_NAME_PIECES&gt;&gt;</pre>
+
+<h2 id="label-NAME_TYPE%3A%3D+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D5%3A30%7D+">NAME_TYPE:=                                                           {Size=5:30} </h2>
+
+<pre>[ aka | birth | immigrant | maiden | married | &lt;user defined&gt; ]</pre>
+
+<p>Indicates the name type, for example the name issued or assumed as an
+immigrant. e.g. birth indicates name given on birth certificate.</p>
+
+<h2 id="label-NAME_PHONETIC_VARIATION%3A%3D+++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A120%7D">NAME_PHONETIC_VARIATION:=                                               {Size=1:120}</h2>
+
+<pre>PHONETIC_TYPE [&lt;user defined&gt; | hangul | kana]                        {Size=5:30}</pre>
+
+<p>The phonetic variation of the name is written in the same form as the was
+the name used in the superior &lt;NAME_PERSONAL&gt; primitive,</p>
+
+<pre>but phonetically written using the method indicated by the subordinate &lt;PHONETIC_TYPE&gt; value, for example if hiragana was used</pre>
+
+<p>to provide a reading of a name written in kanji, then the
+&lt;PHONETIC_TYPE&gt; value would indicate 'kana'.</p>
+
+<h2 id="label-NAME_ROMANIZED_VARIATION%3A%3D+++++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A120%7D+">NAME_ROMANIZED_VARIATION:=                                                 {Size=1:120} </h2>
+
+<pre>ROMANIZED_TYPE [&lt;user defined&gt; | pinyin | romaji | wadegiles]            {Size=5:30}</pre>
+
+<p>The romanized variation of the name is written in the same form prescribed
+for the name used in the superior &lt;NAME_PERSONAL&gt; context.  The
+method used to romanize the name is indicated by the line_value of the
+subordinate &lt;ROMANIZED_TYPE&gt;, for example  if romaji was used to
+provide a reading of a name written in kanji, then the ROMANIZED_TYPE
+subordinate to the ROMN tag  would indicate romaji.</p>
+
+<h2 id="label-TYPE%3A%3D">TYPE:=</h2>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-given" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">given</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Name stored in field "value", as this is an individual_attribute_record
+subtype. Value of attribute "type" is set to NAME</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-name_phonetic_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">name_phonetic_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-name_romanized_record" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">name_romanized_record</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-name_type" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">name_type</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-nickname" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">nickname</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Name stored in field "value", as this is an individual_attribute_record
+subtype. Value of attribute "type" is set to NAME</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-prefix" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">prefix</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Name stored in field "value", as this is an individual_attribute_record
+subtype. Value of attribute "type" is set to NAME</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-suffix" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">suffix</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Name stored in field "value", as this is an individual_attribute_record
+subtype. Value of attribute "type" is set to NAME</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-surname" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">surname</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Name stored in field "value", as this is an individual_attribute_record
+subtype. Value of attribute "type" is set to NAME</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-surname_prefix" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">surname_prefix</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Name stored in field "value", as this is an individual_attribute_record
+subtype. Value of attribute "type" is set to NAME</p>
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(*a)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/name_record.rb, line 108</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*<span class="ruby-identifier">a</span>)
+  <span class="ruby-keyword">super</span>(*<span class="ruby-identifier">a</span>)
+   <span class="ruby-ivar">@sub_level</span> = [
+                     [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;NPFX&quot;</span>,    <span class="ruby-value">:prefix</span> ],
+                     [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;GIVN&quot;</span>,    <span class="ruby-value">:given</span> ],
+                     [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;NICK&quot;</span>,    <span class="ruby-value">:nickname</span> ],
+                     [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;SPFX&quot;</span>,    <span class="ruby-value">:surname_prefix</span> ],
+                     [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;SURN&quot;</span>,    <span class="ruby-value">:surname</span> ],
+                     [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;NSFX&quot;</span>,    <span class="ruby-value">:suffix</span> ],
+                     [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;TYPE&quot;</span>,    <span class="ruby-value">:name_type</span> ], <span class="ruby-comment">#5.5.1</span>
+                     [<span class="ruby-value">:walk</span>,  <span class="ruby-string">&quot;FONE&quot;</span>,    <span class="ruby-value">:name_phonetic_record</span>],
+                     [<span class="ruby-value">:walk</span>,  <span class="ruby-string">&quot;ROMN&quot;</span>,    <span class="ruby-value">:name_romanized_record</span>],
+                 ] <span class="ruby-operator">+</span> <span class="ruby-ivar">@sub_level</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-event_tag" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">event_tag</span><span
+            class="method-args">(tag)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Attributes and Events have a common class, as they are essentially
+identical.</p>
+          
+
+          
+          <div class="method-source-code" id="event_tag-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/name_record.rb, line 124</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">event_tag</span>(<span class="ruby-identifier">tag</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;NAME&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-keyword">else</span> <span class="ruby-keyword">super</span>(<span class="ruby-identifier">tag</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- event_tag-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- event_tag-method -->
+
+    
+      <div id="method-i-name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>return the name as a string. It might be returned be the <a
+href="Individual_attribute_record.html#method-i-value">Individual_attribute_record#value</a>
+method.</p>
+
+<pre>or it might need to be contructed from the Name_record attributes. 99.9999% of all GEDCOM I have
+seen does not use the Name_record attributes, and if the do, they are required to fill in the name on the
+NAME line (NAME_PERSONAL value), so the value should be set. This helps, as the ordering of the surname and
+first names is not standard across all cultures.</pre>
+          
+
+          
+          <div class="method-source-code" id="name-source">
+            <pre><span class="ruby-comment"># File lib/gedcom/name_record.rb, line 136</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">name</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">name</span> = <span class="ruby-identifier">value</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;&quot;</span> <span class="ruby-comment">#could be what we return if none of the Name_record attributes are set</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@prefix</span>
+      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@prefix</span>.<span class="ruby-identifier">first</span>
+      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-string">' '</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@given</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@nickname</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@surname_prefix</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@surname</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@suffix</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@given</span>
+      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@given</span>.<span class="ruby-identifier">first</span>  
+      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-string">' '</span> <span class="ruby-keyword">if</span>  <span class="ruby-ivar">@nickname</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@surname_prefix</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@surname</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@suffix</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@nickname</span>
+      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-string">'('</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@nickname</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">+</span> <span class="ruby-string">')'</span>  
+      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-string">' '</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@surname_prefix</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@surname</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@suffix</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@surname_prefix</span>
+      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@surname_prefix</span>.<span class="ruby-identifier">first</span>
+      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-string">' '</span> <span class="ruby-keyword">if</span>  <span class="ruby-ivar">@surname</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@suffix</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@surname</span>
+      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> ( <span class="ruby-string">'/'</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@surname</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">+</span> <span class="ruby-string">'/'</span> ) 
+      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-string">' '</span> <span class="ruby-keyword">if</span>  <span class="ruby-ivar">@suffix</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@suffix</span>.<span class="ruby-identifier">first</span>  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@suffix</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">first</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- name-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

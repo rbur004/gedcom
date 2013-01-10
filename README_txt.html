@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=US-ASCII" http-equiv="Content-Type">
+
+<title>README - gedcom-0.9.3 Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./History_txt.html">History</a>
+  
+    <li class="file"><a href="./Manifest_txt.html">Manifest</a>
+  
+    <li class="file"><a href="./README_txt.html">README</a>
+  
+    <li class="file"><a href="./test_data/README_txt.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Address_record.html">Address_record</a>
+  
+    <li><a href="./Adoption_record.html">Adoption_record</a>
+  
+    <li><a href="./Association_record.html">Association_record</a>
+  
+    <li><a href="./Bit.html">Bit</a>
+  
+    <li><a href="./Btree.html">Btree</a>
+  
+    <li><a href="./Btree_data.html">Btree_data</a>
+  
+    <li><a href="./Btree_node.html">Btree_node</a>
+  
+    <li><a href="./Cause_record.html">Cause_record</a>
+  
+    <li><a href="./Change_date_record.html">Change_date_record</a>
+  
+    <li><a href="./Character_set_record.html">Character_set_record</a>
+  
+    <li><a href="./Chart.html">Chart</a>
+  
+    <li><a href="./Citation_data_record.html">Citation_data_record</a>
+  
+    <li><a href="./Citation_event_type_record.html">Citation_event_type_record</a>
+  
+    <li><a href="./ClassTracker.html">ClassTracker</a>
+  
+    <li><a href="./Copyright_record.html">Copyright_record</a>
+  
+    <li><a href="./Corporate_record.html">Corporate_record</a>
+  
+    <li><a href="./Date_record.html">Date_record</a>
+  
+    <li><a href="./Decendant.html">Decendant</a>
+  
+    <li><a href="./Encoded_line_record.html">Encoded_line_record</a>
+  
+    <li><a href="./Event_age_record.html">Event_age_record</a>
+  
+    <li><a href="./Event_record.html">Event_record</a>
+  
+    <li><a href="./Events_list_record.html">Events_list_record</a>
+  
+    <li><a href="./Families_individuals.html">Families_individuals</a>
+  
+    <li><a href="./Family_record.html">Family_record</a>
+  
+    <li><a href="./GEDCOMBase.html">GEDCOMBase</a>
+  
+    <li><a href="./GedLine.html">GedLine</a>
+  
+    <li><a href="./GedString.html">GedString</a>
+  
+    <li><a href="./Gedcom.html">Gedcom</a>
+  
+    <li><a href="./GedcomParser.html">GedcomParser</a>
+  
+    <li><a href="./Gedcom_record.html">Gedcom_record</a>
+  
+    <li><a href="./Header_data_record.html">Header_data_record</a>
+  
+    <li><a href="./Header_record.html">Header_record</a>
+  
+    <li><a href="./Header_source_record.html">Header_source_record</a>
+  
+    <li><a href="./Individual_attribute_record.html">Individual_attribute_record</a>
+  
+    <li><a href="./Individual_record.html">Individual_record</a>
+  
+    <li><a href="./Instruction.html">Instruction</a>
+  
+    <li><a href="./Multimedia_citation_record.html">Multimedia_citation_record</a>
+  
+    <li><a href="./Multimedia_file_record.html">Multimedia_file_record</a>
+  
+    <li><a href="./Multimedia_format_record.html">Multimedia_format_record</a>
+  
+    <li><a href="./Multimedia_obje_file_record.html">Multimedia_obje_file_record</a>
+  
+    <li><a href="./Multimedia_obje_format_record.html">Multimedia_obje_format_record</a>
+  
+    <li><a href="./Multimedia_record.html">Multimedia_record</a>
+  
+    <li><a href="./Name_phonetic_record.html">Name_phonetic_record</a>
+  
+    <li><a href="./Name_record.html">Name_record</a>
+  
+    <li><a href="./Name_romanized_record.html">Name_romanized_record</a>
+  
+    <li><a href="./Note_citation_record.html">Note_citation_record</a>
+  
+    <li><a href="./Note_record.html">Note_record</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./PEDIGREE_WIDTH.html">PEDIGREE_WIDTH</a>
+  
+    <li><a href="./ParseState.html">ParseState</a>
+  
+    <li><a href="./Place_record.html">Place_record</a>
+  
+    <li><a href="./Placename_map_record.html">Placename_map_record</a>
+  
+    <li><a href="./Placename_phonetic_record.html">Placename_phonetic_record</a>
+  
+    <li><a href="./Placename_romanized_record.html">Placename_romanized_record</a>
+  
+    <li><a href="./Refn_record.html">Refn_record</a>
+  
+    <li><a href="./Repository_caln.html">Repository_caln</a>
+  
+    <li><a href="./Repository_citation_record.html">Repository_citation_record</a>
+  
+    <li><a href="./Repository_record.html">Repository_record</a>
+  
+    <li><a href="./Source_citation_record.html">Source_citation_record</a>
+  
+    <li><a href="./Source_record.html">Source_record</a>
+  
+    <li><a href="./Source_scope_record.html">Source_scope_record</a>
+  
+    <li><a href="./Submission_record.html">Submission_record</a>
+  
+    <li><a href="./Submitter_record.html">Submitter_record</a>
+  
+    <li><a href="./Text_record.html">Text_record</a>
+  
+    <li><a href="./Trailer_record.html">Trailer_record</a>
+  
+    <li><a href="./Transmission.html">Transmission</a>
+  
+    <li><a href="./TransmissionBase.html">TransmissionBase</a>
+  
+    <li><a href="./Xref.html">Xref</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<h1 id="label-gedcom">gedcom</h1>
+<ul><li>
+<p><a
+href="http://rubyforge.org/projects/gedcom/">rubyforge.org/projects/gedcom/</a></p>
+</li></ul>
+
+<h2 id="label-DESCRIPTION%3A">DESCRIPTION:</h2>
+
+<p>A Ruby GEDCOM text file parser and producer, that produces a tree of
+objects from each of the GEDCOM file types and subtypes. Understands the
+full GEDCOM 5.5 grammar, and will handle  unknown tags hierarchies as a
+Note class.</p>
+
+<h2 id="label-FEATURES%2FPROBLEMS%3A">FEATURES/PROBLEMS:</h2>
+<ul><li>
+<p><a href="Gedcom.html">Gedcom</a> multicharacter ANSEL encoding is currently
+not understood when reading and writing, but is preserved if the file is
+opened as ASCII-8BIT.</p>
+</li><li>
+<p>CR line termination causes issues for systems with native LF line
+termination (CRLF is fine).</p>
+</li><li>
+<p>Dates are currently just strings, but I want to parse these and test their
+validatity.  This is not as easy as it may seem at first, as dates may be
+in many formats,  they may be partial, or may actually be strings
+describing the date.</p>
+</li><li>
+<p>For my own use, I bend the GEDCOM 5.5 standard by allowing the reading of
+the following types in non-standard ways.  These will not affect the
+reading and writing of valid GEDCOM 5.5.</p>
+</li><li><ul><li>
+<p>'NOTE' type to appear in places it is not defined to exist in GEDCOM.</p>
+
+<pre>This is necessary in order to be able to convert user defined tags into NOTE records.</pre>
+</li></ul>
+</li><li><ul><li>
+<p>'RESN' type to appear in places it is not defined to exist in GEDCOM.</p>
+
+<pre>I wanted to be able to mark any record as restricted.</pre>
+</li></ul>
+</li><li><ul><li>
+<p>'SUBM' type to appear in 'EVEN' records.</p>
+
+<pre>I wanted to be able to track where I got the event information from.</pre>
+</li></ul>
+</li><li><ul><li>
+<p>'SEX' type to appear multiple times in an 'INDI' record,</p>
+
+<pre>as a person's sex can now be changed.</pre>
+</li></ul>
+</li><li><ul><li>
+<p>'SEX' type to allow more than 'M', 'F' and 'U',</p>
+
+<pre>to allow for the XXY, XXXY and X and other genetic anomolies associated with gender.</pre>
+</li></ul>
+</li><li><ul><li>
+<p>'NAME' type allows event details ( eg 'DATE') ,</p>
+
+<pre>as names changes are events, not just an attribute.</pre>
+</li></ul>
+</li><li><ul><li>
+<p>'ADDR' type allows a 'TYPE' entry</p>
+
+<pre>to qualify what the address is for (e.g. home, work, ...) .</pre>
+</li></ul>
+</li><li>
+<p>User defined tags are converted to the NOTE type, with sublevels being CONT
+lines. These are recognised as any tag starting with '_'.</p>
+</li><li>
+<p>Haven't yet merged in the code to pretty print a family tree.</p>
+</li><li>
+<p>Want to add a merge option, to take multiple transmission and make a single
+one from them.</p>
+</li><li>
+<p>save/load (to/from a database) is yet to be ported. GedcomBase#to_db is a
+dummy function.</p>
+</li></ul>
+
+<h2 id="label-SYNOPSIS%3A">SYNOPSIS:</h2>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'gedcom'</span>
+
+<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;parse TGC551LF.ged&quot;</span>
+<span class="ruby-identifier">g</span> = <span class="ruby-constant">Gedcom</span>.<span class="ruby-identifier">file</span>(<span class="ruby-string">&quot;../test_data/TGC551LF.ged&quot;</span>, <span class="ruby-string">&quot;r:ASCII-8BIT&quot;</span>) <span class="ruby-comment">#OK with LF line endings.</span>
+<span class="ruby-identifier">g</span>.<span class="ruby-identifier">transmissions</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">summary</span>
+<span class="ruby-identifier">g</span>.<span class="ruby-identifier">transmission</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">self_check</span> <span class="ruby-comment">#validate the gedcom file just loaded, printing errors found.</span>
+<span class="ruby-identifier">puts</span> 
+
+<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;parse TGC55CLF.ged&quot;</span>
+<span class="ruby-identifier">g</span>.<span class="ruby-identifier">file</span>(<span class="ruby-string">&quot;../test_data/TGC55CLF.ged&quot;</span>, <span class="ruby-string">&quot;r:ASCII-8BIT&quot;</span>) <span class="ruby-comment">#Ok with CR LF line endings.</span>
+<span class="ruby-identifier">g</span>.<span class="ruby-identifier">transmissions</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">summary</span> <span class="ruby-comment">#Prints numbers of each level 1 record type found.</span>
+<span class="ruby-identifier">g</span>.<span class="ruby-identifier">transmission</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">self_check</span> <span class="ruby-comment">#validate the gedcom file just loaded, printing errors found.</span>
+
+<span class="ruby-comment">#print the parsed file to see if it matches the source file.</span>
+<span class="ruby-comment">#Note CONT and CONC breaks may end up in different places</span>
+<span class="ruby-comment">#Note Order of TAGS at the same level may be different</span>
+<span class="ruby-comment">#Note User TAGS are output as Notes.</span>
+<span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>( <span class="ruby-string">&quot;../test_data/TGC551LF.out&quot;</span>, <span class="ruby-string">&quot;w:ASCII-8BIT&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">file</span>.<span class="ruby-identifier">print</span> <span class="ruby-identifier">g</span>.<span class="ruby-identifier">transmissions</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_gedcom</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>( <span class="ruby-string">&quot;../test_data/TGC55CLF.out&quot;</span>, <span class="ruby-string">&quot;w:ASCII-8BIT&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">file</span>.<span class="ruby-identifier">print</span> <span class="ruby-identifier">g</span>.<span class="ruby-identifier">transmissions</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_gedcom</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;\nComplete&quot;</span>
+</pre>
+
+<h2 id="label-REQUIREMENTS%3A">REQUIREMENTS:</h2>
+<ul><li>
+<p>require 'rubygems'</p>
+</li></ul>
+
+<h2 id="label-INSTALL%3A">INSTALL:</h2>
+<ul><li>
+<p>sudo gem install gedcom</p>
+</li></ul>
+
+<h2 id="label-LICENSE%3A">LICENSE:</h2>
+
+<p>Distributed under the Ruby License.</p>
+
+<p>Copyright (c) 2009</p>
+<ol><li>
+<p>You may make and give away verbatim copies of the source form of the
+software without restriction, provided that you duplicate all of the
+original copyright notices and associated disclaimers.</p>
+</li><li>
+<p>You may modify your copy of the software in any way, provided that you do
+at least ONE of the following:</p>
+
+<pre>a) place your modifications in the Public Domain or otherwise
+   make them Freely Available, such as by posting said</pre>
+</li></ol>
+
+<pre>modifications to Usenet or an equivalent medium, or by allowing
+the author to include your modifications in the software.
+
+   b) use the modified software only within your corporation or
+      organization.
+
+   c) rename any non-standard executables so the names do not conflict
+with standard executables, which must also be provided.
+
+   d) make other distribution arrangements with the author.</pre>
+<ol><li>
+<p>You may distribute the software in object code or executable form, provided
+that you do at least ONE of the following:</p>
+
+<pre>a) distribute the executables and library files of the software,</pre>
+</li></ol>
+
+<pre>together with instructions (in the manual page or equivalent)
+on where to get the original distribution.
+
+   b) accompany the distribution with the machine-readable source of
+the software.
+
+   c) give non-standard executables non-standard names, with
+      instructions on where to get the original software distribution.
+
+   d) make other distribution arrangements with the author.</pre>
+<ol><li>
+<p>You may modify and include the part of the software into any other software
+(possibly commercial).  But some files in the distribution may not have
+been written by the author, so that they are not under this terms.</p>
+</li><li>
+<p>The scripts and library files supplied as input to or produced as  output
+from the software do not automatically fall under the copyright of the
+software, but belong to whomever generated them,  and may be sold
+commercially, and may be aggregated with this software.</p>
+</li><li>
+<p>THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</p>
+</li></ol>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
