@@ -72,29 +72,38 @@ class Gedcom
     add_transmission(transmission) if transmission != nil
   end
   
-  def self.file(*a)
+  def self.file(*args)
     g = Gedcom.new
-    g.file(*a)
+    g.file(*args)
+    return g
+  end
+
+  def file(*args)
+    File.open(*args) do |file|
+      read(file)
+    end
+  end
+  
+  def self.read(io)
+    g = Gedcom.new
+    g.read(io)
     return g
   end
   
-  def file(*a)
+  def read(io)
     transmission = Transmission.new
     gedcom_parser = GedcomParser.new(transmission)
     
-    File.open(*a) do   |file| 
-      file.each_line("\n") do |line|
-        begin
-          gedcom_parser.parse( file.lineno, line )
-        rescue => exception
-          puts "#{file.lineno}: #{exception} - " + line
-          # raise exception
-        end
+    io.each_line("\n") do |line|
+      begin
+        gedcom_parser.parse( io.lineno, line )
+      rescue => exception
+        puts "#{io.lineno}: #{exception} - " + line
+        # raise exception
       end
     end
     
     @transmissions << transmission
-    
   end
   
   def add_transmission(transmission)
