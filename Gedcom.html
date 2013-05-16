@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=US-ASCII" http-equiv="Content-Type">
 
-<title>class Gedcom - gedcom-0.9.3 Documentation</title>
+<title>class Gedcom - gedcom-0.9.4 Documentation</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -74,11 +74,15 @@
     
     <li><a href="#method-c-new">::new</a>
     
+    <li><a href="#method-c-read">::read</a>
+    
     <li><a href="#method-i-add_transmission">#add_transmission</a>
     
     <li><a href="#method-i-each">#each</a>
     
     <li><a href="#method-i-file">#file</a>
+    
+    <li><a href="#method-i-read">#read</a>
     
   </ul>
 </nav>
@@ -94,8 +98,6 @@
     <li class="file"><a href="./History_txt.html">History</a>
   
     <li class="file"><a href="./Manifest_txt.html">Manifest</a>
-  
-    <li class="file"><a href="./README_txt.html">README</a>
   
     <li class="file"><a href="./test_data/README_txt.html">README</a>
   
@@ -313,7 +315,7 @@
         
         <div class="method-heading">
           <span class="method-name">file</span><span
-            class="method-args">(*a)</span>
+            class="method-args">(*args)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
@@ -325,10 +327,10 @@
 
           
           <div class="method-source-code" id="file-source">
-            <pre><span class="ruby-comment"># File lib/gedcom.rb, line 75</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">file</span>(*<span class="ruby-identifier">a</span>)
+            <pre><span class="ruby-comment"># File lib/gedcom.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">file</span>(*<span class="ruby-identifier">args</span>)
   <span class="ruby-identifier">g</span> = <span class="ruby-constant">Gedcom</span>.<span class="ruby-identifier">new</span>
-  <span class="ruby-identifier">g</span>.<span class="ruby-identifier">file</span>(*<span class="ruby-identifier">a</span>)
+  <span class="ruby-identifier">g</span>.<span class="ruby-identifier">file</span>(*<span class="ruby-identifier">args</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">g</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- file-source -->
@@ -357,7 +359,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/gedcom.rb, line 70</span>
+            <pre><span class="ruby-comment"># File lib/gedcom.rb, line 65</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">transmission</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-ivar">@transmissions</span> = []
   <span class="ruby-identifier">add_transmission</span>(<span class="ruby-identifier">transmission</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">transmission</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
@@ -370,6 +372,38 @@
 
         
       </div><!-- new-method -->
+
+    
+      <div id="method-c-read" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">read</span><span
+            class="method-args">(io)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="read-source">
+            <pre><span class="ruby-comment"># File lib/gedcom.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">io</span>)
+  <span class="ruby-identifier">g</span> = <span class="ruby-constant">Gedcom</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">g</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">io</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">g</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- read-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- read-method -->
 
     
     </section><!-- public-class-method-details -->
@@ -394,7 +428,7 @@
 
           
           <div class="method-source-code" id="add_transmission-source">
-            <pre><span class="ruby-comment"># File lib/gedcom.rb, line 100</span>
+            <pre><span class="ruby-comment"># File lib/gedcom.rb, line 104</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">add_transmission</span>(<span class="ruby-identifier">transmission</span>)
   <span class="ruby-ivar">@transmissions</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">transmission</span>
 <span class="ruby-keyword">end</span></pre>
@@ -424,7 +458,7 @@
 
           
           <div class="method-source-code" id="each-source">
-            <pre><span class="ruby-comment"># File lib/gedcom.rb, line 104</span>
+            <pre><span class="ruby-comment"># File lib/gedcom.rb, line 108</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">each</span>
   <span class="ruby-ivar">@transmissions</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span> <span class="ruby-identifier">t</span> }
 <span class="ruby-keyword">end</span></pre>
@@ -442,7 +476,7 @@
         
         <div class="method-heading">
           <span class="method-name">file</span><span
-            class="method-args">(*a)</span>
+            class="method-args">(*args)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
@@ -454,24 +488,11 @@
 
           
           <div class="method-source-code" id="file-source">
-            <pre><span class="ruby-comment"># File lib/gedcom.rb, line 81</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">file</span>(*<span class="ruby-identifier">a</span>)
-  <span class="ruby-identifier">transmission</span> = <span class="ruby-constant">Transmission</span>.<span class="ruby-identifier">new</span>
-  <span class="ruby-identifier">gedcom_parser</span> = <span class="ruby-constant">GedcomParser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">transmission</span>)
-  
-  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(*<span class="ruby-identifier">a</span>) <span class="ruby-keyword">do</span>   <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> 
-    <span class="ruby-identifier">file</span>.<span class="ruby-identifier">each_line</span>(<span class="ruby-string">&quot;\n&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
-      <span class="ruby-keyword">begin</span>
-        <span class="ruby-identifier">gedcom_parser</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">file</span>.<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">line</span> )
-      <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
-        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{file.lineno}: #{exception} - &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">line</span>
-        <span class="ruby-comment"># raise exception</span>
-      <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">end</span>
+            <pre><span class="ruby-comment"># File lib/gedcom.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">file</span>(*<span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(*<span class="ruby-identifier">args</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">read</span>(<span class="ruby-identifier">file</span>)
   <span class="ruby-keyword">end</span>
-  
-  <span class="ruby-ivar">@transmissions</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">transmission</span>
-  
 <span class="ruby-keyword">end</span></pre>
           </div><!-- file-source -->
           
@@ -481,6 +502,48 @@
 
         
       </div><!-- file-method -->
+
+    
+      <div id="method-i-read" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">read</span><span
+            class="method-args">(io)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="read-source">
+            <pre><span class="ruby-comment"># File lib/gedcom.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">read</span>(<span class="ruby-identifier">io</span>)
+  <span class="ruby-identifier">transmission</span> = <span class="ruby-constant">Transmission</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">gedcom_parser</span> = <span class="ruby-constant">GedcomParser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">transmission</span>)
+  
+  <span class="ruby-identifier">io</span>.<span class="ruby-identifier">each_line</span>(<span class="ruby-string">&quot;\n&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">gedcom_parser</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">io</span>.<span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">line</span> )
+    <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{io.lineno}: #{exception} - &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">line</span>
+      <span class="ruby-comment"># raise exception</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-ivar">@transmissions</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">transmission</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- read-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- read-method -->
 
     
     </section><!-- public-instance-method-details -->

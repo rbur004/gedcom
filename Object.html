@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=US-ASCII" http-equiv="Content-Type">
 
-<title>class Object - gedcom-0.9.3 Documentation</title>
+<title>class Object - gedcom-0.9.4 Documentation</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -48,7 +48,6 @@
   <h3 class="section-header">Defined In</h3>
   <ul>
     <li>lib/chart/relationship.rb
-    <li>lib/gedcom.rb
   </ul>
 </nav>
 
@@ -65,17 +64,7 @@
 </nav>
 
     
-    <!-- Method Quickref -->
-<nav id="method-list-section" class="section">
-  <h3 class="section-header">Methods</h3>
-
-  <ul class="link-list">
     
-    <li><a href="#method-i-path">#path</a>
-    
-  </ul>
-</nav>
-
   </div>
 
   <div id="project-metadata">
@@ -87,8 +76,6 @@
     <li class="file"><a href="./History_txt.html">History</a>
   
     <li class="file"><a href="./Manifest_txt.html">Manifest</a>
-  
-    <li class="file"><a href="./README_txt.html">README</a>
   
     <li class="file"><a href="./test_data/README_txt.html">README</a>
   
@@ -276,99 +263,6 @@
 
     <!-- Methods -->
     
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
-
-    
-      <div id="method-i-path" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">path</span><span
-            class="method-args">(s,fs='/')</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p><a href="Gedcom.html">Gedcom</a> class holds an array of GEDCOM
-transmissions (that is parsed GEDCOM files) Each transmission relates to
-the loading of a GEDCOM text file, parsing it into a tree, starting with a
-<a href="Transmission.html">Transmission</a> class at its root. Within the
-<a href="Transmission.html">Transmission</a> class are arrays for each of
-the level 0 GEDCOM record types of these classes:</p>
-
-<pre>* Header_record
-* Submission_record 
-* Submitter_record
-* Individual_record
-* Family_record
-* Source_record
-* Repository_record
-* Multimedia_record
-* Note_record
-* Trailer_record</pre>
-
-<p>Each of these classes has arrays for each of the Level 1 <a
-href="Gedcom.html">Gedcom</a> records types associated with the Level 0
-type. Some of these are attributes, that is they contain the actual data,
-while others are classes that contain attributes and/or classes e.g. an <a
-href="Individual_record.html">Individual_record</a> class object could have
-any or all of these:</p>
-
-<pre>* individual_ref                   ( that is individual_ref = 'I42' if the GEDCOM line is '0 INDI @I42@')
-Then 1 level down it is possible to get local attributes for this object
-* restriction                      (from the GEDCOM &quot;1 RESN restriction_value&quot; )
-* registered_ref_id                (from the GEDCOM &quot;1 RFN registered_ref_id&quot; )
-* lds_ancestral_file_no            (from the GEDCOM &quot;1 AFN lds_ancestral_file_no&quot; )
-* automated_record_id              (from the GEDCOM &quot;1 RIN automated_record_id&quot; )
-Also arrays of classes may exist for these:
-* Name_record                       (from the GEDCOM &quot;1 NAME ...&quot; )
-* Individual_attribute_record       (from the GEDCOM &quot;1 [SEX | TITL | ... ] ...&quot;)
-* Event_record                      (from the GEDCOM &quot;1 [BIRT | DEAT | ... ] ... &quot;)
-* Families_individuals              (from the GEDCOM &quot;1 [FAMC | FAMS] ...&quot;)
-* Individuals_individuals           (from the GEDCOM &quot;1 [ANCI | DESO | ASSO] ...&quot;)
-* Multimedia_citation_record        (from the GEDCOM &quot;1 OBJE ...&quot;)
-* Source_citation_record            (from the GEDCOM &quot;1 SOUR ...&quot;)
-* Note_citation_record              (from the GEDCOM &quot;1 NOTE ...&quot;)
-* Refn_record                       (from the GEDCOM &quot;1 REFN ...&quot;)
-* Change_date_record                (from the GEDCOM &quot;1 CHAN ...&quot;)
-And References to other record types:
-* alias_ref                         (from the GEDCOM &quot;1 ALIA alias_ref&quot; )
-* submitter_ref                     (from the GEDCOM &quot;1 SUBM submitter_ref&quot; )
-
-Below say an Event object in an Individual_record object, you could get further arrays of 
-attributes and other objects holding further levels of the GEDCOM hierarchy.</pre>
-
-<p>These can all be seen in the TAGS hash in parser/gedcom_parser.rb, which
-defines  what TAGS are valid when, and what action to take when a
-particular tag is encountered in the input stream.</p>
-
-<p>The reverse, that is the conversion back to GEDCOM format is not a simple
-reversal of the TAGS entries. The generation of GEDCOM from the objects is
-done recursively, by calling the objects to_gedcom() method. This can occur
-at any level, from <a href="Transmission.html">Transmission</a> downward.</p>
-          
-
-          
-          <div class="method-source-code" id="path-source">
-            <pre><span class="ruby-comment"># File lib/gedcom.rb, line 54</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">path</span>(<span class="ruby-identifier">s</span>,<span class="ruby-identifier">fs</span>=<span class="ruby-string">'/'</span>)
-  <span class="ruby-identifier">last_fs</span> = <span class="ruby-identifier">s</span>.<span class="ruby-identifier">rindex</span>(<span class="ruby-identifier">fs</span>)
-  <span class="ruby-identifier">last_fs</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">s</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">last_fs</span>] <span class="ruby-operator">:</span> <span class="ruby-string">&quot;&quot;</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- path-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- path-method -->
-
-    
-    </section><!-- public-instance-method-details -->
-  
   </section><!-- 5Buntitled-5D -->
 
 </div><!-- documentation -->
