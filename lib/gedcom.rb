@@ -51,14 +51,9 @@
 #objects to_gedcom() method. This can occur at any level, from Transmission downward.
 #
 
-def path(s,fs='/')
-  last_fs = s.rindex(fs)
-  last_fs ? s[0..last_fs] : ""
+%w(gedcom parser chart).each do |dir|
+  $: << File.join(File.dirname(File.expand_path(__FILE__)), dir)
 end
-
-$: << "#{path(__FILE__)}gedcom"
-$: << "#{path(__FILE__)}parser"
-$: << "#{path(__FILE__)}chart"
 
 require 'gedcom_parser.rb'
 #require 'chart.rb'
