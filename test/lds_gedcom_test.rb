@@ -3,7 +3,7 @@
 #Or 1.9 version at
 #!/usr/local/bin/ruby
 require 'rubygems'
-require '../pkg/gedcom-0.9.3/lib/gedcom.rb'
+require '../pkg/gedcom-0.9.4/lib/gedcom.rb'
 require 'versioncheck'
 
 

@@ -1,6 +1,6 @@
 History.txt
 Manifest.txt
-README.txt
+README.md
 Rakefile
 lib/gedcom/address_record.rb
 lib/gedcom/adoption_record.rb

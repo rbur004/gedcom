@@ -59,7 +59,7 @@ require 'gedcom_parser.rb'
 #require 'chart.rb'
 
 class Gedcom
-  VERSION = '0.9.3'
+  VERSION = '0.9.4'
   attr_accessor :transmissions
   
   def initialize(transmission = nil)
