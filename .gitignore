@@ -25,9 +25,6 @@
 *.pid
 .idea
 coverage
-/etc/genealogy/archive
-/etc/genealogy/vendor
-/etc/s3
 /public/assets/
 .DS_Store
 results.xml
