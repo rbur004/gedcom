@@ -47,7 +47,7 @@ unknown tags hierarchies as a Note class.
 	puts "parse TGC551LF.ged"
 	g = Gedcom.file("../test_data/TGC551LF.ged", "r:ASCII-8BIT") #OK with LF line endings.
 	g.transmissions[0].summary
-	g.transmission[0].self_check #validate the gedcom file just loaded, printing errors found.
+	g.transmissions[0].self_check #validate the gedcom file just loaded, printing errors found.
 	puts 
 
 	puts "parse TGC55CLF.ged"
