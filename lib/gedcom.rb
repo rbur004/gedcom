@@ -57,6 +57,7 @@ end
 
 require 'gedcom_parser.rb'
 #require 'chart.rb'
+require 'stringio'
 
 class Gedcom
   VERSION = '0.9.4'
@@ -88,7 +89,11 @@ class Gedcom
   def read(io)
     transmission = Transmission.new
     gedcom_parser = GedcomParser.new(transmission)
-    
+
+    if io.is_a?(String)
+      io = StringIO.new(io)
+    end
+
     io.each_line("\n") do |line|
       begin
         gedcom_parser.parse( io.lineno, line )
