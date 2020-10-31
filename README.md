@@ -1,17 +1,17 @@
-= gedcom
+# gedcom
 
 * Docs :: http://rbur004.github.io/gedcom/
 * Source :: https://github.com/rbur004/gedcom
 * Gem :: https://rubygems.org/gems/gedcom
 
-== DESCRIPTION:
+## DESCRIPTION:
 
 A Ruby GEDCOM text file parser and producer, that produces a tree of objects from each of the
 GEDCOM file types and subtypes. Understands the full GEDCOM 5.5 grammar, and will handle 
 unknown tags hierarchies as a Note class.
  
  
-== FEATURES/PROBLEMS:
+## FEATURES/PROBLEMS:
 
 * Gedcom multicharacter ANSEL encoding is currently not understood when reading and writing, but is preserved if the file is opened as ASCII-8BIT.
 * CR line termination causes issues for systems with native LF line termination (CRLF is fine).
@@ -40,7 +40,7 @@ unknown tags hierarchies as a Note class.
 * Want to add a merge option, to take multiple transmission and make a single one from them.
 * save/load (to/from a database) is yet to be ported. GedcomBase#to_db is a dummy function.
 
-== SYNOPSIS:
+## SYNOPSIS:
 
 	require 'gedcom'
 
@@ -68,15 +68,15 @@ unknown tags hierarchies as a Note class.
 	puts "\nComplete"
 
 
-== REQUIREMENTS:
+## REQUIREMENTS:
 
 * require 'rubygems'
 
-== INSTALL:
+## INSTALL:
 
 * sudo gem install gedcom
 
-== LICENSE:
+## LICENSE:
 
 Distributed under the Ruby License.
 
