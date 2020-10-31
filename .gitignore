@@ -1,0 +1,11 @@
+doc/
+pkg/
+.autotest
+.yardoc
+.yard
+History.txt
+.DS_Store
+lib/.DS_Store
+test/.DS_Store
+test/test_data/*.out
+gitdoc/
