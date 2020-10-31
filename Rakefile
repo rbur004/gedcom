@@ -1,21 +1,27 @@
 # -*- ruby -*-
-
 require 'rubygems'
 require 'hoe'
-#require 'lib/gedcom.rb'
+Hoe.plugin :yard
+load "#{__dir__}/version"
 
-Hoe.spec 'gedcom' do 
-  self.rubyforge_name = 'gedcom'
-  developer 'Rob Burrowes', 'r.burrowes@auckland.ac.nz'
+Hoe.spec PROJECT do 
+  self.readme_file = "README.md"
+  self.developer( "Rob Burrowes","r.burrowes@auckland.ac.nz")
   remote_rdoc_dir = '' # Release to root
-  #extra_deps << 'whatevs'
+  
+  self.yard_title = PROJECT
+  self.yard_options = ['--markup', 'markdown', '--protected']
 end
 
-#Old V1 format.
-#Hoe.new('gedcom', Gedcom::VERSION) do |p|
-#  p.rubyforge_name = "gedcom" 
-#  p.developer( "Rob Burrowes","rob@burrowes.org")
-#  p.remote_rdoc_dir = '' # Release to root
-#end
 
-# vim: syntax=Ruby
+#Validate manfest.txt
+#rake check_manifest
+
+#Local checking. Creates pkg/
+#rake gem
+
+#create doc/
+#rake docs  
+
+#Copy up to rubygem.org
+#rake release VERSION=1.0.1
