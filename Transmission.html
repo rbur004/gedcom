@@ -1,647 +1,1201 @@
 <!DOCTYPE html>
-
 <html>
-<head>
-<meta content="text/html; charset=US-ASCII" http-equiv="Content-Type">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Transmission
+  
+    &mdash; gedcom
+  
+</title>
 
-<title>class Transmission - gedcom-0.9.4 Documentation</title>
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
 
 <script type="text/javascript">
-  var rdoc_rel_prefix = "./";
+  pathId = "Transmission";
+  relpath = '';
 </script>
 
-<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
 
 
-<body id="top" class="class">
-<nav id="metadata">
-  <nav id="home-section" class="section">
-  <h3 class="section-header">
-    <a href="./index.html">Home</a>
-    <a href="./table_of_contents.html#classes">Classes</a>
-    <a href="./table_of_contents.html#methods">Methods</a>
-  </h3>
-</nav>
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index (T)</a> &raquo;
+    
+    
+    <span class="title">Transmission</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Transmission
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="TransmissionBase.html" title="TransmissionBase (class)">TransmissionBase</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="GEDCOMBase.html" title="GEDCOMBase (class)">GEDCOMBase</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="TransmissionBase.html" title="TransmissionBase (class)">TransmissionBase</a></span></li>
+          
+            <li class="next">Transmission</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/gedcom/transmission.rb</dd>
+  </dl>
+  
+</div>
 
 
-  <nav id="search-section" class="section project-section" class="initially-hidden">
-  <form action="#" method="get" accept-charset="utf-8">
-    <h3 class="section-header">
-      <input type="text" name="search" placeholder="Search" id="search-field"
-             title="Type to search, Up and Down to navigate, Enter to load">
-    </h3>
-  </form>
-
-  <ul id="search-results" class="initially-hidden"></ul>
-</nav>
 
 
-  <div id="file-metadata">
-    <nav id="file-list-section" class="section">
-  <h3 class="section-header">Defined In</h3>
-  <ul>
-    <li>lib/gedcom/transmission.rb
+  <h2>Constant Summary</h2>
+  
+  <h3 class="inherited">Constants inherited
+     from <span class='object_link'><a href="TransmissionBase.html" title="TransmissionBase (class)">TransmissionBase</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="TransmissionBase.html#ACTION-constant" title="TransmissionBase::ACTION (constant)">TransmissionBase::ACTION</a></span>, <span class='object_link'><a href="TransmissionBase.html#DATA-constant" title="TransmissionBase::DATA (constant)">TransmissionBase::DATA</a></span></p>
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#family_record-instance_method" title="#family_record (instance method)">#<strong>family_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute family_record.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#header_record-instance_method" title="#header_record (instance method)">#<strong>header_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute header_record.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#individual_record-instance_method" title="#individual_record (instance method)">#<strong>individual_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute individual_record.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#multimedia_record-instance_method" title="#multimedia_record (instance method)">#<strong>multimedia_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute multimedia_record.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#note_record-instance_method" title="#note_record (instance method)">#<strong>note_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute note_record.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#repository_record-instance_method" title="#repository_record (instance method)">#<strong>repository_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute repository_record.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#source_record-instance_method" title="#source_record (instance method)">#<strong>source_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute source_record.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#submission_record-instance_method" title="#submission_record (instance method)">#<strong>submission_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute submission_record.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#submitter_record-instance_method" title="#submitter_record (instance method)">#<strong>submitter_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute submitter_record.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#trailer_record-instance_method" title="#trailer_record (instance method)">#<strong>trailer_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute trailer_record.</p>
+</div></span>
+  
+</li>
+
+    
   </ul>
-</nav>
 
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="TransmissionBase.html" title="TransmissionBase (class)">TransmissionBase</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="TransmissionBase.html#class_stack-instance_method" title="TransmissionBase#class_stack (method)">#class_stack</a></span>, <span class='object_link'><a href="TransmissionBase.html#indexes-instance_method" title="TransmissionBase#indexes (method)">#indexes</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="GEDCOMBase.html" title="GEDCOMBase (class)">GEDCOMBase</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="GEDCOMBase.html#restriction-instance_method" title="GEDCOMBase#restriction (method)">#restriction</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dump_indexes-instance_method" title="#dump_indexes (instance method)">#<strong>dump_indexes</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>debugging code to show what indexes were created and what keys are in each Printing out the index values generates too much output, so these are ignored.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#find-instance_method" title="#find (instance method)">#<strong>find</strong>(index_name, key)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Looks in a transmissions indexes for an index called index_name, returning the value associated with the key.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(*a)  &#x21d2; Transmission </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Transmission.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#self_check-instance_method" title="#self_check (instance method)">#<strong>self_check</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="TransmissionBase.html" title="TransmissionBase (class)">TransmissionBase</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="TransmissionBase.html#action_handler-instance_method" title="TransmissionBase#action_handler (method)">#action_handler</a></span>, <span class='object_link'><a href="TransmissionBase.html#add_to_class_field-instance_method" title="TransmissionBase#add_to_class_field (method)">#add_to_class_field</a></span>, <span class='object_link'><a href="TransmissionBase.html#add_to_index-instance_method" title="TransmissionBase#add_to_index (method)">#add_to_index</a></span>, <span class='object_link'><a href="TransmissionBase.html#append_nl_field-instance_method" title="TransmissionBase#append_nl_field (method)">#append_nl_field</a></span>, <span class='object_link'><a href="TransmissionBase.html#append_sp_field-instance_method" title="TransmissionBase#append_sp_field (method)">#append_sp_field</a></span>, <span class='object_link'><a href="TransmissionBase.html#append_to_field-instance_method" title="TransmissionBase#append_to_field (method)">#append_to_field</a></span>, <span class='object_link'><a href="TransmissionBase.html#create_class-instance_method" title="TransmissionBase#create_class (method)">#create_class</a></span>, <span class='object_link'><a href="TransmissionBase.html#create_index-instance_method" title="TransmissionBase#create_index (method)">#create_index</a></span>, <span class='object_link'><a href="TransmissionBase.html#define-instance_method" title="TransmissionBase#define (method)">#define</a></span>, <span class='object_link'><a href="TransmissionBase.html#defined-instance_method" title="TransmissionBase#defined (method)">#defined</a></span>, <span class='object_link'><a href="TransmissionBase.html#pop-instance_method" title="TransmissionBase#pop (method)">#pop</a></span>, <span class='object_link'><a href="TransmissionBase.html#summary-instance_method" title="TransmissionBase#summary (method)">#summary</a></span>, <span class='object_link'><a href="TransmissionBase.html#update_field-instance_method" title="TransmissionBase#update_field (method)">#update_field</a></span>, <span class='object_link'><a href="TransmissionBase.html#validate-instance_method" title="TransmissionBase#validate (method)">#validate</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="GEDCOMBase.html" title="GEDCOMBase (class)">GEDCOMBase</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="GEDCOMBase.html#changed-instance_method" title="GEDCOMBase#changed (method)">#changed</a></span>, <span class='object_link'><a href="GEDCOMBase.html#changed%3F-instance_method" title="GEDCOMBase#changed? (method)">#changed?</a></span>, <span class='object_link'><a href="GEDCOMBase.html#created%3F-instance_method" title="GEDCOMBase#created? (method)">#created?</a></span>, <span class='object_link'><a href="GEDCOMBase.html#locked%3F-instance_method" title="GEDCOMBase#locked? (method)">#locked?</a></span>, <span class='object_link'><a href="GEDCOMBase.html#no_tabs-class_method" title="GEDCOMBase.no_tabs (method)">no_tabs</a></span>, <span class='object_link'><a href="GEDCOMBase.html#private%3F-instance_method" title="GEDCOMBase#private? (method)">#private?</a></span>, <span class='object_link'><a href="GEDCOMBase.html#save-instance_method" title="GEDCOMBase#save (method)">#save</a></span>, <span class='object_link'><a href="GEDCOMBase.html#tabs-class_method" title="GEDCOMBase.tabs (method)">tabs</a></span>, <span class='object_link'><a href="GEDCOMBase.html#to_db-instance_method" title="GEDCOMBase#to_db (method)">#to_db</a></span>, <span class='object_link'><a href="GEDCOMBase.html#to_gedcom-instance_method" title="GEDCOMBase#to_gedcom (method)">#to_gedcom</a></span>, <span class='object_link'><a href="GEDCOMBase.html#to_s-instance_method" title="GEDCOMBase#to_s (method)">#to_s</a></span>, <span class='object_link'><a href="GEDCOMBase.html#to_s_ordered-instance_method" title="GEDCOMBase#to_s_ordered (method)">#to_s_ordered</a></span>, <span class='object_link'><a href="GEDCOMBase.html#to_s_r-instance_method" title="GEDCOMBase#to_s_r (method)">#to_s_r</a></span>, <span class='object_link'><a href="GEDCOMBase.html#token_to_s-instance_method" title="GEDCOMBase#token_to_s (method)">#token_to_s</a></span>, <span class='object_link'><a href="GEDCOMBase.html#xref_check-instance_method" title="GEDCOMBase#xref_check (method)">#xref_check</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(*a)  &#x21d2; <tt><span class='object_link'><a href="" title="Transmission (class)">Transmission</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of Transmission.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/transmission.rb', line 38</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='lbracket'>[</span><span class='int'>1</span><span class='op'>..</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'>#don&#39;t need to put ourselves into @transmission.
+</span>  
+  <span class='ivar'>@this_level</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:header_record</span><span class='rbracket'>]</span><span class='comma'>,</span>     <span class='comment'>#Recurse over the HEAD header records (should only be one)
+</span>                  <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:submission_record</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='comment'>#Recurse over the SUBN submission records
+</span>                  <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:submitter_record</span><span class='rbracket'>]</span><span class='comma'>,</span>  <span class='comment'>#Recurse over the SUBM submitter record(s)
+</span>                  <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:source_record</span><span class='rbracket'>]</span><span class='comma'>,</span>     <span class='comment'>#Recurse over the SOUR Source records
+</span>                  <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:repository_record</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='comment'>#Recurse over the REPO repository records
+</span>                  <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:family_record</span><span class='rbracket'>]</span><span class='comma'>,</span>     <span class='comment'>#Recurse over the FAM Family records
+</span>                  <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:individual_record</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='comment'>#Recurse over the INDI Individual records
+</span>                  <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:multimedia_record</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='comment'>#Recurse over the OBJE multimedia records
+</span>                  <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:note_record</span><span class='rbracket'>]</span><span class='comma'>,</span>       <span class='comment'>#Recurse over the NOTE records
+</span>                  <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:trailer_record</span><span class='rbracket'>]</span><span class='comma'>,</span>    <span class='comment'>#Recurse over the Trailer Record(s). (should only be the one).
+</span>                <span class='rbracket'>]</span>
+  <span class='ivar'>@sub_level</span> <span class='op'>=</span>  <span class='lbracket'>[</span><span class='comment'>#level + 1
+</span>                <span class='rbracket'>]</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="family_record=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="family_record-instance_method">
+  
+    #<strong>family_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute family_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/transmission.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_family_record'>family_record</span>
+  <span class='ivar'>@family_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="header_record=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="header_record-instance_method">
+  
+    #<strong>header_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute header_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/transmission.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_header_record'>header_record</span>
+  <span class='ivar'>@header_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="individual_record=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="individual_record-instance_method">
+  
+    #<strong>individual_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute individual_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/transmission.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_individual_record'>individual_record</span>
+  <span class='ivar'>@individual_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="multimedia_record=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="multimedia_record-instance_method">
+  
+    #<strong>multimedia_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute multimedia_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/transmission.rb', line 36</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_multimedia_record'>multimedia_record</span>
+  <span class='ivar'>@multimedia_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="note_record=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="note_record-instance_method">
+  
+    #<strong>note_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute note_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/transmission.rb', line 36</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_note_record'>note_record</span>
+  <span class='ivar'>@note_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="repository_record=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="repository_record-instance_method">
+  
+    #<strong>repository_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute repository_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/transmission.rb', line 36</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_repository_record'>repository_record</span>
+  <span class='ivar'>@repository_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="source_record=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="source_record-instance_method">
+  
+    #<strong>source_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute source_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/transmission.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_source_record'>source_record</span>
+  <span class='ivar'>@source_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="submission_record=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="submission_record-instance_method">
+  
+    #<strong>submission_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute submission_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/transmission.rb', line 36</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_submission_record'>submission_record</span>
+  <span class='ivar'>@submission_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="submitter_record=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="submitter_record-instance_method">
+  
+    #<strong>submitter_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute submitter_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/transmission.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_submitter_record'>submitter_record</span>
+  <span class='ivar'>@submitter_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="trailer_record=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="trailer_record-instance_method">
+  
+    #<strong>trailer_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute trailer_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/transmission.rb', line 36</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_trailer_record'>trailer_record</span>
+  <span class='ivar'>@trailer_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
     
   </div>
 
-  <div id="class-metadata">
-    
-    <nav id="parent-class-section" class="section">
-  <h3 class="section-header">Parent</h3>
-  
-  <p class="link"><a href="TransmissionBase.html">TransmissionBase</a>
-  
-</nav>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
 
     
-    <!-- Method Quickref -->
-<nav id="method-list-section" class="section">
-  <h3 class="section-header">Methods</h3>
+      <div class="method_details first">
+  <h3 class="signature first" id="dump_indexes-instance_method">
+  
+    #<strong>dump_indexes</strong>  &#x21d2; <tt>Object</tt> 
+  
 
-  <ul class="link-list">
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
     
-    <li><a href="#method-c-new">::new</a>
-    
-    <li><a href="#method-i-dump_indexes">#dump_indexes</a>
-    
-    <li><a href="#method-i-find">#find</a>
-    
-    <li><a href="#method-i-self_check">#self_check</a>
-    
-  </ul>
-</nav>
+<p>debugging code to show what indexes were created and what keys are in each Printing out the index values generates too much output, so these are ignored.</p>
+
 
   </div>
+</div>
+<div class="tags">
+  
 
-  <div id="project-metadata">
-    <nav id="fileindex-section" class="section project-section">
-  <h3 class="section-header">Pages</h3>
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-  <ul>
-  
-    <li class="file"><a href="./History_txt.html">History</a>
-  
-    <li class="file"><a href="./Manifest_txt.html">Manifest</a>
-  
-    <li class="file"><a href="./test_data/README_txt.html">README</a>
-  
-  </ul>
-</nav>
 
-    <nav id="classindex-section" class="section project-section">
-  <h3 class="section-header">Class and Module Index</h3>
+83
+84
+85
+86
+87
+88
+89
+90</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/transmission.rb', line 83</span>
 
-  <ul class="link-list">
-  
-    <li><a href="./Address_record.html">Address_record</a>
-  
-    <li><a href="./Adoption_record.html">Adoption_record</a>
-  
-    <li><a href="./Association_record.html">Association_record</a>
-  
-    <li><a href="./Bit.html">Bit</a>
-  
-    <li><a href="./Btree.html">Btree</a>
-  
-    <li><a href="./Btree_data.html">Btree_data</a>
-  
-    <li><a href="./Btree_node.html">Btree_node</a>
-  
-    <li><a href="./Cause_record.html">Cause_record</a>
-  
-    <li><a href="./Change_date_record.html">Change_date_record</a>
-  
-    <li><a href="./Character_set_record.html">Character_set_record</a>
-  
-    <li><a href="./Chart.html">Chart</a>
-  
-    <li><a href="./Citation_data_record.html">Citation_data_record</a>
-  
-    <li><a href="./Citation_event_type_record.html">Citation_event_type_record</a>
-  
-    <li><a href="./ClassTracker.html">ClassTracker</a>
-  
-    <li><a href="./Copyright_record.html">Copyright_record</a>
-  
-    <li><a href="./Corporate_record.html">Corporate_record</a>
-  
-    <li><a href="./Date_record.html">Date_record</a>
-  
-    <li><a href="./Decendant.html">Decendant</a>
-  
-    <li><a href="./Encoded_line_record.html">Encoded_line_record</a>
-  
-    <li><a href="./Event_age_record.html">Event_age_record</a>
-  
-    <li><a href="./Event_record.html">Event_record</a>
-  
-    <li><a href="./Events_list_record.html">Events_list_record</a>
-  
-    <li><a href="./Families_individuals.html">Families_individuals</a>
-  
-    <li><a href="./Family_record.html">Family_record</a>
-  
-    <li><a href="./GEDCOMBase.html">GEDCOMBase</a>
-  
-    <li><a href="./GedLine.html">GedLine</a>
-  
-    <li><a href="./GedString.html">GedString</a>
-  
-    <li><a href="./Gedcom.html">Gedcom</a>
-  
-    <li><a href="./GedcomParser.html">GedcomParser</a>
-  
-    <li><a href="./Gedcom_record.html">Gedcom_record</a>
-  
-    <li><a href="./Header_data_record.html">Header_data_record</a>
-  
-    <li><a href="./Header_record.html">Header_record</a>
-  
-    <li><a href="./Header_source_record.html">Header_source_record</a>
-  
-    <li><a href="./Individual_attribute_record.html">Individual_attribute_record</a>
-  
-    <li><a href="./Individual_record.html">Individual_record</a>
-  
-    <li><a href="./Instruction.html">Instruction</a>
-  
-    <li><a href="./Multimedia_citation_record.html">Multimedia_citation_record</a>
-  
-    <li><a href="./Multimedia_file_record.html">Multimedia_file_record</a>
-  
-    <li><a href="./Multimedia_format_record.html">Multimedia_format_record</a>
-  
-    <li><a href="./Multimedia_obje_file_record.html">Multimedia_obje_file_record</a>
-  
-    <li><a href="./Multimedia_obje_format_record.html">Multimedia_obje_format_record</a>
-  
-    <li><a href="./Multimedia_record.html">Multimedia_record</a>
-  
-    <li><a href="./Name_phonetic_record.html">Name_phonetic_record</a>
-  
-    <li><a href="./Name_record.html">Name_record</a>
-  
-    <li><a href="./Name_romanized_record.html">Name_romanized_record</a>
-  
-    <li><a href="./Note_citation_record.html">Note_citation_record</a>
-  
-    <li><a href="./Note_record.html">Note_record</a>
-  
-    <li><a href="./Object.html">Object</a>
-  
-    <li><a href="./PEDIGREE_WIDTH.html">PEDIGREE_WIDTH</a>
-  
-    <li><a href="./ParseState.html">ParseState</a>
-  
-    <li><a href="./Place_record.html">Place_record</a>
-  
-    <li><a href="./Placename_map_record.html">Placename_map_record</a>
-  
-    <li><a href="./Placename_phonetic_record.html">Placename_phonetic_record</a>
-  
-    <li><a href="./Placename_romanized_record.html">Placename_romanized_record</a>
-  
-    <li><a href="./Refn_record.html">Refn_record</a>
-  
-    <li><a href="./Repository_caln.html">Repository_caln</a>
-  
-    <li><a href="./Repository_citation_record.html">Repository_citation_record</a>
-  
-    <li><a href="./Repository_record.html">Repository_record</a>
-  
-    <li><a href="./Source_citation_record.html">Source_citation_record</a>
-  
-    <li><a href="./Source_record.html">Source_record</a>
-  
-    <li><a href="./Source_scope_record.html">Source_scope_record</a>
-  
-    <li><a href="./Submission_record.html">Submission_record</a>
-  
-    <li><a href="./Submitter_record.html">Submitter_record</a>
-  
-    <li><a href="./Text_record.html">Text_record</a>
-  
-    <li><a href="./Trailer_record.html">Trailer_record</a>
-  
-    <li><a href="./Transmission.html">Transmission</a>
-  
-    <li><a href="./TransmissionBase.html">TransmissionBase</a>
-  
-    <li><a href="./Xref.html">Xref</a>
-  
-  </ul>
-</nav>
+<span class='kw'>def</span> <span class='id identifier rubyid_dump_indexes'>dump_indexes</span>
+  <span class='ivar'>@indexes</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Index </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_key'>key</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vkey'>vkey</span><span class='comma'>,</span> <span class='id identifier rubyid_vvalue'>vvalue</span><span class='op'>|</span>
+      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\t</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vkey'>vkey</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="find-instance_method">
+  
+    #<strong>find</strong>(index_name, key)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Looks in a transmissions indexes for an index called index_name, returning the value associated with the key. also used by xref_check to validate the XREF entries in a transmission really do point to valid level 0 records. Standard indexes are the same as the level 0 types that have XREF values: * :individual * :family * :note * :source * :repository * :multimedia * :submitter * :submission Keys in each of these indexes are the XREF values from the GEDCOM file. The values stored in the indexes are the actual objects that they refer to. * e.g.  if (f = find(:individual,“I14”) ) != nil then print f.to_gedcom end  will find the Individual&#39;s record with “0 @I14@ INDI” and print the record and its sub-records.</p>
+
 
   </div>
-</nav>
+</div>
+<div class="tags">
+  
 
-<div id="documentation">
-  <h1 class="class">class Transmission</h1>
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
-  <div id="description" class="description">
+
+73
+74
+75
+76
+77
+78
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/transmission.rb', line 73</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_index_name'>index_name</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='ivar'>@indexes</span> <span class='op'>!=</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='ivar'>@indexes</span><span class='lbracket'>[</span><span class='id identifier rubyid_index_name'>index_name</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>!=</span> <span class='kw'>nil</span>
+    <span class='id identifier rubyid_index'>index</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span>
+  <span class='kw'>else</span>
+    <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
     
-<p><a href="Transmission.html">Transmission</a> subclasses <a
-href="TransmissionBase.html">TransmissionBase</a>, providing a cleaner view
-for public consumption.</p>
-
-<p><a href="TransmissionBase.html">TransmissionBase</a> is a subclass of <a
-href="GEDCOMBase.html">GEDCOMBase</a>, and contains methods used by the
-parsing process to build the other <a href="Gedcom.html">Gedcom</a>
-classes, instantiate instances for each GEDCOM record type, and populate
-the fields based on the parsed GEDCOM file.</p>
-
-<p>A <a href="Transmission.html">Transmission</a> object is encapsulating a
-LINEAGE_LINKED_GEDCOM. From the GEDCOM 5.5 standard:</p>
-
-<h1 id="label-LINEAGE_LINKED_GEDCOM%3A%3D">LINEAGE_LINKED_GEDCOM:=</h1>
-
-<pre>This is a model of the lineage-linked GEDCOM structure for submitting data to other lineage-linked
-GEDCOM processing systems. A header and a trailer record are required, and they can enclose any
-number of data records. Tags from Appendix A (see page 67) must be used in the same context as
-shown in the following form. User defined tags (see &lt;NEW_TAG&gt; on page 46) are discouraged but
-when used must begin with an under-score.
-  0 &lt;&lt;HEADER&gt;&gt;               {1:1}
-  0 &lt;&lt;SUBMISSION_RECORD&gt;&gt;    {0:1}
-  0 &lt;&lt;FAM_RECORD&gt;&gt;           {0:M}
-  0 &lt;&lt;INDIVIDUAL_RECORD&gt;&gt;    {0:M}
-  0 &lt;&lt;MULTIMEDIA_RECORD&gt;&gt;    {0:M}
-  0 &lt;&lt;NOTE_RECORD&gt;&gt;          {0:M}
-  0 &lt;&lt;REPOSITORY_RECORD&gt;&gt;    {0:M}
-  0 &lt;&lt;SOURCE_RECORD&gt;&gt;        {0:M}
-  0 &lt;&lt;SUBMITTER_RECORD&gt;&gt;     {0:M}
-  0 TRLR                     {1:1}</pre>
-
-<p>Each of the classes attributes is an array of objects representing the
-level 0 GEDCOM records in the transmission. There is also an :index
-attribute defined in <a href="GEDCOMBase.html">GEDCOMBase</a>, with an
-associated  find method (see <a
-href="Transmission.html#method-i-find">#find</a>)</p>
-
-  </div><!-- description -->
+      <div class="method_details ">
+  <h3 class="signature " id="self_check-instance_method">
+  
+    #<strong>self_check</strong>  &#x21d2; <tt>Object</tt> 
+  
 
   
+
   
-  
-  <section id="5Buntitled-5D" class="documentation-section">
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+92
+93
+94
+95
+96
+97
+98
+99</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/transmission.rb', line 92</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_self_check'>self_check</span>
+  <span class='ivar'>@family_record</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span>
+    <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_self_check'>self_check</span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@individual_record</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
+    <span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_self_check'>self_check</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
     
+  </div>
 
-    
+</div>
 
-    
+      <div id="footer">
+  Generated on Sat Oct 31 21:50:28 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.25 (ruby-2.7.1).
+</div>
 
-    
-    <!-- Attributes -->
-    <section id="attribute-method-details" class="method-section section">
-      <h3 class="section-header">Attributes</h3>
-
-      
-      <div id="attribute-i-family_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">family_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-header_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">header_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-individual_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">individual_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-multimedia_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">multimedia_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-note_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">note_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-repository_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">repository_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-source_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">source_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-submission_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">submission_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-submitter_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">submitter_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-trailer_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">trailer_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-    </section><!-- attribute-method-details -->
-    
-
-    <!-- Methods -->
-    
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
-
-    
-      <div id="method-c-new" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">new</span><span
-            class="method-args">(*a)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/gedcom/transmission.rb, line 38</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*<span class="ruby-identifier">a</span>)
-  <span class="ruby-keyword">super</span>(<span class="ruby-keyword">nil</span>, *<span class="ruby-identifier">a</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]) <span class="ruby-comment">#don't need to put ourselves into @transmission.</span>
-  
-  <span class="ruby-ivar">@this_level</span> = [ [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:header_record</span>],     <span class="ruby-comment">#Recurse over the HEAD header records (should only be one)</span>
-                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:submission_record</span>], <span class="ruby-comment">#Recurse over the SUBN submission records</span>
-                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:submitter_record</span>],  <span class="ruby-comment">#Recurse over the SUBM submitter record(s)</span>
-                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:source_record</span>],     <span class="ruby-comment">#Recurse over the SOUR Source records</span>
-                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:repository_record</span>], <span class="ruby-comment">#Recurse over the REPO repository records</span>
-                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:family_record</span>],     <span class="ruby-comment">#Recurse over the FAM Family records</span>
-                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:individual_record</span>], <span class="ruby-comment">#Recurse over the INDI Individual records</span>
-                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:multimedia_record</span>], <span class="ruby-comment">#Recurse over the OBJE multimedia records</span>
-                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:note_record</span>],       <span class="ruby-comment">#Recurse over the NOTE records</span>
-                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:trailer_record</span>],    <span class="ruby-comment">#Recurse over the Trailer Record(s). (should only be the one).</span>
-                ]
-  <span class="ruby-ivar">@sub_level</span> =  [<span class="ruby-comment">#level + 1</span>
-                ]
-
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- new-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- new-method -->
-
-    
-    </section><!-- public-class-method-details -->
-  
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
-
-    
-      <div id="method-i-dump_indexes" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">dump_indexes</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>debugging code to show what indexes were created and what keys are in each
-Printing out the index values generates too much output, so these are
-ignored.</p>
-          
-
-          
-          <div class="method-source-code" id="dump_indexes-source">
-            <pre><span class="ruby-comment"># File lib/gedcom/transmission.rb, line 83</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">dump_indexes</span>
-  <span class="ruby-ivar">@indexes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Index #{key}&quot;</span>
-    <span class="ruby-identifier">value</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">vkey</span>, <span class="ruby-identifier">vvalue</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;\t#{vkey}&quot;</span>
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- dump_indexes-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- dump_indexes-method -->
-
-    
-      <div id="method-i-find" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">find</span><span
-            class="method-args">(index_name, key)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Looks in a transmissions indexes for an index called index_name, returning
-the value associated with the key. also used by xref_check to validate the
-XREF entries in a transmission really do point to valid level 0 records.
-Standard indexes are the same as the level 0 types that have XREF values:</p>
-<ul><li>
-<p>:individual</p>
-</li><li>
-<p>:family</p>
-</li><li>
-<p>:note</p>
-</li><li>
-<p>:source</p>
-</li><li>
-<p>:repository</p>
-</li><li>
-<p>:multimedia</p>
-</li><li>
-<p>:submitter</p>
-</li><li>
-<p>:submission</p>
-</li></ul>
-
-<p>Keys in each of these indexes are the XREF values from the GEDCOM file. The
-values stored in the indexes are the actual objects that they refer to.</p>
-<ul><li>
-<p>e.g.</p>
-
-<pre>if (f = find(:individual,&quot;I14&quot;) ) != nil then print f.to_gedcom end</pre>
-
-<p>will find the Individual's record with "0 @I14@ INDI" and print the record
-and its sub-records.</p>
-</li></ul>
-          
-
-          
-          <div class="method-source-code" id="find-source">
-            <pre><span class="ruby-comment"># File lib/gedcom/transmission.rb, line 73</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">index_name</span>, <span class="ruby-identifier">key</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@indexes</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">index</span> = <span class="ruby-ivar">@indexes</span>[<span class="ruby-identifier">index_name</span>.<span class="ruby-identifier">to_sym</span>]) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-    <span class="ruby-identifier">index</span>[<span class="ruby-identifier">key</span>]
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">nil</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- find-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- find-method -->
-
-    
-      <div id="method-i-self_check" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">self_check</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="self_check-source">
-            <pre><span class="ruby-comment"># File lib/gedcom/transmission.rb, line 92</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">self_check</span>
-  <span class="ruby-ivar">@family_record</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">self_check</span>
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-ivar">@individual_record</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">i</span>.<span class="ruby-identifier">self_check</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- self_check-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- self_check-method -->
-
-    
-    </section><!-- public-instance-method-details -->
-  
-  </section><!-- 5Buntitled-5D -->
-
-</div><!-- documentation -->
-
-
-<footer id="validator-badges">
-  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
-  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
-</footer>
-
+    </div>
+  </body>
+</html>

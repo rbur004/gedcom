@@ -1,541 +1,1120 @@
 <!DOCTYPE html>
-
 <html>
-<head>
-<meta content="text/html; charset=US-ASCII" http-equiv="Content-Type">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Header_record
+  
+    &mdash; gedcom
+  
+</title>
 
-<title>class Header_record - gedcom-0.9.4 Documentation</title>
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
 
 <script type="text/javascript">
-  var rdoc_rel_prefix = "./";
+  pathId = "Header_record";
+  relpath = '';
 </script>
 
-<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
 
 
-<body id="top" class="class">
-<nav id="metadata">
-  <nav id="home-section" class="section">
-  <h3 class="section-header">
-    <a href="./index.html">Home</a>
-    <a href="./table_of_contents.html#classes">Classes</a>
-    <a href="./table_of_contents.html#methods">Methods</a>
-  </h3>
-</nav>
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
 
-
-  <nav id="search-section" class="section project-section" class="initially-hidden">
-  <form action="#" method="get" accept-charset="utf-8">
-    <h3 class="section-header">
-      <input type="text" name="search" placeholder="Search" id="search-field"
-             title="Type to search, Up and Down to navigate, Enter to load">
-    </h3>
-  </form>
-
-  <ul id="search-results" class="initially-hidden"></ul>
-</nav>
-
-
-  <div id="file-metadata">
-    <nav id="file-list-section" class="section">
-  <h3 class="section-header">Defined In</h3>
-  <ul>
-    <li>lib/gedcom/header_record.rb
-  </ul>
-</nav>
-
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index (H)</a> &raquo;
     
-  </div>
-
-  <div id="class-metadata">
     
-    <nav id="parent-class-section" class="section">
-  <h3 class="section-header">Parent</h3>
+    <span class="title">Header_record</span>
   
-  <p class="link"><a href="GEDCOMBase.html">GEDCOMBase</a>
-  
-</nav>
+</div>
 
-    
-    <!-- Method Quickref -->
-<nav id="method-list-section" class="section">
-  <h3 class="section-header">Methods</h3>
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
 
-  <ul class="link-list">
-    
-    <li><a href="#method-c-new">::new</a>
-    
-  </ul>
-</nav>
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
 
-  </div>
+      <div id="content"><h1>Class: Header_record
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="GEDCOMBase.html" title="GEDCOMBase (class)">GEDCOMBase</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="GEDCOMBase.html" title="GEDCOMBase (class)">GEDCOMBase</a></span></li>
+          
+            <li class="next">Header_record</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
 
-  <div id="project-metadata">
-    <nav id="fileindex-section" class="section project-section">
-  <h3 class="section-header">Pages</h3>
+  
+  
+  
+  
+  
 
-  <ul>
   
-    <li class="file"><a href="./History_txt.html">History</a>
-  
-    <li class="file"><a href="./Manifest_txt.html">Manifest</a>
-  
-    <li class="file"><a href="./test_data/README_txt.html">README</a>
-  
-  </ul>
-</nav>
 
-    <nav id="classindex-section" class="section project-section">
-  <h3 class="section-header">Class and Module Index</h3>
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/gedcom/header_record.rb</dd>
+  </dl>
+  
+</div>
 
-  <ul class="link-list">
-  
-    <li><a href="./Address_record.html">Address_record</a>
-  
-    <li><a href="./Adoption_record.html">Adoption_record</a>
-  
-    <li><a href="./Association_record.html">Association_record</a>
-  
-    <li><a href="./Bit.html">Bit</a>
-  
-    <li><a href="./Btree.html">Btree</a>
-  
-    <li><a href="./Btree_data.html">Btree_data</a>
-  
-    <li><a href="./Btree_node.html">Btree_node</a>
-  
-    <li><a href="./Cause_record.html">Cause_record</a>
-  
-    <li><a href="./Change_date_record.html">Change_date_record</a>
-  
-    <li><a href="./Character_set_record.html">Character_set_record</a>
-  
-    <li><a href="./Chart.html">Chart</a>
-  
-    <li><a href="./Citation_data_record.html">Citation_data_record</a>
-  
-    <li><a href="./Citation_event_type_record.html">Citation_event_type_record</a>
-  
-    <li><a href="./ClassTracker.html">ClassTracker</a>
-  
-    <li><a href="./Copyright_record.html">Copyright_record</a>
-  
-    <li><a href="./Corporate_record.html">Corporate_record</a>
-  
-    <li><a href="./Date_record.html">Date_record</a>
-  
-    <li><a href="./Decendant.html">Decendant</a>
-  
-    <li><a href="./Encoded_line_record.html">Encoded_line_record</a>
-  
-    <li><a href="./Event_age_record.html">Event_age_record</a>
-  
-    <li><a href="./Event_record.html">Event_record</a>
-  
-    <li><a href="./Events_list_record.html">Events_list_record</a>
-  
-    <li><a href="./Families_individuals.html">Families_individuals</a>
-  
-    <li><a href="./Family_record.html">Family_record</a>
-  
-    <li><a href="./GEDCOMBase.html">GEDCOMBase</a>
-  
-    <li><a href="./GedLine.html">GedLine</a>
-  
-    <li><a href="./GedString.html">GedString</a>
-  
-    <li><a href="./Gedcom.html">Gedcom</a>
-  
-    <li><a href="./GedcomParser.html">GedcomParser</a>
-  
-    <li><a href="./Gedcom_record.html">Gedcom_record</a>
-  
-    <li><a href="./Header_data_record.html">Header_data_record</a>
-  
-    <li><a href="./Header_record.html">Header_record</a>
-  
-    <li><a href="./Header_source_record.html">Header_source_record</a>
-  
-    <li><a href="./Individual_attribute_record.html">Individual_attribute_record</a>
-  
-    <li><a href="./Individual_record.html">Individual_record</a>
-  
-    <li><a href="./Instruction.html">Instruction</a>
-  
-    <li><a href="./Multimedia_citation_record.html">Multimedia_citation_record</a>
-  
-    <li><a href="./Multimedia_file_record.html">Multimedia_file_record</a>
-  
-    <li><a href="./Multimedia_format_record.html">Multimedia_format_record</a>
-  
-    <li><a href="./Multimedia_obje_file_record.html">Multimedia_obje_file_record</a>
-  
-    <li><a href="./Multimedia_obje_format_record.html">Multimedia_obje_format_record</a>
-  
-    <li><a href="./Multimedia_record.html">Multimedia_record</a>
-  
-    <li><a href="./Name_phonetic_record.html">Name_phonetic_record</a>
-  
-    <li><a href="./Name_record.html">Name_record</a>
-  
-    <li><a href="./Name_romanized_record.html">Name_romanized_record</a>
-  
-    <li><a href="./Note_citation_record.html">Note_citation_record</a>
-  
-    <li><a href="./Note_record.html">Note_record</a>
-  
-    <li><a href="./Object.html">Object</a>
-  
-    <li><a href="./PEDIGREE_WIDTH.html">PEDIGREE_WIDTH</a>
-  
-    <li><a href="./ParseState.html">ParseState</a>
-  
-    <li><a href="./Place_record.html">Place_record</a>
-  
-    <li><a href="./Placename_map_record.html">Placename_map_record</a>
-  
-    <li><a href="./Placename_phonetic_record.html">Placename_phonetic_record</a>
-  
-    <li><a href="./Placename_romanized_record.html">Placename_romanized_record</a>
-  
-    <li><a href="./Refn_record.html">Refn_record</a>
-  
-    <li><a href="./Repository_caln.html">Repository_caln</a>
-  
-    <li><a href="./Repository_citation_record.html">Repository_citation_record</a>
-  
-    <li><a href="./Repository_record.html">Repository_record</a>
-  
-    <li><a href="./Source_citation_record.html">Source_citation_record</a>
-  
-    <li><a href="./Source_record.html">Source_record</a>
-  
-    <li><a href="./Source_scope_record.html">Source_scope_record</a>
-  
-    <li><a href="./Submission_record.html">Submission_record</a>
-  
-    <li><a href="./Submitter_record.html">Submitter_record</a>
-  
-    <li><a href="./Text_record.html">Text_record</a>
-  
-    <li><a href="./Trailer_record.html">Trailer_record</a>
-  
-    <li><a href="./Transmission.html">Transmission</a>
-  
-    <li><a href="./TransmissionBase.html">TransmissionBase</a>
-  
-    <li><a href="./Xref.html">Xref</a>
-  
-  </ul>
-</nav>
-
-  </div>
-</nav>
-
-<div id="documentation">
-  <h1 class="class">class Header_record</h1>
-
-  <div id="description" class="description">
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
     
 <p>Internal representation of the GEDCOM level 0 HEAD record type</p>
 
-<h1 id="label-HEADER%3A%3D">HEADER:=</h1>
+<p>=HEADER:=  n HEAD 1:1  +1 SOUR &lt;APPROVED_SYSTEM_ID&gt; 1:1  +2 VERS &lt;VERSION_NUMBER&gt; 0:1  +2 NAME &lt;NAME_OF_PRODUCT&gt; 0:1  +2 CORP &lt;NAME_OF_BUSINESS&gt; 0:1  +3 &lt;&lt;ADDRESS_STRUCTURE&gt;&gt; 0:1  +2 DATA &lt;NAME_OF_SOURCE_DATA&gt; 0:1  +3 DATE &lt;PUBLICATION_DATE&gt; 0:1  +3 COPR &lt;COPYRIGHT_SOURCE_DATA&gt; 0:1  +1 DEST &lt;RECEIVING_SYSTEM_NAME&gt; 0:1 (See NOTE below)  +1 DATE &lt;TRANSMISSION_DATE&gt; 0:1  +2 TIME &lt;TIME_VALUE&gt; 0:1  +1 SUBM @XREF:SUBM@ 1:1  +1 SUBN @XREF:SUBN@ 0:1  +1 FILE &lt;FILE_NAME&gt; 0:1  +1 COPR &lt;COPYRIGHT_GEDCOM_FILE&gt; 0:1  +1 GEDC 1:1  +2 VERS &lt;VERSION_NUMBER&gt; 1:1  +2 FORM &lt;GEDCOM_FORM&gt; 1:1  +1 CHAR &lt;CHARACTER_SET&gt; 1:1  +2 VERS &lt;VERSION_NUMBER&gt; 0:1  +1 LANG &lt;LANGUAGE_OF_TEXT&gt; 0:1  +1 PLAC 0:1  +2 FORM &lt;PLACE_HIERARCHY&gt; 1:1  +1 NOTE &lt;GEDCOM_CONTENT_DESCRIPTION&gt; 0:1  +2 [CONT|CONC] &lt;GEDCOM_CONTENT_DESCRIPTION&gt; 0:M  NOTE::  Submissions to the Family History Department for Ancestral File submission or for clearing temple ordinances must use a  DESTination of ANSTFILE or TempleReady.</p>
 
-<pre>n HEAD                                          {1:1}
-  +1 SOUR &lt;APPROVED_SYSTEM_ID&gt;                  {1:1}
-    +2 VERS &lt;VERSION_NUMBER&gt;                    {0:1}
-    +2 NAME &lt;NAME_OF_PRODUCT&gt;                   {0:1}
-    +2 CORP &lt;NAME_OF_BUSINESS&gt;                  {0:1}
-      +3 &lt;&lt;ADDRESS_STRUCTURE&gt;&gt;                  {0:1}
-    +2 DATA &lt;NAME_OF_SOURCE_DATA&gt;               {0:1}
-      +3 DATE &lt;PUBLICATION_DATE&gt;                {0:1}
-      +3 COPR &lt;COPYRIGHT_SOURCE_DATA&gt;           {0:1}
- +1 DEST &lt;RECEIVING_SYSTEM_NAME&gt;                {0:1} (See NOTE below)
- +1 DATE &lt;TRANSMISSION_DATE&gt;                    {0:1}
-   +2 TIME &lt;TIME_VALUE&gt;                         {0:1}
- +1 SUBM @XREF:SUBM@                            {1:1}
- +1 SUBN @XREF:SUBN@                            {0:1}
- +1 FILE &lt;FILE_NAME&gt;                            {0:1}
- +1 COPR &lt;COPYRIGHT_GEDCOM_FILE&gt;                {0:1}
- +1 GEDC                                        {1:1}
-   +2 VERS &lt;VERSION_NUMBER&gt;                     {1:1}
-   +2 FORM &lt;GEDCOM_FORM&gt;                        {1:1}
- +1 CHAR &lt;CHARACTER_SET&gt;                        {1:1}
-   +2 VERS &lt;VERSION_NUMBER&gt;                     {0:1}
- +1 LANG &lt;LANGUAGE_OF_TEXT&gt;                     {0:1}
- +1 PLAC                                        {0:1}
-   +2 FORM &lt;PLACE_HIERARCHY&gt;                    {1:1}
- +1 NOTE &lt;GEDCOM_CONTENT_DESCRIPTION&gt;           {0:1}
-   +2 [CONT|CONC] &lt;GEDCOM_CONTENT_DESCRIPTION&gt;  {0:M}
-NOTE::
-  Submissions to the Family History Department for Ancestral File submission or for clearing temple ordinances must use a
-  DESTination of ANSTFILE or TempleReady.
+<p>The header structure provides information about the entire transmission. The SOURce system name  identifies which system sent the data. The DESTination system name identifies the intended receiving  system.</p>
 
-The header structure provides information about the entire transmission. The SOURce system name
-identifies which system sent the data. The DESTination system name identifies the intended receiving
-system.
+<p>Additional GEDCOM standards will be produced in the future to reflect GEDCOM expansion and  maturity. This requires the reading program to make sure it can read the GEDC.VERS and the  GEDC.FORM values to insure proper readability. The CHAR tag is required. All character codes  greater than 0x7F must be converted to ANSEL.</p>
 
-Additional GEDCOM standards will be produced in the future to reflect GEDCOM expansion and
-maturity. This requires the reading program to make sure it can read the GEDC.VERS and the
-GEDC.FORM values to insure proper readability. The CHAR tag is required. All character codes
-greater than 0x7F must be converted to ANSEL.</pre>
+<p>The attributes are all arrays for the level +1 tags/records. * Those ending in <em>ref are GEDCOM XREF index keys * Those ending in </em>record are array of classes of that type. * The remainder are arrays of attributes that could be present in this record.</p>
 
-<p>The attributes are all arrays for the level +1 tags/records.</p>
-<ul><li>
-<p>Those ending in _ref are GEDCOM XREF index keys</p>
-</li><li>
-<p>Those ending in _record are array of classes of that type.</p>
-</li><li>
-<p>The remainder are arrays of attributes that could be present in this
-record.</p>
-</li></ul>
 
-  </div><!-- description -->
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#character_set_record-instance_method" title="#character_set_record (instance method)">#<strong>character_set_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute character_set_record.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#copyright-instance_method" title="#copyright (instance method)">#<strong>copyright</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute copyright.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#date_record-instance_method" title="#date_record (instance method)">#<strong>date_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute date_record.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#destination-instance_method" title="#destination (instance method)">#<strong>destination</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute destination.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#file_name-instance_method" title="#file_name (instance method)">#<strong>file_name</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute file_name.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gedcom_record-instance_method" title="#gedcom_record (instance method)">#<strong>gedcom_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute gedcom_record.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#header_source_record-instance_method" title="#header_source_record (instance method)">#<strong>header_source_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute header_source_record.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#language_id-instance_method" title="#language_id (instance method)">#<strong>language_id</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute language_id.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#note_citation_record-instance_method" title="#note_citation_record (instance method)">#<strong>note_citation_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute note_citation_record.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#place_record-instance_method" title="#place_record (instance method)">#<strong>place_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute place_record.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#submission_ref-instance_method" title="#submission_ref (instance method)">#<strong>submission_ref</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute submission_ref.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#submitter_ref-instance_method" title="#submitter_ref (instance method)">#<strong>submitter_ref</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute submitter_ref.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="GEDCOMBase.html" title="GEDCOMBase (class)">GEDCOMBase</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="GEDCOMBase.html#restriction-instance_method" title="GEDCOMBase#restriction (method)">#restriction</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(*a)  &#x21d2; Header_record </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>new sets up the state engine arrays @this_level and @sub_level, which drive the to_gedcom method generating GEDCOM output.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
 
   
   
   
-  <section id="5Buntitled-5D" class="documentation-section">
-    
-
-    
-
-    
-
-    
-    <!-- Attributes -->
-    <section id="attribute-method-details" class="method-section section">
-      <h3 class="section-header">Attributes</h3>
-
-      
-      <div id="attribute-i-character_set_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">character_set_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-copyright" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">copyright</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-date_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">date_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-destination" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">destination</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-file_name" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">file_name</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-gedcom_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">gedcom_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-header_source_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">header_source_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-language_id" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">language_id</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-note_citation_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">note_citation_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-place_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">place_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-submission_ref" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">submission_ref</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-submitter_ref" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">submitter_ref</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-    </section><!-- attribute-method-details -->
-    
-
-    <!-- Methods -->
-    
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
-
-    
-      <div id="method-c-new" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">new</span><span
-            class="method-args">(*a)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>new sets up the state engine arrays @this_level and @sub_level, which drive
-the to_gedcom method generating GEDCOM output.</p>
-          
-
-          
-          <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/gedcom/header_record.rb, line 57</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*<span class="ruby-identifier">a</span>)
-  <span class="ruby-keyword">super</span>(*<span class="ruby-identifier">a</span>)
-  <span class="ruby-ivar">@this_level</span> = [ [<span class="ruby-value">:nodata</span>, <span class="ruby-string">&quot;HEAD&quot;</span>, <span class="ruby-keyword">nil</span>] ]
-  <span class="ruby-ivar">@sub_level</span> =  [ <span class="ruby-comment">#level + 1</span>
-                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>,<span class="ruby-value">:header_source_record</span>],
-                  [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;DEST&quot;</span>, <span class="ruby-value">:destination</span>],
-                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:date_record</span>], 
-                  [<span class="ruby-value">:xref</span>, <span class="ruby-string">&quot;SUBM&quot;</span>, <span class="ruby-value">:submitter_ref</span>], 
-                  [<span class="ruby-value">:xref</span>, <span class="ruby-string">&quot;SUBN&quot;</span>, <span class="ruby-value">:submission_ref</span>],
-                  [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;FILE&quot;</span>, <span class="ruby-value">:file_name</span>], 
-                  [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;COPR&quot;</span>, <span class="ruby-value">:copyright</span>], 
-                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:gedcom_record</span>],  
-                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:character_set_record</span>], 
-                  [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;LANG&quot;</span>, <span class="ruby-value">:language_id</span>], 
-                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:place_record</span>], 
-                  [<span class="ruby-value">:walk</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:note_citation_record</span>],
-                ]
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- new-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- new-method -->
-
-    
-    </section><!-- public-class-method-details -->
   
-  </section><!-- 5Buntitled-5D -->
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="GEDCOMBase.html" title="GEDCOMBase (class)">GEDCOMBase</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="GEDCOMBase.html#changed-instance_method" title="GEDCOMBase#changed (method)">#changed</a></span>, <span class='object_link'><a href="GEDCOMBase.html#changed%3F-instance_method" title="GEDCOMBase#changed? (method)">#changed?</a></span>, <span class='object_link'><a href="GEDCOMBase.html#created%3F-instance_method" title="GEDCOMBase#created? (method)">#created?</a></span>, <span class='object_link'><a href="GEDCOMBase.html#find-instance_method" title="GEDCOMBase#find (method)">#find</a></span>, <span class='object_link'><a href="GEDCOMBase.html#locked%3F-instance_method" title="GEDCOMBase#locked? (method)">#locked?</a></span>, <span class='object_link'><a href="GEDCOMBase.html#no_tabs-class_method" title="GEDCOMBase.no_tabs (method)">no_tabs</a></span>, <span class='object_link'><a href="GEDCOMBase.html#private%3F-instance_method" title="GEDCOMBase#private? (method)">#private?</a></span>, <span class='object_link'><a href="GEDCOMBase.html#save-instance_method" title="GEDCOMBase#save (method)">#save</a></span>, <span class='object_link'><a href="GEDCOMBase.html#tabs-class_method" title="GEDCOMBase.tabs (method)">tabs</a></span>, <span class='object_link'><a href="GEDCOMBase.html#to_db-instance_method" title="GEDCOMBase#to_db (method)">#to_db</a></span>, <span class='object_link'><a href="GEDCOMBase.html#to_gedcom-instance_method" title="GEDCOMBase#to_gedcom (method)">#to_gedcom</a></span>, <span class='object_link'><a href="GEDCOMBase.html#to_s-instance_method" title="GEDCOMBase#to_s (method)">#to_s</a></span>, <span class='object_link'><a href="GEDCOMBase.html#to_s_ordered-instance_method" title="GEDCOMBase#to_s_ordered (method)">#to_s_ordered</a></span>, <span class='object_link'><a href="GEDCOMBase.html#to_s_r-instance_method" title="GEDCOMBase#to_s_r (method)">#to_s_r</a></span>, <span class='object_link'><a href="GEDCOMBase.html#token_to_s-instance_method" title="GEDCOMBase#token_to_s (method)">#token_to_s</a></span>, <span class='object_link'><a href="GEDCOMBase.html#xref_check-instance_method" title="GEDCOMBase#xref_check (method)">#xref_check</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(*a)  &#x21d2; <tt><span class='object_link'><a href="" title="Header_record (class)">Header_record</a></span></tt> 
+  
 
-</div><!-- documentation -->
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>new sets up the state engine arrays @this_level and @sub_level, which drive the to_gedcom method generating GEDCOM output.</p>
 
 
-<footer id="validator-badges">
-  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
-  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
-</footer>
+  </div>
+</div>
+<div class="tags">
+  
 
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/header_record.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+  <span class='ivar'>@this_level</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='lbracket'>[</span><span class='symbol'>:nodata</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>HEAD</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rbracket'>]</span> <span class='rbracket'>]</span>
+  <span class='ivar'>@sub_level</span> <span class='op'>=</span>  <span class='lbracket'>[</span> <span class='comment'>#level + 1
+</span>                  <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span><span class='symbol'>:header_source_record</span><span class='rbracket'>]</span><span class='comma'>,</span>
+                  <span class='lbracket'>[</span><span class='symbol'>:print</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DEST</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:destination</span><span class='rbracket'>]</span><span class='comma'>,</span>
+                  <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:date_record</span><span class='rbracket'>]</span><span class='comma'>,</span> 
+                  <span class='lbracket'>[</span><span class='symbol'>:xref</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SUBM</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:submitter_ref</span><span class='rbracket'>]</span><span class='comma'>,</span> 
+                  <span class='lbracket'>[</span><span class='symbol'>:xref</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SUBN</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:submission_ref</span><span class='rbracket'>]</span><span class='comma'>,</span>
+                  <span class='lbracket'>[</span><span class='symbol'>:print</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>FILE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:file_name</span><span class='rbracket'>]</span><span class='comma'>,</span> 
+                  <span class='lbracket'>[</span><span class='symbol'>:print</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>COPR</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:copyright</span><span class='rbracket'>]</span><span class='comma'>,</span> 
+                  <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:gedcom_record</span><span class='rbracket'>]</span><span class='comma'>,</span>  
+                  <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:character_set_record</span><span class='rbracket'>]</span><span class='comma'>,</span> 
+                  <span class='lbracket'>[</span><span class='symbol'>:print</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>LANG</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:language_id</span><span class='rbracket'>]</span><span class='comma'>,</span> 
+                  <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:place_record</span><span class='rbracket'>]</span><span class='comma'>,</span> 
+                  <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:note_citation_record</span><span class='rbracket'>]</span><span class='comma'>,</span>
+                <span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="character_set_record=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="character_set_record-instance_method">
+  
+    #<strong>character_set_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute character_set_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/header_record.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_character_set_record'>character_set_record</span>
+  <span class='ivar'>@character_set_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="copyright=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="copyright-instance_method">
+  
+    #<strong>copyright</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute copyright.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/header_record.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_copyright'>copyright</span>
+  <span class='ivar'>@copyright</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="date_record=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="date_record-instance_method">
+  
+    #<strong>date_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute date_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/header_record.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_date_record'>date_record</span>
+  <span class='ivar'>@date_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="destination=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="destination-instance_method">
+  
+    #<strong>destination</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute destination.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/header_record.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_destination'>destination</span>
+  <span class='ivar'>@destination</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="file_name=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="file_name-instance_method">
+  
+    #<strong>file_name</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute file_name.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/header_record.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_file_name'>file_name</span>
+  <span class='ivar'>@file_name</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="gedcom_record=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="gedcom_record-instance_method">
+  
+    #<strong>gedcom_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute gedcom_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/header_record.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gedcom_record'>gedcom_record</span>
+  <span class='ivar'>@gedcom_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="header_source_record=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="header_source_record-instance_method">
+  
+    #<strong>header_source_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute header_source_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/header_record.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_header_source_record'>header_source_record</span>
+  <span class='ivar'>@header_source_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="language_id=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="language_id-instance_method">
+  
+    #<strong>language_id</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute language_id.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/header_record.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_language_id'>language_id</span>
+  <span class='ivar'>@language_id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="note_citation_record=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="note_citation_record-instance_method">
+  
+    #<strong>note_citation_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute note_citation_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/header_record.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_note_citation_record'>note_citation_record</span>
+  <span class='ivar'>@note_citation_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="place_record=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="place_record-instance_method">
+  
+    #<strong>place_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute place_record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/header_record.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_place_record'>place_record</span>
+  <span class='ivar'>@place_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="submission_ref=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="submission_ref-instance_method">
+  
+    #<strong>submission_ref</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute submission_ref.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/header_record.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_submission_ref'>submission_ref</span>
+  <span class='ivar'>@submission_ref</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="submitter_ref=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="submitter_ref-instance_method">
+  
+    #<strong>submitter_ref</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute submitter_ref.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/header_record.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_submitter_ref'>submitter_ref</span>
+  <span class='ivar'>@submitter_ref</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+</div>
+
+      <div id="footer">
+  Generated on Sat Oct 31 21:50:24 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.25 (ruby-2.7.1).
+</div>
+
+    </div>
+  </body>
+</html>

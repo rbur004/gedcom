@@ -1,680 +1,1147 @@
 <!DOCTYPE html>
-
 <html>
-<head>
-<meta content="text/html; charset=US-ASCII" http-equiv="Content-Type">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Name_record
+  
+    &mdash; gedcom
+  
+</title>
 
-<title>class Name_record - gedcom-0.9.4 Documentation</title>
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
 
 <script type="text/javascript">
-  var rdoc_rel_prefix = "./";
+  pathId = "Name_record";
+  relpath = '';
 </script>
 
-<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
 
 
-<body id="top" class="class">
-<nav id="metadata">
-  <nav id="home-section" class="section">
-  <h3 class="section-header">
-    <a href="./index.html">Home</a>
-    <a href="./table_of_contents.html#classes">Classes</a>
-    <a href="./table_of_contents.html#methods">Methods</a>
-  </h3>
-</nav>
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
 
-
-  <nav id="search-section" class="section project-section" class="initially-hidden">
-  <form action="#" method="get" accept-charset="utf-8">
-    <h3 class="section-header">
-      <input type="text" name="search" placeholder="Search" id="search-field"
-             title="Type to search, Up and Down to navigate, Enter to load">
-    </h3>
-  </form>
-
-  <ul id="search-results" class="initially-hidden"></ul>
-</nav>
-
-
-  <div id="file-metadata">
-    <nav id="file-list-section" class="section">
-  <h3 class="section-header">Defined In</h3>
-  <ul>
-    <li>lib/gedcom/name_record.rb
-  </ul>
-</nav>
-
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index (N)</a> &raquo;
     
-  </div>
-
-  <div id="class-metadata">
     
-    <nav id="parent-class-section" class="section">
-  <h3 class="section-header">Parent</h3>
+    <span class="title">Name_record</span>
   
-  <p class="link"><a href="Individual_attribute_record.html">Individual_attribute_record</a>
-  
-</nav>
+</div>
 
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Name_record
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="Individual_attribute_record.html" title="Individual_attribute_record (class)">Individual_attribute_record</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="GEDCOMBase.html" title="GEDCOMBase (class)">GEDCOMBase</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="Event_record.html" title="Event_record (class)">Event_record</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="Individual_attribute_record.html" title="Individual_attribute_record (class)">Individual_attribute_record</a></span></li>
+          
+            <li class="next">Name_record</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/gedcom/name_record.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
     
-    <!-- Method Quickref -->
-<nav id="method-list-section" class="section">
-  <h3 class="section-header">Methods</h3>
+<p>Internal representation of the GEDCOM NAME record as described under PERSONAL_NAME_STRUCTURE This sub-classes Individual_attribute_record, which in turn sub-classes Event_record. This may seem odd, but they share most class attributes and event records can be attached to most attributes.</p>
 
-  <ul class="link-list">
-    
-    <li><a href="#method-c-new">::new</a>
-    
-    <li><a href="#method-i-event_tag">#event_tag</a>
-    
-    <li><a href="#method-i-name">#name</a>
-    
-  </ul>
-</nav>
+<p>=PERSONAL_NAME_STRUCTURE:=  n NAME &lt;NAME_PERSONAL&gt; 1:1  +1 NPFX &lt;NAME_PIECE_PREFIX&gt; 0:1  +1 GIVN &lt;NAME_PIECE_GIVEN&gt; 0:1  +1 NICK &lt;NAME_PIECE_NICKNAME&gt; 0:1  +1 SPFX &lt;NAME_PIECE_SURNAME_PREFIX 0:1  +1 SURN &lt;NAME_PIECE_SURNAME&gt; 0:1  +1 NSFX &lt;NAME_PIECE_SUFFIX&gt; 0:1  +1 &lt;&lt;SOURCE_CITATION&gt;&gt; 0:M  +1 &lt;&lt;NOTE_STRUCTURE&gt;&gt; 0:M</p>
 
-  </div>
+<p>The name value is formed in the manner the name is normally spoken, with the given name and family  name (surname) separated by slashes (/). (See &lt;NAME_PERSONAL&gt;, page 45.) Based on the  dynamic nature or unknown compositions of naming conventions, it is difficult to provide more  detailed name piece structure to handle every case. The NPFX, GIVN, NICK, SPFX, SURN, and  NSFX tags are provided optionally for systems that cannot operate effectively with less structured  information. For current future compatibility, all systems must construct their names based on the  &lt;NAME_PERSONAL&gt; structure. Those using the optional name pieces should assume that few  systems will process them, and most will not provide the name pieces. Future GEDCOM releases  (6.0 and later) will likely apply a very different strategy to resolve this problem, possibly using a  sophisticated parser and a name-knowledge database.</p>
 
-  <div id="project-metadata">
-    <nav id="fileindex-section" class="section project-section">
-  <h3 class="section-header">Pages</h3>
+<p>==NAME_PERSONAL:= Size=1:120  &lt;TEXT&gt; | /&lt;TEXT&gt;/ | &lt;TEXT&gt; /&lt;TEXT&gt;/ | /&lt;TEXT&gt;/ &lt;TEXT&gt; | &lt;TEXT&gt; /&lt;TEXT&gt;/ &lt;TEXT&gt;</p>
 
-  <ul>
-  
-    <li class="file"><a href="./History_txt.html">History</a>
-  
-    <li class="file"><a href="./Manifest_txt.html">Manifest</a>
-  
-    <li class="file"><a href="./test_data/README_txt.html">README</a>
-  
-  </ul>
-</nav>
+<p>The surname of an individual, if known, is enclosed between two slash (/) characters. The order of the  name parts should be the order that the person would, by custom of their culture, have used when  giving it to a recorder. Early versions of Personal Ancestral File and other products did not use the (R)  trailing slash when the surname was the last element of the name. If part of name is illegible, that part  is indicated by an ellipsis (…). Capitalize the name of a person or place in the conventional  manner-capitalize the first letter of each part and lowercase the other letters, unless conventional  usage is otherwise. For example: McMurray.  Examples:  1 NAME William Lee (given name only or surname not known)  1 NAME /Parry/ (surname only)  1 NAME William Lee /Parry/  1 NAME William Lee /Mac Parry/ (both parts (Mac and Parry) are surname parts  1 NAME William /Lee/ Parry (surname imbedded in the name string)  1 NAME William Lee /Pa…/  1 NAME /HU/ Pan (Surname before firstname)</p>
 
-    <nav id="classindex-section" class="section project-section">
-  <h3 class="section-header">Class and Module Index</h3>
+<p>==NAME_PIECE:= Size=1:90  The piece of the name pertaining to the name part of interest. The surname part, the given name part,  the name prefix part, or the name suffix part.</p>
 
-  <ul class="link-list">
-  
-    <li><a href="./Address_record.html">Address_record</a>
-  
-    <li><a href="./Adoption_record.html">Adoption_record</a>
-  
-    <li><a href="./Association_record.html">Association_record</a>
-  
-    <li><a href="./Bit.html">Bit</a>
-  
-    <li><a href="./Btree.html">Btree</a>
-  
-    <li><a href="./Btree_data.html">Btree_data</a>
-  
-    <li><a href="./Btree_node.html">Btree_node</a>
-  
-    <li><a href="./Cause_record.html">Cause_record</a>
-  
-    <li><a href="./Change_date_record.html">Change_date_record</a>
-  
-    <li><a href="./Character_set_record.html">Character_set_record</a>
-  
-    <li><a href="./Chart.html">Chart</a>
-  
-    <li><a href="./Citation_data_record.html">Citation_data_record</a>
-  
-    <li><a href="./Citation_event_type_record.html">Citation_event_type_record</a>
-  
-    <li><a href="./ClassTracker.html">ClassTracker</a>
-  
-    <li><a href="./Copyright_record.html">Copyright_record</a>
-  
-    <li><a href="./Corporate_record.html">Corporate_record</a>
-  
-    <li><a href="./Date_record.html">Date_record</a>
-  
-    <li><a href="./Decendant.html">Decendant</a>
-  
-    <li><a href="./Encoded_line_record.html">Encoded_line_record</a>
-  
-    <li><a href="./Event_age_record.html">Event_age_record</a>
-  
-    <li><a href="./Event_record.html">Event_record</a>
-  
-    <li><a href="./Events_list_record.html">Events_list_record</a>
-  
-    <li><a href="./Families_individuals.html">Families_individuals</a>
-  
-    <li><a href="./Family_record.html">Family_record</a>
-  
-    <li><a href="./GEDCOMBase.html">GEDCOMBase</a>
-  
-    <li><a href="./GedLine.html">GedLine</a>
-  
-    <li><a href="./GedString.html">GedString</a>
-  
-    <li><a href="./Gedcom.html">Gedcom</a>
-  
-    <li><a href="./GedcomParser.html">GedcomParser</a>
-  
-    <li><a href="./Gedcom_record.html">Gedcom_record</a>
-  
-    <li><a href="./Header_data_record.html">Header_data_record</a>
-  
-    <li><a href="./Header_record.html">Header_record</a>
-  
-    <li><a href="./Header_source_record.html">Header_source_record</a>
-  
-    <li><a href="./Individual_attribute_record.html">Individual_attribute_record</a>
-  
-    <li><a href="./Individual_record.html">Individual_record</a>
-  
-    <li><a href="./Instruction.html">Instruction</a>
-  
-    <li><a href="./Multimedia_citation_record.html">Multimedia_citation_record</a>
-  
-    <li><a href="./Multimedia_file_record.html">Multimedia_file_record</a>
-  
-    <li><a href="./Multimedia_format_record.html">Multimedia_format_record</a>
-  
-    <li><a href="./Multimedia_obje_file_record.html">Multimedia_obje_file_record</a>
-  
-    <li><a href="./Multimedia_obje_format_record.html">Multimedia_obje_format_record</a>
-  
-    <li><a href="./Multimedia_record.html">Multimedia_record</a>
-  
-    <li><a href="./Name_phonetic_record.html">Name_phonetic_record</a>
-  
-    <li><a href="./Name_record.html">Name_record</a>
-  
-    <li><a href="./Name_romanized_record.html">Name_romanized_record</a>
-  
-    <li><a href="./Note_citation_record.html">Note_citation_record</a>
-  
-    <li><a href="./Note_record.html">Note_record</a>
-  
-    <li><a href="./Object.html">Object</a>
-  
-    <li><a href="./PEDIGREE_WIDTH.html">PEDIGREE_WIDTH</a>
-  
-    <li><a href="./ParseState.html">ParseState</a>
-  
-    <li><a href="./Place_record.html">Place_record</a>
-  
-    <li><a href="./Placename_map_record.html">Placename_map_record</a>
-  
-    <li><a href="./Placename_phonetic_record.html">Placename_phonetic_record</a>
-  
-    <li><a href="./Placename_romanized_record.html">Placename_romanized_record</a>
-  
-    <li><a href="./Refn_record.html">Refn_record</a>
-  
-    <li><a href="./Repository_caln.html">Repository_caln</a>
-  
-    <li><a href="./Repository_citation_record.html">Repository_citation_record</a>
-  
-    <li><a href="./Repository_record.html">Repository_record</a>
-  
-    <li><a href="./Source_citation_record.html">Source_citation_record</a>
-  
-    <li><a href="./Source_record.html">Source_record</a>
-  
-    <li><a href="./Source_scope_record.html">Source_scope_record</a>
-  
-    <li><a href="./Submission_record.html">Submission_record</a>
-  
-    <li><a href="./Submitter_record.html">Submitter_record</a>
-  
-    <li><a href="./Text_record.html">Text_record</a>
-  
-    <li><a href="./Trailer_record.html">Trailer_record</a>
-  
-    <li><a href="./Transmission.html">Transmission</a>
-  
-    <li><a href="./TransmissionBase.html">TransmissionBase</a>
-  
-    <li><a href="./Xref.html">Xref</a>
-  
-  </ul>
-</nav>
+<p>==NAME_PIECE_GIVEN:= Size=1:120  &lt;NAME_PIECE&gt; | &lt;NAME_PIECE_GIVEN&gt;, &lt;NAME_PIECE&gt;</p>
 
-  </div>
-</nav>
+<p>Given name or earned name. Different given names are separated by a comma.</p>
 
-<div id="documentation">
-  <h1 class="class">class Name_record</h1>
+<p>==NAME_PIECE_NICKNAME:= Size=1:30  &lt;NAME_PIECE&gt; | &lt;NAME_PIECE_NICKNAME&gt;, &lt;NAME_PIECE&gt;  A descriptive or familiar name used in connection with one&#39;s proper name.</p>
 
-  <div id="description" class="description">
-    
-<p>Internal representation of the GEDCOM NAME record as described under
-PERSONAL_NAME_STRUCTURE This sub-classes <a
-href="Individual_attribute_record.html">Individual_attribute_record</a>,
-which in turn sub-classes <a href="Event_record.html">Event_record</a>.
-This may seem odd, but they share most class attributes and event records
-can be attached to most attributes.</p>
+<p>==NAME_PIECE_PREFIX:= Size=1:30  &lt;NAME_PIECE&gt; | &lt;NAME_PIECE_PREFIX&gt;, &lt;NAME_PIECE&gt;</p>
 
-<h1 id="label-PERSONAL_NAME_STRUCTURE%3A%3D">PERSONAL_NAME_STRUCTURE:=</h1>
+<p>Non indexing name piece that appears preceding the given name and surname parts. Different name  prefix parts are separated by a comma.</p>
 
-<pre>n NAME &lt;NAME_PERSONAL&gt;                 {1:1}
-  +1 NPFX &lt;NAME_PIECE_PREFIX&gt;          {0:1}
-  +1 GIVN &lt;NAME_PIECE_GIVEN&gt;           {0:1}
-  +1 NICK &lt;NAME_PIECE_NICKNAME&gt;        {0:1}
-  +1 SPFX &lt;NAME_PIECE_SURNAME_PREFIX   {0:1}
-  +1 SURN &lt;NAME_PIECE_SURNAME&gt;         {0:1}
-  +1 NSFX &lt;NAME_PIECE_SUFFIX&gt;          {0:1}
-  +1 &lt;&lt;SOURCE_CITATION&gt;&gt;               {0:M}
-  +1 &lt;&lt;NOTE_STRUCTURE&gt;&gt;                {0:M}
-
-The name value is formed in the manner the name is normally spoken, with the given name and family
- name (surname) separated by slashes (/). (See &lt;NAME_PERSONAL&gt;, page 45.) Based on the
-dynamic nature or unknown compositions of naming conventions, it is difficult to provide more
-detailed name piece structure to handle every case. The NPFX, GIVN, NICK, SPFX, SURN, and
-NSFX tags are provided optionally for systems that cannot operate effectively with less structured
-information. For current future compatibility, all systems must construct their names based on the
-&lt;NAME_PERSONAL&gt; structure. Those using the optional name pieces should assume that few
-systems will process them, and most will not provide the name pieces. Future GEDCOM releases
-(6.0 and later) will likely apply a very different strategy to resolve this problem, possibly using a
-sophisticated parser and a name-knowledge database.</pre>
-
-<h2 id="label-NAME_PERSONAL%3A%3D++++++++++++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A120%7D">NAME_PERSONAL:=                                                        {Size=1:120}</h2>
-
-<pre>&lt;TEXT&gt; | /&lt;TEXT&gt;/ | &lt;TEXT&gt; /&lt;TEXT&gt;/ | /&lt;TEXT&gt;/ &lt;TEXT&gt; | &lt;TEXT&gt; /&lt;TEXT&gt;/ &lt;TEXT&gt;
-
-The surname of an individual, if known, is enclosed between two slash (/) characters. The order of the
-name parts should be the order that the person would, by custom of their culture, have used when
-giving it to a recorder. Early versions of Personal Ancestral File and other products did not use the (R)
-trailing slash when the surname was the last element of the name. If part of name is illegible, that part
-is indicated by an ellipsis (...). Capitalize the name of a person or place in the conventional
-manner-capitalize the first letter of each part and lowercase the other letters, unless conventional
-usage is otherwise. For example: McMurray.
-Examples:
-  1 NAME William Lee                 (given name only or surname not known)
-  1 NAME /Parry/                     (surname only)
-  1 NAME William Lee /Parry/
-  1 NAME William Lee /Mac Parry/     (both parts (Mac and Parry) are surname parts
-  1 NAME William /Lee/ Parry         (surname imbedded in the name string)
-  1 NAME William Lee /Pa.../
-  1 NAME /HU/ Pan                    (Surname before firstname)</pre>
-
-<h2 id="label-NAME_PIECE%3A%3D+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A90%7D">NAME_PIECE:=                                                           {Size=1:90}</h2>
-
-<pre>The piece of the name pertaining to the name part of interest. The surname part, the given name part,
-the name prefix part, or the name suffix part.</pre>
-
-<h2 id="label-NAME_PIECE_GIVEN%3A%3D+++++++++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A120%7D">NAME_PIECE_GIVEN:=                                                     {Size=1:120}</h2>
-
-<pre>&lt;NAME_PIECE&gt; | &lt;NAME_PIECE_GIVEN&gt;, &lt;NAME_PIECE&gt;
-
-Given name or earned name. Different given names are separated by a comma.</pre>
-
-<h2 id="label-NAME_PIECE_NICKNAME%3A%3D++++++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A30%7D">NAME_PIECE_NICKNAME:=                                                  {Size=1:30}</h2>
-
-<pre>&lt;NAME_PIECE&gt; | &lt;NAME_PIECE_NICKNAME&gt;, &lt;NAME_PIECE&gt;
-A descriptive or familiar name used in connection with one's proper name.</pre>
-
-<h2 id="label-NAME_PIECE_PREFIX%3A%3D++++++++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A30%7D">NAME_PIECE_PREFIX:=                                                    {Size=1:30}</h2>
-
-<pre>&lt;NAME_PIECE&gt; | &lt;NAME_PIECE_PREFIX&gt;, &lt;NAME_PIECE&gt;
-
-Non indexing name piece that appears preceding the given name and surname parts. Different name
-prefix parts are separated by a comma.</pre>
-
-<p>The attributes are all arrays for the level +1 tags/records.</p>
-<ul><li>
-<p>Those ending in _ref are GEDCOM XREF index keys</p>
-</li><li>
-<p>Those ending in _record are array of classes of that type.</p>
-</li><li>
-<p>The remainder are arrays of attributes that could be present in this
-record.</p>
-</li></ul>
+<p>The attributes are all arrays for the level +1 tags/records. * Those ending in <em>ref are GEDCOM XREF index keys * Those ending in </em>record are array of classes of that type. * The remainder are arrays of attributes that could be present in this record.</p>
 
 <p>GEDCOM 5.5.1 Draft adds</p>
 
-<pre>+1 TYPE &lt;NAME_TYPE&gt; 
-+1 FONE &lt;NAME_PHONETIC_VARIATION&gt;
-  +2 TYPE &lt;PHONETIC_TYPE&gt;
-  +2 &lt;&lt;PERSONAL_NAME_PIECES&gt;&gt; 
-+1 ROMN &lt;NAME_ROMANIZED_VARIATION&gt;
-  +2 TYPE &lt;ROMANIZED_TYPE&gt; 
-  +2 &lt;&lt;PERSONAL_NAME_PIECES&gt;&gt;</pre>
+<p>+1 TYPE &lt;NAME_TYPE&gt;  +1 FONE &lt;NAME_PHONETIC_VARIATION&gt;  +2 TYPE &lt;PHONETIC_TYPE&gt;  +2 &lt;&lt;PERSONAL_NAME_PIECES&gt;&gt;  +1 ROMN &lt;NAME_ROMANIZED_VARIATION&gt;  +2 TYPE &lt;ROMANIZED_TYPE&gt;  +2 &lt;&lt;PERSONAL_NAME_PIECES&gt;&gt;</p>
 
-<h2 id="label-NAME_TYPE%3A%3D+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D5%3A30%7D+">NAME_TYPE:=                                                           {Size=5:30} </h2>
+<p>==NAME_TYPE:= Size=5:30 [ aka | birth | immigrant | maiden | married | &lt;user defined&gt; ] Indicates the name type, for example the name issued or assumed as an immigrant. e.g. birth indicates name given on birth certificate.</p>
 
-<pre>[ aka | birth | immigrant | maiden | married | &lt;user defined&gt; ]</pre>
+<p>==NAME_PHONETIC_VARIATION:= Size=1:120  PHONETIC_TYPE [&lt;user defined&gt; | hangul | kana] Size=5:30 The phonetic variation of the name is written in the same form as the was the name used in the superior &lt;NAME_PERSONAL&gt; primitive, but phonetically written using the method indicated by the subordinate &lt;PHONETIC_TYPE&gt; value, for example if hiragana was used to provide a reading of a name written in kanji, then the &lt;PHONETIC_TYPE&gt; value would indicate &#39;kana&#39;.</p>
 
-<p>Indicates the name type, for example the name issued or assumed as an
-immigrant. e.g. birth indicates name given on birth certificate.</p>
+<p>==NAME_ROMANIZED_VARIATION:= Size=1:120  ROMANIZED_TYPE [&lt;user defined&gt; | pinyin | romaji | wadegiles] Size=5:30 The romanized variation of the name is written in the same form prescribed for the name used in the superior &lt;NAME_PERSONAL&gt; context. The method used to romanize the name is indicated by the line_value of the subordinate &lt;ROMANIZED_TYPE&gt;, for example if romaji was used to provide a reading of a name written in kanji, then the ROMANIZED_TYPE subordinate to the ROMN tag would indicate romaji. ==TYPE:=</p>
 
-<h2 id="label-NAME_PHONETIC_VARIATION%3A%3D+++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A120%7D">NAME_PHONETIC_VARIATION:=                                               {Size=1:120}</h2>
 
-<pre>PHONETIC_TYPE [&lt;user defined&gt; | hangul | kana]                        {Size=5:30}</pre>
+  </div>
+</div>
+<div class="tags">
+  
 
-<p>The phonetic variation of the name is written in the same form as the was
-the name used in the superior &lt;NAME_PERSONAL&gt; primitive,</p>
+</div>
 
-<pre>but phonetically written using the method indicated by the subordinate &lt;PHONETIC_TYPE&gt; value, for example if hiragana was used</pre>
 
-<p>to provide a reading of a name written in kanji, then the
-&lt;PHONETIC_TYPE&gt; value would indicate 'kana'.</p>
 
-<h2 id="label-NAME_ROMANIZED_VARIATION%3A%3D+++++++++++++++++++++++++++++++++++++++++++++++++%7BSize%3D1%3A120%7D+">NAME_ROMANIZED_VARIATION:=                                                 {Size=1:120} </h2>
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#given-instance_method" title="#given (instance method)">#<strong>given</strong>  &#x21d2; Object </a>
+    
 
-<pre>ROMANIZED_TYPE [&lt;user defined&gt; | pinyin | romaji | wadegiles]            {Size=5:30}</pre>
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
 
-<p>The romanized variation of the name is written in the same form prescribed
-for the name used in the superior &lt;NAME_PERSONAL&gt; context.  The
-method used to romanize the name is indicated by the line_value of the
-subordinate &lt;ROMANIZED_TYPE&gt;, for example  if romaji was used to
-provide a reading of a name written in kanji, then the ROMANIZED_TYPE
-subordinate to the ROMN tag  would indicate romaji.</p>
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Name stored in field “value”, as this is an individual_attribute_record subtype.</p>
+</div></span>
+  
+</li>
 
-<h2 id="label-TYPE%3A%3D">TYPE:=</h2>
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name_phonetic_record-instance_method" title="#name_phonetic_record (instance method)">#<strong>name_phonetic_record</strong>  &#x21d2; Object </a>
+    
 
-  </div><!-- description -->
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>GEDCOM 5.5.1.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name_romanized_record-instance_method" title="#name_romanized_record (instance method)">#<strong>name_romanized_record</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>GEDCOM 5.5.1.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name_type-instance_method" title="#name_type (instance method)">#<strong>name_type</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>GEDCOM 5.5.1.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#nickname-instance_method" title="#nickname (instance method)">#<strong>nickname</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Name stored in field “value”, as this is an individual_attribute_record subtype.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#prefix-instance_method" title="#prefix (instance method)">#<strong>prefix</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Name stored in field “value”, as this is an individual_attribute_record subtype.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#suffix-instance_method" title="#suffix (instance method)">#<strong>suffix</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Name stored in field “value”, as this is an individual_attribute_record subtype.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#surname-instance_method" title="#surname (instance method)">#<strong>surname</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Name stored in field “value”, as this is an individual_attribute_record subtype.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#surname_prefix-instance_method" title="#surname_prefix (instance method)">#<strong>surname_prefix</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Name stored in field “value”, as this is an individual_attribute_record subtype.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Event_record.html" title="Event_record (class)">Event_record</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Event_record.html#address_email-instance_method" title="Event_record#address_email (method)">#address_email</a></span>, <span class='object_link'><a href="Event_record.html#address_fax-instance_method" title="Event_record#address_fax (method)">#address_fax</a></span>, <span class='object_link'><a href="Event_record.html#address_record-instance_method" title="Event_record#address_record (method)">#address_record</a></span>, <span class='object_link'><a href="Event_record.html#address_web_page-instance_method" title="Event_record#address_web_page (method)">#address_web_page</a></span>, <span class='object_link'><a href="Event_record.html#adoption_record-instance_method" title="Event_record#adoption_record (method)">#adoption_record</a></span>, <span class='object_link'><a href="Event_record.html#age-instance_method" title="Event_record#age (method)">#age</a></span>, <span class='object_link'><a href="Event_record.html#agency-instance_method" title="Event_record#agency (method)">#agency</a></span>, <span class='object_link'><a href="Event_record.html#cause_record-instance_method" title="Event_record#cause_record (method)">#cause_record</a></span>, <span class='object_link'><a href="Event_record.html#date_record-instance_method" title="Event_record#date_record (method)">#date_record</a></span>, <span class='object_link'><a href="Event_record.html#event_age_record-instance_method" title="Event_record#event_age_record (method)">#event_age_record</a></span>, <span class='object_link'><a href="Event_record.html#event_descriptor-instance_method" title="Event_record#event_descriptor (method)">#event_descriptor</a></span>, <span class='object_link'><a href="Event_record.html#event_status-instance_method" title="Event_record#event_status (method)">#event_status</a></span>, <span class='object_link'><a href="Event_record.html#event_type-instance_method" title="Event_record#event_type (method)">#event_type</a></span>, <span class='object_link'><a href="Event_record.html#lds_date_status-instance_method" title="Event_record#lds_date_status (method)">#lds_date_status</a></span>, <span class='object_link'><a href="Event_record.html#lds_slgc_family_ref-instance_method" title="Event_record#lds_slgc_family_ref (method)">#lds_slgc_family_ref</a></span>, <span class='object_link'><a href="Event_record.html#lds_temp_code-instance_method" title="Event_record#lds_temp_code (method)">#lds_temp_code</a></span>, <span class='object_link'><a href="Event_record.html#multimedia_citation_record-instance_method" title="Event_record#multimedia_citation_record (method)">#multimedia_citation_record</a></span>, <span class='object_link'><a href="Event_record.html#note_citation_record-instance_method" title="Event_record#note_citation_record (method)">#note_citation_record</a></span>, <span class='object_link'><a href="Event_record.html#phonenumber-instance_method" title="Event_record#phonenumber (method)">#phonenumber</a></span>, <span class='object_link'><a href="Event_record.html#place_record-instance_method" title="Event_record#place_record (method)">#place_record</a></span>, <span class='object_link'><a href="Event_record.html#religion-instance_method" title="Event_record#religion (method)">#religion</a></span>, <span class='object_link'><a href="Event_record.html#restriction-instance_method" title="Event_record#restriction (method)">#restriction</a></span>, <span class='object_link'><a href="Event_record.html#source_citation_record-instance_method" title="Event_record#source_citation_record (method)">#source_citation_record</a></span>, <span class='object_link'><a href="Event_record.html#submitter_ref-instance_method" title="Event_record#submitter_ref (method)">#submitter_ref</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="GEDCOMBase.html" title="GEDCOMBase (class)">GEDCOMBase</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="GEDCOMBase.html#restriction-instance_method" title="GEDCOMBase#restriction (method)">#restriction</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#event_tag-instance_method" title="#event_tag (instance method)">#<strong>event_tag</strong>(tag)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Attributes and Events have a common class, as they are essentially identical.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(*a)  &#x21d2; Name_record </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Name_record.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">#<strong>name</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>return the name as a string.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
 
   
   
   
-  <section id="5Buntitled-5D" class="documentation-section">
-    
-
-    
-
-    
-
-    
-    <!-- Attributes -->
-    <section id="attribute-method-details" class="method-section section">
-      <h3 class="section-header">Attributes</h3>
-
-      
-      <div id="attribute-i-given" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">given</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Name stored in field "value", as this is an individual_attribute_record
-subtype. Value of attribute "type" is set to NAME</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-name_phonetic_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">name_phonetic_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-name_romanized_record" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">name_romanized_record</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-name_type" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">name_type</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-nickname" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">nickname</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Name stored in field "value", as this is an individual_attribute_record
-subtype. Value of attribute "type" is set to NAME</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-prefix" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">prefix</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Name stored in field "value", as this is an individual_attribute_record
-subtype. Value of attribute "type" is set to NAME</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-suffix" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">suffix</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Name stored in field "value", as this is an individual_attribute_record
-subtype. Value of attribute "type" is set to NAME</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-surname" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">surname</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Name stored in field "value", as this is an individual_attribute_record
-subtype. Value of attribute "type" is set to NAME</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-surname_prefix" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">surname_prefix</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Name stored in field "value", as this is an individual_attribute_record
-subtype. Value of attribute "type" is set to NAME</p>
-        
-        </div>
-      </div>
-      
-    </section><!-- attribute-method-details -->
-    
-
-    <!-- Methods -->
-    
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
-
-    
-      <div id="method-c-new" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">new</span><span
-            class="method-args">(*a)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/gedcom/name_record.rb, line 108</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*<span class="ruby-identifier">a</span>)
-  <span class="ruby-keyword">super</span>(*<span class="ruby-identifier">a</span>)
-   <span class="ruby-ivar">@sub_level</span> = [
-                     [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;NPFX&quot;</span>,    <span class="ruby-value">:prefix</span> ],
-                     [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;GIVN&quot;</span>,    <span class="ruby-value">:given</span> ],
-                     [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;NICK&quot;</span>,    <span class="ruby-value">:nickname</span> ],
-                     [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;SPFX&quot;</span>,    <span class="ruby-value">:surname_prefix</span> ],
-                     [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;SURN&quot;</span>,    <span class="ruby-value">:surname</span> ],
-                     [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;NSFX&quot;</span>,    <span class="ruby-value">:suffix</span> ],
-                     [<span class="ruby-value">:print</span>, <span class="ruby-string">&quot;TYPE&quot;</span>,    <span class="ruby-value">:name_type</span> ], <span class="ruby-comment">#5.5.1</span>
-                     [<span class="ruby-value">:walk</span>,  <span class="ruby-string">&quot;FONE&quot;</span>,    <span class="ruby-value">:name_phonetic_record</span>],
-                     [<span class="ruby-value">:walk</span>,  <span class="ruby-string">&quot;ROMN&quot;</span>,    <span class="ruby-value">:name_romanized_record</span>],
-                 ] <span class="ruby-operator">+</span> <span class="ruby-ivar">@sub_level</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- new-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- new-method -->
-
-    
-    </section><!-- public-class-method-details -->
   
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
-
-    
-      <div id="method-i-event_tag" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">event_tag</span><span
-            class="method-args">(tag)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Attributes and Events have a common class, as they are essentially
-identical.</p>
-          
-
-          
-          <div class="method-source-code" id="event_tag-source">
-            <pre><span class="ruby-comment"># File lib/gedcom/name_record.rb, line 124</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">event_tag</span>(<span class="ruby-identifier">tag</span>)
-  <span class="ruby-keyword">case</span> <span class="ruby-identifier">tag</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;NAME&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">tag</span>
-  <span class="ruby-keyword">else</span> <span class="ruby-keyword">super</span>(<span class="ruby-identifier">tag</span>)
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- event_tag-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- event_tag-method -->
-
-    
-      <div id="method-i-name" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">name</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>return the name as a string. It might be returned be the <a
-href="Individual_attribute_record.html#method-i-value">Individual_attribute_record#value</a>
-method.</p>
-
-<pre>or it might need to be contructed from the Name_record attributes. 99.9999% of all GEDCOM I have
-seen does not use the Name_record attributes, and if the do, they are required to fill in the name on the
-NAME line (NAME_PERSONAL value), so the value should be set. This helps, as the ordering of the surname and
-first names is not standard across all cultures.</pre>
-          
-
-          
-          <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/gedcom/name_record.rb, line 136</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">name</span>
-  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">name</span> = <span class="ruby-identifier">value</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
-    <span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;&quot;</span> <span class="ruby-comment">#could be what we return if none of the Name_record attributes are set</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@prefix</span>
-      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@prefix</span>.<span class="ruby-identifier">first</span>
-      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-string">' '</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@given</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@nickname</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@surname_prefix</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@surname</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@suffix</span>
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@given</span>
-      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@given</span>.<span class="ruby-identifier">first</span>  
-      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-string">' '</span> <span class="ruby-keyword">if</span>  <span class="ruby-ivar">@nickname</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@surname_prefix</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@surname</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@suffix</span>
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@nickname</span>
-      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-string">'('</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@nickname</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">+</span> <span class="ruby-string">')'</span>  
-      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-string">' '</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@surname_prefix</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@surname</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@suffix</span>
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@surname_prefix</span>
-      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@surname_prefix</span>.<span class="ruby-identifier">first</span>
-      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-string">' '</span> <span class="ruby-keyword">if</span>  <span class="ruby-ivar">@surname</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@suffix</span>
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@surname</span>
-      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> ( <span class="ruby-string">'/'</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@surname</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">+</span> <span class="ruby-string">'/'</span> ) 
-      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-string">' '</span> <span class="ruby-keyword">if</span>  <span class="ruby-ivar">@suffix</span>
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@suffix</span>.<span class="ruby-identifier">first</span>  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@suffix</span>
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">first</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- name-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- name-method -->
-
-    
-    </section><!-- public-instance-method-details -->
   
-  </section><!-- 5Buntitled-5D -->
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Individual_attribute_record.html" title="Individual_attribute_record (class)">Individual_attribute_record</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Individual_attribute_record.html#attr_type-instance_method" title="Individual_attribute_record#attr_type (method)">#attr_type</a></span>, <span class='object_link'><a href="Individual_attribute_record.html#attr_type=-instance_method" title="Individual_attribute_record#attr_type= (method)">#attr_type=</a></span>, <span class='object_link'><a href="Individual_attribute_record.html#is_attribute%3F-instance_method" title="Individual_attribute_record#is_attribute? (method)">#is_attribute?</a></span>, <span class='object_link'><a href="Individual_attribute_record.html#value-instance_method" title="Individual_attribute_record#value (method)">#value</a></span>, <span class='object_link'><a href="Individual_attribute_record.html#value=-instance_method" title="Individual_attribute_record#value= (method)">#value=</a></span></p>
 
-</div><!-- documentation -->
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Event_record.html" title="Event_record (class)">Event_record</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Event_record.html#date-instance_method" title="Event_record#date (method)">#date</a></span>, <span class='object_link'><a href="Event_record.html#is_event%3F-instance_method" title="Event_record#is_event? (method)">#is_event?</a></span>, <span class='object_link'><a href="Event_record.html#place-instance_method" title="Event_record#place (method)">#place</a></span>, <span class='object_link'><a href="Event_record.html#to_gedcom-instance_method" title="Event_record#to_gedcom (method)">#to_gedcom</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="GEDCOMBase.html" title="GEDCOMBase (class)">GEDCOMBase</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="GEDCOMBase.html#changed-instance_method" title="GEDCOMBase#changed (method)">#changed</a></span>, <span class='object_link'><a href="GEDCOMBase.html#changed%3F-instance_method" title="GEDCOMBase#changed? (method)">#changed?</a></span>, <span class='object_link'><a href="GEDCOMBase.html#created%3F-instance_method" title="GEDCOMBase#created? (method)">#created?</a></span>, <span class='object_link'><a href="GEDCOMBase.html#find-instance_method" title="GEDCOMBase#find (method)">#find</a></span>, <span class='object_link'><a href="GEDCOMBase.html#locked%3F-instance_method" title="GEDCOMBase#locked? (method)">#locked?</a></span>, <span class='object_link'><a href="GEDCOMBase.html#no_tabs-class_method" title="GEDCOMBase.no_tabs (method)">no_tabs</a></span>, <span class='object_link'><a href="GEDCOMBase.html#private%3F-instance_method" title="GEDCOMBase#private? (method)">#private?</a></span>, <span class='object_link'><a href="GEDCOMBase.html#save-instance_method" title="GEDCOMBase#save (method)">#save</a></span>, <span class='object_link'><a href="GEDCOMBase.html#tabs-class_method" title="GEDCOMBase.tabs (method)">tabs</a></span>, <span class='object_link'><a href="GEDCOMBase.html#to_db-instance_method" title="GEDCOMBase#to_db (method)">#to_db</a></span>, <span class='object_link'><a href="GEDCOMBase.html#to_gedcom-instance_method" title="GEDCOMBase#to_gedcom (method)">#to_gedcom</a></span>, <span class='object_link'><a href="GEDCOMBase.html#to_s-instance_method" title="GEDCOMBase#to_s (method)">#to_s</a></span>, <span class='object_link'><a href="GEDCOMBase.html#to_s_ordered-instance_method" title="GEDCOMBase#to_s_ordered (method)">#to_s_ordered</a></span>, <span class='object_link'><a href="GEDCOMBase.html#to_s_r-instance_method" title="GEDCOMBase#to_s_r (method)">#to_s_r</a></span>, <span class='object_link'><a href="GEDCOMBase.html#token_to_s-instance_method" title="GEDCOMBase#token_to_s (method)">#token_to_s</a></span>, <span class='object_link'><a href="GEDCOMBase.html#xref_check-instance_method" title="GEDCOMBase#xref_check (method)">#xref_check</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(*a)  &#x21d2; <tt><span class='object_link'><a href="" title="Name_record (class)">Name_record</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of Name_record.</p>
 
 
-<footer id="validator-badges">
-  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
-  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
-</footer>
+  </div>
+</div>
+<div class="tags">
+  
 
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/name_record.rb', line 108</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+   <span class='ivar'>@sub_level</span> <span class='op'>=</span> <span class='lbracket'>[</span>
+                     <span class='lbracket'>[</span><span class='symbol'>:print</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NPFX</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>    <span class='symbol'>:prefix</span> <span class='rbracket'>]</span><span class='comma'>,</span>
+                     <span class='lbracket'>[</span><span class='symbol'>:print</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GIVN</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>    <span class='symbol'>:given</span> <span class='rbracket'>]</span><span class='comma'>,</span>
+                     <span class='lbracket'>[</span><span class='symbol'>:print</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NICK</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>    <span class='symbol'>:nickname</span> <span class='rbracket'>]</span><span class='comma'>,</span>
+                     <span class='lbracket'>[</span><span class='symbol'>:print</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SPFX</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>    <span class='symbol'>:surname_prefix</span> <span class='rbracket'>]</span><span class='comma'>,</span>
+                     <span class='lbracket'>[</span><span class='symbol'>:print</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SURN</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>    <span class='symbol'>:surname</span> <span class='rbracket'>]</span><span class='comma'>,</span>
+                     <span class='lbracket'>[</span><span class='symbol'>:print</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NSFX</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>    <span class='symbol'>:suffix</span> <span class='rbracket'>]</span><span class='comma'>,</span>
+                     <span class='lbracket'>[</span><span class='symbol'>:print</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TYPE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>    <span class='symbol'>:name_type</span> <span class='rbracket'>]</span><span class='comma'>,</span> <span class='comment'>#5.5.1
+</span>                     <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span>  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>FONE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>    <span class='symbol'>:name_phonetic_record</span><span class='rbracket'>]</span><span class='comma'>,</span>
+                     <span class='lbracket'>[</span><span class='symbol'>:walk</span><span class='comma'>,</span>  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ROMN</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>    <span class='symbol'>:name_romanized_record</span><span class='rbracket'>]</span><span class='comma'>,</span>
+                 <span class='rbracket'>]</span> <span class='op'>+</span> <span class='ivar'>@sub_level</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="given=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="given-instance_method">
+  
+    #<strong>given</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Name stored in field “value”, as this is an individual_attribute_record subtype. Value of attribute “type” is set to NAME</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/name_record.rb', line 104</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_given'>given</span>
+  <span class='ivar'>@given</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="name_phonetic_record=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="name_phonetic_record-instance_method">
+  
+    #<strong>name_phonetic_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GEDCOM 5.5.1</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+105
+106
+107</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/name_record.rb', line 105</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_name_phonetic_record'>name_phonetic_record</span>
+  <span class='ivar'>@name_phonetic_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="name_romanized_record=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="name_romanized_record-instance_method">
+  
+    #<strong>name_romanized_record</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GEDCOM 5.5.1</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+105
+106
+107</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/name_record.rb', line 105</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_name_romanized_record'>name_romanized_record</span>
+  <span class='ivar'>@name_romanized_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="name_type=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="name_type-instance_method">
+  
+    #<strong>name_type</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GEDCOM 5.5.1</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+105
+106
+107</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/name_record.rb', line 105</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_name_type'>name_type</span>
+  <span class='ivar'>@name_type</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="nickname=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="nickname-instance_method">
+  
+    #<strong>nickname</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Name stored in field “value”, as this is an individual_attribute_record subtype. Value of attribute “type” is set to NAME</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/name_record.rb', line 104</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_nickname'>nickname</span>
+  <span class='ivar'>@nickname</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="prefix=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="prefix-instance_method">
+  
+    #<strong>prefix</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Name stored in field “value”, as this is an individual_attribute_record subtype. Value of attribute “type” is set to NAME</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/name_record.rb', line 104</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_prefix'>prefix</span>
+  <span class='ivar'>@prefix</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="suffix=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="suffix-instance_method">
+  
+    #<strong>suffix</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Name stored in field “value”, as this is an individual_attribute_record subtype. Value of attribute “type” is set to NAME</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/name_record.rb', line 104</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_suffix'>suffix</span>
+  <span class='ivar'>@suffix</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="surname=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="surname-instance_method">
+  
+    #<strong>surname</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Name stored in field “value”, as this is an individual_attribute_record subtype. Value of attribute “type” is set to NAME</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/name_record.rb', line 104</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_surname'>surname</span>
+  <span class='ivar'>@surname</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="surname_prefix=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="surname_prefix-instance_method">
+  
+    #<strong>surname_prefix</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Name stored in field “value”, as this is an individual_attribute_record subtype. Value of attribute “type” is set to NAME</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/name_record.rb', line 104</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_surname_prefix'>surname_prefix</span>
+  <span class='ivar'>@surname_prefix</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="event_tag-instance_method">
+  
+    #<strong>event_tag</strong>(tag)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Attributes and Events have a common class, as they are essentially identical.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+124
+125
+126
+127
+128
+129</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/name_record.rb', line 124</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_event_tag'>event_tag</span><span class='lparen'>(</span><span class='id identifier rubyid_tag'>tag</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_tag'>tag</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NAME</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>then</span> <span class='id identifier rubyid_tag'>tag</span>
+  <span class='kw'>else</span> <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_tag'>tag</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="name-instance_method">
+  
+    #<strong>name</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>return the name as a string. It might be returned be the Individual_attribute_record#value method. or it might need to be contructed from the Name_record attributes. 99.9999% of all GEDCOM I have seen does not use the Name_record attributes, and if the do, they are required to fill in the name on the NAME line (NAME_PERSONAL value), so the value should be set. This helps, as the ordering of the surname and first names is not standard across all cultures.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gedcom/name_record.rb', line 136</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='comment'>#could be what we return if none of the Name_record attributes are set
+</span>    <span class='kw'>if</span> <span class='ivar'>@prefix</span>
+      <span class='id identifier rubyid_name'>name</span> <span class='op'>+=</span> <span class='ivar'>@prefix</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+      <span class='id identifier rubyid_name'>name</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='ivar'>@given</span> <span class='op'>||</span> <span class='ivar'>@nickname</span> <span class='op'>||</span> <span class='ivar'>@surname_prefix</span> <span class='op'>||</span> <span class='ivar'>@surname</span> <span class='op'>||</span> <span class='ivar'>@suffix</span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='ivar'>@given</span>
+      <span class='id identifier rubyid_name'>name</span> <span class='op'>+=</span> <span class='ivar'>@given</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>  
+      <span class='id identifier rubyid_name'>name</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span>  <span class='ivar'>@nickname</span> <span class='op'>||</span> <span class='ivar'>@surname_prefix</span> <span class='op'>||</span> <span class='ivar'>@surname</span> <span class='op'>||</span> <span class='ivar'>@suffix</span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='ivar'>@nickname</span>
+      <span class='id identifier rubyid_name'>name</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>(</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='ivar'>@nickname</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>)</span><span class='tstring_end'>&#39;</span></span>  
+      <span class='id identifier rubyid_name'>name</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='ivar'>@surname_prefix</span> <span class='op'>||</span> <span class='ivar'>@surname</span> <span class='op'>||</span> <span class='ivar'>@suffix</span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='ivar'>@surname_prefix</span>
+      <span class='id identifier rubyid_name'>name</span> <span class='op'>+=</span> <span class='ivar'>@surname_prefix</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+      <span class='id identifier rubyid_name'>name</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span>  <span class='ivar'>@surname</span> <span class='op'>||</span> <span class='ivar'>@suffix</span>
+    <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='ivar'>@surname</span>
+      <span class='id identifier rubyid_name'>name</span> <span class='op'>+=</span> <span class='lparen'>(</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='ivar'>@surname</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span> <span class='rparen'>)</span> 
+      <span class='id identifier rubyid_name'>name</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span>  <span class='ivar'>@suffix</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_name'>name</span> <span class='op'>+=</span> <span class='ivar'>@suffix</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>  <span class='kw'>if</span> <span class='ivar'>@suffix</span>
+  <span class='kw'>end</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sat Oct 31 21:50:26 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.25 (ruby-2.7.1).
+</div>
+
+    </div>
+  </body>
+</html>
