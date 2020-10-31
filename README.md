@@ -1,8 +1,8 @@
 = gedcom
 
-* http://rbur004.github.io/gedcom/
-* Source https://github.com/rbur004/gedcom
-* Gem https://rubygems.org/gems/gedcom
+* Docs :: http://rbur004.github.io/gedcom/
+* Source :: https://github.com/rbur004/gedcom
+* Gem :: https://rubygems.org/gems/gedcom
 
 == DESCRIPTION:
 
