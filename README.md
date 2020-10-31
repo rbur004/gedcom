@@ -1,6 +1,6 @@
 = gedcom
 
-* http://rbur004.github.com/gedcom/
+* http://rbur004.github.io/gedcom/
 * Source https://github.com/rbur004/gedcom
 * Gem https://rubygems.org/gems/gedcom
 
