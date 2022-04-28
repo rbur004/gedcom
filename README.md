@@ -7,18 +7,18 @@
 ## DESCRIPTION:
 
 A Ruby GEDCOM text file parser and producer, that produces a tree of objects from each of the
-GEDCOM file types and subtypes. Understands the full GEDCOM 5.5 grammar, and will handle 
+GEDCOM file types and subtypes. Understands the full GEDCOM 5.5 grammar, and will handle
 unknown tags hierarchies as a Note class.
- 
- 
+
+
 ## FEATURES/PROBLEMS:
 
-* Gedcom multicharacter ANSEL encoding is currently not understood when reading and writing, but is preserved if the file is opened as ASCII-8BIT.
+* GEDCOM multi-character ANSEL encoding is currently not understood when reading and writing, but is preserved if the file is opened as ASCII-8BIT.
 * CR line termination causes issues for systems with native LF line termination (CRLF is fine).
-* Dates are currently just strings, but I want to parse these and test their validatity. 
-  This is not as easy as it may seem at first, as dates may be in many formats, 
-  they may be partial, or may actually be strings describing the date. 
-* For my own use, I bend the GEDCOM 5.5 standard by allowing the reading of the following types in non-standard ways. 
+* Dates are currently just strings, but I want to parse these and test their validity.
+  This is not as easy as it may seem at first, as dates may be in many formats,
+  they may be partial, or may actually be strings describing the date.
+* For my own use, I bend the GEDCOM 5.5 standard by allowing the reading of the following types in non-standard ways.
   These will not affect the reading and writing of valid GEDCOM 5.5.
 * * 'NOTE' type to appear in places it is not defined to exist in GEDCOM.
            This is necessary in order to be able to convert user defined tags into NOTE records.
@@ -29,18 +29,27 @@ unknown tags hierarchies as a Note class.
 * * 'SEX' type to appear multiple times in an 'INDI' record,
           as a person's sex can now be changed.
 * * 'SEX' type to allow more than 'M', 'F' and 'U',  
-          to allow for the XXY, XXXY and X and other genetic anomolies associated with gender.
-* * 'NAME' type allows event details ( eg 'DATE') , 
+          to allow for the XXY, XXXY and X and other genetic anomalies associated with gender.
+* * 'NAME' type allows event details ( eg 'DATE') ,
            as names changes are events, not just an attribute.
-* * 'ADDR' type allows a 'TYPE' entry 
+* * 'ADDR' type allows a 'TYPE' entry
            to qualify what the address is for (e.g. home, work, ...) .
 * User defined tags are converted to the NOTE type, with sublevels being CONT lines.
-  These are recognised as any tag starting with '_'. 
+  These are recognised as any tag starting with '_'.
 * Haven't yet merged in the code to pretty print a family tree.
 * Want to add a merge option, to take multiple transmission and make a single one from them.
 * save/load (to/from a database) is yet to be ported. GedcomBase#to_db is a dummy function.
+* All GEDCOM TAG values are stored as Arrays. This allows multiple instances of a TAG in a record.
+* All Strings values are stored as GedString, which adds each_word and changes the behaviour of each
+* Individual attribute records are a sub-class of Event records. Specific attribute tags are also treated this way, To make this more readable, there are alias for
+* *  attr_type() to event_type()
+* * value() to event_status()
+* * is_attribute?() to is_event?()
+
 
 ## SYNOPSIS:
+
+### Read and Write a GEDCOM file
 
 	require 'gedcom'
 
@@ -48,7 +57,7 @@ unknown tags hierarchies as a Note class.
 	g = Gedcom.file("../test_data/TGC551LF.ged", "r:ASCII-8BIT") #OK with LF line endings.
 	g.transmissions[0].summary
 	g.transmissions[0].self_check #validate the gedcom file just loaded, printing errors found.
-	puts 
+	puts
 
 	puts "parse TGC55CLF.ged"
 	g.file("../test_data/TGC55CLF.ged", "r:ASCII-8BIT") #Ok with CR LF line endings.
@@ -67,6 +76,49 @@ unknown tags hierarchies as a Note class.
 	end
 	puts "\nComplete"
 
+### Create a GEDCOM file in memory, and write it to a file
+```
+require 'gedcom'
+
+# Create a transmission record, and encapsulate it in a Gedcom record (which can technically have multiple transmissions, but usually doesn't)
+  transmission = Transmission.new
+  g = Gedcom.new(transmission)
+
+# GEDCOM transmissions have a header and footer record.
+  transmission.header_record << Header_record.new(transmission)
+  transmission.trailer_record << Trailer_record.new(transmission)
+
+# Create individual record
+  ind = Individual_record.new(transmission)
+
+  # Individual records (all LVL 0 records) need an Xref unique reference string
+  ind.individual_ref = [ Xref.new(:individual, 'I1') ]
+
+  # We also add these to the in memory index, to help with lookups
+  transmission.create_index(0, :individual, 'I1', ind) # Can throw an exception if the xKey already exists.
+
+# Create name record
+  name_record = Name_record.new(transmission)
+  name_record.value = [ GedString.new('Wynne George /CROLL/') ]
+  name_record.attr_type = [ 'NAME' ]
+
+  # Add in name sub fields (Optional)
+    name_record.surname = [ GedString.new("Croll") ]
+    name_record.given = [ GedString.new("Wynne George") ]
+
+  # Add the name to the individual record
+    ind.name_record ||= [] # Create Array, if name_record is nil
+    ind.name_record << name_record # Append name_record to the Array
+
+  # Add the individual record to the transmission record
+    transmission.individual_record << ind
+
+puts '*************GEDCOM output*****************'
+puts g.transmissions[0].to_gedcom
+puts
+puts '*************Self Check*****************'
+puts g.transmissions[0].self_check
+```
 
 ## REQUIREMENTS:
 
@@ -121,9 +173,9 @@ Copyright (c) 2009
    software (possibly commercial).  But some files in the distribution
    may not have been written by the author, so that they are not under this terms.
 
-5. The scripts and library files supplied as input to or produced as 
+5. The scripts and library files supplied as input to or produced as
    output from the software do not automatically fall under the
-   copyright of the software, but belong to whomever generated them, 
+   copyright of the software, but belong to whomever generated them,
    and may be sold commercially, and may be aggregated with this
    software.
 
